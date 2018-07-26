@@ -1,0 +1,12 @@
+{
+  "extends": ["tslint-eslint-rules", "tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "rules": {
+    "no-constant-condition": true
+  },
+  "linterOptions": {
+    "exclude": [
+      "config/**/*.js",
+      "node_modules/**/*.ts"
+    ]
+  }
+}
