@@ -1,8 +1,9 @@
 import { all, fork } from "redux-saga/effects";
-import { watchGetNews } from "./newsAPISaga";
+import { watchGetHeadlines, watchSearchNews } from "./newsAPISaga";
 
 export default function* rootSaga() {
   yield all([
-    fork(watchGetNews)
+    fork(watchGetHeadlines),
+    fork(watchSearchNews)
   ])
 }

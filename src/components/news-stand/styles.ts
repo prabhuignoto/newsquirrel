@@ -1,6 +1,20 @@
 import Styled from "styled-components";
+import BlankImage from './assets/picture.svg';
 
 const NewsStandWrapper = Styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+`;
+
+const SortByWrapper = Styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+`
+
+const ArticlesWrapper = Styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -43,13 +57,13 @@ const TitleAnchor = Styled.a`
   color: #2B2D42;
 `;
 
-const CardThumbnail = Styled.div<{thumbnailUrl: string}>`
+const CardThumbnail = Styled.div<{thumbnailUrl: string | null}>`
   display: flex;
   align-items: center;
-  background-image: url("${p => p.thumbnailUrl}");
+  background-image: url("${p => p.thumbnailUrl !== null ? p.thumbnailUrl : BlankImage}");
   background-position: 50%;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: ${p => p.thumbnailUrl !== null ? 'cover' : 'contain'};
   width: 100%;
   padding: 0.1rem;
   min-height: 200px;
@@ -111,5 +125,7 @@ export {
   PublishDate,
   PublishedBy,
   Publisher,
-  TitleAnchor
+  TitleAnchor,
+  ArticlesWrapper,
+  SortByWrapper
 }

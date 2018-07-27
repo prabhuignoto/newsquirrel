@@ -35,6 +35,12 @@
     "@types/node" "*"
     "@types/react" "*"
 
+"@types/react-lazyload@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@types/react-lazyload/-/react-lazyload-2.3.0.tgz#cc30da5bbd74e16993fe8ed5bfd6209064aa167f"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-redux@^6.0.4":
   version "6.0.4"
   resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-6.0.4.tgz#c1cfce0a0bd88983c75dbf393576f8dc59181586"
@@ -5709,6 +5715,10 @@ react-error-overlay@^4.0.0:
 react-is@^16.3.1:
   version "16.4.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.4.1.tgz#d624c4650d2c65dbd52c72622bbf389435d9776e"
+
+react-lazyload@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/react-lazyload/-/react-lazyload-2.3.0.tgz#ccb134223012447074a96543954f44b055dc6185"
 
 react-lifecycles-compat@^3.0.2:
   version "3.0.4"

@@ -1,3 +1,4 @@
+import ReadingMode from '../enums/readingMode';
 import { IFilter } from '../models/data/IFilter';
 import { IArticleCard } from '../models/view/IArticleCard';
 
@@ -48,5 +49,21 @@ export interface ISwitchCountry extends IBase {
 
 export interface ISearchNewsAPI extends IBase {
   searchTerm: string;
+  sortField: {
+    name: string;
+    value: string
+  }
+}
+
+export interface ISortByAction extends IBase {
+  field: {
+    name: string;
+    value: string;
+  },
+  searchTerm: string;
+}
+
+export interface ISwitchNewsReadingMode extends IBase {
+  mode: ReadingMode;
 }
 

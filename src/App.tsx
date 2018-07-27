@@ -1,38 +1,28 @@
 import 'bulma/css/bulma.css';
-import 'bulma/css/bulma.css';
-import * as React from 'react';
 import './App.css';
-import CountryDropdown from './containers/country-dropdown';
+
+import * as React from 'react';
+
 import Filters from './containers/filters';
-import NewsStand from "./containers/news-stand";
+import Navbar from './containers/navbar';
+import NewsStand from './containers/news-stand';
 import Pager from './containers/pager';
-import SearchBar from './containers/search-bar';
 
 class App extends React.Component {
   public render() {
     return (
-      <section className="section">
-        <div className="App container">
-          <div className="columns">
-            <div className="column">
-              <nav className="navbar" role="navigation">
-                <div className="nav-brand">
-                  <span style={{fontSize: '2rem', marginLeft: '15px', color: '#EF233C'}}>News Squirrel</span>
-                </div>
-                <div className="navbar-item">
-                  <SearchBar />
-                </div>
-                <div className="navbar-item" style={{marginLeft: 'auto'}}>
-                  <CountryDropdown />
-                </div>
-              </nav>
+      <div className="App container">
+        <div className="columns">
+          <div className="column">
+            <section className="">
+              <Navbar />
               <Filters />
               <NewsStand />
               <Pager />
-            </div>
+            </section>
           </div>
         </div>
-      </section>
+      </div>
     );
   }
 }

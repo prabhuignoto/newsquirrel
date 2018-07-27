@@ -10,12 +10,14 @@ import {
   INavToNextPage,
   INavToPrevPage,
   INewsLoaded,
+  ISearchNewsAPI,
+  ISortByAction,
   ISwitchCountry,
 } from '../actions/types';
 import { INewsResponse } from '../models/data/INewsResponse';
 import { IArticleCard } from '../models/view/IArticleCard';
 
-export function* watchGetNews() {
+export function* watchGetHeadlines() {
   const takePattern = [
     Constants.GET_NEWS,
     Constants.NAV_TO_NEXT_PAGE,
@@ -65,5 +67,56 @@ export function* watchGetNews() {
       });
     }
   });
+}
+
+export function* watchSearchNews() {
+  const pattern = [Constants.SEARCH_NEWS_API, Constants.SORT_BY]
+  yield takeEvery(pattern, function* searchNewsAPI(action: ISearchNewsAPI & ISortByAction) {
+    const { searchTerm, field: sortField } = action;
+    let sortBy = null;
+    if(sortField) {
+      sortBy = sortField.value;
+    } else {
+      sortBy = 'relevancy';
+    }
+
+    yield put<ILoadingNews>({
+      message: 'News Loading',
+      type: Constants.LOADING_NEWS
+    });
+    
+    try {
+      const response: AxiosResponse = yield axios.get(`https://newsapi.org/v2/everything?q=${searchTerm}&lang=en&sortBy=${sortBy}&apiKey=fe687337b43e4bddaf441967d549417d`, {
+        timeout: 5000
+      });
+      const newsResponse: INewsResponse = response.data;
+
+      if(response.status === 200) {
+        const articleCards: IArticleCard[] = newsResponse.articles.map<IArticleCard>(article => ({
+          articleUrl: article.url,
+          author: article.author,
+          description: article.description,
+          id: uniqid('article-'),
+          publishedAt: article.publishedAt,
+          source: article.source.name,
+          thumbnailUrl: article.urlToImage,
+          title: article.title,
+        }));
+
+        yield put<INewsLoaded>({
+          articleCards,
+          totalResults: newsResponse.totalResults,
+          type: Constants.NEWS_LOADED
+        });
+      } else {
+        throw new Error('Error fetching news');
+      }
+    } catch (exception) {
+      yield put<ILoadingNewsFailed>({
+        message: 'failed to load the news',
+        type: Constants.LOADING_NEWS_FAILED
+      });
+    }
+  })
 }
 

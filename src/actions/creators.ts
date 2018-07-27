@@ -1,3 +1,4 @@
+import ReadingMode from '../enums/readingMode';
 import { IFilter } from '../models/data/IFilter';
 import { Constants } from './constants';
 import {
@@ -5,7 +6,9 @@ import {
   INavToNextPage,
   INavToPrevPage,
   ISearchNewsAPI,
+  ISortByAction,
   ISwitchCountry,
+  ISwitchNewsReadingMode,
   IUpdateNewsCategory,
 } from './types';
 
@@ -52,9 +55,25 @@ export function switchCountry(country: string, category: string, page: number): 
   }
 }
 
-export function searchNewsAPI(searchTerm: string): ISearchNewsAPI {
+export function searchNewsAPI(searchTerm: string, sortField: { name: string, value: string }): ISearchNewsAPI {
   return {
     searchTerm,
+    sortField,
     type: Constants.SEARCH_NEWS_API,
+  }
+}
+
+export function sortByField(field: { name: string, value: string }, searchTerm: string): ISortByAction {
+  return {
+    field,
+    searchTerm,
+    type: Constants.SORT_BY,
+  };
+}
+
+export function switchNewsReadingMode(mode: ReadingMode): ISwitchNewsReadingMode {
+  return {
+    mode,
+    type: Constants.SWITCH_NEWS_READING_MODE
   }
 }

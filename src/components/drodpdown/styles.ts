@@ -7,7 +7,7 @@ const Wrapper = Styled.div`
   width: 150px;
   height: 40px;
   border: 1px solid #8D99AE;
-  border-radius: 3px;
+  border-radius: 4px;
   cursor: pointer;
   position: relative;
 `;

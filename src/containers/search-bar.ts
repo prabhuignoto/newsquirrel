@@ -4,13 +4,22 @@ import { Dispatch } from 'redux';
 
 import { searchNewsAPI } from '../actions/creators';
 import SearchBar from '../components/search-bar/search-bar';
+import { IAppState } from '../models/view/IAppState';
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  initiateSearch: (searchTerm: string) => dispatch(searchNewsAPI(searchTerm))
+  initiateSearch: (searchTerm: string, sortField: {name: string, value: string}) => dispatch(searchNewsAPI(searchTerm, sortField))
+});
+
+const mapStateToProps = (state: IAppState) => ({
+  sortingBy: state.options.currentlySortingBy
 });
 
 interface IProps {
-  initiateSearch: (term: string) => void;
+  initiateSearch: (term: string, sortField: {name: string, value: string}) => void;
+  sortingBy: {
+    name: string;
+    value: string;
+  };
 }
 
 interface ILocalState {
@@ -32,14 +41,14 @@ const stateHandlers = {
       searchTerm: term
     }
   },
-  handleSearch: ({ searchTerm }: ILocalState, {initiateSearch}: IProps) => () =>{
-    initiateSearch(searchTerm);
+  handleSearch: ({ searchTerm }: ILocalState, {initiateSearch, sortingBy}: IProps) => () =>{
+    initiateSearch(searchTerm, sortingBy);
     return {};
   }
 }
 
 export default compose(
-  connect(null, mapDispatchToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   withStateHandlers<ILocalState, IStateHandlers<ILocalState>>(initialState, stateHandlers),
   defaultProps({
     placeHolder: 'Search News'
