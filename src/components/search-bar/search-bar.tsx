@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { ISearchBar } from '../../models/view/ISearchBar';
-import { Input, Wrapper } from './styles';
+import { Button, Input, Wrapper } from './styles';
 
 const handler = function _handler(fn: (term: string) => void) {
   return function oHandler(ev: React.FormEvent<HTMLInputElement>) {
@@ -18,14 +18,16 @@ const handleKeyUp= function _handleKeyUp(fn: () => void) {
   }
 }
 
-const SearchBar: React.SFC<ISearchBar> = ({ placeHolder, handleInput, searchTerm, handleSearch }) => (
+const SearchBar: React.SFC<ISearchBar> = ({ placeHolder, handleInput, searchTerm, handleSearch, handleClear }) => (
   <Wrapper>
     <Input
       placeholder={placeHolder}
       onInput={handler(handleInput)}
       onKeyUp={handleKeyUp(handleSearch)}
       value={searchTerm} />
-    {/* <Button /> */}
+      {
+        searchTerm.length > 0 ? <Button onClick={handleClear} /> : null
+      }
   </Wrapper>
 )
 

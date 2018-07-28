@@ -3,10 +3,8 @@ import './App.css';
 
 import * as React from 'react';
 
-import Filters from './containers/filters';
+import Home from './containers/home';
 import Navbar from './containers/navbar';
-import NewsStand from './containers/news-stand';
-import Pager from './containers/pager';
 
 class App extends React.Component {
   public render() {
@@ -16,9 +14,7 @@ class App extends React.Component {
           <div className="column">
             <section className="">
               <Navbar />
-              <Filters />
-              <NewsStand />
-              <Pager />
+              <Home />
             </section>
           </div>
         </div>

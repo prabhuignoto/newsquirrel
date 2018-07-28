@@ -67,3 +67,7 @@ export interface ISwitchNewsReadingMode extends IBase {
   mode: ReadingMode;
 }
 
+export interface IClearSearchResults extends IBase {
+  message?: string
+}
+

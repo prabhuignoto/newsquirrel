@@ -5,6 +5,7 @@ import ReadingMode from '../../enums/readingMode';
 const Wrapper = Styled.nav `
   height: 150px;
   background: #EEF3F5;
+  position: relative;
 `;
 
 const NavBrand = Styled.div`
@@ -15,7 +16,7 @@ const NavBrand = Styled.div`
 `;
 
 const NavBrandText = Styled.span`
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: #EF233C;
   padding-bottom:3px;
 `;
@@ -43,11 +44,13 @@ const ReadmodeWrapper = Styled.div`
   margin-left: 20px;
 `;
 
+
+
 export {
   Wrapper,
   NavBrand,
   NavBrandText,
   CountryDropdownWrapper,
   SearchbarWrapper,
-  ReadmodeWrapper
+  ReadmodeWrapper,
 }

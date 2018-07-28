@@ -2,11 +2,12 @@ import { connect } from 'react-redux';
 import { compose, defaultProps, StateHandler, StateHandlerMap, withStateHandlers } from 'recompose';
 import { Dispatch } from 'redux';
 
-import { searchNewsAPI } from '../actions/creators';
+import { clearSearchResults, searchNewsAPI } from '../actions/creators';
 import SearchBar from '../components/search-bar/search-bar';
 import { IAppState } from '../models/view/IAppState';
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
+  clearSearch: () => dispatch(clearSearchResults()),
   initiateSearch: (searchTerm: string, sortField: {name: string, value: string}) => dispatch(searchNewsAPI(searchTerm, sortField))
 });
 
@@ -16,6 +17,7 @@ const mapStateToProps = (state: IAppState) => ({
 
 interface IProps {
   initiateSearch: (term: string, sortField: {name: string, value: string}) => void;
+  clearSearch: () => void;
   sortingBy: {
     name: string;
     value: string;
@@ -33,9 +35,16 @@ const initialState = ({searchTerm=''}) => ({
 interface IStateHandlers<T> extends StateHandlerMap<T> {
   handleInput: StateHandler<T>;
   handleSearch: StateHandler<T>;
+  handleClear: StateHandler<T>;
 }
 
 const stateHandlers = {
+  handleClear: (state: ILocalState, {clearSearch}: IProps) => () =>  {
+    clearSearch();
+    return {
+      searchTerm: ''
+    };
+  },
   handleInput: ({}: ILocalState, {initiateSearch}: IProps) => (term: string) => {
     return {
       searchTerm: term
@@ -44,7 +53,7 @@ const stateHandlers = {
   handleSearch: ({ searchTerm }: ILocalState, {initiateSearch, sortingBy}: IProps) => () =>{
     initiateSearch(searchTerm, sortingBy);
     return {};
-  }
+  },
 }
 
 export default compose(

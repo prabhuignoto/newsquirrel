@@ -1,6 +1,5 @@
 import { Constants } from '../actions/constants';
-import { ISearchNewsAPI, ISwitchNewsReadingMode } from '../actions/types';
-import ReadingMode from '../enums/readingMode';
+import { ISearchNewsAPI } from '../actions/types';
 import { IFilter } from '../models/data/IFilter';
 import { IOptionsState } from '../models/view/IAppState';
 import DefaultCategories from '../settings/categories';
@@ -15,10 +14,9 @@ const defaultState: IOptionsState = {
   defaultCategories: DefaultCategories,
   defaultCountries: DefaultCountries,
   filter: {
-    categories: []
+    categories: ['general']
   },
   pageSize: 20,
-  readingMode: ReadingMode.TOP_HEADLINES,
   searchingFor: '',
   sortBy: [
     {
@@ -64,11 +62,6 @@ export default function optionsReducer(state:IOptionsState = defaultState, actio
       return Object.assign({}, state, {
         searchingFor: action.searchTerm
       });
-    case Constants.SWITCH_NEWS_READING_MODE:
-      const uAction = action as ISwitchNewsReadingMode;
-      return Object.assign({}, state, {
-        readingMode: uAction.mode
-      })
     default:
       return state;
       break;

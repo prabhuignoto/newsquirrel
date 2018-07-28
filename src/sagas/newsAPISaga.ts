@@ -16,7 +16,7 @@ import {
 } from '../actions/types';
 import { INewsResponse } from '../models/data/INewsResponse';
 import { IArticleCard } from '../models/view/IArticleCard';
-
+              
 export function* watchGetHeadlines() {
   const takePattern = [
     Constants.GET_NEWS,
@@ -26,11 +26,14 @@ export function* watchGetHeadlines() {
   ];
   yield takeEvery(takePattern, function* getNews(action: IGetNewsAction & INavToNextPage & INavToPrevPage & ISwitchCountry) {
     const { category, page, country } = action;
-    const url = `https://newsapi.org/v2/top-headlines?country=${country ? country.toLowerCase() : 'us'}&category=${category}&page=${page}&pageSize=12&apiKey=fe687337b43e4bddaf441967d549417d`;
+    const endPoint = process.env.REACT_APP_NEWS_API_HEADLINES;
+    const apiKey = process.env.REACT_APP_NEWS_API_KEY;
+
+    const url = `${endPoint}?country=${country ? country.toLowerCase() : 'us'}&category=${category}&page=${page}&apiKey=${apiKey}`;
 
     yield put<ILoadingNews>({
       message: 'News Loading',
-      type: Constants.LOADING_NEWS
+      type: Constants.LOADING_HEADLINES
     });
 
     try {
@@ -54,7 +57,7 @@ export function* watchGetHeadlines() {
         yield put<INewsLoaded>({
           articleCards,
           totalResults: newsResponse.totalResults,
-          type: Constants.NEWS_LOADED
+          type: Constants.HEADLINES_LOADED
         });
       } else {
         throw new Error('Failed to Load the News');
@@ -86,7 +89,10 @@ export function* watchSearchNews() {
     });
     
     try {
-      const response: AxiosResponse = yield axios.get(`https://newsapi.org/v2/everything?q=${searchTerm}&lang=en&sortBy=${sortBy}&apiKey=fe687337b43e4bddaf441967d549417d`, {
+      const url = process.env.REACT_APP_NEWS_API_SEARCH;
+      const apiKey = process.env.REACT_APP_NEWS_API_KEY;
+
+      const response: AxiosResponse = yield axios.get(`${url}?q=${searchTerm}&lang=en&sortBy=${sortBy}&apiKey=${apiKey}`, {
         timeout: 5000
       });
       const newsResponse: INewsResponse = response.data;

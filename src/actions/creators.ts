@@ -2,6 +2,7 @@ import ReadingMode from '../enums/readingMode';
 import { IFilter } from '../models/data/IFilter';
 import { Constants } from './constants';
 import {
+  IClearSearchResults,
   IGetNewsAction,
   INavToNextPage,
   INavToPrevPage,
@@ -75,5 +76,11 @@ export function switchNewsReadingMode(mode: ReadingMode): ISwitchNewsReadingMode
   return {
     mode,
     type: Constants.SWITCH_NEWS_READING_MODE
+  }
+}
+
+export function clearSearchResults():IClearSearchResults {
+  return {
+    type: Constants.CLEAR_SEARCH_RESULTS
   }
 }

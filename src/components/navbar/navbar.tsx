@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import CountryDropdown from '../../containers/country-dropdown';
+import Loader from '../../containers/loader';
 import ReadingMode from '../../containers/reading-mode';
 import SearchBar from '../../containers/search-bar';
 import ReadingModeEnum from '../../enums/readingMode';
@@ -31,6 +32,7 @@ const Navbar: React.SFC<INavBar> = ({ mode }) => {
             <CountryDropdown />
           </div>
         </CountryDropdownWrapper> : null}
+        <Loader />
     </Wrapper>
   )
 }

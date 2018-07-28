@@ -1,15 +1,15 @@
 import ReadingMode from '../../enums/readingMode';
 import { IArticleCard } from './IArticleCard';
 
-export interface ICategoryState {
-  name: string;
-  value: string;
-}
-
 export interface INewsState {
-  articleCards: IArticleCard[];
+  topHeadlines: IArticleCard[];
+  newsArticles: IArticleCard[];
   totalResults: number;
   selectedCountry: string;
+  searchResultsCount: number;
+  headlinesCount: number;
+  isAppBusy: boolean;
+  readingMode: ReadingMode;
 }
 
 export interface ICountry {
@@ -28,16 +28,15 @@ export interface IOptionsState {
   defaultCountries: ICountry[];
   defaultCategories: string[];
   filter: {
-    categories: ICategoryState[]
+    categories: string[]
   },
   sortBy: ISortBy[];
   currentlySortingBy: ISortBy;
   searchingFor: string;
-  readingMode: ReadingMode;
 }
 
 export interface IAppState {
-  categories: ICategoryState[];
+  categories: string[];
   news: INewsState;
   options: IOptionsState
 }

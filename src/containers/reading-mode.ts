@@ -9,7 +9,7 @@ import toggleSelectSize from '../enums/toggleSelectSize';
 import { IAppState } from '../models/view/IAppState';
 
 const mapStateToProps = (state: IAppState) => ({
-  activeMode: state.options.readingMode
+  activeMode: state.news.readingMode
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({

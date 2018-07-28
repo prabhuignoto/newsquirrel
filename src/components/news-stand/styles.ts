@@ -1,5 +1,4 @@
 import Styled from "styled-components";
-import BlankImage from './assets/picture.svg';
 
 const NewsStandWrapper = Styled.div`
   display: flex;
@@ -57,13 +56,9 @@ const TitleAnchor = Styled.a`
   color: #2B2D42;
 `;
 
-const CardThumbnail = Styled.div<{thumbnailUrl: string | null}>`
+const CardThumbnail = Styled.img<{thumbnailUrl?: string | null}>`
   display: flex;
   align-items: center;
-  background-image: url("${p => p.thumbnailUrl !== null ? p.thumbnailUrl : BlankImage}");
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: ${p => p.thumbnailUrl !== null ? 'cover' : 'contain'};
   width: 100%;
   padding: 0.1rem;
   min-height: 200px;
