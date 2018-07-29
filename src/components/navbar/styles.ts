@@ -3,7 +3,7 @@ import Styled from 'styled-components';
 import ReadingMode from '../../enums/readingMode';
 
 const Wrapper = Styled.nav `
-  height: 150px;
+  height: 100px;
   background: #EEF3F5;
   position: relative;
 `;
@@ -19,6 +19,7 @@ const NavBrandText = Styled.span`
   font-size: 2rem;
   color: #EF233C;
   padding-bottom:3px;
+  white-space: nowrap;
 `;
 
 const CountryDropdownWrapper = Styled.div<{mode: ReadingMode}>`

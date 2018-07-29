@@ -7,7 +7,7 @@ const Wrapper = Styled.div`
   width: 150px;
   height: 40px;
   border: 1px solid #8D99AE;
-  border-radius: 4px;
+  border-radius: 2px;
   cursor: pointer;
   position: relative;
 `;
@@ -59,6 +59,7 @@ const List = Styled.ul`
   top: 42px;
   border: 1px dotted rgba(0,0,0,0.5);
   background: #8D99AE;
+  z-index: 100;
 `;
 
 const ListItem = Styled.li`
@@ -77,6 +78,11 @@ const ListItem = Styled.li`
   }
 `;
 
+const Img = Styled.img`
+  margin-right: 0.5em;
+`;
+
+
 export {
   Wrapper,
   Label,
@@ -84,7 +90,8 @@ export {
   List,
   ListItem,
   LabelWrapper,
-  SelectedItem
+  SelectedItem,
+  Img
 }
 
 

@@ -1,3 +1,5 @@
+import NewsStandSize from "../../enums/newsStandSize";
+
 export interface IArticleCard {
   id: string;
   author: string;
@@ -7,4 +9,5 @@ export interface IArticleCard {
   description: string;
   publishedAt: string;
   source: string;
+  size?: NewsStandSize;
 }

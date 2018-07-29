@@ -36,12 +36,12 @@ const initialState = ({
   activeMode,
   items = [{
     id: ReadingMode.TOP_HEADLINES,
-    name: 'Top Headlines',
+    name: 'Headlines',
     selected: true,
     value: 'top-headlines',
   }, {
     id: ReadingMode.SEARCH_EVERYTHING,
-    name: 'Search News',
+    name: 'Search',
     selected: false,
     value: 'search-news',
   }]}: ILocalState) => ({

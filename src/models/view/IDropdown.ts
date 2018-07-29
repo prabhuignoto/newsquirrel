@@ -4,6 +4,7 @@ export interface IDropdownItem {
   name: string;
   value: string;
   onSelect: (value: string) => void;
+  icon?: string;
 }
 
 export interface IDropdown {

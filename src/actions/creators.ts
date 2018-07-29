@@ -1,7 +1,9 @@
+import NewsStandSize from '../enums/newsStandSize';
 import ReadingMode from '../enums/readingMode';
 import { IFilter } from '../models/data/IFilter';
 import { Constants } from './constants';
 import {
+  IChangeNewsStandSize,
   IClearSearchResults,
   IGetNewsAction,
   INavToNextPage,
@@ -82,5 +84,12 @@ export function switchNewsReadingMode(mode: ReadingMode): ISwitchNewsReadingMode
 export function clearSearchResults():IClearSearchResults {
   return {
     type: Constants.CLEAR_SEARCH_RESULTS
+  }
+}
+
+export function changeNewsStandSize(size: NewsStandSize): IChangeNewsStandSize {
+  return {
+    size,
+    type: Constants.CHANGE_NEWSSTAND_SIZE,
   }
 }

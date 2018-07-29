@@ -1,5 +1,6 @@
 import { Constants } from '../actions/constants';
 import { ISearchNewsAPI } from '../actions/types';
+import NewsStandSize from '../enums/newsStandSize';
 import { IFilter } from '../models/data/IFilter';
 import { IOptionsState } from '../models/view/IAppState';
 import DefaultCategories from '../settings/categories';
@@ -16,6 +17,7 @@ const defaultState: IOptionsState = {
   filter: {
     categories: ['general']
   },
+  newsStandSize: NewsStandSize.COZY,
   pageSize: 20,
   searchingFor: '',
   sortBy: [
@@ -62,6 +64,10 @@ export default function optionsReducer(state:IOptionsState = defaultState, actio
       return Object.assign({}, state, {
         searchingFor: action.searchTerm
       });
+    case Constants.CHANGE_NEWSSTAND_SIZE:
+      return Object.assign({}, state, {
+        newsStandSize: action.size
+      })
     default:
       return state;
       break;

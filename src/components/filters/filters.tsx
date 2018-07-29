@@ -6,7 +6,7 @@ import { Filters } from "./styles";
 
 const filters: React.SFC<IFilters> = ({items,selectFilter}) => {
   return (
-    <div className="tabs is-medium">
+    <div className="tabs is-medium is-centered">
       <Filters>
         {
           items.map(

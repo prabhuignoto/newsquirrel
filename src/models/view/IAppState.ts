@@ -1,3 +1,4 @@
+import NewsStandSize from '../../enums/newsStandSize';
 import ReadingMode from '../../enums/readingMode';
 import { IArticleCard } from './IArticleCard';
 
@@ -33,6 +34,7 @@ export interface IOptionsState {
   sortBy: ISortBy[];
   currentlySortingBy: ISortBy;
   searchingFor: string;
+  newsStandSize: NewsStandSize;
 }
 
 export interface IAppState {

@@ -1,3 +1,4 @@
+import NewsStandSize from '../enums/newsStandSize';
 import ReadingMode from '../enums/readingMode';
 import { IFilter } from '../models/data/IFilter';
 import { IArticleCard } from '../models/view/IArticleCard';
@@ -69,5 +70,10 @@ export interface ISwitchNewsReadingMode extends IBase {
 
 export interface IClearSearchResults extends IBase {
   message?: string
+}
+
+export interface IChangeNewsStandSize extends IBase {
+  message?: string;
+  size: NewsStandSize
 }
 

@@ -1,13 +1,14 @@
 import { DateTime } from 'luxon';
 import * as React from 'react';
-import LazyLoad from "react-lazyload";
-import { IArticleCard } from '../../models/view/IArticleCard';
-import Svg from './assets/picture.svg';
+import LazyLoad from 'react-lazyload';
 
+import NewsStandSize from '../../enums/newsStandSize';
+import { IArticleCard } from '../../models/view/IArticleCard';
+import BlankImage from './assets/picture.svg';
 import {
   ArticleCardWrapper,
   CardDescription,
-  CardThumbnail,
+  CardImage,
   CardTitle,
   PublishDate,
   PublishedBy,
@@ -15,18 +16,21 @@ import {
   TitleAnchor,
 } from './styles';
 
-const ArticleCard: React.SFC<IArticleCard> = ({title, description, thumbnailUrl, publishedAt, source, articleUrl }) => {
+const ArticleCard: React.SFC<IArticleCard> = ({title, description, thumbnailUrl, publishedAt, source, articleUrl, size }) => {
   return (
-      <ArticleCardWrapper>
+      <ArticleCardWrapper size={size}>
+        {size === NewsStandSize.COZY ? 
         <Publisher>
           <PublishDate>{DateTime.fromISO(publishedAt).toLocaleString(DateTime.DATETIME_SHORT)}</PublishDate>
           <PublishedBy>{source}</PublishedBy>
-        </Publisher>
-        <LazyLoad height="30">
-          <CardThumbnail src={thumbnailUrl ? thumbnailUrl : Svg} />
-        </LazyLoad>
-        <CardTitle><TitleAnchor href={articleUrl} target="_new">{title}</TitleAnchor></CardTitle>
-        <CardDescription>{description}</CardDescription>
+        </Publisher> : null }
+        {size !== NewsStandSize.IMAGE_FREE ? <LazyLoad height="30">
+            <CardImage thumbnailUrl={thumbnailUrl ? thumbnailUrl : BlankImage} size={size}/>
+        </LazyLoad> : null}
+        <CardTitle size={size}>
+          <TitleAnchor href={articleUrl} target="_new">{title}</TitleAnchor>
+        </CardTitle>
+        {size === NewsStandSize.COZY || size === NewsStandSize.IMAGE_FREE ? <CardDescription>{description}</CardDescription> : null }
       </ArticleCardWrapper>
   )
 }

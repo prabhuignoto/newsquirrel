@@ -1,4 +1,6 @@
-import Styled from "styled-components";
+import Styled from 'styled-components';
+
+import NewsStandSize from '../../enums/newsStandSize';
 
 const NewsStandWrapper = Styled.div`
   display: flex;
@@ -21,7 +23,7 @@ const ArticlesWrapper = Styled.div`
   justify-content: center;
 `;
 
-const ArticleCardWrapper = Styled.div`
+const ArticleCardWrapper = Styled.div<{size?: NewsStandSize}>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -29,16 +31,27 @@ const ArticleCardWrapper = Styled.div`
   margin: 0.25rem;
   padding: 0.75rem;
   flex: 1;
-  min-width: 300px;
-  min-height: 300px;
+  min-width: ${p => p.size === NewsStandSize.COZY ? '300px' : '200px'};
+  max-width: ${p => p.size === NewsStandSize.COZY ? '320px' : '230px'};
+  min-height: ${p => p.size === NewsStandSize.COZY ? '300px' : '220px'};
   border-radius: 3px;
   &:hover {
   }
 `;
 
-const CardTitle = Styled.div`
+const CardTitle = Styled.div<{size?: NewsStandSize}>`
   display: flex;
-  font-size: 1.25em;
+  font-size: ${(p) => {
+    switch(p.size) {
+      case NewsStandSize.COZY:
+      case NewsStandSize.COMPACT:
+        return '1.25rem';
+      case NewsStandSize.IMAGE_FREE:
+        return '1.5rem';
+      default:
+        return '1rem';
+    }
+  }};
   text-align: left;
   padding: 0.1rem;
   margin-top: 0.5rem;
@@ -56,13 +69,16 @@ const TitleAnchor = Styled.a`
   color: #2B2D42;
 `;
 
-const CardThumbnail = Styled.img<{thumbnailUrl?: string | null}>`
-  display: flex;
-  align-items: center;
+const CardImage = Styled.div<{thumbnailUrl?: string, size?: NewsStandSize}>`
   width: 100%;
+  height: ${p => p.size === NewsStandSize.COMPACT ? '150px': '200px'};
+  display: block;
   padding: 0.1rem;
-  min-height: 200px;
-  max-height: 250px;
+  border-radius: 2px;
+  background: url(${p => p.thumbnailUrl});
+  background-position: 50% 0%;
+  background-repeat: no-repeat;
+  background-size: ${p => p.thumbnailUrl !== null ? 'cover' : 'contain'};
 `;
 
 const CardDescription = Styled.div`
@@ -108,19 +124,20 @@ const PublishDate = Styled.div`
   margin-right: auto;
   margin-left: 10px;
   color: #515364;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 500;
 `;
 
 export {
   NewsStandWrapper,
   ArticleCardWrapper,
   CardTitle,
-  CardThumbnail,
+  CardImage,
   CardDescription,
   PublishDate,
   PublishedBy,
   Publisher,
   TitleAnchor,
   ArticlesWrapper,
-  SortByWrapper
+  SortByWrapper,
 }

@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import CountryDropdown from '../../containers/country-dropdown';
+import Flag from '../../containers/flag';
 import Loader from '../../containers/loader';
 import ReadingMode from '../../containers/reading-mode';
 import SearchBar from '../../containers/search-bar';
@@ -28,6 +29,9 @@ const Navbar: React.SFC<INavBar> = ({ mode }) => {
         
       {mode === ReadingModeEnum.TOP_HEADLINES ?
         <CountryDropdownWrapper mode={mode}>
+          <div className="navbar-item">
+            <Flag />
+          </div>
           <div className="navbar-item">
             <CountryDropdown />
           </div>

@@ -92,7 +92,7 @@ export function* watchSearchNews() {
       const url = process.env.REACT_APP_NEWS_API_SEARCH;
       const apiKey = process.env.REACT_APP_NEWS_API_KEY;
 
-      const response: AxiosResponse = yield axios.get(`${url}?q=${searchTerm}&lang=en&sortBy=${sortBy}&apiKey=${apiKey}`, {
+      const response: AxiosResponse = yield axios.get(`${url}?q=${searchTerm}&pageSize=30&lang=en&sortBy=${sortBy}&apiKey=${apiKey}`, {
         timeout: 5000
       });
       const newsResponse: INewsResponse = response.data;
