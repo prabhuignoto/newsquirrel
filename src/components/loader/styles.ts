@@ -1,13 +1,14 @@
 import Styled, { keyframes } from 'styled-components';
+import LoaderSize from '../../enums/loaderSize';
 
-const Wrapper = Styled.div`
+const Wrapper = Styled.div<{ size: LoaderSize }>`
   width: 100%;
   background: white;
   position: absolute;
   left: 0;
   bottom: 0;
   z-index: 2;
-  height: 1px;
+  height: ${p => p.size === LoaderSize.SMALL ? '1px' : '2px'};
 `;
 
 const CircleLoader = keyframes`
@@ -16,7 +17,6 @@ const CircleLoader = keyframes`
     width: 0%;
   }
   50% {
-    left: 50%;
     width: 50%;
   }
   100% {
@@ -25,7 +25,7 @@ const CircleLoader = keyframes`
   }
 `;
 
-const LoaderIndicator = Styled.div<{start: boolean, stop: boolean}>`
+const LoaderIndicator = Styled.div<{ start?: boolean, stop?: boolean }>`
   left: 0%;
   width: 0%;
   height: 100%;

@@ -11,7 +11,7 @@ const TopHeadlines = () => {
       <div style={{width: '100%', marginBottom: '1rem'}}>
         <Filters />
       </div>
-      <div style={{ alignSelf: 'flex-start'}}>
+      <div style={{ alignSelf: 'flex-start', marginLeft: '2rem'}}>
         <NewsStandSizer />
       </div>
       <NewsStand />

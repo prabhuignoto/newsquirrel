@@ -3,6 +3,7 @@ import './App.css';
 
 import * as React from 'react';
 
+import Footer from './components/footer/footer';
 import Home from './containers/home';
 import Navbar from './containers/navbar';
 
@@ -15,6 +16,7 @@ class App extends React.Component {
             <section className="">
               <Navbar />
               <Home />
+              <Footer />
             </section>
           </div>
         </div>

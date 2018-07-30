@@ -16,6 +16,7 @@
     "recompose": "^0.27.1",
     "redux": "^4.0.0",
     "redux-saga": "^0.16.0",
+    "shiitake": "^2.2.4",
     "styled-components": "^3.3.3",
     "uniqid": "^5.0.3"
   },

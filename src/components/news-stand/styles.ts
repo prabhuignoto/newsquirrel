@@ -1,6 +1,6 @@
 import Styled from 'styled-components';
 
-import NewsStandSize from '../../enums/newsStandSize';
+import Size from '../../enums/newsStandSize';
 
 const NewsStandWrapper = Styled.div`
   display: flex;
@@ -23,30 +23,46 @@ const ArticlesWrapper = Styled.div`
   justify-content: center;
 `;
 
-const ArticleCardWrapper = Styled.div<{size?: NewsStandSize}>`
+const ArticleCardWrapper = Styled.div<{size?: Size}>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   margin: 0.25rem;
   padding: 0.75rem;
-  flex: 1;
-  min-width: ${p => p.size === NewsStandSize.COZY ? '300px' : '200px'};
-  max-width: ${p => p.size === NewsStandSize.COZY ? '320px' : '230px'};
-  min-height: ${p => p.size === NewsStandSize.COZY ? '300px' : '220px'};
+  flex-basis: 30%;
+  min-width: ${(p) => {
+    if(p.size === Size.COZY) {
+      return '300px';
+    } else if(p.size === Size.COMPACT){
+      return '230px';
+    } else {
+      return '';
+    }
+  }};
+  max-width: ${(p) => {
+    if(p.size === Size.COZY) {
+      return '320px';
+    } else if(p.size === Size.COMPACT){
+      return '250px';
+    } else {
+      return '';
+    }
+  }};
+  min-height: ${p => p.size === Size.COZY ? '300px' : '250px'};
   border-radius: 3px;
-  &:hover {
-  }
+  position: relative;
 `;
 
-const CardTitle = Styled.div<{size?: NewsStandSize}>`
+const CardTitle = Styled.div<{size?: Size}>`
   display: flex;
   font-size: ${(p) => {
     switch(p.size) {
-      case NewsStandSize.COZY:
-      case NewsStandSize.COMPACT:
+      case Size.COZY:
         return '1.25rem';
-      case NewsStandSize.IMAGE_FREE:
+      case Size.COMPACT:
+        return '0.9rem';
+      case Size.IMAGE_FREE:
         return '1.5rem';
       default:
         return '1rem';
@@ -69,22 +85,27 @@ const TitleAnchor = Styled.a`
   color: #2B2D42;
 `;
 
-const CardImage = Styled.div<{thumbnailUrl?: string, size?: NewsStandSize}>`
+const StubImage = Styled.img`
+  display: none;
+`;
+
+const CardImage = Styled.div<{thumbnailUrl?: string, size?: Size}>`
   width: 100%;
-  height: ${p => p.size === NewsStandSize.COMPACT ? '150px': '200px'};
+  height: ${p => p.size === Size.COMPACT ? '150px': '200px'};
   display: block;
   padding: 0.1rem;
   border-radius: 2px;
   background: url(${p => p.thumbnailUrl});
-  background-position: 50% 0%;
+  background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: ${p => p.thumbnailUrl !== null ? 'cover' : 'contain'};
+  position: relative;
 `;
 
-const CardDescription = Styled.div`
-  display: flex;
+const CardDescription = Styled.div<{size?: Size}>`
+  display: ${p => p.size === Size.COZY || p.size === Size.IMAGE_FREE ? 'flex' : 'none'};
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   text-align: left;
   width: 100%;
   /* max-height: 150px; */
@@ -97,8 +118,8 @@ const CardDescription = Styled.div`
   color: #747E8F;
 `;
 
-const Publisher = Styled.div`
-  display: flex;
+const Publisher = Styled.div<{size?: Size}>`
+  display: ${p => p.size === Size.COZY ? 'flex': 'none'};
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -140,4 +161,5 @@ export {
   TitleAnchor,
   ArticlesWrapper,
   SortByWrapper,
+  StubImage
 }

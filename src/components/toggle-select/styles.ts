@@ -12,6 +12,14 @@ function getColor(theme: string) {
   }
 }
 
+function getForeColor(theme: string) {
+  if(theme === 'blue') {
+    return $red;
+  } else {
+    return '#fff';
+  }
+}
+
 const Wrapper = Styled.div<{size: Size}>`
   display: flex;
   align-items: center;
@@ -49,17 +57,20 @@ const ListItem = Styled.li<{selected: boolean,size: Size, theme?: string}>`
   margin: 0.2em 0em;
   // border: 1px solid ${p => p.size === Size.SMALL ? getColor(p.theme) : 'none'};
   border-radius: 3px;
-  background: ${p => p.selected ? getColor(p.theme) : ''};
-  color: ${p => p.selected ? '#fff' : getColor(p.theme)};
+  background: ${p => p.size === Size.SMALL && p.selected ? getColor(p.theme) : ''};
+  color: ${p => p.selected ? getForeColor(p.theme) : ''};
   padding: 0.25rem 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
   white-space: nowrap;
   cursor: pointer;
+  text-shadow: ${p => p.selected ? '0 0 1px rgba(0,0,0,0.5)' : ''};
   // height: ${p => p.size === Size.SMALL ? '28px' : '40px'};
-  font-size: ${p => p.size === Size.SMALL ? '1rem' : '1.2rem'};
-  font-family: 'Roboto', sans-serif;
+  font-size: ${p => p.size === Size.SMALL ? '1rem' : '1.75rem'};
+  font-family: 'Oswald', sans-serif;
+  text-transform: ${p => p.size === Size.LARGE ? 'uppercase': ''};
+  letter-spacing: ${p => p.size === Size.LARGE ? '1px': ''};
   height: 100%;
 `;
 

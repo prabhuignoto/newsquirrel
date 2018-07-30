@@ -4,9 +4,11 @@ const Wrapper = Styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
+  width: 26px;
+  height: 26px;
+  margin: 0.25rem 0.5rem;
 `;
+
 
 const Icon = Styled.div<{url?: string}>`
   width: 100%;

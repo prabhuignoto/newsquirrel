@@ -10,4 +10,7 @@ export interface IArticleCard {
   publishedAt: string;
   source: string;
   size?: NewsStandSize;
+  newSize?: NewsStandSize;
+  imageLoaded?: boolean;
+  onImageLoaded?: () => void;
 }

@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
+import { compose, defaultProps } from 'recompose';
 
 import Loader from '../components/loader/loader';
+import LoaderSize from '../enums/loaderSize';
 import { IAppState } from './../models/view/IAppState';
 
 const mapStateToProps = (state: IAppState) => ({
@@ -8,4 +10,9 @@ const mapStateToProps = (state: IAppState) => ({
   stop: !state.news.isAppBusy
 });
 
-export default connect(mapStateToProps, null)(Loader);
+export default compose(
+  connect(mapStateToProps, null),
+  defaultProps({
+    size: LoaderSize.SMALL
+  })
+)(Loader);

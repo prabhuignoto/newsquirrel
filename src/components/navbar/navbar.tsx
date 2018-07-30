@@ -7,36 +7,41 @@ import ReadingMode from '../../containers/reading-mode';
 import SearchBar from '../../containers/search-bar';
 import ReadingModeEnum from '../../enums/readingMode';
 import { INavBar } from '../../models/view/INavBar';
-import { CountryDropdownWrapper, NavBrand, NavBrandText, ReadmodeWrapper, SearchbarWrapper, Wrapper } from './styles';
+import {
+  CountryDropdownWrapper,
+  FlagWrapper,
+  NavBrand,
+  NavBrandText,
+  ReadmodeWrapper,
+  SearchbarWrapper,
+  Wrapper,
+} from './styles';
 
 
 const Navbar: React.SFC<INavBar> = ({ mode }) => {
   return (
     <Wrapper className="navbar" role="navigation">
-      <NavBrand className="nav-brand">
-        <NavBrandText>News Squirrel</NavBrandText>
-      </NavBrand>
+
       <ReadmodeWrapper className="navbar-item">
-          <ReadingMode />
+        <ReadingMode />
       </ReadmodeWrapper>
 
       {mode === ReadingModeEnum.SEARCH_EVERYTHING ?
-        <SearchbarWrapper mode={mode}>
-          <div className="navbar-item">
-            <SearchBar />
-          </div>
+        <SearchbarWrapper mode={mode} className="navbar-item">
+          <SearchBar />
         </SearchbarWrapper> : null}
-        
+
       {mode === ReadingModeEnum.TOP_HEADLINES ?
-        <CountryDropdownWrapper mode={mode}>
-          <div className="navbar-item">
-            <Flag />
-          </div>
-          <div className="navbar-item">
-            <CountryDropdown />
-          </div>
+        <CountryDropdownWrapper mode={mode} className="navbar-item">
+          <CountryDropdown />
         </CountryDropdownWrapper> : null}
-        <Loader />
+      <NavBrand className="nav-brand">
+        <NavBrandText>News Squirrel</NavBrandText>
+        <FlagWrapper>
+          <Flag />
+        </FlagWrapper>
+      </NavBrand>
+      <Loader />
     </Wrapper>
   )
 }

@@ -25,10 +25,11 @@ interface IProps {
 }
 
 interface ILocalState {
-  items: Array<{name: string, value: NewsStandSize, selected: boolean}>
+  items: Array<{name: string, value: NewsStandSize, selected: boolean}>,
+  newsStandSize: NewsStandSize;
 }
 
-const initialState = ({items= [{
+const defaultItems = [{
   name: 'Cozy',
   selected: true,
   value: NewsStandSize.COZY,
@@ -40,9 +41,19 @@ const initialState = ({items= [{
   name: 'Image free',
   selected: false,
   value: NewsStandSize.IMAGE_FREE,
-}
-]}: ILocalState) => ({
-  items
+}];
+
+const initialState = ({items = defaultItems, newsStandSize}: ILocalState) => ({
+  items: items.map(x => {
+    let selected = false;
+    if(x.value === newsStandSize) {
+      selected = true;
+    }
+    return Object.assign({}, x, {
+      selected
+    })
+  }),
+  newsStandSize
 });
 
 const stateHandlers = {
@@ -66,7 +77,7 @@ export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   withStateHandlers<ILocalState, IStateHandlers<ILocalState>>(initialState, stateHandlers),
   defaultProps({
-    label: 'Change Layout',
+    label: 'Layout',
     size: toggleSelectSize.SMALL
   })
 )(ToggleSelect);

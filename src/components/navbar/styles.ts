@@ -3,16 +3,21 @@ import Styled from 'styled-components';
 import ReadingMode from '../../enums/readingMode';
 
 const Wrapper = Styled.nav `
-  height: 100px;
+  min-height: 100px;
   background: #EEF3F5;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 `;
 
 const NavBrand = Styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 2rem;
+  position: relative;
+  margin-right: 2rem;
 `;
 
 const NavBrandText = Styled.span`
@@ -26,7 +31,6 @@ const CountryDropdownWrapper = Styled.div<{mode: ReadingMode}>`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: auto;
   margin-right: 10px;
 `;
 
@@ -34,18 +38,21 @@ const SearchbarWrapper = Styled.div<{mode: ReadingMode}>`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: auto;
-  min-width: 350px;
+  min-width: 250px;
 `;
 
 const ReadmodeWrapper = Styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 20px;
+  margin-right: auto;
 `;
 
-
+const FlagWrapper = Styled.div`
+  position: absolute;
+  top: -13px;
+  right: -1px;
+`;
 
 export {
   Wrapper,
@@ -54,4 +61,5 @@ export {
   CountryDropdownWrapper,
   SearchbarWrapper,
   ReadmodeWrapper,
+  FlagWrapper,
 }
