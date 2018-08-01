@@ -2,8 +2,10 @@ import { Constants } from '../actions/constants';
 import { INewsLoaded, ISwitchCountry, ISwitchNewsReadingMode } from '../actions/types';
 import ReadingMode from '../enums/readingMode';
 import { INewsState } from '../models/view/IAppState';
+import { ILoadingNewsFailed } from './../actions/types';
 
 const defaultState: INewsState = {
+  failureResponse: null,
   headlinesCount: 0,
   isAppBusy: false,
   newsArticles: [],
@@ -14,7 +16,7 @@ const defaultState: INewsState = {
   totalResults: 0,
 }
 
-export default function newsReducer(state = defaultState, action: ISwitchNewsReadingMode & INewsLoaded & ISwitchCountry) {
+export default function newsReducer(state = defaultState, action: ISwitchNewsReadingMode & INewsLoaded & ISwitchCountry & ILoadingNewsFailed) {
   switch (action.type) {
     case Constants.HEADLINES_LOADED:
       return Object.assign({}, state, {
@@ -24,9 +26,10 @@ export default function newsReducer(state = defaultState, action: ISwitchNewsRea
       });
     case Constants.NEWS_LOADED:
       return Object.assign({}, state, {
+        failureResponse: null,
         isAppBusy: false,
         newsArticles: action.articleCards,
-        searchResultsCount: action.totalResults
+        searchResultsCount: action.totalResults,
       });
     case Constants.SWITCH_COUNTRY:
       return Object.assign({}, state, {
@@ -34,6 +37,7 @@ export default function newsReducer(state = defaultState, action: ISwitchNewsRea
       });
     case Constants.CLEAR_SEARCH_RESULTS:
       return Object.assign({}, state, {
+        failureResponse: null,
         newsArticles: [],
         searchResultsCount: 0,
       });
@@ -44,17 +48,20 @@ export default function newsReducer(state = defaultState, action: ISwitchNewsRea
       });
     case Constants.LOADING_NEWS_FAILED:
       return Object.assign({}, state, {
-        isAppBusy: false
+        failureResponse: action.response,
+        isAppBusy: false,
       });
     case Constants.SWITCH_NEWS_READING_MODE:
       const uAction = action as ISwitchNewsReadingMode;
       if (action.mode === ReadingMode.TOP_HEADLINES) {
         return Object.assign({}, state, {
+          failureResponse: null,
           newsArticles: [],
           readingMode: uAction.mode,
         })
       } else {
         return Object.assign({}, state, {
+          failureResponse: null,
           readingMode: uAction.mode,
           topHeadlines: []
         });

@@ -4,9 +4,9 @@ import {Next, PageLabel, Previous, Wrapper } from "./styles";
 
 const Pager: React.SFC<IPager> = ({activePage, onPrevious, onNext, disableNext, disablePrevious}) => (
   <Wrapper>
-    <Previous onClick={onPrevious} disabled={disablePrevious}>Previous</Previous>
+    <Previous onClick={onPrevious} disabled={disablePrevious} disable={disablePrevious}>Previous</Previous>
     <PageLabel>{activePage}</PageLabel>
-    <Next onClick={onNext} disabled={disableNext}>Next</Next>
+    <Next onClick={onNext} disabled={disableNext} disable={disableNext}>Next</Next>
   </Wrapper>
 );
 

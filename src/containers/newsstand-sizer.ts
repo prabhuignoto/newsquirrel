@@ -30,7 +30,7 @@ interface ILocalState {
 }
 
 const defaultItems = [{
-  name: 'Cozy',
+  name: 'Comfortable',
   selected: true,
   value: NewsStandSize.COZY,
 }, {
@@ -77,7 +77,7 @@ export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   withStateHandlers<ILocalState, IStateHandlers<ILocalState>>(initialState, stateHandlers),
   defaultProps({
-    label: 'Layout',
+    label: 'Display density',
     size: toggleSelectSize.SMALL
   })
 )(ToggleSelect);

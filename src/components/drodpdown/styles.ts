@@ -4,12 +4,16 @@ const Wrapper = Styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 150px;
+  /* width: 150px; */
   height: 40px;
-  border: 1px solid #8D99AE;
   border-radius: 2px;
   cursor: pointer;
   position: relative;
+  border: 1px solid transparent;
+  &:hover {
+    border: 1px dotted #EDF2F4;
+  }
+  padding: 0.5rem;
 `;
 
 const LabelWrapper = Styled.div`
@@ -23,24 +27,23 @@ const Label = Styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 80%;
+  width: 100%;
   height: 100%;
   white-space: nowrap;
   font-size: 1rem;
+  font-weight: 500;
   margin-right: auto;
   text-transform: capitalize;
-  color: #2B2D42;
+  color: #D8DCDE;
 `;
 
-const SelectedItem = Styled.span`
+const SelectedItem = Styled.div`
   display: flex;
   align-items: center;
   white-space: nowrap;
-  font-size: 1.2rem;
-  font-weight: 700;
   text-align: center;
-  width: 20%;
-  color: #EF233C;
+  width: 30%;
+  margin-right: 0.5rem;
 `;
 
 const Icon = Styled.i`

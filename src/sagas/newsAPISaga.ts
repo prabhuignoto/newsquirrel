@@ -1,5 +1,7 @@
-import axios, { AxiosResponse } from 'axios';
-import { put, takeEvery } from 'redux-saga/effects';
+import axios, { AxiosError, AxiosResponse } from 'axios';
+import * as DateFNS from 'date-fns';
+import { delay } from 'redux-saga';
+import { put, takeEvery, takeLatest } from 'redux-saga/effects';
 import * as uniqid from 'uniqid';
 
 import { Constants } from '../actions/constants';
@@ -11,17 +13,14 @@ import {
   INavToPrevPage,
   INewsLoaded,
   ISearchNewsAPI,
-  ISortByAction,
   ISwitchCountry,
 } from '../actions/types';
 import { INewsResponse } from '../models/data/INewsResponse';
 import { IArticleCard } from '../models/view/IArticleCard';
-              
+
 export function* watchGetHeadlines() {
   const takePattern = [
     Constants.GET_NEWS,
-    Constants.NAV_TO_NEXT_PAGE,
-    Constants.NAV_TO_PREV_PAGE,
     Constants.SWITCH_COUNTRY
   ];
   yield takeEvery(takePattern, function* getNews(action: IGetNewsAction & INavToNextPage & INavToPrevPage & ISwitchCountry) {
@@ -63,21 +62,28 @@ export function* watchGetHeadlines() {
         throw new Error('Failed to Load the News');
       }
 
-    } catch (exception) {
+    } catch (e) {
       yield put<ILoadingNewsFailed>({
-        message: 'failed to load the news',
+        response: (e as AxiosError).response,
         type: Constants.LOADING_NEWS_FAILED
       });
     }
   });
 }
 
+
 export function* watchSearchNews() {
-  const pattern = [Constants.SEARCH_NEWS_API, Constants.SORT_BY]
-  yield takeEvery(pattern, function* searchNewsAPI(action: ISearchNewsAPI & ISortByAction) {
-    const { searchTerm, field: sortField } = action;
+  const pattern = [
+    Constants.SEARCH_NEWS_API,
+    Constants.SORT_BY,
+    Constants.NAV_TO_NEXT_PAGE,
+    Constants.NAV_TO_PREV_PAGE,];
+
+  yield takeLatest(pattern, function* searchNewsAPI(action: ISearchNewsAPI) {
+    yield delay(300);
+    const { searchTerm, sortField, page, dateFilter } = action;
     let sortBy = null;
-    if(sortField) {
+    if (sortField) {
       sortBy = sortField.value;
     } else {
       sortBy = 'relevancy';
@@ -87,17 +93,30 @@ export function* watchSearchNews() {
       message: 'News Loading',
       type: Constants.LOADING_NEWS
     });
-    
-    try {
-      const url = process.env.REACT_APP_NEWS_API_SEARCH;
-      const apiKey = process.env.REACT_APP_NEWS_API_KEY;
+    const url = process.env.REACT_APP_NEWS_API_SEARCH;
+    const apiKey = process.env.REACT_APP_NEWS_API_KEY;
 
-      const response: AxiosResponse = yield axios.get(`${url}?q=${searchTerm}&pageSize=30&lang=en&sortBy=${sortBy}&apiKey=${apiKey}`, {
+    const params =[
+      ['q', searchTerm],
+      ['page', page],
+      ['pageSize', 30],
+      ['language', 'en'],
+      ['sortBy', sortBy],
+      ['apiKey', apiKey],
+      ['from', DateFNS.format(dateFilter.from, 'YYYY-MM-DD')],
+      ['to', DateFNS.format(dateFilter.to, 'YYYY-MM-DD')],
+    ];
+
+    const queryParams = params.map(z => z.join('=')).join('&');
+
+    try {
+
+      const response: AxiosResponse = yield axios.get(`${url}?${queryParams}`, {
         timeout: 5000
       });
       const newsResponse: INewsResponse = response.data;
 
-      if(response.status === 200) {
+      if (response.status === 200) {
         const articleCards: IArticleCard[] = newsResponse.articles.map<IArticleCard>(article => ({
           articleUrl: article.url,
           author: article.author,
@@ -117,9 +136,9 @@ export function* watchSearchNews() {
       } else {
         throw new Error('Error fetching news');
       }
-    } catch (exception) {
+    } catch (e) {
       yield put<ILoadingNewsFailed>({
-        message: 'failed to load the news',
+        response: (e as AxiosError).response,
         type: Constants.LOADING_NEWS_FAILED
       });
     }

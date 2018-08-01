@@ -14,7 +14,7 @@ function handler(fn: (filter: IFilter) => void, name: string, value: string) {
 
 const filter:React.SFC<IFilter> = ({name, value, selectFilter, selected}) => {
   return (
-    <Filter
+    <Filter selected={selected}
       className={`${selected ? 'selected is-active' : ''}`}
       onClick={handler(selectFilter, name, value)}>
         <a>{name}</a>

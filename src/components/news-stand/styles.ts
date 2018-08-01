@@ -20,44 +20,45 @@ const ArticlesWrapper = Styled.div`
   flex-direction: row;
   align-items: flex-start;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
 `;
 
-const ArticleCardWrapper = Styled.div<{size?: Size}>`
+const ArticleCardWrapper = Styled.div<{ size?: Size }>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  margin: 0.25rem;
-  padding: 0.75rem;
-  flex-basis: 30%;
-  min-width: ${(p) => {
-    if(p.size === Size.COZY) {
+  margin: ${p => p.size !== Size.IMAGE_FREE ? '0.5rem' : ''};
+  padding: 0.5rem;
+  // min-width: ${(p) => {
+    if (p.size === Size.COZY) {
       return '300px';
-    } else if(p.size === Size.COMPACT){
-      return '230px';
+    } else if (p.size === Size.COMPACT) {
+      return '200px';
     } else {
-      return '';
+      return '280px';
     }
   }};
   max-width: ${(p) => {
-    if(p.size === Size.COZY) {
-      return '320px';
-    } else if(p.size === Size.COMPACT){
+    if (p.size === Size.COZY) {
       return '250px';
+    } else if (p.size === Size.COMPACT) {
+      return '200px';
     } else {
-      return '';
+      return '250px';
     }
   }};
   min-height: ${p => p.size === Size.COZY ? '300px' : '250px'};
   border-radius: 3px;
   position: relative;
+  flex: 1;
+  flex-basis: auto;
 `;
 
-const CardTitle = Styled.div<{size?: Size}>`
+const CardTitle = Styled.div<{ size?: Size }>`
   display: flex;
   font-size: ${(p) => {
-    switch(p.size) {
+    switch (p.size) {
       case Size.COZY:
         return '1.25rem';
       case Size.COMPACT:
@@ -89,20 +90,20 @@ const StubImage = Styled.img`
   display: none;
 `;
 
-const CardImage = Styled.div<{thumbnailUrl?: string, size?: Size}>`
+const CardImage = Styled.div<{ thumbnailUrl?: string, size?: Size }>`
   width: 100%;
-  height: ${p => p.size === Size.COMPACT ? '150px': '200px'};
+  height: ${p => p.size === Size.COMPACT ? '120px' : '160px'};
   display: block;
   padding: 0.1rem;
   border-radius: 2px;
   background: url(${p => p.thumbnailUrl});
-  background-position: 50% 50%;
+  background-position: 0% 50%;
   background-repeat: no-repeat;
   background-size: ${p => p.thumbnailUrl !== null ? 'cover' : 'contain'};
   position: relative;
 `;
 
-const CardDescription = Styled.div<{size?: Size}>`
+const CardDescription = Styled.div<{ size?: Size }>`
   display: ${p => p.size === Size.COZY || p.size === Size.IMAGE_FREE ? 'flex' : 'none'};
   align-items: center;
   justify-content: flex-start;
@@ -118,8 +119,8 @@ const CardDescription = Styled.div<{size?: Size}>`
   color: #747E8F;
 `;
 
-const Publisher = Styled.div<{size?: Size}>`
-  display: ${p => p.size === Size.COZY ? 'flex': 'none'};
+const Publisher = Styled.div<{ size?: Size }>`
+  display: ${p => p.size === Size.COZY ? 'flex' : 'none'};
   align-items: center;
   justify-content: center;
   width: 100%;

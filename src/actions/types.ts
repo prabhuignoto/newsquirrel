@@ -1,6 +1,9 @@
+import { AxiosResponse } from '../../node_modules/axios';
 import NewsStandSize from '../enums/newsStandSize';
 import ReadingMode from '../enums/readingMode';
+import { IDateFilter } from '../models/data/IDateFilter';
 import { IFilter } from '../models/data/IFilter';
+import { ISortBy } from '../models/view/IAppState';
 import { IArticleCard } from '../models/view/IArticleCard';
 
 export interface IBase {
@@ -11,6 +14,7 @@ export interface IGetNewsAction extends IBase {
   category: string;
   country: string;
   page: number;
+  dateFilter?: IDateFilter
 }
 
 export interface IUpdateNewsCategory extends IBase {
@@ -22,7 +26,7 @@ export interface ILoadingNews extends IBase {
 }
 
 export interface ILoadingNewsFailed extends IBase {
-  message: string;
+  response?: AxiosResponse;
 }
 
 export interface INewsLoaded extends IBase {
@@ -32,14 +36,16 @@ export interface INewsLoaded extends IBase {
 
 export interface INavToNextPage extends IBase {
   page: number;
+  searchTerm: string;
   category: string;
-  country: string;
+  sortField: ISortBy;
 }
 
 export interface INavToPrevPage extends IBase {
   page: number;
+  searchTerm: string;
   category: string;
-  country: string;
+  sortField: ISortBy;
 }
 
 export interface ISwitchCountry extends IBase {
@@ -53,11 +59,13 @@ export interface ISearchNewsAPI extends IBase {
   sortField: {
     name: string;
     value: string
-  }
+  },
+  page: number;
+  dateFilter: IDateFilter
 }
 
 export interface ISortByAction extends IBase {
-  field: {
+  sortField: {
     name: string;
     value: string;
   },
@@ -77,3 +85,12 @@ export interface IChangeNewsStandSize extends IBase {
   size: NewsStandSize
 }
 
+export interface IUpdateDateFilters extends IBase {
+  searchTerm: string;
+  sortField: {
+    name: string;
+    value: string
+  },
+  page: number;
+  dateFilter: IDateFilter
+}

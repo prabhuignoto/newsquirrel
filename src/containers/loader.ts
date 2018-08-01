@@ -13,6 +13,6 @@ const mapStateToProps = (state: IAppState) => ({
 export default compose(
   connect(mapStateToProps, null),
   defaultProps({
-    size: LoaderSize.SMALL
+    size: LoaderSize.LARGE
   })
 )(Loader);

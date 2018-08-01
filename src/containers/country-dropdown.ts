@@ -5,10 +5,11 @@ import { switchCountry } from "../actions/creators";
 import Dropdown from "../components/drodpdown/dropdown";
 import { IAppState } from '../models/view/IAppState';
 
-const mapStateToProps = (state: IAppState) => ({
-  category: state.options.filter.categories[0],
-  items: state.options.defaultCountries,
-  page: state.options.activePage
+const mapStateToProps = ({options, news}: IAppState) => ({
+  category: options.filter.categories[0],
+  items: options.defaultCountries,
+  page: options.activePage,
+  selectedItem: news.selectedCountry,
 });
 
 interface IProps {

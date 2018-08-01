@@ -1,3 +1,5 @@
+import * as DateFNS from 'date-fns';
+
 import { Constants } from '../actions/constants';
 import { ISearchNewsAPI } from '../actions/types';
 import NewsStandSize from '../enums/newsStandSize';
@@ -12,13 +14,17 @@ const defaultState: IOptionsState = {
     name: 'Relevance',
     value: 'relevancy'
   },
+  dateFilter: {
+    from: DateFNS.startOfToday(),
+    to: DateFNS.endOfToday()
+  },
   defaultCategories: DefaultCategories,
   defaultCountries: DefaultCountries,
   filter: {
     categories: ['general']
   },
   newsStandSize: NewsStandSize.COZY,
-  pageSize: 20,
+  pageSize: 30,
   searchingFor: '',
   sortBy: [
     {
@@ -58,16 +64,24 @@ export default function optionsReducer(state:IOptionsState = defaultState, actio
       break;
     case Constants.SORT_BY:
       return Object.assign({}, state, {
-        currentlySortingBy: action.field
+        activePage: 1,
+        currentlySortingBy: action.field,
       })
     case Constants.SEARCH_NEWS_API:
       return Object.assign({}, state, {
-        searchingFor: action.searchTerm
+        activePage: action.page,
+        currentlySortingBy: action.sortField,
+        dateFilter: action.dateFilter,
+        searchingFor: action.searchTerm,
       });
     case Constants.CHANGE_NEWSSTAND_SIZE:
       return Object.assign({}, state, {
         newsStandSize: action.size
       })
+    case Constants.CLEAR_SEARCH_RESULTS:
+      return Object.assign({}, state, {
+        activePage: 1,
+      });
     default:
       return state;
       break;

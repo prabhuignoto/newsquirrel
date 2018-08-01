@@ -1,30 +1,47 @@
 import Styled from 'styled-components';
+import ViewPort from '../../enums/viewPort';
 
-const Wrapper = Styled.div`
+const Wrapper = Styled.div<{hasResults: boolean}>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  margin-top: 2rem;
+  justify-content: flex-start;
+  /* margin-top: 2rem; */
   width: 100%;
+  // background: ${p => p.hasResults ? '#fff' : '#2B2D42'};
+  min-height: 90vh;
 `;
 
-const Tools = Styled.div`
+const Tools = Styled.div<{vwPort?: ViewPort}>`
   display: flex;
-  flex-direction: row;
+  flex-direction: 'row';
   align-self: flex-start;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   margin-bottom: 0.5rem;
-  margin-left: 2rem;
+  flex-wrap: wrap;
+  width: 100%;
+  background: linear-gradient(to right, rgba(43,45,66,1) 0%, rgba(62,64,83,1) 54%, rgba(43,45,66,1) 100%);
+  min-height: 120px;
+  padding: 0.25rem 0.5rem;
 `;
 
-const ToolWrapper = Styled.div`
-  margin: 0.25rem;
+const SearchToolsWrapper2 = Styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 `
+
+const ToolWrapper = Styled.div<{vwPort?: ViewPort}>`
+  margin: 0.25rem;
+  display: flex;
+  flex-direction: ${p => p.vwPort === ViewPort.DESK ? 'row' : 'column'};
+`;
 
 export {
   Wrapper,
   Tools,
-  ToolWrapper
+  ToolWrapper,
+  SearchToolsWrapper2
 }

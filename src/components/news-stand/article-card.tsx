@@ -1,7 +1,6 @@
 import { DateTime } from 'luxon';
 import { Fragment } from 'react';
 import * as React from 'react';
-import LazyLoad from 'react-lazyload';
 import * as uniqid from 'uniqid';
 
 import LoaderSize from '../../enums/loaderSize';
@@ -36,10 +35,11 @@ const ArticleCard: React.SFC<IArticleCard> = ({
 
       {size !== Size.IMAGE_FREE ?
         <Fragment>{!imageLoaded ?
-          <LazyLoad height={100}>
+          // <LazyLoad height={100}>
             <StubImage src={imgUrl ? imgUrl : BlankImage} onLoad={onImageLoaded} onError={onImageLoaded} />
-            </LazyLoad>:
-            null}
+          // </LazyLoad> 
+          :
+          null}
           <CardImage thumbnailUrl={(imageLoaded && !!imgUrl) ? imgUrl : BlankImage} size={size} >
             {!imageLoaded ? <Loader start={true} size={LoaderSize.SMALL} /> : null}
           </CardImage>
@@ -49,17 +49,22 @@ const ArticleCard: React.SFC<IArticleCard> = ({
       <CardTitle size={size}>
         <TitleAnchor href={articleUrl} target="_new" title={title}>
           {title ?
-          <LineClamp lines={size === Size.COZY ? 4 : 3} renderFullOnServer={true}>
-            {title}
-          </LineClamp> : null}
+            <LineClamp lines={size === Size.COZY ? 4 : 3} renderFullOnServer={true}>
+              {title}
+            </LineClamp>
+            : null}
+
+            {/* {title} */}
         </TitleAnchor>
       </CardTitle>
 
       <CardDescription size={size}>
-        {/* {description ?  */}
-        <LineClamp lines={4}>
-          {description}
-        </LineClamp> : null}
+        {description ?
+          <LineClamp lines={4}>
+            {description}
+          </LineClamp>
+          : null}
+          {/* {description} */}
       </CardDescription>
     </ArticleCardWrapper>
   )

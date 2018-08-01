@@ -6,7 +6,7 @@ const Wrapper = Styled.div`
   align-items: center;
   margin: 1rem;
   height: 40px;
-  min-width: 350px;
+  min-width: 400px;
   border-radius: 2px;
   position: relative;
 `;
@@ -21,7 +21,8 @@ const Input = Styled.input`
   border-right: none;
   border-left: none;
   outline: none;
-  background: #EDF2F4;
+  background: #2B2D42;
+  color: #EDF2F4;
   &:focus {
     border-bottom: 2px solid #D90429;
   }
@@ -29,8 +30,8 @@ const Input = Styled.input`
 
 const Button = Styled.button`
   border: none;
-  width: 23px;
-  height: 23px;
+  width: 22px;
+  height: 22px;
   position: absolute;
   right: 10px;
   top: 20%;

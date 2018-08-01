@@ -4,20 +4,28 @@ import { Dispatch } from 'redux';
 
 import { getNews, updateNewsCategory } from '../actions/creators';
 import Filters from '../components/filters/filters';
+import { IDateFilter } from '../models/data/IDateFilter';
 import { IFilter } from '../models/data/IFilter';
 import { IAppState } from '../models/view/IAppState';
 
-const mapStateToProps = (state: IAppState) => ({
-  country: state.news.selectedCountry,
-  items: state.options.defaultCategories.map(x => ({
-    name: x,
-    selected: false,
-    value: x,
-  })),
+const mapStateToProps = ({news, options}: IAppState) => ({
+  country: news.selectedCountry,
+  dateFilter: options.dateFilter,
+  items: options.defaultCategories.map(x => {
+    let selected = false;
+    if(x === options.filter.categories[0]) {
+      selected = true;
+    }
+    return {
+      name: x,
+      selected,
+      value: x,
+    }
+  }),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  getNewsFeed: (value: string, page: number, country: string) => dispatch(getNews(value, page, country)),
+  getNewsFeed: (value: string, page: number, country: string, dateFilter: IDateFilter) => dispatch(getNews(value, page, country, dateFilter)),
   updateCategory: (filter: IFilter) => dispatch(updateNewsCategory(filter))
 });
 
@@ -32,8 +40,9 @@ interface ILocalState {
 
 interface IProps {
   updateCategory: (filter: IFilter) => void;
-  getNewsFeed: (value: string, page: number, country: string) => void;
+  getNewsFeed: (value: string, page: number, country: string, dateFilter: IDateFilter) => void;
   country: string;
+  dateFilter: IDateFilter
 }
 
 const initialState = ({
@@ -48,9 +57,9 @@ const initialState = ({
 });
 
 const stateHandlers = {
-  selectFilter: ({items}: ILocalState, {updateCategory, getNewsFeed, country}: IProps) => (filter: IFilter) => {
+  selectFilter: ({items}: ILocalState, {updateCategory, getNewsFeed, country, dateFilter}: IProps) => (filter: IFilter) => {
     updateCategory(filter);
-    getNewsFeed(filter.value, 1, country);
+    getNewsFeed(filter.value, 1, country, dateFilter);
     return {
       items: items.map(x => {
         let selected = false;
@@ -73,7 +82,7 @@ export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   lifecycle<IProps,  ILocalState>({
     componentDidMount() {
-      this.props.getNewsFeed('general',1, this.props.country);
+      // this.props.getNewsFeed('general',1, this.props.country);
     }
   }),
   withStateHandlers<ILocalState, IStateHandlers<ILocalState>>(initialState, stateHandlers),

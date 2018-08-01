@@ -17,6 +17,7 @@ const composeEnhancers = windowIfDefined.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ||
 
 const sagaMiddleware = createSagaMiddleware()
 const store = createStore(RootReducer, composeEnhancers(applyMiddleware(sagaMiddleware)));
+sagaMiddleware.run(RootSaga);
 
 ReactDOM.render(
   <Provider store={store}>
@@ -25,5 +26,4 @@ ReactDOM.render(
   document.getElementById('root') as HTMLElement
 );
 
-sagaMiddleware.run(RootSaga);
 registerServiceWorker();

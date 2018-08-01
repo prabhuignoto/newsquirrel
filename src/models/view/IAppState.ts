@@ -1,5 +1,8 @@
+import { AxiosResponse } from 'axios';
+
 import NewsStandSize from '../../enums/newsStandSize';
 import ReadingMode from '../../enums/readingMode';
+import { IDateFilter } from './../data/IDateFilter';
 import { IArticleCard } from './IArticleCard';
 
 export interface INewsState {
@@ -11,6 +14,7 @@ export interface INewsState {
   headlinesCount: number;
   isAppBusy: boolean;
   readingMode: ReadingMode;
+  failureResponse: AxiosResponse | null;
 }
 
 export interface ICountry {
@@ -35,6 +39,7 @@ export interface IOptionsState {
   currentlySortingBy: ISortBy;
   searchingFor: string;
   newsStandSize: NewsStandSize;
+  dateFilter: IDateFilter
 }
 
 export interface IAppState {

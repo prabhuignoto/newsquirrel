@@ -11,15 +11,11 @@ class App extends React.Component {
   public render() {
     return (
       <div className="App container">
-        <div className="columns">
-          <div className="column">
-            <section className="">
-              <Navbar />
-              <Home />
-              <Footer />
-            </section>
-          </div>
-        </div>
+        <section className="">
+          <Navbar />
+          <Home />
+          <Footer />
+        </section>
       </div>
     );
   }

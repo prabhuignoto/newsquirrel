@@ -1,6 +1,8 @@
 import NewsStandSize from '../enums/newsStandSize';
 import ReadingMode from '../enums/readingMode';
 import { IFilter } from '../models/data/IFilter';
+import { ISortBy } from '../models/view/IAppState';
+import { IDateFilter } from './../models/data/IDateFilter';
 import { Constants } from './constants';
 import {
   IChangeNewsStandSize,
@@ -22,29 +24,32 @@ export function updateNewsCategory(filter: IFilter): IUpdateNewsCategory {
   }
 }
 
-export function getNews(category: string, page: number, country: string): IGetNewsAction {
+export function getNews(category: string, page: number, country: string, dateFilter?: IDateFilter): IGetNewsAction {
   return {
     category,
     country,
+    dateFilter,
     page,
     type: Constants.GET_NEWS
   }
 }
 
-export function navToNextPage(page: number, category: string, country: string): INavToNextPage {
+export function navToNextPage(page: number, category: string, searchTerm: string, sortBy: ISortBy): INavToNextPage {
   return {
     category,
-    country,
     page,
+    searchTerm,
+    sortField: sortBy,
     type: Constants.NAV_TO_NEXT_PAGE,
   }
 }
 
-export function navToPrevPage(page: number, category: string, country: string): INavToPrevPage {
+export function navToPrevPage(page: number, category: string, searchTerm: string, sortBy:ISortBy): INavToPrevPage {
   return {
     category,
-    country,
     page,
+    searchTerm,
+    sortField: sortBy,
     type: Constants.NAV_TO_PREV_PAGE,
   }
 }
@@ -58,18 +63,20 @@ export function switchCountry(country: string, category: string, page: number): 
   }
 }
 
-export function searchNewsAPI(searchTerm: string, sortField: { name: string, value: string }): ISearchNewsAPI {
+export function searchNewsAPI(searchTerm: string, sortField: { name: string, value: string }, page: number, dateFilter: IDateFilter): ISearchNewsAPI {
   return {
+    dateFilter,
+    page,
     searchTerm,
     sortField,
     type: Constants.SEARCH_NEWS_API,
   }
 }
 
-export function sortByField(field: { name: string, value: string }, searchTerm: string): ISortByAction {
+export function sortByField(sortField: { name: string, value: string }, searchTerm: string): ISortByAction {
   return {
-    field,
     searchTerm,
+    sortField,
     type: Constants.SORT_BY,
   };
 }

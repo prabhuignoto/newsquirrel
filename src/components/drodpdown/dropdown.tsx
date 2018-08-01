@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { IDropdown, IDropdownItem } from '../../models/view/IDropdown';
-import { Img, Label, LabelWrapper, List, ListItem, SelectedItem, Wrapper } from './styles';
+import { Icon, Img, Label, LabelWrapper, List, ListItem, SelectedItem, Wrapper } from './styles';
 
 const handler = function _handler(fn: (value: string) => void, value: string) {
   return function oHandler(ev: React.MouseEvent) {
@@ -19,10 +19,12 @@ const DropdownItem: React.SFC<IDropdownItem> = ({ name, onSelect, value, icon })
 const Dropdown: React.SFC<IDropdown> = ({ items, selectedItem, onClick, show, label, onSelect }) => {
   return (
     <Wrapper onClick={onClick}>
+      <SelectedItem>
+        <img src={`https://www.countryflags.io/${selectedItem}/flat/64.png`} />
+      </SelectedItem>
       <LabelWrapper>
         <Label>{label}</Label>
-        <SelectedItem>{selectedItem}</SelectedItem>
-        {/* <Icon /> */}
+        <Icon />
       </LabelWrapper>
       {show ? <List>
         {items.map<React.ReactElement<IDropdownItem>>(x => <DropdownItem {...x} key={x.name} onSelect={onSelect} />)}

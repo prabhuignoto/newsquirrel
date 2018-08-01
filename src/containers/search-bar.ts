@@ -4,24 +4,35 @@ import { Dispatch } from 'redux';
 
 import { clearSearchResults, searchNewsAPI } from '../actions/creators';
 import SearchBar from '../components/search-bar/search-bar';
+import { IDateFilter } from '../models/data/IDateFilter';
 import { IAppState } from '../models/view/IAppState';
+
+interface ISortField {
+  name: string;
+  value: string;
+}
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   clearSearch: () => dispatch(clearSearchResults()),
-  initiateSearch: (searchTerm: string, sortField: {name: string, value: string}) => dispatch(searchNewsAPI(searchTerm, sortField))
+  initiateSearch: (term: string, sortField: ISortField, page: number, dateFilter: IDateFilter) => 
+    dispatch(searchNewsAPI(term, sortField, page, dateFilter))
 });
 
-const mapStateToProps = (state: IAppState) => ({
-  sortingBy: state.options.currentlySortingBy
+const mapStateToProps = ({options}: IAppState) => ({
+  dateFilter: options.dateFilter,
+  page: options.activePage,
+  sortingBy: options.currentlySortingBy,
 });
 
 interface IProps {
-  initiateSearch: (term: string, sortField: {name: string, value: string}) => void;
+  initiateSearch: (term: string, sortField: {name: string, value: string}, page: number, dateFilter: IDateFilter) => void;
   clearSearch: () => void;
   sortingBy: {
     name: string;
     value: string;
   };
+  page: number;
+  dateFilter: IDateFilter
 }
 
 interface ILocalState {
@@ -50,8 +61,8 @@ const stateHandlers = {
       searchTerm: term
     }
   },
-  handleSearch: ({ searchTerm }: ILocalState, {initiateSearch, sortingBy}: IProps) => () =>{
-    initiateSearch(searchTerm, sortingBy);
+  handleSearch: ({ searchTerm }: ILocalState, {initiateSearch, sortingBy, page, dateFilter}: IProps) => () =>{
+    initiateSearch(searchTerm, sortingBy, 1, dateFilter);
     return {};
   },
 }

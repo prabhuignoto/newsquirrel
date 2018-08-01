@@ -1,28 +1,43 @@
-import { connect } from "react-redux";
-import { compose, StateHandler, StateHandlerMap, withStateHandlers } from "recompose";
-import { Dispatch } from "redux";
-import { navToNextPage, navToPrevPage } from "../actions/creators";
-import Pager from "../components/pager/pager";
+import * as _ from 'lodash';
+import { connect } from 'react-redux';
+import { compose, lifecycle, StateHandler, StateHandlerMap, withStateHandlers } from 'recompose';
+import { Dispatch } from 'redux';
+
+import { searchNewsAPI } from '../actions/creators';
+import Pager from '../components/pager/pager';
+import { IDateFilter } from '../models/data/IDateFilter';
 import { IAppState } from '../models/view/IAppState';
 
-
-const mapStateToProps = (state: IAppState) => ({
-  activePage: state.options.activePage,
-  category: state.options.filter.categories[0],
-  country: state.news.selectedCountry,
-  totalPages: (Math.ceil(state.news.totalResults/12)),
+const getTotalPages = _.memoize((count) => {
+  return Math.ceil(count/20)
 });
 
+const mapStateToProps = ({options, news}: IAppState) => ({
+  activePage: options.activePage,
+  category: options.filter.categories[0],
+  country: news.selectedCountry,
+  dateFilter: options.dateFilter,
+  searchTerm: options.searchingFor,
+  sortBy: options.currentlySortingBy,
+  totalPages: getTotalPages(news.searchResultsCount),
+});
+
+interface ISortBy {
+  name: string;
+  value: string;
+}
+
 interface IProps {
-  navigateBackward: (page: number, category: string, country: string) => void;
-  navigateForward: (page: number, category: string, country: string) => void;
+  searchNews: (page: number, searchTerm: string, sortBy: ISortBy, dateFilter: IDateFilter) => void;
   category:string;
   totalPages: number;
-  country: string;
+  searchTerm: string;
+  sortBy: ISortBy;
+  dateFilter: IDateFilter,
+  activePage: number;
 }
 
 interface ILocalState {
-  activePage: number;
   disableNext: boolean;
   disablePrevious: boolean;
 }
@@ -33,21 +48,19 @@ interface IStateHandlers<T> extends StateHandlerMap<T> {
 }
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  navigateBackward: (page: number, category: string, country: string) => dispatch(navToNextPage(page, category, country)),
-  navigateForward: (page: number, category: string, country: string) => dispatch(navToPrevPage(page, category, country)),
+  searchNews: (page: number, searchTerm: string, sortBy: ISortBy, dateFilter: IDateFilter) => dispatch(searchNewsAPI(searchTerm,sortBy,page,dateFilter)),
 })
 
-const initialState = ({ activePage = 1, disableNext= false, disablePrevious= true }: ILocalState) => ({
-  activePage,
+const initialState = ({ disableNext= false, disablePrevious= true }: ILocalState) => ({
   disableNext,
   disablePrevious
 });
 
 const stateHandlers = {
-  onNext: ({activePage, disableNext}: ILocalState, {navigateForward, category, totalPages, country}: IProps) => () => {
+  onNext: ({disableNext}: ILocalState, {searchNews, category, totalPages, searchTerm, sortBy, dateFilter, activePage}: IProps) => () => {
     const [uActivePage] = [activePage + 1];
     if(uActivePage <= totalPages) {
-      navigateForward(uActivePage, category, country);
+      searchNews(uActivePage,searchTerm,sortBy,dateFilter);
       return {
         activePage: uActivePage,
         disableNext: uActivePage === totalPages ? true: false,
@@ -57,14 +70,18 @@ const stateHandlers = {
       return {};
     }
   },
-  onPrevious: ({activePage, disablePrevious}: ILocalState, {navigateBackward, category, totalPages, country}: IProps) => () => {
-    const [uActivePage] = [activePage - 1];
-    if(uActivePage <= totalPages && uActivePage > 0) {
-      navigateBackward(uActivePage, category, country);
-      return {
-        activePage: uActivePage,
-        disableNext: false,
-        disablePrevious: uActivePage === 1 ? true : false,
+  onPrevious: ({disablePrevious}: ILocalState, {searchNews, category, totalPages, searchTerm, sortBy, dateFilter, activePage}: IProps) => () => {
+    if(activePage > 0) {
+      const [uActivePage] = [activePage - 1];
+      if(uActivePage <= totalPages && uActivePage > 0) {
+        searchNews(uActivePage,searchTerm,sortBy,dateFilter);
+        return {
+          activePage: uActivePage,
+          disableNext: false,
+          disablePrevious: uActivePage === 1 ? true : false,
+        }
+      } else {
+        return {};
       }
     } else {
       return {};
@@ -74,5 +91,10 @@ const stateHandlers = {
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withStateHandlers<ILocalState, IStateHandlers<ILocalState>>(initialState, stateHandlers)
+  withStateHandlers<ILocalState, IStateHandlers<ILocalState>>(initialState, stateHandlers),
+  lifecycle({
+    componentWillReceiveProps(props: IProps) {
+      return 1+1;
+    }
+  })
 )(Pager)

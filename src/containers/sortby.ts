@@ -2,9 +2,10 @@ import { connect } from 'react-redux';
 import { compose, defaultProps, StateHandler, StateHandlerMap, withStateHandlers } from 'recompose';
 
 import { Dispatch } from '../../node_modules/redux';
-import { sortByField } from '../actions/creators';
+import { searchNewsAPI } from '../actions/creators';
 import ToggleSelect from '../components/toggle-select/toggle-select';
 import toggleSelectSize from '../enums/toggleSelectSize';
+import { IDateFilter } from '../models/data/IDateFilter';
 import { IAppState, ISortBy } from './../models/view/IAppState';
 
 interface IOption {
@@ -18,26 +19,33 @@ interface ILocalState {
 }
 
 interface IProps {
-  callSort: (field: ISortBy, term: string) => void;
+  searchNews: (page: number, searchTerm: string, sortBy: ISortBy, dateFilter: IDateFilter) => void;
   sortBy: ISortBy[],
-  searchingFor: string;
+  searchTerm: string;
+  dateFilter: IDateFilter;
+  page: number;
+
 }
 
-const mapStateToProps = (state: IAppState) => ({
-  items: state.options.sortBy.map(x => {
+const mapStateToProps = ({options}: IAppState) => ({
+  dateFilter: options.dateFilter,
+  items: options.sortBy.map(x => {
     let selected = false;
-    if (x.name === state.options.currentlySortingBy.name) {
+    if (x.name === options.currentlySortingBy.name) {
       selected = true;
     }
     return Object.assign({}, x, {
       selected
     })
   }),
-  searchingFor: state.options.searchingFor
+  page: options.activePage,
+  searchTerm: options.searchingFor,
+  sortBy: options.currentlySortingBy
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  callSort: (field: ISortBy, term: string) => dispatch(sortByField(field, term))
+  searchNews: (page: number, searchTerm: string, sortBy: ISortBy, dateFilter: IDateFilter) =>
+    dispatch(searchNewsAPI(searchTerm, sortBy, 1, dateFilter))
 })
 
 const initialState = ({ items }: ILocalState) => ({
@@ -49,11 +57,13 @@ interface IStateHandlers<T> extends StateHandlerMap<T> {
 }
 
 const stateHandlers = {
-  onToggle: ({ items }: ILocalState, {callSort, searchingFor}: IProps) => (name: string, value: string) => {
-    callSort({
-      name,
-      value
-    }, searchingFor);
+  onToggle: ({ items }: ILocalState, { searchNews, searchTerm, sortBy, page, dateFilter }: IProps) => (name: string, value: string) => {
+    if(!!searchTerm) {
+      searchNews(page, searchTerm, {
+        name,
+        value
+      }, dateFilter);
+    }
     return {
       items: items.map(x => {
         if (x.value === value) {

@@ -2,11 +2,11 @@ import 'bulma/css/bulma.css';
 import * as React from 'react'
 import { IFilters } from '../../models/view/IFilters';
 import  Filter from "./filter";
-import { Filters } from "./styles";
+import { Filters, FiltersWrapper } from "./styles";
 
 const filters: React.SFC<IFilters> = ({items,selectFilter}) => {
   return (
-    <div className="tabs is-medium is-centered">
+    <FiltersWrapper className="tabs is-medium is-centered">
       <Filters>
         {
           items.map(
@@ -19,7 +19,7 @@ const filters: React.SFC<IFilters> = ({items,selectFilter}) => {
           )
         }
       </Filters>
-    </div>
+    </FiltersWrapper>
   )
 }
 

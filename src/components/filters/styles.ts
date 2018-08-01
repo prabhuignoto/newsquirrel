@@ -2,14 +2,21 @@ import Styled from "styled-components";
 
 const Filters = Styled.ul`
   display: flex;
-  margin-top: 1rem;
+  border-bottom: none !important;
 `;
 
-const Filter = Styled.li`
+const FiltersWrapper = Styled.div`
+  width: 100%;
+  background: #2B2D42;
+  padding-left: 2rem;
+`;
+
+const Filter = Styled.li<{selected: boolean}>`
   display: flex;
   text-transform: capitalize;
-  &.selected {
-    > a {
+  > a {
+    color: ${p => p.selected ? '#EF233C !important' : '#EDF2F4'};
+    &:hover {
       color: #EF233C;
     }
   }
@@ -18,5 +25,5 @@ const Filter = Styled.li`
 export {
   Filter,
   Filters,
+  FiltersWrapper
 }
-
