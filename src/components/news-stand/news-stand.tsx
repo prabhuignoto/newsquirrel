@@ -12,6 +12,11 @@ const NewsStand: React.SFC<INewsStand> = ({articleCards}) => {
         {articleCards.map<React.ReactElement<IArticleCard>>(
           article => <ArticleCard {...article} key={article.id}/>)
         }
+        {
+          Array.from(Array(10).keys()).map((x, idx) => (
+            <div key={idx} style={{visibility: 'hidden', flexGrow: 1, flexBasis: '250px'}}/>
+          ))
+        }
       </ArticlesWrapper>
     </NewsStandWrapper>
   )

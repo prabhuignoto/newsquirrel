@@ -20,7 +20,7 @@ const ArticlesWrapper = Styled.div`
   flex-direction: row;
   align-items: flex-start;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
 `;
 
 const ArticleCardWrapper = Styled.div<{ size?: Size }>`
@@ -30,29 +30,29 @@ const ArticleCardWrapper = Styled.div<{ size?: Size }>`
   justify-content: flex-start;
   margin: ${p => p.size !== Size.IMAGE_FREE ? '0.5rem' : ''};
   padding: 0.25rem;
-  min-width: ${(p) => {
+  //min-width: ${(p) => {
     if (p.size === Size.COZY) {
-      return '250px';
+      return '260px';
     } else if (p.size === Size.COMPACT) {
       return '200px';
     } else {
       return '320px';
     }
   }};
-  max-width: ${(p) => {
+  flex-basis: ${(p) => {
     if (p.size === Size.COZY) {
-      return '280px';
+      return '270px';
     } else if (p.size === Size.COMPACT) {
       return '220px';
     } else {
-      return '350px';
+      return '300px';
     }
   }};
   min-height: ${p => p.size === Size.COZY ? '300px' : '250px'};
   border-radius: 3px;
   position: relative;
-  flex: 1;
-  flex-basis: auto;
+  flex-grow: 1;
+  //flex-basis: ${p => p.size === Size.COZY ? '270px' : '220px'};
 `;
 
 const CardTitle = Styled.div<{ size?: Size }>`
@@ -98,23 +98,18 @@ const ImageWrapper = Styled.figure<{size?: Size }>`
   display: block;
 `;
 
-const CardImage = Styled.img`
-  max-width: 100%;
-  max-height: 100%;
+const CardImage = Styled.img<{ thumbnailUrl?: string, size?: Size }>`
+  width: 100%;
+  height: ${p => p.size === Size.COMPACT ? '120px' : '160px'};
+  display: block;
+  padding: 0.1rem;
+  border-radius: 2px;
+  background: url(${p => p.thumbnailUrl});
+  background-position: 0% 50%;
+  background-repeat: no-repeat;
+  background-size: ${p => p.thumbnailUrl !== null ? 'cover' : 'contain'};
+  position: relative;
 `;
-
-// const CardImage = Styled.img<{ thumbnailUrl?: string, size?: Size }>`
-//   width: 100%;
-//   height: ${p => p.size === Size.COMPACT ? '120px' : '160px'};
-//   display: block;
-//   padding: 0.1rem;
-//   border-radius: 2px;
-//   background: url(${p => p.thumbnailUrl});
-//   background-position: 0% 50%;
-//   background-repeat: no-repeat;
-//   background-size: ${p => p.thumbnailUrl !== null ? 'cover' : 'contain'};
-//   position: relative;
-// `;
 
 const CardDescription = Styled.div<{ size?: Size }>`
   display: ${p => p.size === Size.COZY || p.size === Size.IMAGE_FREE ? 'flex' : 'none'};
@@ -159,7 +154,7 @@ const PublishDate = Styled.time`
   margin-right: auto;
   margin-left: 10px;
   color: #515364;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 500;
 `;
 

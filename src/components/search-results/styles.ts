@@ -22,7 +22,7 @@ const Tools = Styled.div<{vwPort?: ViewPort}>`
   flex-wrap: wrap;
   width: 100%;
   background: linear-gradient(to right, rgba(43,45,66,1) 0%, rgba(62,64,83,1) 54%, rgba(43,45,66,1) 100%);
-  min-height: 50px;
+  min-height: 70px;
   padding: 0.25rem 0.5rem;
 `;
 
@@ -34,12 +34,12 @@ const SearchToolsWrapper2 = Styled.div`
 `;
 
 const Icon = Styled.div<{img: any}>`
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   background: url(${p => p.img});
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  background-size: cover;
+  background-size: contain;
   margin-right: 0.25rem;
 `;
 

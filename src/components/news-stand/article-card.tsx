@@ -40,13 +40,17 @@ const ArticleCard: React.SFC<IArticleCard> = ({
       {size !== Size.IMAGE_FREE ?
         <Fragment>
           {
-            !imageLoaded ? <LazyLoad height={100}>
+            !imageLoaded ? 
+            <LazyLoad height={100}>
               <StubImage src={imgUrl ? imgUrl : BlankImage} onLoad={onImageLoaded} onError={onImageLoaded} />
             </LazyLoad> : null
           }
 
           <ImageWrapper size={size}>
-            <CardImage src={(imageLoaded && !!imgUrl) ? imgUrl : BlankImage} />
+            <CardImage
+               thumbnailUrl={(imageLoaded && !!imgUrl) ? imgUrl : BlankImage}
+               size={size}
+            />
             {!imageLoaded ? <Loader start={true} size={LoaderSize.SMALL} /> : null}
           </ImageWrapper>
         </Fragment>
