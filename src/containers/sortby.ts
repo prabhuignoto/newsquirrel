@@ -84,7 +84,7 @@ export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   withStateHandlers<ILocalState, IStateHandlers<ILocalState>>(initialState, stateHandlers),
   defaultProps({
-    label: 'Sort By',
+    // label: 'Sort By',
     size: toggleSelectSize.SMALL
   })
 )(ToggleSelect)

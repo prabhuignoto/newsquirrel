@@ -21,7 +21,7 @@ const NavBrand = Styled.div<{vwPort: ViewPort}>`
   justify-content: center;
   position: relative;
   margin-left: ${p => p.vwPort === ViewPort.MOB ? '1.5rem' : ''};
-  margin-right: ${p => p.vwPort === ViewPort.DESK ? '2rem' : '0.5rem'};
+  margin-right: ${p => p.vwPort === ViewPort.DESK ? '2rem' : 'auto'};
   color:  linear-gradient(to right, rgba(217,4,40,1) 0%, rgba(43,45,66,1) 70%, rgba(43,45,66,1) 100%);
 `;
 
@@ -54,7 +54,6 @@ const ReadmodeWrapper = Styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: auto;
 `;
 
 const FlagWrapper = Styled.div`

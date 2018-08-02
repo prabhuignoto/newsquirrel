@@ -22,7 +22,7 @@ const Tools = Styled.div<{vwPort?: ViewPort}>`
   flex-wrap: wrap;
   width: 100%;
   background: linear-gradient(to right, rgba(43,45,66,1) 0%, rgba(62,64,83,1) 54%, rgba(43,45,66,1) 100%);
-  min-height: 120px;
+  min-height: 50px;
   padding: 0.25rem 0.5rem;
 `;
 

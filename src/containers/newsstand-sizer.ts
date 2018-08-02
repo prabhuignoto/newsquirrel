@@ -77,7 +77,7 @@ export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   withStateHandlers<ILocalState, IStateHandlers<ILocalState>>(initialState, stateHandlers),
   defaultProps({
-    label: 'Display density',
+    // label: 'Display density',
     size: toggleSelectSize.SMALL
   })
 )(ToggleSelect);

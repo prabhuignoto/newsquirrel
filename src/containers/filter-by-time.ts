@@ -97,7 +97,7 @@ export default compose(
   connect(mapStateToProps,mapDispatchToProps),
   withStateHandlers<ILocalState, IStateHanlders<ILocalState>>(initialState, stateHandlers),
   defaultProps({
-    label: 'Time',
+    // label: 'Time',
     size: toggleSelectSize.SMALL
   })
 )(ToggleSelect);

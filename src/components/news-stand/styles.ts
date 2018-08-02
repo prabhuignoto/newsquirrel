@@ -62,7 +62,7 @@ const CardTitle = Styled.div<{ size?: Size }>`
       case Size.COZY:
         return '1.25rem';
       case Size.COMPACT:
-        return '0.9rem';
+        return '1rem';
       case Size.IMAGE_FREE:
         return '1.5rem';
       default:
@@ -146,7 +146,7 @@ const PublishDate = Styled.div`
   margin-right: auto;
   margin-left: 10px;
   color: #515364;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   font-weight: 500;
 `;
 

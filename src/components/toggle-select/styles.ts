@@ -74,6 +74,7 @@ const ListItem = Styled.li<{selected: boolean,size: Size, theme?: string}>`
   user-select: none;
   &:hover {
     border: ${p => p.size === Size.SMALL ? '1px dotted A1ABBC' : ''};
+    color: ${p => p.size === Size.SMALL && !p.selected ? '#EF233C' : ''};
   }
 `;
 

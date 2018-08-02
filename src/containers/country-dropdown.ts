@@ -48,6 +48,6 @@ export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   withStateHandlers<ILocalState, IStateHandlers<ILocalState>>(initialState, stateHandlers),
   defaultProps({
-    label: 'Switch country'
+    label: 'Change country'
   })
 )(Dropdown);
