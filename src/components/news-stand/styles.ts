@@ -29,23 +29,23 @@ const ArticleCardWrapper = Styled.div<{ size?: Size }>`
   align-items: flex-start;
   justify-content: flex-start;
   margin: ${p => p.size !== Size.IMAGE_FREE ? '0.5rem' : ''};
-  padding: 0.5rem;
-  // min-width: ${(p) => {
+  padding: 0.25rem;
+  min-width: ${(p) => {
     if (p.size === Size.COZY) {
-      return '300px';
+      return '250px';
     } else if (p.size === Size.COMPACT) {
       return '200px';
     } else {
-      return '280px';
+      return '320px';
     }
   }};
   max-width: ${(p) => {
     if (p.size === Size.COZY) {
-      return '250px';
+      return '280px';
     } else if (p.size === Size.COMPACT) {
-      return '180px';
+      return '220px';
     } else {
-      return '250px';
+      return '350px';
     }
   }};
   min-height: ${p => p.size === Size.COZY ? '300px' : '250px'};
@@ -90,18 +90,31 @@ const StubImage = Styled.img`
   display: none;
 `;
 
-const CardImage = Styled.div<{ thumbnailUrl?: string, size?: Size }>`
+const ImageWrapper = Styled.figure<{size?: Size }>`
+  padding: 0.1rem;
   width: 100%;
   height: ${p => p.size === Size.COMPACT ? '120px' : '160px'};
-  display: block;
-  padding: 0.1rem;
-  border-radius: 2px;
-  background: url(${p => p.thumbnailUrl});
-  background-position: 0% 50%;
-  background-repeat: no-repeat;
-  background-size: ${p => p.thumbnailUrl !== null ? 'cover' : 'contain'};
   position: relative;
+  display: block;
 `;
+
+const CardImage = Styled.img`
+  max-width: 100%;
+  max-height: 100%;
+`;
+
+// const CardImage = Styled.img<{ thumbnailUrl?: string, size?: Size }>`
+//   width: 100%;
+//   height: ${p => p.size === Size.COMPACT ? '120px' : '160px'};
+//   display: block;
+//   padding: 0.1rem;
+//   border-radius: 2px;
+//   background: url(${p => p.thumbnailUrl});
+//   background-position: 0% 50%;
+//   background-repeat: no-repeat;
+//   background-size: ${p => p.thumbnailUrl !== null ? 'cover' : 'contain'};
+//   position: relative;
+// `;
 
 const CardDescription = Styled.div<{ size?: Size }>`
   display: ${p => p.size === Size.COZY || p.size === Size.IMAGE_FREE ? 'flex' : 'none'};
@@ -142,7 +155,7 @@ const PublishedBy = Styled.div`
   /* background: rgba(116, 126, 143, 0.1); */
 `;
 
-const PublishDate = Styled.div`
+const PublishDate = Styled.time`
   margin-right: auto;
   margin-left: 10px;
   color: #515364;
@@ -162,5 +175,6 @@ export {
   TitleAnchor,
   ArticlesWrapper,
   SortByWrapper,
+  ImageWrapper,
   StubImage
 }

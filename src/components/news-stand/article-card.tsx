@@ -1,6 +1,8 @@
 import { DateTime } from 'luxon';
 import { Fragment } from 'react';
 import * as React from 'react';
+import LazyLoad from 'react-lazyload';
+import Truncate from 'react-truncate';
 import * as uniqid from 'uniqid';
 
 import LoaderSize from '../../enums/loaderSize';
@@ -13,6 +15,7 @@ import {
   CardDescription,
   CardImage,
   CardTitle,
+  ImageWrapper,
   PublishDate,
   PublishedBy,
   Publisher,
@@ -20,7 +23,6 @@ import {
   TitleAnchor,
 } from './styles';
 
-import LineClamp from 'shiitake';
 const ArticleCard: React.SFC<IArticleCard> = ({
   title, description, thumbnailUrl: imgUrl,
   publishedAt, source, articleUrl,
@@ -29,42 +31,45 @@ const ArticleCard: React.SFC<IArticleCard> = ({
     <ArticleCardWrapper size={size} key={uniqid()}>
 
       <Publisher size={size}>
-        <PublishDate>{DateTime.fromISO(publishedAt).toLocaleString(DateTime.DATETIME_SHORT)}</PublishDate>
+        <PublishDate dateTime={publishedAt}>
+          {DateTime.fromISO(publishedAt).toLocaleString(DateTime.DATETIME_SHORT)}
+        </PublishDate>
         <PublishedBy>{source}</PublishedBy>
       </Publisher>
 
       {size !== Size.IMAGE_FREE ?
-        <Fragment>{!imageLoaded ?
-          // <LazyLoad height={100}>
-            <StubImage src={imgUrl ? imgUrl : BlankImage} onLoad={onImageLoaded} onError={onImageLoaded} />
-          // </LazyLoad> 
-          :
-          null}
-          <CardImage thumbnailUrl={(imageLoaded && !!imgUrl) ? imgUrl : BlankImage} size={size} >
+        <Fragment>
+          {
+            !imageLoaded ? <LazyLoad height={100}>
+              <StubImage src={imgUrl ? imgUrl : BlankImage} onLoad={onImageLoaded} onError={onImageLoaded} />
+            </LazyLoad> : null
+          }
+
+          <ImageWrapper size={size}>
+            <CardImage src={(imageLoaded && !!imgUrl) ? imgUrl : BlankImage} />
             {!imageLoaded ? <Loader start={true} size={LoaderSize.SMALL} /> : null}
-          </CardImage>
+          </ImageWrapper>
         </Fragment>
         : null}
 
       <CardTitle size={size}>
         <TitleAnchor href={articleUrl} target="_new" title={title}>
           {title ?
-            <LineClamp lines={4} renderFullOnServer={true}>
+            <Truncate lines={3}>
               {title}
-            </LineClamp>
+            </Truncate>
             : null}
 
-            {/* {title} */}
+          {/* {title} */}
         </TitleAnchor>
       </CardTitle>
 
       <CardDescription size={size}>
         {description ?
-          // <LineClamp lines={4}>
-            <span>{description}</span>
-          // </LineClamp>
+          <Truncate lines={4}>
+            {description}
+          </Truncate>
           : null}
-          {/* {description} */}
       </CardDescription>
     </ArticleCardWrapper>
   )

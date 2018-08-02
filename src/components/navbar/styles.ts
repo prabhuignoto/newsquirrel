@@ -28,9 +28,10 @@ const NavBrand = Styled.div<{vwPort: ViewPort}>`
 const NavBrandText = Styled.span<{vwPort: ViewPort}>`
   font-size: ${p => p.vwPort === ViewPort.DESK ? '2rem' : '1.75rem'};
   font-weight: 500;
-  color: #EB9605;
+  color: #EF233C;
   padding-bottom:3px;
   white-space: nowrap;
+  text-transform: uppercase;
 `;
 
 const CountryDropdownWrapper = Styled.div<{mode: ReadingMode, vwPort: ViewPort}>`

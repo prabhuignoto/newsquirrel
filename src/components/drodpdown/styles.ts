@@ -63,6 +63,7 @@ const List = Styled.ul`
   border: 1px dotted rgba(0,0,0,0.5);
   background: #8D99AE;
   z-index: 100;
+  box-shadow: 0 0 10px 1px rgba(0,0,0,0.5);
 `;
 
 const ListItem = Styled.li`
@@ -79,6 +80,7 @@ const ListItem = Styled.li`
     background-color: #EDF2F4;
     color: #2B2D42;
   }
+  font-size: 0.9rem;
 `;
 
 const Img = Styled.img`
