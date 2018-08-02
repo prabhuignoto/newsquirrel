@@ -58,6 +58,7 @@ export default function newsReducer(state = defaultState, action: ISwitchNewsRea
           failureResponse: null,
           newsArticles: [],
           readingMode: uAction.mode,
+          searchResultsCount: 0
         })
       } else {
         return Object.assign({}, state, {

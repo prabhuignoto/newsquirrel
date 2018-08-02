@@ -49,7 +49,7 @@ const ArticleCard: React.SFC<IArticleCard> = ({
       <CardTitle size={size}>
         <TitleAnchor href={articleUrl} target="_new" title={title}>
           {title ?
-            <LineClamp lines={size === Size.COZY ? 4 : 3} renderFullOnServer={true}>
+            <LineClamp lines={4} renderFullOnServer={true}>
               {title}
             </LineClamp>
             : null}
@@ -60,9 +60,9 @@ const ArticleCard: React.SFC<IArticleCard> = ({
 
       <CardDescription size={size}>
         {description ?
-          <LineClamp lines={4}>
-            {description}
-          </LineClamp>
+          // <LineClamp lines={4}>
+            <span>{description}</span>
+          // </LineClamp>
           : null}
           {/* {description} */}
       </CardDescription>

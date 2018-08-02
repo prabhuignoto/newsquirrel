@@ -31,17 +31,30 @@ const SearchToolsWrapper2 = Styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-`
+`;
+
+const Icon = Styled.div<{img: any}>`
+  width: 25px;
+  height: 25px;
+  background: url(${p => p.img});
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  margin-right: 0.25rem;
+`;
 
 const ToolWrapper = Styled.div<{vwPort?: ViewPort}>`
   margin: 0.25rem;
   display: flex;
-  flex-direction: ${p => p.vwPort === ViewPort.DESK ? 'row' : 'column'};
+  // flex-direction: ${p => p.vwPort === ViewPort.DESK ? 'row' : 'column'};
+  flex-direction: row;
+  align-items: center;
 `;
 
 export {
   Wrapper,
   Tools,
   ToolWrapper,
-  SearchToolsWrapper2
+  SearchToolsWrapper2,
+  Icon
 }

@@ -43,7 +43,7 @@ const ArticleCardWrapper = Styled.div<{ size?: Size }>`
     if (p.size === Size.COZY) {
       return '250px';
     } else if (p.size === Size.COMPACT) {
-      return '200px';
+      return '180px';
     } else {
       return '250px';
     }
