@@ -10,9 +10,10 @@ const Wrapper = Styled.div`
 `;
 
 
-const Icon = Styled.div<{url?: string}>`
+const Icon = Styled.i<{url?: string}>`
   width: 100%;
   height: 100%;
+  display: block;
   background: url(${p => p.url});
   background-repeat: no-repeat;
   background-position: 50% 50%;

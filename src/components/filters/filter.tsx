@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { IFilter } from '../../models/view/IFilter';
+import * as React from "react";
+import { IFilter } from "../../models/view/IFilter";
 import { Filter } from "./styles";
 
 function handler(fn: (filter: IFilter) => void, name: string, value: string) {
@@ -7,19 +7,25 @@ function handler(fn: (filter: IFilter) => void, name: string, value: string) {
     fn({
       name,
       value
-    } as IFilter)
-  }
+    } as IFilter);
+  };
 }
 
-
-const filter:React.SFC<IFilter> = ({name, value, selectFilter, selected}) => {
+const filter: React.SFC<IFilter> = ({
+  name,
+  value,
+  selectFilter,
+  selected
+}) => {
   return (
-    <Filter selected={selected}
-      className={`${selected ? 'selected is-active' : ''}`}
-      onClick={handler(selectFilter, name, value)}>
-        <a>{name}</a>
+    <Filter
+      selected={selected}
+      className={`${selected ? "selected is-active" : ""}`}
+      onClick={handler(selectFilter, name, value)}
+    >
+      <a href="javascript:void(0);" role="button">{name}</a>
     </Filter>
-  )
+  );
 };
 
 export default filter;

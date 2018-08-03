@@ -1,6 +1,6 @@
-import Styled from 'styled-components';
+import Styled from "styled-components";
 
-import Size from '../../enums/newsStandSize';
+import Size from "../../enums/newsStandSize";
 
 const NewsStandWrapper = Styled.div`
   display: flex;
@@ -13,7 +13,7 @@ const SortByWrapper = Styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-end;
-`
+`;
 
 const ArticlesWrapper = Styled.div`
   display: flex;
@@ -28,45 +28,45 @@ const ArticleCardWrapper = Styled.div<{ size?: Size }>`
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  margin: ${p => p.size !== Size.IMAGE_FREE ? '0.5rem' : ''};
+  margin: ${p => (p.size !== Size.IMAGE_FREE ? "0.5rem" : "")};
   padding: 0.25rem;
-  //min-width: ${(p) => {
+  //min-width: ${p => {
     if (p.size === Size.COZY) {
-      return '260px';
+      return "260px";
     } else if (p.size === Size.COMPACT) {
-      return '200px';
+      return "200px";
     } else {
-      return '320px';
+      return "320px";
     }
   }};
-  flex-basis: ${(p) => {
+  flex-basis: ${p => {
     if (p.size === Size.COZY) {
-      return '270px';
+      return "270px";
     } else if (p.size === Size.COMPACT) {
-      return '220px';
+      return "220px";
     } else {
-      return '300px';
+      return "300px";
     }
   }};
-  min-height: ${p => p.size === Size.COZY ? '300px' : '250px'};
+  min-height: ${p => (p.size === Size.COZY ? "300px" : "250px")};
   border-radius: 3px;
   position: relative;
   flex-grow: 1;
-  //flex-basis: ${p => p.size === Size.COZY ? '270px' : '220px'};
+  //flex-basis: ${p => (p.size === Size.COZY ? "270px" : "220px")};
 `;
 
 const CardTitle = Styled.div<{ size?: Size }>`
   display: flex;
-  font-size: ${(p) => {
+  font-size: ${p => {
     switch (p.size) {
       case Size.COZY:
-        return '1.25rem';
+        return "1.25rem";
       case Size.COMPACT:
-        return '1rem';
+        return "1rem";
       case Size.IMAGE_FREE:
-        return '1.5rem';
+        return "1.5rem";
       default:
-        return '1rem';
+        return "1rem";
     }
   }};
   text-align: left;
@@ -90,29 +90,30 @@ const StubImage = Styled.img`
   display: none;
 `;
 
-const ImageWrapper = Styled.figure<{size?: Size }>`
+const ImageWrapper = Styled.figure<{ size?: Size }>`
   padding: 0.1rem;
   width: 100%;
-  height: ${p => p.size === Size.COMPACT ? '120px' : '160px'};
+  height: ${p => (p.size === Size.COMPACT ? "120px" : "160px")};
   position: relative;
   display: block;
 `;
 
-const CardImage = Styled.img<{ thumbnailUrl?: string, size?: Size }>`
+const CardImage = Styled.img<{ thumbnailUrl?: string; size?: Size }>`
   width: 100%;
-  height: ${p => p.size === Size.COMPACT ? '120px' : '160px'};
+  height: ${p => (p.size === Size.COMPACT ? "120px" : "160px")};
   display: block;
   padding: 0.1rem;
   border-radius: 2px;
   background: url(${p => p.thumbnailUrl});
   background-position: 0% 50%;
   background-repeat: no-repeat;
-  background-size: ${p => p.thumbnailUrl !== null ? 'cover' : 'contain'};
+  background-size: ${p => (p.thumbnailUrl !== null ? "cover" : "contain")};
   position: relative;
 `;
 
 const CardDescription = Styled.div<{ size?: Size }>`
-  display: ${p => p.size === Size.COZY || p.size === Size.IMAGE_FREE ? 'flex' : 'none'};
+  display: ${p =>
+    p.size === Size.COZY || p.size === Size.IMAGE_FREE ? "flex" : "none"};
   align-items: center;
   justify-content: flex-start;
   text-align: left;
@@ -128,7 +129,7 @@ const CardDescription = Styled.div<{ size?: Size }>`
 `;
 
 const Publisher = Styled.div<{ size?: Size }>`
-  display: ${p => p.size === Size.COZY ? 'flex' : 'none'};
+  display: ${p => (p.size === Size.COZY ? "flex" : "none")};
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -172,4 +173,4 @@ export {
   SortByWrapper,
   ImageWrapper,
   StubImage
-}
+};

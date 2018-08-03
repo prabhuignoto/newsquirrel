@@ -16,6 +16,7 @@ const ToggleItem: React.SFC<IToggleItem> = ({ name, value, onToggle, selected, s
     size={size}
     theme={theme}
     key={name}
+    tabIndex={0}
   >{name}</ListItem>
 );
 
@@ -26,7 +27,7 @@ const ToggleSelect: React.SFC<IToggleSelect> = ({ label, items, onToggle, size, 
       <List>
         {
           items.map<React.ReactElement<IToggleItem>>(
-            x => <ToggleItem {...x} key={x.name} onToggle={onToggle} size={size} theme={theme} />
+            x => <ToggleItem {...x} key={x.name} onToggle={onToggle} size={size} theme={theme}/>
           )
         }
       </List>
