@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/prabhuignoto/newsquirrel/tree/master.svg?style=svg)](https://circleci.com/gh/prabhuignoto/newsquirrel/tree/master)
+
 ## A Refreshing news App built with React and Typescript.
 
 ![app_logo](public/assets/app-front.png)
