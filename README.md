@@ -2,25 +2,25 @@
 
 ## A Refreshing news App built with React and Typescript.
 
-![app_logo](public/assets/app-front.png)
+![app_logo](/readme-assets/app-front.png)
 
 ### Prominent Features
 
 - Read Top Headlines from 7 different countries( US, UK, IN, FR, DE, AU, CA).
   
-  ![](2018-08-15-11-46-27.png)
+  ![](/readme-assets/2018-08-15-11-46-27.png)
 
 - Filter and read Headlines by category (General, Business, Entertainment, Health, Science,     Sports, Technology).
   
-  ![](2018-08-15-11-47-27.png)
+  ![](/readme-assets/2018-08-15-11-47-27.png)
 
 - Read news in three different Modes (Comfortable, Compact, Image free).
   
-  ![](2018-08-15-11-47-56.png)
+  ![](/readme-assets/2018-08-15-11-47-56.png)
 
 - Search across millions of news articles using the search feature. Due to the api limitation the search is limited to today, this week and this month.
   
-  ![](2018-08-15-11-49-50.png)
+  ![](/readme-assets/2018-08-15-11-49-50.png)
 
 ## How to run & build the project
 - Clone the project locally and run
