@@ -1,4 +1,5 @@
-# Newsquirrel
+# Newsquirrel 
+[![CircleCI](https://circleci.com/gh/prabhuignoto/newsquirrel.svg?style=svg)](https://circleci.com/gh/prabhuignoto/newsquirrel)
 
 A Refreshing news reader built for simplicity.
 
