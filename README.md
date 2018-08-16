@@ -1,4 +1,4 @@
-# Newsquirrel 
+# Newsquirrel
 [![CircleCI](https://circleci.com/gh/prabhuignoto/newsquirrel.svg?style=svg)](https://circleci.com/gh/prabhuignoto/newsquirrel)
 
 A Refreshing news reader built for simplicity.
@@ -9,7 +9,7 @@ Features
 * Read news in three different Modes (Comfortable, Compact, Image free).
 * Search across millions of news articles using the search feature. Due to the api limitation the search is currently limited to today, this week and this month.
 
-![](2018-08-16-10-25-50.png)
+![app_front](2018-08-16-10-25-50.png)
 
 ## Getting Started
 
