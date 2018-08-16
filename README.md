@@ -1,21 +1,24 @@
 # Newsquirrel
+
 [![CircleCI](https://circleci.com/gh/prabhuignoto/newsquirrel.svg?style=svg)](https://circleci.com/gh/prabhuignoto/newsquirrel)
 
 A Refreshing news reader built for simplicity.
 
 Features
+
 * Read Top Headlines from 7 different countries( US, UK, IN, FR, DE, AU, CA).
 * Filter and read Headlines by category (General, Business, Entertainment, Health, Science, Sports, Technology).
 * Read news in three different Modes (Comfortable, Compact, Image free).
 * Search across millions of news articles using the search feature. Due to the api limitation the search is currently limited to today, this week and this month.
 
-![app_front](2018-08-16-10-25-50.png)
+![app_front](/readme-assets/2018-08-16-10-25-50.png)
 
 ## Getting Started
 
 Clone the project locally and the follow the steps below for dev/build.
 
 ### Installing
+
 Get started by installing the project dependencies. You can alternatively use yarn for dev & build.
 
 ```javascript
