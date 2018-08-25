@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders Flag component correctly 1`] = `
+<div
+  class="sc-bdVaJa cweobK"
+  data-testid="rt-flag-wrapper"
+>
+  <i
+    aria-label="icon"
+    class="sc-bwzfXH hQhWXo"
+  />
+</div>
+`;
