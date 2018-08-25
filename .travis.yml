@@ -1,5 +1,5 @@
 language: node__js
 node_js:
-  - "9"
   - "8"
   - "node"
+  cache: yarn
