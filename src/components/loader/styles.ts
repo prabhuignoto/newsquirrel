@@ -27,7 +27,7 @@ const CircleLoader = keyframes`
   }
 `;
 
-const LoaderIndicator = Styled.div<{ start?: boolean, stop?: boolean, size?: Size }>`
+const LoaderIndicator = Styled.div<{ start: boolean, stop: boolean, size?: Size }>`
   left: 0%;
   width: 0%;
   height: 100%;

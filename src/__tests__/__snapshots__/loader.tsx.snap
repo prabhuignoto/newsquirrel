@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders loader correctly 1`] = `
+<div
+  class="sc-bdVaJa csFBTh"
+  data-testid="rt-loader"
+  size="1"
+>
+  <div
+    class="sc-bwzfXH jhrhgn"
+    size="1"
+  />
+</div>
+`;

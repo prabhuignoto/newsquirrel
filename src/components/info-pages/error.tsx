@@ -9,7 +9,7 @@ interface IError {
 
 const Error: React.SFC<IError> = ({response}) => {
   return (
-    <Wrapper>
+    <Wrapper data-testid="rt-error-page">
       {response!.data!.message}
     </Wrapper>
   )

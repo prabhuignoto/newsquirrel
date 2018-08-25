@@ -12,7 +12,7 @@ const Wrapper = Styled.footer`
 
 const Footer = () => {
   return (
-    <Wrapper>
+    <Wrapper data-testid="rt-footer">
       <a href="https://newsapi.org">Powered by News API</a>
     </Wrapper>
   )
