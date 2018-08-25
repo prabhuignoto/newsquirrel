@@ -10,6 +10,7 @@ test('Renders loader correctly', () => {
     stop: false,
   }
   const{getByTestId} = render(<Loader {...props}/>);
+  
   const node = getByTestId('rt-loader');
   expect(node).toBeInTheDocument();
   expect(node).toMatchSnapshot();

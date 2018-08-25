@@ -17,12 +17,12 @@ const DropdownItem: React.SFC<IDropdownItem> = ({ name, onSelect, value, icon })
 
 const Dropdown: React.SFC<IDropdown> = ({ items, selectedItem, onClick, show, label, onSelect }) => {
   return (
-    <Wrapper onClick={onClick}>
+    <Wrapper onClick={onClick} data-testid="rt-dropdown-wrapper">
       <SelectedItem>
         <img src={`https://www.countryflags.io/${selectedItem}/flat/64.png`} />
       </SelectedItem>
       <LabelWrapper>
-        <Label>{label}</Label>
+        <Label data-testid="rt-dropdown-label">{label}</Label>
         <Icon />
       </LabelWrapper>
       {show ? <List>

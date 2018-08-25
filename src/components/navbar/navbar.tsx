@@ -12,7 +12,7 @@ import { CountryDropdownWrapper, NavBrand, NavBrandText, ReadmodeWrapper, Search
 
 const Navbar: React.SFC<INavBar> = ({ mode }) => {
   return (
-    <Wrapper className="navbar" role="navigation">
+    <Wrapper className="navbar" role="navigation" data-testid="rt-navbar">
       <NavBrand className="nav-brand is-hidden-desktop" vwPort={ViewPort.MOB}>
         <NavBrandText vwPort={ViewPort.MOB}>News Squirrel</NavBrandText>
         {/* <Logo /> */}
