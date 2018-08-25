@@ -19,14 +19,14 @@ const handleKeyUp= function _handleKeyUp(fn: () => void) {
 }
 
 const SearchBar: React.SFC<ISearchBar> = ({ placeHolder, handleInput, searchTerm, handleSearch, handleClear }) => (
-  <Wrapper>
+  <Wrapper data-testid="rt-search-bar-wrapper">
     <Input
       placeholder={placeHolder}
       onInput={handler(handleInput)}
       onKeyUp={handleKeyUp(handleSearch)}
       value={searchTerm} />
       {
-        searchTerm.length > 0 ? <Button onClick={handleClear} /> : null
+        searchTerm.length > 0 ? <Button onClick={handleClear} data-testid="rt-btn-clear-search"/> : null
       }
   </Wrapper>
 )
