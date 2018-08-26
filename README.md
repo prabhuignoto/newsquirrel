@@ -1,11 +1,20 @@
 # Newsquirrel
-
+<style>
+  .img-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content:center;
+    width: 85%;
+  }
+</style>
 ![TravisCI](https://travis-ci.org/prabhuignoto/newsquirrel.svg?branch=master)
 [![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
 [![Redux](https://img.shields.io/badge/builtwith-Redux-orange.svg)](https://github.com/reduxjs/redux)
 [![Typescript](https://img.shields.io/badge/poweredby-typescript-blue.svg)](https://www.typescriptlang.org/)
 
 A Refreshing news reader built for simplicity.
+
+<img src="./readme-assets/web-front.png" width="65%"/>
 
 Features
 
@@ -14,7 +23,12 @@ Features
 * Read news in three different Modes (Comfortable, Compact, Image free).
 * Search across millions of news articles using the search feature. Due to the api limitation the search is currently limited to today, this week and this month.
 
-![app_front](/readme-assets/demo.gif)
+* Works on Mobiles/Tablets/Desktop/Laptops.
+<div class="img-container">
+  <img src="./readme-assets/newsquirrel-mobile.png" width="33.33%"/>
+  <img src="./readme-assets/newsquirrel-tablet.png" width="33.33%" />
+  <img src="./readme-assets/newsquirel-laptop.png" width="33.33%"/>
+</div>
 
 ## Getting Started
 
