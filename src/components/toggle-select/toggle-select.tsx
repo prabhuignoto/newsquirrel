@@ -22,7 +22,7 @@ const ToggleItem: React.SFC<IToggleItem> = ({ name, value, onToggle, selected, s
 
 const ToggleSelect: React.SFC<IToggleSelect> = ({ label, items, onToggle, size, theme }) => {
   return (
-    <Wrapper size={size}>
+    <Wrapper size={size} data-testid="rt-toggle-select">
       <Label size={size} label={label}>{label}</Label>
       <List>
         {

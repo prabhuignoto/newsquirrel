@@ -8,10 +8,17 @@ test('Renders loader correctly', () => {
     size: LoaderSize.LARGE,
     start: true,
     stop: false,
+  };
+  const props2 = {
+    size: LoaderSize.SMALL,
+    start: false,
+    stop: true,
   }
-  const{getByTestId} = render(<Loader {...props}/>);
-  
-  const node = getByTestId('rt-loader');
+  const{getByTestId, rerender} = render(<Loader {...props}/>);
+  let node = getByTestId('rt-loader');
   expect(node).toBeInTheDocument();
   expect(node).toMatchSnapshot();
+  rerender(<Loader {...props2} />);
+  node = getByTestId('rt-loader');
+  expect(node).toBeInTheDocument();
 })

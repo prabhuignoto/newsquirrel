@@ -29,7 +29,7 @@ test('Render search bar correctly', async () => {
     cancelable: true,
   }));
   expect(handleInput).toBeCalled();
-  fireEvent(input, new KeyboardEvent('keyPress', {
+  fireEvent(input, new KeyboardEvent('keypress', {
     bubbles: true,
     cancelable: true
   }))

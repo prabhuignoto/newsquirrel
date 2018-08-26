@@ -7,7 +7,7 @@ import { FilterWrapper, NewsStandWrapper, Wrapper } from './styles';
 
 const TopHeadlines = () => {
   return (
-    <Wrapper>
+    <Wrapper data-testid="rt-top-headlines">
       <FilterWrapper>
         <Filters />
       </FilterWrapper>
