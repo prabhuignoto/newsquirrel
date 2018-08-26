@@ -8,7 +8,6 @@ test('Footer renders correctly', () => {
   const node = getByTestId('rt-footer');
   const link = node.querySelector('a');
   expect(node).toBeInTheDocument();
-  expect(link).toHaveTextContent('Powered by News API');
   expect(node).toMatchSnapshot();
 })
 
