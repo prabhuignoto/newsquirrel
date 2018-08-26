@@ -79,7 +79,7 @@ const ArticleCard: React.SFC<IArticleCard> = ({
       </CardTitle>
 
       <CardDescription size={size}>
-        {description ? <Truncate lines={4}>{description}</Truncate> : null}
+        {description ? <Truncate lines={0}>{description}</Truncate> : null}
       </CardDescription>
     </ArticleCardWrapper>
   );

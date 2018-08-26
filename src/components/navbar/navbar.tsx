@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Fragment } from "react";
 import CountryDropdown from '../../containers/country-dropdown';
 import Loader from '../../containers/loader';
-import ReadingMode from '../../containers/reading-mode';
+// import ReadingMode from '../../containers/reading-mode';
 import SearchBar from '../../containers/search-bar';
 import ReadingModeEnum from '../../enums/readingMode';
 import ViewPort from '../../enums/viewPort';
@@ -18,7 +18,7 @@ const Navbar: React.SFC<INavBar> = ({ mode }) => {
         {/* <Logo /> */}
       </NavBrand>
       <ReadmodeWrapper className="navbar-item">
-        <ReadingMode />
+        {/* <ReadingMode /> */}
       </ReadmodeWrapper>
 
       {mode === ReadingModeEnum.SEARCH_EVERYTHING ?

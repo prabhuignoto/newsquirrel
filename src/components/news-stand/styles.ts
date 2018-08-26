@@ -7,6 +7,7 @@ const NewsStandWrapper = Styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  padding: 0  0 2rem 0;
 `;
 
 const SortByWrapper = Styled.div`
@@ -28,7 +29,7 @@ const ArticleCardWrapper = Styled.div<{ size?: Size }>`
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  margin: ${p => (p.size !== Size.IMAGE_FREE ? "0.5rem" : "")};
+  margin: ${p => (p.size !== Size.IMAGE_FREE ? "0.75rem" : "")};
   padding: 0.25rem;
   //min-width: ${p => {
     if (p.size === Size.COZY) {
