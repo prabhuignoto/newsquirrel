@@ -28,7 +28,7 @@
     "build": "react-scripts-ts build",
     "test": "jest",
     "eject": "react-scripts-ts eject",
-    "cover": "jest --coverage"
+    "cover": "jest -u --coverage"
   },
   "devDependencies": {
     "@types/date-fns": "^2.6.0",
