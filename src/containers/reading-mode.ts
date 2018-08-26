@@ -19,7 +19,8 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 interface IItem {
   name: string,
   value: string,
-  id: ReadingMode
+  id: ReadingMode,
+  selected: boolean,
 }
 
 interface ILocalState {

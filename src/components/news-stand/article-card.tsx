@@ -64,7 +64,7 @@ const ArticleCard: React.SFC<IArticleCard> = ({
               size={size}
             />
             {!imageLoaded ? (
-              <Loader start={true} size={LoaderSize.SMALL} />
+              <Loader start={true} size={LoaderSize.SMALL} stop={false} />
             ) : null}
           </ImageWrapper>
         </Fragment>
