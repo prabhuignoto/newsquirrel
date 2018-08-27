@@ -27,12 +27,12 @@ const CircleLoader = keyframes`
   }
 `;
 
-const LoaderIndicator = Styled.div<{ start: boolean, stop: boolean, size?: Size }>`
+const LoaderIndicator = Styled.div<{ start: number, size?: Size }>`
   left: 0%;
   width: 0%;
   height: 100%;
   position: absolute;
-  animation: ${p => p.start === true ? CircleLoader : 0};
+  animation: ${p => p.start === 1 ? CircleLoader : 0};
   animation-duration: 2s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
