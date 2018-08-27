@@ -11,7 +11,7 @@ const TopHeadlines = () => {
       <FilterWrapper>
         <Filters />
       </FilterWrapper>
-      <NewsStandWrapper>
+      <NewsStandWrapper className="is-hidden-mobile">
         <NewsStandSizer />
       </NewsStandWrapper>
       <NewsStand />

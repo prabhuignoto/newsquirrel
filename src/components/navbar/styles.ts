@@ -15,13 +15,13 @@ const Wrapper = Styled.nav `
   background: #2B2D42;
 `;
 
-const NavBrand = Styled.div<{vwPort: ViewPort}>`
+const NavBrand = Styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  margin-left: ${p => p.vwPort === ViewPort.MOB ? '1.5rem' : ''};
-  margin-right: ${p => p.vwPort === ViewPort.DESK ? '2rem' : 'auto'};
+  margin-left: 1.5rem;
+  margin-right: auto;
   color:  linear-gradient(to right, rgba(217,4,40,1) 0%, rgba(43,45,66,1) 70%, rgba(43,45,66,1) 100%);
 `;
 

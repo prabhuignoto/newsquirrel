@@ -72,14 +72,14 @@ const ArticleCard: React.SFC<IArticleCard> = ({
 
       <CardTitle size={size}>
         <TitleAnchor href={articleUrl} target="_new" title={title}>
-          {title ? <Truncate lines={3}>{title}</Truncate> : null}
+          {title ? <Truncate lines={0}>{title}</Truncate> : null}
 
           {/* {title} */}
         </TitleAnchor>
       </CardTitle>
 
       <CardDescription size={size}>
-        {description ? <Truncate lines={0}>{description}</Truncate> : null}
+        {description ? <Truncate lines={4}>{description}</Truncate> : null}
       </CardDescription>
     </ArticleCardWrapper>
   );

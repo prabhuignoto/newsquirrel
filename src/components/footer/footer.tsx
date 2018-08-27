@@ -5,10 +5,12 @@ const Wrapper = Styled.footer`
   display: flex;
   width: 100%;
   height: 10rem;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-evenly;
   color: #2B2D42;
-  padding-bottom: 3rem;
+  /* padding-bottom: 3rem; */
+  flex-wrap: wrap;
+  font-size: 0.9rem;
 `;
 
 const Social = Styled.div`
@@ -17,7 +19,6 @@ const Social = Styled.div`
   align-items: center;
   justify-content: center;
   margin-right: 3rem;
-  /* margin-left: auto; */
 `;
 
 const Img = Styled.img`
@@ -26,14 +27,10 @@ const Img = Styled.img`
 
 const PoweredBy = Styled.div`
   display: flex;
-  /* margin-left: auto; */
 `;
 
 const Copyright = Styled.div`
   display: flex;
-  /* margin-right: auto; */
-  /* margin-left: auto; */
-  font-size: 1rem;
 `;
 
 const DesignedBy = Styled.div`
@@ -45,10 +42,10 @@ const Footer = () => {
     <Wrapper data-testid="rt-footer">
       <Social>
         <a href="https://twitter.com/prabhumurthy2" target="new">
-          <Img height="22" width="22" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/twitter.svg" />
+          <Img height="20" width="20" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/twitter.svg" />
         </a>
         <a href="https://github.com/prabhuignoto" target="new">
-          <Img height="22" width="22" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg" />
+          <Img height="20" width="20" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg" />
         </a>
       </Social>
       <Copyright>
