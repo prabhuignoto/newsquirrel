@@ -3,7 +3,7 @@ import * as React from 'react';
 import ArticleCard from '../../containers/article-card';
 import { IArticleCard } from '../../models/view/IArticleCard';
 import { INewsStand } from '../../models/view/INewsStand';
-import { ArticlesWrapper, NewsStandWrapper } from './styles';
+import { ArticlesWrapper, LoadingText, NewsStandWrapper } from './styles';
 
 const NewsStand: React.SFC<INewsStand> = ({articleCards}) => {
   return (
@@ -18,6 +18,7 @@ const NewsStand: React.SFC<INewsStand> = ({articleCards}) => {
           ))
         }
       </ArticlesWrapper>
+      {articleCards.length < 1 ? <LoadingText>Loading News ...</LoadingText> : null}
     </NewsStandWrapper>
   )
 }

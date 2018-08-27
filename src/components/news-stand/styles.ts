@@ -24,6 +24,18 @@ const ArticlesWrapper = Styled.div`
   justify-content: center;
 `;
 
+const LoadingText = Styled.span`
+  font-size: 3rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #A1ABBC;
+`;
+
 const ArticleCardWrapper = Styled.div<{ size?: Size }>`
   display: flex;
   flex-direction: column;
@@ -173,5 +185,6 @@ export {
   ArticlesWrapper,
   SortByWrapper,
   ImageWrapper,
-  StubImage
+  StubImage,
+  LoadingText
 };
