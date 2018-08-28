@@ -34,7 +34,7 @@ const NewsStand: React.SFC<INewsStand> = ({
 
       {detailedPaneOpen ?
         <QuickView
-          url={`https://www.google.com/search?q=%${detailedArticleUrl}&btnI=Im+Feeling+Lucky`}
+          url={detailedArticleUrl}
           onClose={closeQuickView}
           onLoadComplete={onQuickViewLoadComplete}
           quickViewLoading={quickViewLoading}
