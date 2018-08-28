@@ -19,8 +19,10 @@ const SortByWrapper = Styled.div`
   justify-content: flex-end;
 `;
 
+
 const ArticlesWrapper = Styled.div<{show: number}>`
   display: ${p => p.show === 1 ? 'flex' : 'none'};
+  display: flex;
   flex-direction: row;
   align-items: flex-start;
   flex-wrap: wrap;

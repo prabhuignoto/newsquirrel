@@ -105,6 +105,7 @@
   dependencies:
     redux "*"
 
+<<<<<<< HEAD
 "@types/sails.io.js@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@types/sails.io.js/-/sails.io.js-1.0.1.tgz#d2fa47af38cb222bd59845533f8136f437bce581"
@@ -115,6 +116,8 @@
   version "1.4.32"
   resolved "https://registry.yarnpkg.com/@types/socket.io-client/-/socket.io-client-1.4.32.tgz#988a65a0386c274b1c22a55377fab6a30789ac14"
 
+=======
+>>>>>>> bac612a85ca54285537f006ea4998d1235954b20
 "@types/uniqid@^4.1.2":
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/@types/uniqid/-/uniqid-4.1.2.tgz#83c56995419696ffc6c7abd268177dac2c6f13c9"
@@ -440,10 +443,13 @@ aws4@^1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.8.0.tgz#f0e003d9ca9e7f59c7a508945d7b2ef9a04a542f"
 
+<<<<<<< HEAD
 axios-jsonp@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/axios-jsonp/-/axios-jsonp-1.0.2.tgz#4f2c8f8dc4b245b08232c7cea4fd9dcc9bf60eab"
 
+=======
+>>>>>>> bac612a85ca54285537f006ea4998d1235954b20
 axios@^0.18.0:
   version "0.18.0"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.18.0.tgz#32d53e4851efdc0a11993b6cd000789d70c05102"

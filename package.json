@@ -4,10 +4,7 @@
   "private": true,
   "dependencies": {
     "@types/react-lazyload": "^2.3.1",
-    "@types/sails.io.js": "^1.0.1",
-    "@types/socket.io-client": "^1.4.32",
     "axios": "^0.18.0",
-    "axios-jsonp": "^1.0.2",
     "babel-plugin-react-remove-properties": "^0.2.5",
     "bulma": "^0.7.1",
     "date-fns": "^1.29.0",
