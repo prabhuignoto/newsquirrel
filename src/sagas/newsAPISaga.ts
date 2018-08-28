@@ -79,7 +79,7 @@ export function* watchGetHeadlines() {
           id: uniqid("article-"),
           publishedAt: article.publishedAt,
           source: article.source.name,
-          thumbnailUrl: article.urlToImage,
+          thumbnailUrl: article.urlToImage.replace(/http:/,'https:'),
           title: article.title
         }));
 
