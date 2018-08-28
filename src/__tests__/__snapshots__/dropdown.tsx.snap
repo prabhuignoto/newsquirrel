@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdown renders correctly 1`] = `
+<div
+  class="sc-bdVaJa joOEos"
+  data-testid="rt-dropdown-wrapper"
+>
+  <div
+    class="sc-bxivhb dvYwzO"
+  >
+    <img
+      src="https://www.countryflags.io//flat/64.png"
+    />
+  </div>
+  <div
+    class="sc-bwzfXH jscYZz"
+  >
+    <div
+      class="sc-htpNat gTKWCu"
+      data-testid="rt-dropdown-label"
+    >
+      Test_Dropdown_label
+    </div>
+    <i
+      class="sc-ifAKCX IsfAg"
+    />
+  </div>
+  <ul
+    class="sc-EHOje leItEV"
+  >
+    <li
+      class="sc-bZQynM TDRJO"
+    >
+      dropdown1
+    </li>
+    <li
+      class="sc-bZQynM TDRJO"
+    >
+      dropdown2
+    </li>
+  </ul>
+</div>
+`;

@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Toggle Select correctly 1`] = `
+<div
+  class="sc-bdVaJa dizUZD"
+  data-testid="rt-toggle-select"
+  size="1"
+>
+  <div
+    class="sc-bwzfXH hahZpa"
+    label="Toggle Select Test Label"
+    size="1"
+  >
+    Toggle Select Test Label
+  </div>
+  <ul
+    class="sc-htpNat igRjOs"
+  >
+    <li
+      class="sc-bxivhb jBjYy"
+      size="1"
+      tabindex="0"
+    >
+      item1
+    </li>
+    <li
+      class="sc-bxivhb bqBebq"
+      size="1"
+      tabindex="0"
+    >
+      item2
+    </li>
+  </ul>
+</div>
+`;

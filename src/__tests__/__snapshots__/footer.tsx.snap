@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer renders correctly 1`] = `
+<footer
+  class="sc-bdVaJa laLYzR"
+  data-testid="rt-footer"
+>
+  <div
+    class="sc-bwzfXH dOhgIm"
+  >
+    <a
+      href="https://twitter.com/prabhumurthy2"
+      target="new"
+    >
+      <img
+        class="sc-htpNat ewHMNg"
+        height="22"
+        src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/twitter.svg"
+        width="22"
+      />
+    </a>
+    <a
+      href="https://github.com/prabhuignoto"
+      target="new"
+    >
+      <img
+        class="sc-htpNat ewHMNg"
+        height="22"
+        src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg"
+        width="22"
+      />
+    </a>
+  </div>
+  <div
+    class="sc-ifAKCX kvfALf"
+  >
+    <span>
+      2018 © Prabhu Murthy
+    </span>
+  </div>
+  <div
+    class="sc-EHOje fhxHOS"
+  >
+    Designed & developed with 🖤 by me
+  </div>
+  <div
+    class="sc-bxivhb gDDAQr"
+  >
+    <a
+      href="https://newsapi.org"
+    >
+      Powered by News API
+    </a>
+  </div>
+</footer>
+`;

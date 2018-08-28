@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders infopage-error correctly 1`] = `
+<div
+  class="sc-bdVaJa iysoez"
+  data-testid="rt-error-page"
+>
+  Failed to load the page
+</div>
+`;
