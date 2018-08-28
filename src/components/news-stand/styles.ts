@@ -1,7 +1,8 @@
 import Styled from "styled-components";
 
 import Size from "../../enums/newsStandSize";
-import EyeSolid from './assets/eye-solid.svg';
+import EyeSolidRed from "./assets/eye-solid-red.svg";
+import EyeSolid from "./assets/eye-solid.svg";
 
 const NewsStandWrapper = Styled.div`
   display: flex;
@@ -19,10 +20,8 @@ const SortByWrapper = Styled.div`
   justify-content: flex-end;
 `;
 
-
-const ArticlesWrapper = Styled.div<{show: number}>`
-  display: ${p => p.show === 1 ? 'flex' : 'none'};
-  display: flex;
+const ArticlesWrapper = Styled.div<{ show: number }>`
+  display: ${p => (p.show === 1 ? "flex" : "none")};
   flex-direction: row;
   align-items: flex-start;
   flex-wrap: wrap;
@@ -172,34 +171,16 @@ const PublishDate = Styled.time`
 `;
 
 const CheckPreview = Styled.a`
-  font-size: 0.75rem;
   margin-right: 0.5rem;
   /* padding: 0.1rem; */
-  color: '#EF233C';
-  font-family: "Oswald", sans-serif;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding-left: 1.5rem;
-  width: 100%;
+  background: url(${EyeSolid}) no-repeat;
+  background-size: contain;
+  background-position: 50%;
+  width: 1.25rem;
+  height: 1.25rem;
   &:hover {
-    cursor: pointer;
-    text-decoration: underline;
-  }
-  &::before {
-    content: '';
-    display: block;
-    position: absolute;
-    top:50%;
-    left:0;
-    transform: translateY(-50%);
-    background: url(${EyeSolid});
-    background-size: contain;
-    background-position: 50%;
-    background-repeat: no-repeat;
-    width: 1.25rem;
-    height: 1.25rem;
+    background: url(${EyeSolidRed}) no-repeat ;
   }
 `;
 
@@ -224,7 +205,7 @@ const ErrorMessage = Styled.span`
   padding: 0.1rem;
   color: red;
   font-size: 0.8rem;
-`
+`;
 
 export {
   NewsStandWrapper,
