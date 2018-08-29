@@ -59,6 +59,7 @@ const ArticleCardWrapper = Styled.div<{ size?: Size }>`
   position: relative;
   flex-grow: 1;
   //flex-basis: ${p => (p.size === Size.COZY ? "270px" : "220px")};
+  transition: all 2s linear;
 `;
 
 const CardTitle = Styled.div<{ size?: Size }>`
@@ -113,7 +114,7 @@ const CardImage = Styled.img<{ thumbnailUrl?: string; size?: Size }>`
   cursor: pointer;
   width: 100%;
   object-fit: cover;
-  object-position: 50% 0;
+  object-position: 50% 50%;
   &:hover {
     filter: brightness(1.1) sepia(0.15) grayscale(30%);
   }

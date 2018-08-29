@@ -108,12 +108,8 @@ const ArticleCard: React.SFC<IArticleCard> = ({
           ) : null}
 
           <ImageWrapper size={size}>
-            {/* <CardImage
-              thumbnailUrl={imageLoaded && !!imgUrl ? imgUrl : ""}
-              size={size}
-            /> */}
-            {imageLoaded && !!imgUrl ? <CardImage size={size} src={imgUrl}/> : <BlankImage />}
-            {/* <CardImage src={imageLoaded && !!imgUrl ? imgUrl : BlankImage} size={size} /> */}
+            {imageLoaded && !!imgUrl ? 
+              <CardImage size={size} src={imgUrl}/> : <BlankImage />}
             {!imageLoaded ? (
               <Loader start={true} size={LoaderSize.SMALL} stop={false} />
             ) : null}
@@ -123,14 +119,12 @@ const ArticleCard: React.SFC<IArticleCard> = ({
 
       <CardTitle size={size}>
         <TitleAnchor href={articleUrl} target="_new" title={title}>
-          {title ? <Truncate lines={0}>{title}</Truncate> : null}
-
-          {/* {title} */}
+          {title ? <span>{title}</span> : null}
         </TitleAnchor>
       </CardTitle>
 
       <CardDescription size={size}>
-        {description ? <Truncate lines={4}>{description}</Truncate> : null}
+        {description ? <span>{description}</span> : null}
       </CardDescription>
     </ArticleCardWrapper>
   );

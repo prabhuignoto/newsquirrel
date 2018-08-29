@@ -8,7 +8,7 @@ const Filters = Styled.ul`
 const FiltersWrapper = Styled.div`
   width: 100%;
   background: #2B2D42;
-  padding-left: 2rem;
+  padding: 0.75rem;
 `;
 
 const Filter = Styled.li<{selected: boolean}>`
@@ -16,6 +16,7 @@ const Filter = Styled.li<{selected: boolean}>`
   text-transform: capitalize;
   > a {
     color: ${p => p.selected ? '#EF233C !important' : '#EDF2F4'};
+    border-bottom: none !important;
     &:hover {
       color: #EF233C;
     }
