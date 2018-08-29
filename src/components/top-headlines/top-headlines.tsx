@@ -15,14 +15,21 @@ const TopHeadlines: React.SFC<ITopHeadlines> = ({appMode}) => {
       <FilterWrapper>
         <Filters />
       </FilterWrapper>
-      <Toolbar appMode={appMode}>
-        <AppModeWrapper>
-          <DarkMode />
-        </AppModeWrapper>
-        <SortbyWrapper>
-          <Sortby />
-        </SortbyWrapper>
-        <NewsStandSizer />
+      <Toolbar appMode={appMode} className="columns is-multiline">
+        <div className="column is-2-desktop is-hidden-touch"/>
+        <div className="column is-12-mobile is-4-tablet is-3-desktop">
+          <AppModeWrapper>
+            <DarkMode />
+          </AppModeWrapper>
+        </div>
+        <div className="column is-12-mobile is-4-tablet is-3-desktop">
+          <SortbyWrapper>
+            <Sortby />
+          </SortbyWrapper>
+        </div>
+        <div className="column is-12-mobile is-4-tablet is-4-desktop">
+          <NewsStandSizer />
+        </div>
       </Toolbar>
       <NewsStand />
       <DarkModeBackdrop show={appMode.value === AppMode.DARK ? 1 : 0} />

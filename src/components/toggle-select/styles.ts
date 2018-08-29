@@ -32,6 +32,7 @@ const Wrapper = Styled.div<{size: Size}>`
   padding: 0.25rem 0.5rem;
   border-radius: 2px;
   box-shadow: 0px 3px 1px rgba(0,0,0,0.2);
+  width: 100%;
 `;
 
 const Label = Styled.div<{size?: Size, label: string}>`
@@ -51,10 +52,9 @@ const Label = Styled.div<{size?: Size, label: string}>`
 const List = Styled.ul`
   list-style: none;
   margin: 0;
-  /* width: 100%; */
+  width: 100%;
   display: flex;
   flex-direction: row;
-  margin-left: 0.25rem;
 `;
 
 const ListItem = Styled.li<{selected: boolean,size: Size, theme?: string}>`
@@ -81,6 +81,7 @@ const ListItem = Styled.li<{selected: boolean,size: Size, theme?: string}>`
     color: ${p => p.size === Size.SMALL && !p.selected ? '#EF233C' : ''};
   }
   outline: none;
+  flex: 1;
 `;
 
 const IconWrapper = Styled.div`

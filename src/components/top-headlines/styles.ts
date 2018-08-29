@@ -19,13 +19,13 @@ const FilterWrapper = Styled.div`
 `;
 
 const AppModeWrapper = Styled.div`
-  margin-right: 2.5rem;
+  /* margin-right: 2.5rem; */
 `;
 
 const Toolbar = Styled.div<{appMode: IAppMode}>`
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   width: 100%;
   padding: 1rem;
   // background-color: ${p => p.appMode.value === AppMode.DARK ? '#000' : '#fff'};
@@ -33,7 +33,7 @@ const Toolbar = Styled.div<{appMode: IAppMode}>`
   margin-top: 1rem;
 `
 const SortbyWrapper = Styled.div`
-  margin-right: 2.5rem;
+  /* margin-right: 2.5rem; */
 `;
 
 
