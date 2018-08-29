@@ -1,4 +1,6 @@
 import Styled from 'styled-components';
+import { AppMode } from './../../enums/appMode';
+import { IAppMode } from './../../models/view/IAppState';
 
 const Wrapper = Styled.div`
   display: flex;
@@ -16,21 +18,41 @@ const FilterWrapper = Styled.div`
   justify-content: flex-end;
 `;
 
-const Toolbar = Styled.div`
-  /* background: linear-gradient(to right, rgba(43,45,66,1) 0%, rgba(62,64,83,1) 54%, rgba(43,45,66,1) 100%); */
-  /* padding: 0.5rem 0.5rem 0 0; */
+const AppModeWrapper = Styled.div`
+  margin-right: 2.5rem;
+`;
+
+const Toolbar = Styled.div<{appMode: IAppMode}>`
   display: flex;
   align-items: center;
   justify-content: flex-end;
   width: 100%;
-  padding: 0.75rem;
+  padding: 1rem;
+  // background-color: ${p => p.appMode.value === AppMode.DARK ? '#000' : '#fff'};
+  transition: background-color 0.5s;
+  margin-top: 1rem;
 `
 const SortbyWrapper = Styled.div`
   margin-right: 2.5rem;
 `;
+
+
+const DarkModeBackdrop = Styled.div<{show: number}>`
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: -1;
+  top: 0px;
+  opacity: ${p => p.show === 1 ? 1 : 0};
+  visibility: ${p => p.show === 1 ? 'visible' : 'hidden'};
+  transition: all 0.5s;
+`
 export {
   Wrapper,
   FilterWrapper,
   Toolbar,
   SortbyWrapper,
+  AppModeWrapper,
+  DarkModeBackdrop,
 }

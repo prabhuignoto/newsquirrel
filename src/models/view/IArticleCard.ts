@@ -1,4 +1,5 @@
 import NewsStandSize from "../../enums/newsStandSize";
+import { IAppMode } from './IAppState';
 
 export interface IArticleCard {
   id: string;
@@ -16,4 +17,5 @@ export interface IArticleCard {
   showArticle?: (url: string) => void;
   checkArticle?: (url: string) => void;
   canEmbedInFrame?: boolean;
+  appMode: IAppMode
 }

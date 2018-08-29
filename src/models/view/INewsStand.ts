@@ -1,4 +1,5 @@
 import NewsStandSize from '../../enums/newsStandSize';
+import { IAppMode } from './IAppState';
 import { IArticleCard } from './IArticleCard';
 
 export interface INewsStand{
@@ -10,4 +11,5 @@ export interface INewsStand{
   onQuickViewLoadComplete: () => void;
   onError: () => void;
   quickViewLoading: boolean;
+  appMode: IAppMode;
 }

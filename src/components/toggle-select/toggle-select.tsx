@@ -1,7 +1,11 @@
 import * as React from 'react';
 
-import { IToggleItem, IToggleSelect } from '../../models/view/IToggleSelect';
-import { Label, List, ListItem, Wrapper } from './styles';
+import { IToggleItem, IToggleSelect, ToggleType } from '../../models/view/IToggleSelect';
+import Clock from './assets/clock-solid.svg';
+import Moon from './assets/moon-solid.svg';
+import Smile from './assets/smile-beam-solid.svg';
+
+import { IconWrapper, Label, List, ListItem, Wrapper } from './styles';
 
 const handler = function _handler(fn: (name: string, value: string) => void, name: string, value: string) {
   return function oHandler(ev: React.MouseEvent<HTMLLIElement>) {
@@ -20,10 +24,15 @@ const ToggleItem: React.SFC<IToggleItem> = ({ name, value, onToggle, selected, s
   >{name}</ListItem>
 );
 
-const ToggleSelect: React.SFC<IToggleSelect> = ({ label, items, onToggle, size, theme }) => {
+const ToggleSelect: React.SFC<IToggleSelect> = ({ label, items, onToggle, size, theme, type }) => {
   return (
     <Wrapper size={size} data-testid="rt-toggle-select">
       <Label size={size} label={label}>{label}</Label>
+      <IconWrapper>
+        {type === ToggleType.APP_MODE ? <Moon /> : null}
+        {type === ToggleType.RESIZER ? <Smile /> : null}
+        {type === ToggleType.SORT_ARTICLES ? <Clock /> : null}
+      </IconWrapper>
       <List>
         {
           items.map<React.ReactElement<IToggleItem>>(

@@ -2,7 +2,7 @@ import Styled from "styled-components";
 
 const Filters = Styled.ul`
   display: flex;
-  border-bottom: none !important;
+  border-bottom: transparent !important;
 `;
 
 const FiltersWrapper = Styled.div`
@@ -16,7 +16,7 @@ const Filter = Styled.li<{selected: boolean}>`
   text-transform: capitalize;
   > a {
     color: ${p => p.selected ? '#EF233C !important' : '#EDF2F4'};
-    border-bottom: none !important;
+    border-bottom: transparent !important;
     &:hover {
       color: #EF233C;
     }

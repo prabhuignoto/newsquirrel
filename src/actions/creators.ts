@@ -2,7 +2,9 @@ import NewsStandSize from '../enums/newsStandSize';
 import ReadingMode from '../enums/readingMode';
 import { IFilter } from '../models/data/IFilter';
 import { ISortBy } from '../models/view/IAppState';
+import { AppMode } from './../enums/appMode';
 import { IDateFilter } from './../models/data/IDateFilter';
+import { IAppMode } from './../models/view/IAppState';
 import { Constants } from './constants';
 import {
   IChangeNewsStandSize,
@@ -127,5 +129,12 @@ export function sortArticlesByTime(dir: string) {
   return {
     dir,
     type: Constants.SORT_ARTICLES_BY_TIME,
+  }
+}
+
+export function updateAppMode(mode: IAppMode) {
+  return {
+    mode,
+    type: Constants.UPDATE_APP_MODE,
   }
 }

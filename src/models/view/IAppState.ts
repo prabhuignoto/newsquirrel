@@ -1,4 +1,5 @@
 import { AxiosResponse } from 'axios';
+import { AppMode } from './../../enums/appMode';
 
 import NewsStandSize from '../../enums/newsStandSize';
 import ReadingMode from '../../enums/readingMode';
@@ -29,6 +30,11 @@ export interface ISortBy {
   value: string;
 }
 
+export interface IAppMode{
+  name: string;
+  value: AppMode;
+}
+
 export interface IOptionsState {
   pageSize: number;
   activePage: number;
@@ -44,6 +50,8 @@ export interface IOptionsState {
   dateFilter: IDateFilter;
   detailedPaneOpen: boolean;
   detailedArticleUrl: string;
+  defaultAppMode: IAppMode;
+  availableAppModes: IAppMode[];
 }
 
 export interface IAppState {

@@ -13,10 +13,11 @@ const NewsStand: React.SFC<INewsStand> = ({
   closeQuickView,
   onQuickViewLoadComplete,
   quickViewLoading,
-  onError
+  onError,
+  appMode
 }) => {
   return (
-    <NewsStandWrapper>
+    <NewsStandWrapper appMode={appMode}>
       {articleCards.length < 1 ? (
         <LoadingText>Loading News ...</LoadingText>
       ) :

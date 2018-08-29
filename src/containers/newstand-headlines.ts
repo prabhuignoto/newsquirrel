@@ -13,10 +13,11 @@ import NewsStand from "../components/news-stand/news-stand";
 import { IAppState } from "../models/view/IAppState";
 
 const mapsStateToProps = (state: IAppState) => ({
+  appMode: state.options.defaultAppMode,
   articleCards: state.news.topHeadlines,
   country: state.news.selectedCountry,
   detailedArticleUrl: state.options.detailedArticleUrl,
-  detailedPaneOpen: state.options.detailedPaneOpen
+  detailedPaneOpen: state.options.detailedPaneOpen,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({

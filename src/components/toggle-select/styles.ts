@@ -22,12 +22,16 @@ function getForeColor(theme: string) {
 
 const Wrapper = Styled.div<{size: Size}>`
   display: flex;
-  align-items: flex-start;
-  flex-direction: column;
+  align-items: center;
+  flex-direction: row;
   justify-content: flex-start;
   // margin: 0.2rem 0.75rem;
   padding: 0.25rem 0.5rem;
   border-radius: ${p => p.size === Size.SMALL ? '3px': ''};
+  background: #EDF2F4;
+  padding: 0.25rem 0.5rem;
+  border-radius: 2px;
+  box-shadow: 0px 3px 1px rgba(0,0,0,0.2);
 `;
 
 const Label = Styled.div<{size?: Size, label: string}>`
@@ -79,9 +83,18 @@ const ListItem = Styled.li<{selected: boolean,size: Size, theme?: string}>`
   outline: none;
 `;
 
+const IconWrapper = Styled.div`
+  position: relative;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.5rem;
+  margin-left: 0.2rem;
+`
+
 export {
   Wrapper,
   Label,
   List,
-  ListItem
+  ListItem,
+  IconWrapper,
 }

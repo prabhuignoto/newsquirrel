@@ -10,6 +10,7 @@ import { IArticleCard } from '../models/view/IArticleCard';
 
 
 const mapStateToProps = (state: IAppState) => ({
+  appMode: state.options.defaultAppMode,
   size: state.options.newsStandSize
 });
 

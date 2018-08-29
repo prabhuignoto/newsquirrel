@@ -7,6 +7,7 @@ import ToggleSelect from '../components/toggle-select/toggle-select';
 import toggleSelectSize from '../enums/toggleSelectSize';
 import { IDateFilter } from '../models/data/IDateFilter';
 import { IAppState, ISortBy } from './../models/view/IAppState';
+import { ToggleType } from '../models/view/IToggleSelect';
 
 interface IOption {
   name: string;
@@ -72,6 +73,7 @@ export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   withStateHandlers<ILocalState, IStateHandlers<ILocalState>>(initialState, stateHandlers),
   defaultProps({
-    size: toggleSelectSize.SMALL
+    size: toggleSelectSize.SMALL,
+    type: ToggleType.SORT_ARTICLES
   })
 )(ToggleSelect)

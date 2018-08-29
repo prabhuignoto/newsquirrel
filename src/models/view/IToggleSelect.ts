@@ -15,4 +15,11 @@ export interface IToggleSelect {
   size: ToggleSelectSize;
   onToggle: (name: string) => void;
   theme: string;
+  type?: ToggleType;
+}
+
+export enum ToggleType {
+  APP_MODE = 1,
+  SORT_ARTICLES = 2,
+  RESIZER = 3,
 }

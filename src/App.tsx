@@ -3,7 +3,7 @@ import './App.css';
 
 import * as React from 'react';
 
-import Footer from './components/footer/footer';
+import Footer from './containers/footer';
 import Home from './containers/home';
 import Navbar from './containers/navbar';
 

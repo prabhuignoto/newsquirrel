@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import TopHeadlines from '../../components/top-headlines/top-headlines';
 import SearchResults from '../../containers/search-results';
+import TopHeadlines from '../../containers/top-headlines';
 import ReadingMode from '../../enums/readingMode';
 import { IHome } from '../../models/view/IHome';
 import { Wrapper } from './styles';

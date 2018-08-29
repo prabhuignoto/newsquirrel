@@ -1,13 +1,16 @@
 import * as React from 'react';
 import Styled from 'styled-components';
+import { AppMode } from '../../enums/appMode';
+import { IAppMode } from '../../models/view/IAppState';
+import IFooter from '../../models/view/IFooter';
 
-const Wrapper = Styled.footer`
+const Wrapper = Styled.footer<{appMode: IAppMode}>`
   display: flex;
   width: 100%;
   height: 10rem;
   align-items: center;
+  color: ${p => p.appMode.value === AppMode.DARK? '#EDF2F4' : '#2B2D42'};
   justify-content: space-evenly;
-  color: #2B2D42;
   /* padding-bottom: 3rem; */
   flex-wrap: wrap;
   font-size: 0.9rem;
@@ -37,9 +40,9 @@ const DesignedBy = Styled.div`
   display: flex;
 `
 
-const Footer = () => {
+const Footer: React.SFC<IFooter> = ({appMode}) => {
   return (
-    <Wrapper data-testid="rt-footer">
+    <Wrapper data-testid="rt-footer" appMode={appMode}>
       <Social>
         <a href="https://twitter.com/prabhumurthy2" target="new">
           <Img height="20" width="20" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/twitter.svg" />

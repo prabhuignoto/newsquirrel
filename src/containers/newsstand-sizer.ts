@@ -7,6 +7,7 @@ import ToggleSelect from '../components/toggle-select/toggle-select';
 import NewsStandSize from '../enums/newsStandSize';
 import toggleSelectSize from '../enums/toggleSelectSize';
 import { IAppState } from '../models/view/IAppState';
+import { ToggleType } from '../models/view/IToggleSelect';
 
 const mapStateToProps = (state: IAppState) => ({
   newsStandSize: state.options.newsStandSize
@@ -78,6 +79,7 @@ export default compose(
   withStateHandlers<ILocalState, IStateHandlers<ILocalState>>(initialState, stateHandlers),
   defaultProps({
     // label: 'Display density',
-    size: toggleSelectSize.SMALL
+    size: toggleSelectSize.SMALL,
+    type: ToggleType.RESIZER,
   })
 )(ToggleSelect);

@@ -1,7 +1,6 @@
 import { DateTime } from "luxon";
 import { Fragment } from "react";
 import * as React from "react";
-import Truncate from "react-truncate";
 import * as uniqid from "uniqid";
 
 import LoaderSize from "../../enums/loaderSize";
@@ -66,11 +65,12 @@ const ArticleCard: React.SFC<IArticleCard> = ({
   imageLoaded,
   showArticle,
   checkArticle,
-  canEmbedInFrame
+  canEmbedInFrame,
+  appMode,
 }) => {
   return (
     <ArticleCardWrapper size={size} key={uniqid()}>
-      <Publisher size={size}>
+      <Publisher size={size} appMode={appMode}>
         <PublishDate dateTime={publishedAt}>
           {DateTime.fromISO(publishedAt).toLocaleString(
             DateTime.DATETIME_SHORT
@@ -78,13 +78,13 @@ const ArticleCard: React.SFC<IArticleCard> = ({
         </PublishDate>
         {/* <PublishedBy>{source}</PublishedBy> */}
         <Controls>
-          {typeof canEmbedInFrame === "undefined" ? (
+          {/* {typeof canEmbedInFrame === "undefined" ? (
             <CheckPreview
               onClick={handleCheckArticle(articleUrl, id, checkArticle)}
             >
               <EyeSolid />
             </CheckPreview>
-          ) : null}
+          ) : null} */}
           {canEmbedInFrame === false ? (
             <ErrorMessage>Failed to load the preview</ErrorMessage>
           ) : null}
@@ -109,7 +109,7 @@ const ArticleCard: React.SFC<IArticleCard> = ({
 
           <ImageWrapper size={size}>
             {imageLoaded && !!imgUrl ? 
-              <CardImage size={size} src={imgUrl}/> : <BlankImage />}
+              <CardImage size={size} src={imgUrl} appMode={appMode}/> : <BlankImage />}
             {!imageLoaded ? (
               <Loader start={true} size={LoaderSize.SMALL} stop={false} />
             ) : null}
@@ -117,8 +117,8 @@ const ArticleCard: React.SFC<IArticleCard> = ({
         </Fragment>
       ) : null}
 
-      <CardTitle size={size}>
-        <TitleAnchor href={articleUrl} target="_new" title={title}>
+      <CardTitle size={size} appMode={appMode}>
+        <TitleAnchor appMode={appMode} href={articleUrl} target="_new" title={title}>
           {title ? <span>{title}</span> : null}
         </TitleAnchor>
       </CardTitle>

@@ -2,6 +2,7 @@ import * as DateFNS from "date-fns";
 
 import { Constants } from "../actions/constants";
 import { ISearchNewsAPI } from "../actions/types";
+import { AppMode } from "../enums/appMode";
 import NewsStandSize from "../enums/newsStandSize";
 import { IFilter } from "../models/data/IFilter";
 import { IOptionsState } from "../models/view/IAppState";
@@ -10,6 +11,16 @@ import DefaultCountries from "../settings/countries";
 
 const defaultState: IOptionsState = {
   activePage: 1,
+  availableAppModes: [
+    {
+      name: "Day Mode",
+      value: AppMode.LIGHT
+    },
+    {
+      name: "Night Mode",
+      value: AppMode.DARK
+    }
+  ],
   currentlySortingBy: {
     name: "Relevance",
     value: "relevancy"
@@ -17,6 +28,10 @@ const defaultState: IOptionsState = {
   dateFilter: {
     from: DateFNS.startOfToday(),
     to: DateFNS.endOfToday()
+  },
+  defaultAppMode: {
+    name: "Day Mode",
+    value: AppMode.LIGHT
   },
   defaultCategories: DefaultCategories,
   defaultCountries: DefaultCountries,
@@ -41,7 +56,7 @@ const defaultState: IOptionsState = {
       name: "Newest First",
       value: "publishedAt"
     }
-  ],
+  ]
 };
 
 export default function optionsReducer(
@@ -96,6 +111,10 @@ export default function optionsReducer(
       return Object.assign({}, state, {
         detailedPaneOpen: false
       });
+    case Constants.UPDATE_APP_MODE:
+      return Object.assign({}, state, {
+        defaultAppMode: action.mode
+      })
     default:
       return state;
       break;
