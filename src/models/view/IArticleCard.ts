@@ -17,5 +17,7 @@ export interface IArticleCard {
   showArticle?: (url: string) => void;
   checkArticle?: (url: string) => void;
   canEmbedInFrame?: boolean;
-  appMode: IAppMode
+  appMode?: IAppMode;
+  quickViewUrl?: string;
+  openQuickView: boolean;
 }

@@ -2,7 +2,7 @@ import { DateTime } from "luxon";
 import { Fragment } from "react";
 import * as React from "react";
 import * as uniqid from "uniqid";
-
+import QuickView from '../../containers/quickview';
 import LoaderSize from "../../enums/loaderSize";
 import Size from "../../enums/newsStandSize";
 import { IArticleCard } from "../../models/view/IArticleCard";
@@ -21,8 +21,8 @@ import {
   ImageWrapper,
   PreviewArticle,
   PublishDate,
-  // PublishedBy,
   Publisher,
+  QuickviewWrapper,
   StubImage,
   TitleAnchor
 } from "./styles";
@@ -67,6 +67,8 @@ const ArticleCard: React.SFC<IArticleCard> = ({
   checkArticle,
   canEmbedInFrame,
   appMode,
+  quickViewUrl,
+  openQuickView
 }) => {
   return (
     <ArticleCardWrapper size={size} key={uniqid()}>
@@ -78,13 +80,13 @@ const ArticleCard: React.SFC<IArticleCard> = ({
         </PublishDate>
         {/* <PublishedBy>{source}</PublishedBy> */}
         <Controls>
-          {/* {typeof canEmbedInFrame === "undefined" ? (
+          {typeof canEmbedInFrame === "undefined" ? (
             <CheckPreview
               onClick={handleCheckArticle(articleUrl, id, checkArticle)}
             >
               <EyeSolid />
             </CheckPreview>
-          ) : null} */}
+          ) : null}
           {canEmbedInFrame === false ? (
             <ErrorMessage>Failed to load the preview</ErrorMessage>
           ) : null}
@@ -126,6 +128,10 @@ const ArticleCard: React.SFC<IArticleCard> = ({
       <CardDescription size={size}>
         {description ? <span>{description}</span> : null}
       </CardDescription>
+      {openQuickView && quickViewUrl === articleUrl ? 
+        <QuickviewWrapper>
+          <QuickView key={uniqid()}/>
+        </QuickviewWrapper> : null}
     </ArticleCardWrapper>
   );
 };

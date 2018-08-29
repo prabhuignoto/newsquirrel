@@ -12,6 +12,7 @@ const NewsStandWrapper = Styled.div<{appMode: IAppMode}>`
   padding: 0  0 2rem 0;
   width: 100%;
   transition: background-color 0.5s;
+  position: relative;
 `;
 
 const SortByWrapper = Styled.div`
@@ -64,7 +65,7 @@ const ArticleCardWrapper = Styled.div<{ size?: Size }>`
   transition: all 2s linear;
 `;
 
-const CardTitle = Styled.div<{ size?: Size; appMode: IAppMode}>`
+const CardTitle = Styled.div<{ size?: Size; appMode?: IAppMode}>`
   display: flex;
   font-size: ${p => {
     switch (p.size) {
@@ -91,8 +92,8 @@ const CardTitle = Styled.div<{ size?: Size; appMode: IAppMode}>`
   width: 100%;
 `;
 
-const TitleAnchor = Styled.a<{appMode: IAppMode}>`
-  color: ${p => p.appMode.value === AppMode.DARK ? '#747E8F' : '#2B2D42'};
+const TitleAnchor = Styled.a<{appMode?: IAppMode}>`
+  color: ${p => p.appMode!.value === AppMode.DARK ? '#747E8F' : '#2B2D42'};
 `;
 
 const StubImage = Styled.img`
@@ -107,7 +108,7 @@ const ImageWrapper = Styled.figure<{ size?: Size }>`
   display: block;
 `;
 
-const CardImage = Styled.img<{ thumbnailUrl?: string; size?: Size; appMode: IAppMode }>`
+const CardImage = Styled.img<{ thumbnailUrl?: string; size?: Size; appMode?: IAppMode }>`
   height: ${p => (p.size === Size.COMPACT ? "120px" : "100%")};
   display: block;
   padding: 0.1rem;
@@ -116,8 +117,8 @@ const CardImage = Styled.img<{ thumbnailUrl?: string; size?: Size; appMode: IApp
   cursor: pointer;
   width: 100%;
   object-fit: cover;
-  object-position: 50% 50%;
-  filter: ${p => p.appMode.value === AppMode.DARK ? 'grayscale(90%)' : ''};
+  object-position: 50% 0%;
+  filter: ${p => p.appMode!.value === AppMode.DARK ? 'grayscale(90%)' : ''};
   &:hover {
     filter: brightness(1.1) sepia(0.15) grayscale(30%);
   }
@@ -141,7 +142,7 @@ const CardDescription = Styled.div<{ size?: Size }>`
   color: #747E8F;
 `;
 
-const Publisher = Styled.div<{ size?: Size; appMode: IAppMode}>`
+const Publisher = Styled.div<{ size?: Size; appMode?: IAppMode}>`
   display: ${p => (p.size === Size.COZY ? "flex" : "none")};
   align-items: center;
   justify-content: center;
@@ -149,7 +150,7 @@ const Publisher = Styled.div<{ size?: Size; appMode: IAppMode}>`
   /* margin-bottom: 0.5rem; */
   font-size: 0.75rem;
   height: 45px;
-  background-color: ${p => p.appMode.value === AppMode.DARK ? '#000' : '#EDF2F4'};
+  background-color: ${p => p.appMode!.value === AppMode.DARK ? '#000' : '#EDF2F4'};
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 `;
@@ -171,7 +172,7 @@ const PublishDate = Styled.time`
 `;
 
 const CheckPreview = Styled.a`
-  margin-right: 0.5rem;
+  margin-right: 1rem;
   padding-left: 1.5rem;
   width: 1.25rem;
   height: 1.25rem;
@@ -201,6 +202,24 @@ const ErrorMessage = Styled.span`
   font-size: 0.8rem;
 `;
 
+const QuickviewWrapper = Styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 4px;
+  padding: 1.5rem;
+  width: 600px;
+  height: 600px;
+  z-index: 10;
+  box-shadow: 0 0 10px 1px rgba(0,0,0,0.25);
+`;
+
+
 export {
   NewsStandWrapper,
   ArticleCardWrapper,
@@ -219,5 +238,6 @@ export {
   CheckPreview,
   PreviewArticle,
   Controls,
-  ErrorMessage
+  ErrorMessage,
+  QuickviewWrapper
 };

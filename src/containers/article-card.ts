@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { compose, mapProps, StateHandler, StateHandlerMap, withStateHandlers } from 'recompose';
 
 import { Dispatch } from 'redux';
-import { canLoadUrlInIframe, closeArticle, showArticle } from '../actions/creators';
+import { canLoadUrlInIframe, closeArticle, getIFramelyData } from '../actions/creators';
 import ArticleCard from '../components/news-stand/article-card';
 import NewsStandSize from '../enums/newsStandSize';
 import { IAppState } from '../models/view/IAppState';
@@ -11,13 +11,15 @@ import { IArticleCard } from '../models/view/IArticleCard';
 
 const mapStateToProps = (state: IAppState) => ({
   appMode: state.options.defaultAppMode,
-  size: state.options.newsStandSize
+  openQuickView: state.news.quickViewEnabled,
+  quickViewUrl: state.news.quickViewUrl,
+  size: state.options.newsStandSize,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   checkArticleUrl: (id: string, url: string) => dispatch(canLoadUrlInIframe(id, url)),
   closeDetailedArticle: () => dispatch(closeArticle()),
-  showDetailedArticle: (url: string) => dispatch(showArticle(url)),
+  showDetailedArticle: (url: string) => dispatch(getIFramelyData(url)),
 });
 
 interface ILocalState {
@@ -39,8 +41,8 @@ const initialState = ({imageLoaded = false, thumbnailUrl}: ILocalState) => ({
 });
 
 const stateHandlers = {
-  checkArticle: (state: any, {checkArticleUrl}: IProps) => (url: string, id: string) => {
-    checkArticleUrl(id, url);
+  checkArticle: (state: any, {checkArticleUrl, showDetailedArticle}: IProps) => (url: string, id: string) => {
+    showDetailedArticle(url);
     return {};
   },
   closeArticle: (state: ILocalState, {closeDetailedArticle}: IProps) => () => {

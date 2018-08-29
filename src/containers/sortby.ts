@@ -6,8 +6,8 @@ import { sortArticlesByTime } from '../actions/creators';
 import ToggleSelect from '../components/toggle-select/toggle-select';
 import toggleSelectSize from '../enums/toggleSelectSize';
 import { IDateFilter } from '../models/data/IDateFilter';
-import { IAppState, ISortBy } from './../models/view/IAppState';
 import { ToggleType } from '../models/view/IToggleSelect';
+import { IAppState, ISortBy } from './../models/view/IAppState';
 
 interface IOption {
   name: string;

@@ -3,17 +3,11 @@ import * as React from "react";
 import ArticleCard from "../../containers/article-card";
 import { IArticleCard } from "../../models/view/IArticleCard";
 import { INewsStand } from "../../models/view/INewsStand";
-import QuickView from "../quickview/quickview";
-import { ArticlesWrapper, LoadingText, NewsStandWrapper } from "./styles";
+import { ArticlesWrapper, LoadingText, NewsStandWrapper, QuickviewWrapper } from "./styles";
 
 const NewsStand: React.SFC<INewsStand> = ({
   articleCards,
   detailedPaneOpen,
-  detailedArticleUrl,
-  closeQuickView,
-  onQuickViewLoadComplete,
-  quickViewLoading,
-  onError,
   appMode
 }) => {
   return (
@@ -32,16 +26,6 @@ const NewsStand: React.SFC<INewsStand> = ({
             />
           ))}
       </ArticlesWrapper> }
-
-      {detailedPaneOpen ?
-        <QuickView
-          url={detailedArticleUrl}
-          onClose={closeQuickView}
-          onLoadComplete={onQuickViewLoadComplete}
-          quickViewLoading={quickViewLoading}
-          onError={onError}
-        />: null
-      }
     </NewsStandWrapper>
   );
 };

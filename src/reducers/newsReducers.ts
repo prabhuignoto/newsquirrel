@@ -1,8 +1,8 @@
 import * as _ from 'lodash';
-import { Constants } from '../actions/constants';
 import { INewsLoaded, ISwitchCountry, ISwitchNewsReadingMode } from '../actions/types';
 import ReadingMode from '../enums/readingMode';
 import { INewsState } from '../models/view/IAppState';
+import { Constants } from './../actions/constants';
 import { ILoadingNewsFailed } from './../actions/types';
 
 const defaultState: INewsState = {
@@ -14,6 +14,10 @@ const defaultState: INewsState = {
   headlinesCount: 0,
   isAppBusy: false,
   newsArticles: [],
+  quickViewData: {},
+  quickViewEnabled: false,
+  quickViewLoading: false,
+  quickViewUrl: '',
   readingMode: ReadingMode.TOP_HEADLINES,
   searchResultsCount: 0,
   selectedCountry: 'us',
@@ -107,6 +111,22 @@ export default function newsReducer(state = defaultState, action: ISwitchNewsRea
           state.topHeadlines,
           ['publishedAt'],
           [action.dir === 'newest' ? 'desc' : 'asc'])
+      })
+    case Constants.SEND_IFRAMELY_REQUEST:
+      return Object.assign({}, state, {
+        quickViewData: {},
+        quickViewEnabled: true,
+        quickViewLoading: true,
+        quickViewUrl: action.url,
+      })
+    case Constants.IFRAMELY_REQUEST_RECEIVED:
+      return Object.assign({}, state, {
+        quickViewData: action.data,
+        quickViewLoading: false
+      })
+    case Constants.CLOSE_QUICKVIEW:
+      return Object.assign({}, state, {
+        quickViewEnabled: false,
       })
     default:
       return state;

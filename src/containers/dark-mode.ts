@@ -4,9 +4,9 @@ import { Dispatch } from 'redux';
 import { updateAppMode } from '../actions/creators';
 import ToggleSelect from '../components/toggle-select/toggle-select';
 import toggleSelectSize from '../enums/toggleSelectSize';
+import { ToggleType } from '../models/view/IToggleSelect';
 import { AppMode } from './../enums/appMode';
 import { IAppMode, IAppState } from './../models/view/IAppState';
-import { ToggleType } from '../models/view/IToggleSelect';
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   switchMode: (mode: IAppMode) => dispatch(updateAppMode(mode))

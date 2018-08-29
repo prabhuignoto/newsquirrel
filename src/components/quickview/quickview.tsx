@@ -1,29 +1,53 @@
-import * as React from 'react'
-// import LoaderSize from '../../enums/loaderSize';
-import { IQuickView } from '../../models/view/IQuickView';
-// import Loader from '../loader/loader';
-import {CloseButton, Header, HeaderText, IFrameContent, Wrapper} from './styles';
+import { DateTime } from "luxon";
+import * as React from "react";
+import { Fragment } from "react";
+import { IQuickView } from "../../models/view/IQuickView";
+import SpinnerSVG from './assets/spinner.svg';
+import CloseSvg from "./assets/times-circle-solid.svg";
+import {
+  CloseBtn,
+  Date,
+  Description,
+  Logo,
+  SpinnerWrapper,
+  Thumbnail,
+  Title,
+  Wrapper
+} from "./styles";
 
-const QuickView:React.SFC<IQuickView> = ({url, onClose, onLoadComplete, onError}) => {
+const QuickView: React.SFC<IQuickView> = ({
+  date,
+  description,
+  site,
+  thumbnailURL,
+  title,
+  logoURL,
+  closeQuickView,
+  open,
+  quickViewLoading
+}) => {
+  const dateLux = date
+    ? DateTime.fromISO(date).toLocaleString(DateTime.DATETIME_MED)
+    : "";
   return (
-    <Wrapper>
-      <Header>
-        <HeaderText>QuickViewer</HeaderText>
-        <CloseButton onClick={onClose}>Close</CloseButton>
-      </Header>
-      <IFrameContent>
-        <iframe
-          src={url}
-          width="95%"
-          height="95%"
-          sandbox="allow-scripts"
-          onLoad={onLoadComplete}
-          onError={onError}
-        />
-      </IFrameContent>
-    </Wrapper>
-  )
-}
+    <Fragment>
+      {open ? (
+        <Wrapper>
+          {logoURL ? <Logo src={logoURL} /> : null}
+          {dateLux ? <Date>{dateLux}</Date> : null}
+          <Title>{title}</Title>
+          <Thumbnail src={thumbnailURL} />
+          <Description>{description}</Description>
+          <CloseBtn onClick={closeQuickView}>
+            <CloseSvg />
+          </CloseBtn>
+          {quickViewLoading ? <SpinnerWrapper>
+            <SpinnerSVG />
+          </SpinnerWrapper> : null}
+        </Wrapper>
+      ) : null}
+    </Fragment>
+  );
+};
 
 export default QuickView;
-

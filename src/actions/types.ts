@@ -3,8 +3,9 @@ import NewsStandSize from '../enums/newsStandSize';
 import ReadingMode from '../enums/readingMode';
 import { IDateFilter } from '../models/data/IDateFilter';
 import { IFilter } from '../models/data/IFilter';
-import { ISortBy } from '../models/view/IAppState';
+import { IFrameData, ISortBy } from '../models/view/IAppState';
 import { IArticleCard } from '../models/view/IArticleCard';
+import { IQuickView } from '../models/view/IQuickView';
 
 export interface IBase {
   type: string;
@@ -62,6 +63,14 @@ export interface ISearchNewsAPI extends IBase {
   },
   page: number;
   dateFilter: IDateFilter
+}
+
+export interface ISendFramelyRequest extends IBase {
+  url: string;
+}
+
+export interface IRecvdFramelyRequestAction extends IBase {
+  data: IQuickView;
 }
 
 export interface ISortByAction extends IBase {
