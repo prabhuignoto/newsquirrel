@@ -122,3 +122,10 @@ export function canLoadUrlInIframe(id: string, url: string) {
     url,
   }
 }
+
+export function sortArticlesByTime(dir: string) {
+  return {
+    dir,
+    type: Constants.SORT_ARTICLES_BY_TIME,
+  }
+}

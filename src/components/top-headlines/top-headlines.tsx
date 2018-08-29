@@ -3,7 +3,8 @@ import * as React from 'react';
 import Filters from '../../containers/filters';
 import NewsStandSizer from '../../containers/newsstand-sizer';
 import NewsStand from '../../containers/newstand-headlines';
-import { FilterWrapper, NewsStandWrapper, Wrapper } from './styles';
+import Sortby from '../../containers/sortby';
+import { FilterWrapper, SortbyWrapper, Toolbar, Wrapper } from './styles';
 
 const TopHeadlines = () => {
   return (
@@ -11,9 +12,12 @@ const TopHeadlines = () => {
       <FilterWrapper>
         <Filters />
       </FilterWrapper>
-      <NewsStandWrapper className="is-hidden-mobile">
+      <Toolbar className="is-hidden-mobile">
+        <SortbyWrapper>
+          <Sortby />
+        </SortbyWrapper>
         <NewsStandSizer />
-      </NewsStandWrapper>
+      </Toolbar>
       <NewsStand />
     </Wrapper>
   )

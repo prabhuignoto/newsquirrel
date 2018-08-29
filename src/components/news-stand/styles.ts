@@ -1,8 +1,6 @@
 import Styled from "styled-components";
 
 import Size from "../../enums/newsStandSize";
-import EyeSolidRed from "./assets/eye-solid-red.svg";
-import EyeSolid from "./assets/eye-solid.svg";
 
 const NewsStandWrapper = Styled.div`
   display: flex;
@@ -107,21 +105,19 @@ const ImageWrapper = Styled.figure<{ size?: Size }>`
 `;
 
 const CardImage = Styled.img<{ thumbnailUrl?: string; size?: Size }>`
-  width: 100%;
   height: ${p => (p.size === Size.COMPACT ? "120px" : "100%")};
   display: block;
   padding: 0.1rem;
   border-radius: 2px;
-  background: url(${p => p.thumbnailUrl});
-  background-position: 0% 50%;
-  background-repeat: no-repeat;
-  background-size: ${p => (p.thumbnailUrl !== null ? "cover" : "contain")};
   position: relative;
-  transition: filter 0.5s;
   cursor: pointer;
+  width: 100%;
+  object-fit: cover;
+  object-position: 50% 0;
   &:hover {
     filter: brightness(1.1) sepia(0.15) grayscale(30%);
   }
+  border-radius: ${p => p.size === Size.COMPACT ? '4px' :''};
 `;
 
 const CardDescription = Styled.div<{ size?: Size }>`
@@ -172,16 +168,10 @@ const PublishDate = Styled.time`
 
 const CheckPreview = Styled.a`
   margin-right: 0.5rem;
-  /* padding: 0.1rem; */
   padding-left: 1.5rem;
-  background: url(${EyeSolid}) no-repeat;
-  background-size: contain;
-  background-position: 50%;
   width: 1.25rem;
   height: 1.25rem;
-  &:hover {
-    background: url(${EyeSolidRed}) no-repeat ;
-  }
+  position: relative;
 `;
 
 const PreviewArticle = Styled.a`

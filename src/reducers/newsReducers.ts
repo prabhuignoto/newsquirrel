@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import { Constants } from '../actions/constants';
 import { INewsLoaded, ISwitchCountry, ISwitchNewsReadingMode } from '../actions/types';
 import ReadingMode from '../enums/readingMode';
@@ -5,6 +6,10 @@ import { INewsState } from '../models/view/IAppState';
 import { ILoadingNewsFailed } from './../actions/types';
 
 const defaultState: INewsState = {
+  activeSortByTime: {
+    name: "Newest First",
+    value: "newest"
+  },
   failureResponse: null,
   headlinesCount: 0,
   isAppBusy: false,
@@ -12,6 +17,16 @@ const defaultState: INewsState = {
   readingMode: ReadingMode.TOP_HEADLINES,
   searchResultsCount: 0,
   selectedCountry: 'us',
+  sortByTime: [
+    {
+      name: "Newest First",
+      value: "newest"
+    },
+    {
+      name: "Oldest First",
+      value: "oldest"
+    }
+  ],
   topHeadlines: [],
   totalResults: 0,
 }
@@ -22,7 +37,10 @@ export default function newsReducer(state = defaultState, action: ISwitchNewsRea
       return Object.assign({}, state, {
         headlinesCount: action.totalResults,
         isAppBusy: false,
-        topHeadlines: action.articleCards
+        topHeadlines: _.orderBy(
+          action.articleCards,
+          ['publishedAt'],
+          [state.activeSortByTime.value === 'newest' ? 'desc' : 'asc'])
       });
     case Constants.NEWS_LOADED:
       return Object.assign({}, state, {
@@ -79,6 +97,17 @@ export default function newsReducer(state = defaultState, action: ISwitchNewsRea
           topHeadlines: []
         });
       }
+    case Constants.SORT_ARTICLES_BY_TIME:
+      return Object.assign({}, state, {
+        activeSortByTime: {
+          name: action.dir,
+          value: action.dir,
+        },
+        topHeadlines: _.orderBy(
+          state.topHeadlines,
+          ['publishedAt'],
+          [action.dir === 'newest' ? 'desc' : 'asc'])
+      })
     default:
       return state;
       break;

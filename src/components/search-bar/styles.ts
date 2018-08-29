@@ -1,5 +1,4 @@
 import Styled from 'styled-components';
-import CloseSVG from './cross-out.svg';
 
 const Wrapper = Styled.div`
   display: flex;
@@ -36,7 +35,6 @@ const Button = Styled.button`
   right: 10px;
   top: 20%;
   /* transform: translateY(-50%); */
-  background: url(${CloseSVG});
   background-repeat: no-repeat;
   background-position: 50%;
   background-size: contain;

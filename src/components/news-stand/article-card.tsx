@@ -1,7 +1,6 @@
 import { DateTime } from "luxon";
 import { Fragment } from "react";
 import * as React from "react";
-import LazyLoad from "react-lazyload";
 import Truncate from "react-truncate";
 import * as uniqid from "uniqid";
 
@@ -10,6 +9,8 @@ import Size from "../../enums/newsStandSize";
 import { IArticleCard } from "../../models/view/IArticleCard";
 import Loader from "../loader/loader";
 import BlankImage from "./assets/blank.svg";
+import EyeSolid from "./assets/eye-solid.svg";
+
 import {
   ArticleCardWrapper,
   CardDescription,
@@ -65,7 +66,7 @@ const ArticleCard: React.SFC<IArticleCard> = ({
   imageLoaded,
   showArticle,
   checkArticle,
-  canEmbedInFrame,
+  canEmbedInFrame
 }) => {
   return (
     <ArticleCardWrapper size={size} key={uniqid()}>
@@ -80,7 +81,9 @@ const ArticleCard: React.SFC<IArticleCard> = ({
           {typeof canEmbedInFrame === "undefined" ? (
             <CheckPreview
               onClick={handleCheckArticle(articleUrl, id, checkArticle)}
-            />
+            >
+              <EyeSolid />
+            </CheckPreview>
           ) : null}
           {canEmbedInFrame === false ? (
             <ErrorMessage>Failed to load the preview</ErrorMessage>
@@ -94,24 +97,23 @@ const ArticleCard: React.SFC<IArticleCard> = ({
           ) : null}
         </Controls>
       </Publisher>
-
       {size !== Size.IMAGE_FREE ? (
         <Fragment>
           {!imageLoaded ? (
-            <LazyLoad height={50}>
-              <StubImage
-                src={imgUrl ? imgUrl : BlankImage}
-                onLoad={onImageLoaded}
-                onError={onImageLoaded}
-              />
-            </LazyLoad>
+            <StubImage
+              src={imgUrl ? imgUrl : BlankImage}
+              onLoad={onImageLoaded}
+              onError={onImageLoaded}
+            />
           ) : null}
 
           <ImageWrapper size={size}>
-            <CardImage
-              thumbnailUrl={imageLoaded && !!imgUrl ? imgUrl : BlankImage}
+            {/* <CardImage
+              thumbnailUrl={imageLoaded && !!imgUrl ? imgUrl : ""}
               size={size}
-            />
+            /> */}
+            {imageLoaded && !!imgUrl ? <CardImage size={size} src={imgUrl}/> : <BlankImage />}
+            {/* <CardImage src={imageLoaded && !!imgUrl ? imgUrl : BlankImage} size={size} /> */}
             {!imageLoaded ? (
               <Loader start={true} size={LoaderSize.SMALL} stop={false} />
             ) : null}

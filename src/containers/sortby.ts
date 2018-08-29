@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { compose, defaultProps, StateHandler, StateHandlerMap, withStateHandlers } from 'recompose';
 
 import { Dispatch } from '../../node_modules/redux';
-import { searchNewsAPI } from '../actions/creators';
+import { sortArticlesByTime } from '../actions/creators';
 import ToggleSelect from '../components/toggle-select/toggle-select';
 import toggleSelectSize from '../enums/toggleSelectSize';
 import { IDateFilter } from '../models/data/IDateFilter';
@@ -19,33 +19,26 @@ interface ILocalState {
 }
 
 interface IProps {
-  searchNews: (page: number, searchTerm: string, sortBy: ISortBy, dateFilter: IDateFilter) => void;
   sortBy: ISortBy[],
-  searchTerm: string;
   dateFilter: IDateFilter;
-  page: number;
-
+  SortArticles: (dir: string) => void;
 }
 
-const mapStateToProps = ({options}: IAppState) => ({
-  dateFilter: options.dateFilter,
-  items: options.sortBy.map(x => {
+const mapStateToProps = ({news}: IAppState) => ({
+  items: news.sortByTime.map(x => {
     let selected = false;
-    if (x.name === options.currentlySortingBy.name) {
+    if (x.name === news.activeSortByTime.name) {
       selected = true;
     }
     return Object.assign({}, x, {
       selected
     })
   }),
-  page: options.activePage,
-  searchTerm: options.searchingFor,
-  sortBy: options.currentlySortingBy
+  sortBy: news.activeSortByTime
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  searchNews: (page: number, searchTerm: string, sortBy: ISortBy, dateFilter: IDateFilter) =>
-    dispatch(searchNewsAPI(searchTerm, sortBy, 1, dateFilter))
+  SortArticles: (dir: string) => dispatch(sortArticlesByTime(dir))
 })
 
 const initialState = ({ items }: ILocalState) => ({
@@ -57,13 +50,8 @@ interface IStateHandlers<T> extends StateHandlerMap<T> {
 }
 
 const stateHandlers = {
-  onToggle: ({ items }: ILocalState, { searchNews, searchTerm, sortBy, page, dateFilter }: IProps) => (name: string, value: string) => {
-    if(!!searchTerm) {
-      searchNews(page, searchTerm, {
-        name,
-        value
-      }, dateFilter);
-    }
+  onToggle: ({ items }: ILocalState, {  SortArticles }: IProps) => (name: string, value: string) => {
+    SortArticles(value);
     return {
       items: items.map(x => {
         if (x.value === value) {
@@ -84,7 +72,6 @@ export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   withStateHandlers<ILocalState, IStateHandlers<ILocalState>>(initialState, stateHandlers),
   defaultProps({
-    // label: 'Sort By',
     size: toggleSelectSize.SMALL
   })
 )(ToggleSelect)

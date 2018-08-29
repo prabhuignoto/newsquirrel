@@ -1,5 +1,4 @@
 import Styled from 'styled-components';
-import Acorn from './acorn.svg';
 
 import ReadingMode from '../../enums/readingMode';
 import ViewPort from '../../enums/viewPort';
@@ -63,15 +62,6 @@ const FlagWrapper = Styled.div`
   right: -1px;
 `;
 
-const Logo = Styled.div`
-  background: url(${Acorn});
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: 50% 50%;
-  width: 30px;
-  height: 30px;
-  margin-left: 4px;
-`;
 
 export {
   Wrapper,
@@ -81,5 +71,4 @@ export {
   SearchbarWrapper,
   ReadmodeWrapper,
   FlagWrapper,
-  Logo
 }

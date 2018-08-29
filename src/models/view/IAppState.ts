@@ -15,6 +15,8 @@ export interface INewsState {
   isAppBusy: boolean;
   readingMode: ReadingMode;
   failureResponse: AxiosResponse | null;
+  sortByTime: ISortBy[];
+  activeSortByTime: ISortBy;
 }
 
 export interface ICountry {
