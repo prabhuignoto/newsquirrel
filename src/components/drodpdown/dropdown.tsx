@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import pose from 'react-pose';
 import { IDropdown, IDropdownItem } from '../../models/view/IDropdown';
 import { Icon, Label, LabelWrapper, List, ListItem, SelectedItem, Wrapper } from './styles';
 
