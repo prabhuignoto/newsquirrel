@@ -1,4 +1,5 @@
 import * as React from "react";
+import pose from 'react-pose';
 
 import ArticleCard from "../../containers/article-card";
 import { IArticleCard } from "../../models/view/IArticleCard";
@@ -7,7 +8,6 @@ import {
   ArticlesWrapper,
   LoadingText,
   NewsStandWrapper,
-  QuickViewOverlay
 } from "./styles";
 
 const NewsStand: React.SFC<INewsStand> = ({
