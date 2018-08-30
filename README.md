@@ -6,8 +6,7 @@
 
 ## A Refreshingly simple News reader.
 
-<img src="./readme-assets/web-front.png" width="65%"/>
-
+![sitefront1](./readme-assets/webfront-1.png)![sitefront2](./readme-assets/webfront-2.png)
 ## Features
 
 * Read Top Headlines from 7 different countries( US, UK, IN, FR, DE, AU, CA).
@@ -19,9 +18,8 @@
     align-items: flex-start;
     justify-content:center;
     width: 100%;">
-  <img src="./readme-assets/newsquirrel-mobile.png" width="33.33%"/>
-  <img src="./readme-assets/newsquirrel-tablet.png" width="33.33%" />
-  <img src="./readme-assets/newsquirel-laptop.png" width="33.33%"/>
+  <img src="./readme-assets/smartmockups-desk.png" width="50%"/>
+  <img src="./readme-assets/smartmockups-mobile.png" width="50%" />
 </div>
 
 ## Getting Started

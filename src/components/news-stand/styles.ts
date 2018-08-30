@@ -21,8 +21,6 @@ const SortByWrapper = Styled.div`
   justify-content: flex-end;
 `;
 
-
-
 const ArticlesWrapper = Styled.div`
   display: flex;
   flex-direction: row;
