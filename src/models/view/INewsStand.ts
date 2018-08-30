@@ -12,4 +12,5 @@ export interface INewsStand{
   onError: () => void;
   quickViewLoading: boolean;
   appMode: IAppMode;
+  quickViewOpen?: boolean;
 }

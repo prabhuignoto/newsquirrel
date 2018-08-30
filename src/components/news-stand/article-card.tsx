@@ -1,8 +1,7 @@
 import { DateTime } from "luxon";
 import { Fragment } from "react";
 import * as React from "react";
-import * as uniqid from "uniqid";
-import QuickView from '../../containers/quickview';
+import QuickView from "../../containers/quickview";
 import LoaderSize from "../../enums/loaderSize";
 import Size from "../../enums/newsStandSize";
 import { IArticleCard } from "../../models/view/IArticleCard";
@@ -17,9 +16,7 @@ import {
   CardTitle,
   CheckPreview,
   Controls,
-  ErrorMessage,
   ImageWrapper,
-  PreviewArticle,
   PublishDate,
   Publisher,
   QuickviewWrapper,
@@ -40,18 +37,6 @@ handleCheckArticle = (url, id, fn) => {
   };
 };
 
-let handleOpenArticle: (
-  url: string,
-  fn?: (url: string) => void
-) => React.MouseEventHandler;
-handleOpenArticle = (url, fn) => {
-  return () => {
-    if (fn) {
-      fn(url);
-    }
-  };
-};
-
 const ArticleCard: React.SFC<IArticleCard> = ({
   title,
   description,
@@ -68,34 +53,29 @@ const ArticleCard: React.SFC<IArticleCard> = ({
   canEmbedInFrame,
   appMode,
   quickViewUrl,
-  openQuickView
+  openQuickView,
+  quickViewOpen
 }) => {
   return (
-    <ArticleCardWrapper size={size} key={uniqid()}>
+    <ArticleCardWrapper
+      size={size}
+      pose={"open"}
+      initialPose={"close"}
+      deactivate={!!quickViewOpen && quickViewUrl !== articleUrl}
+    >
       <Publisher size={size} appMode={appMode}>
         <PublishDate dateTime={publishedAt}>
           {DateTime.fromISO(publishedAt).toLocaleString(
             DateTime.DATETIME_SHORT
           )}
         </PublishDate>
-        {/* <PublishedBy>{source}</PublishedBy> */}
-        <Controls>
+        <Controls className="is-hidden-touch">
           {typeof canEmbedInFrame === "undefined" ? (
             <CheckPreview
               onClick={handleCheckArticle(articleUrl, id, checkArticle)}
             >
-              <EyeSolid />
+              <EyeSolid title="Quick View" />
             </CheckPreview>
-          ) : null}
-          {canEmbedInFrame === false ? (
-            <ErrorMessage>Failed to load the preview</ErrorMessage>
-          ) : null}
-          {canEmbedInFrame ? (
-            <PreviewArticle
-              onClick={handleOpenArticle(articleUrl, showArticle)}
-            >
-              Open Article
-            </PreviewArticle>
           ) : null}
         </Controls>
       </Publisher>
@@ -110,8 +90,11 @@ const ArticleCard: React.SFC<IArticleCard> = ({
           ) : null}
 
           <ImageWrapper size={size}>
-            {imageLoaded && !!imgUrl ? 
-              <CardImage size={size} src={imgUrl} appMode={appMode}/> : <BlankImage />}
+            {imageLoaded && !!imgUrl ? (
+              <CardImage size={size} src={imgUrl} appMode={appMode} />
+            ) : (
+              <BlankImage />
+            )}
             {!imageLoaded ? (
               <Loader start={true} size={LoaderSize.SMALL} stop={false} />
             ) : null}
@@ -120,7 +103,12 @@ const ArticleCard: React.SFC<IArticleCard> = ({
       ) : null}
 
       <CardTitle size={size} appMode={appMode}>
-        <TitleAnchor appMode={appMode} href={articleUrl} target="_new" title={title}>
+        <TitleAnchor
+          appMode={appMode}
+          href={articleUrl}
+          target="_new"
+          title={title}
+        >
           {title ? <span>{title}</span> : null}
         </TitleAnchor>
       </CardTitle>
@@ -128,10 +116,14 @@ const ArticleCard: React.SFC<IArticleCard> = ({
       <CardDescription size={size}>
         {description ? <span>{description}</span> : null}
       </CardDescription>
-      {openQuickView && quickViewUrl === articleUrl ? 
-        <QuickviewWrapper>
-          <QuickView key={uniqid()}/>
-        </QuickviewWrapper> : null}
+      {openQuickView && quickViewUrl === articleUrl ? (
+        <QuickviewWrapper
+          pose={openQuickView ? "open" : "close"}
+          initialPose="close"
+        >
+          <QuickView />
+        </QuickviewWrapper>
+      ) : null}
     </ArticleCardWrapper>
   );
 };

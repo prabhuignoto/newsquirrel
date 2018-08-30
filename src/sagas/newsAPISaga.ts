@@ -50,13 +50,13 @@ export function* watchGetHeadlines() {
   yield takeEvery(takePattern, function* getNews(
     action: IGetNewsAction & INavToNextPage & INavToPrevPage & ISwitchCountry
   ) {
-    const { category, page, country } = action;
+    const { category, country } = action;
     const endPoint = process.env.REACT_APP_NEWS_API_HEADLINES;
     const apiKey = process.env.REACT_APP_NEWS_API_KEY;
 
     const url = `${endPoint}?country=${
       country ? country.toLowerCase() : "us"
-    }&category=${category}&page=${page}&apiKey=${apiKey}`;
+    }&category=${category}&pageSize=40&apiKey=${apiKey}`;
 
     yield put<ILoadingNews>({
       message: "News Loading",

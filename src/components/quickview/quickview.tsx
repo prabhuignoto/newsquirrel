@@ -9,10 +9,14 @@ import {
   Date,
   Description,
   Logo,
+  LogoWrapper,
+  Site,
   SpinnerWrapper,
   Thumbnail,
+  ThumbnailWrapper,
   Title,
   Wrapper
+
 } from "./styles";
 
 const QuickView: React.SFC<IQuickView> = ({
@@ -33,14 +37,24 @@ const QuickView: React.SFC<IQuickView> = ({
     <Fragment>
       {open ? (
         <Wrapper>
-          {logoURL ? <Logo src={logoURL} /> : null}
+          {logoURL ? <LogoWrapper>
+            <Logo src={logoURL} />
+          </LogoWrapper> : <Site>{site}</Site>}
+
           {dateLux ? <Date>{dateLux}</Date> : null}
+          
           <Title>{title}</Title>
-          <Thumbnail src={thumbnailURL} />
+          
+          <ThumbnailWrapper>
+            <Thumbnail src={thumbnailURL} />
+          </ThumbnailWrapper>
+          
           <Description>{description}</Description>
+          
           <CloseBtn onClick={closeQuickView}>
             <CloseSvg />
           </CloseBtn>
+          
           {quickViewLoading ? <SpinnerWrapper>
             <SpinnerSVG />
           </SpinnerWrapper> : null}

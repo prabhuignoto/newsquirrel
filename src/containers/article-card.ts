@@ -12,6 +12,7 @@ import { IArticleCard } from '../models/view/IArticleCard';
 const mapStateToProps = (state: IAppState) => ({
   appMode: state.options.defaultAppMode,
   openQuickView: state.news.quickViewEnabled,
+  quickViewOpen: state.news.quickViewEnabled,
   quickViewUrl: state.news.quickViewUrl,
   size: state.options.newsStandSize,
 });

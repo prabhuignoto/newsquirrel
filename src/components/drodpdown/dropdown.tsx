@@ -25,7 +25,7 @@ const Dropdown: React.SFC<IDropdown> = ({ items, selectedItem, onClick, show, la
         <Label data-testid="rt-dropdown-label">{label}</Label>
         <Icon />
       </LabelWrapper>
-      {show ? <List>
+      {show ? <List pose="open" initialPose="close">
         {items.map<React.ReactElement<IDropdownItem>>(x => <DropdownItem {...x} key={x.name} onSelect={onSelect} />)}
       </List> : null}
     </Wrapper>

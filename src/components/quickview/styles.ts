@@ -12,25 +12,47 @@ export const Wrapper = Styled.section`
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  overflow-y:auto;
 `;
 
-export const Logo = Styled.img`
+export const Site = Styled.span`
+  align-self: flex-start;
+  padding: 0.25rem;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0.5rem 0;
+`;
+
+export const LogoWrapper = Styled.div`
   align-self: flex-start;
   margin: 0.25rem 0;
   padding: 0.25rem;
-  object-fit: contain;
-  height: 3rem;
+  height: 5rem;
 `;
 
+export const Logo = Styled.img`
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+`;
+
+export const ThumbnailWrapper = Styled.div`
+  width: 100%;
+  margin: 0.5rem 0;
+  border: none;
+`
+
 export const Thumbnail = Styled.img`
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  border: none;
 `;
 
 export const Title = Styled.div`
   font-size: 1.5rem;
   margin: 0.5rem;
   padding: 0.25rem;
-  font-weight: 700;
+  font-weight: 500;
   width: 100%;
   font-family: 'Oswald', sans-serif;
   text-align: left;

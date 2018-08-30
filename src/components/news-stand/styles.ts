@@ -1,8 +1,8 @@
+import posed from 'react-pose';
 import Styled from "styled-components";
+import Size from "../../enums/newsStandSize";
 import { AppMode } from './../../enums/appMode';
 import { IAppMode } from './../../models/view/IAppState';
-
-import Size from "../../enums/newsStandSize";
 
 const NewsStandWrapper = Styled.div<{appMode: IAppMode}>`
   display: flex;
@@ -21,17 +21,30 @@ const SortByWrapper = Styled.div`
   justify-content: flex-end;
 `;
 
-const ArticlesWrapper = Styled.div<{ show: number }>`
-  display: ${p => (p.show === 1 ? "flex" : "none")};
+
+
+const ArticlesWrapper = Styled.div`
+  display: flex;
   flex-direction: row;
   align-items: flex-start;
   flex-wrap: wrap;
   justify-content: center;
 `;
 
-const LoadingText = Styled.span`
-  font-size: 3rem;
-  position: absolute;
+const fadeInConfig = () => ({
+  close: {
+    opacity: 0,
+  },
+  open: {
+    opacity: 1,
+  },
+})
+
+const PosedLoadingText = posed.span(fadeInConfig());
+
+const LoadingText = Styled(PosedLoadingText)`
+  font-size: 4rem;
+  position: fixed;
   left: 0;
   right: 0;
   margin-left: auto;
@@ -41,7 +54,17 @@ const LoadingText = Styled.span`
   color: #A1ABBC;
 `;
 
-const ArticleCardWrapper = Styled.div<{ size?: Size }>`
+const PosedArticleWrapper = posed.div({
+  close: {
+    opacity: 0,
+  },
+  open: {
+    delay: 100,
+    opacity: 1,
+  },
+});
+
+const ArticleCardWrapper = Styled(PosedArticleWrapper)<{ size?: Size, deactivate: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -61,8 +84,9 @@ const ArticleCardWrapper = Styled.div<{ size?: Size }>`
   border-radius: 3px;
   position: relative;
   flex-grow: 1;
-  //flex-basis: ${p => (p.size === Size.COZY ? "270px" : "220px")};
-  transition: all 2s linear;
+  position: relative;
+  filter: ${p => p.deactivate ? 'blur(3px) opacity(0.8) grayscale(50%)' : ''};
+  pointer-events: ${p => p.deactivate ? 'none' : ''};
 `;
 
 const CardTitle = Styled.div<{ size?: Size; appMode?: IAppMode}>`
@@ -100,13 +124,14 @@ const StubImage = Styled.img`
   display: none;
 `;
 
+
 const ImageWrapper = Styled.figure<{ size?: Size }>`
-  padding: 0.1rem;
-  width: 100%;
-  height: ${p => (p.size === Size.COMPACT ? "120px" : "160px")};
-  position: relative;
-  display: block;
+width: 100%;
+height: ${p => (p.size === Size.COMPACT ? "120px" : "160px")};
+position: relative;
+display: block;
 `;
+
 
 const CardImage = Styled.img<{ thumbnailUrl?: string; size?: Size; appMode?: IAppMode }>`
   height: ${p => (p.size === Size.COMPACT ? "120px" : "100%")};
@@ -143,13 +168,12 @@ const CardDescription = Styled.div<{ size?: Size }>`
 `;
 
 const Publisher = Styled.div<{ size?: Size; appMode?: IAppMode}>`
-  display: ${p => (p.size === Size.COZY ? "flex" : "none")};
+  display: ${p => (p.size === Size.COZY || p.size === Size.COMPACT ? "flex" : "none")};
   align-items: center;
   justify-content: center;
   width: 100%;
-  /* margin-bottom: 0.5rem; */
   font-size: 0.75rem;
-  height: 45px;
+  height: 40px;
   background-color: ${p => p.appMode!.value === AppMode.DARK ? '#000' : '#EDF2F4'};
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
@@ -172,10 +196,10 @@ const PublishDate = Styled.time`
 `;
 
 const CheckPreview = Styled.a`
-  margin-right: 1rem;
-  padding-left: 1.5rem;
-  width: 1.25rem;
-  height: 1.25rem;
+  margin-right: 0.75rem;
+  /* padding-left: 1.5rem; */
+  width: 1.65rem;
+  height: 1.65rem;
   position: relative;
 `;
 
@@ -202,23 +226,49 @@ const ErrorMessage = Styled.span`
   font-size: 0.8rem;
 `;
 
-const QuickviewWrapper = Styled.div`
+const PosedWrapper = posed.div({
+  close: {
+    opacity: 0,
+    scale: 0,
+  },
+  open: {
+    opacity: 1,
+    scale: 1,
+  }
+});
+
+const QuickviewWrapper = Styled(PosedWrapper)`
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  left: 0;
+  left: -50%;
   right: 0;
   margin-left: auto;
   margin-right: auto;
   background: rgba(255, 255, 255, 1);
   border-radius: 4px;
-  padding: 1.5rem;
-  width: 600px;
-  height: 600px;
+  padding: 1.5rem 1rem 2rem 1rem;
+  width: 650px;
+  min-height: 650px;
   z-index: 10;
-  box-shadow: 0 0 10px 1px rgba(0,0,0,0.25);
+  box-shadow: 0 0 10px 1px rgba(0,0,0,0.5);
 `;
 
+const PosedQuickViewOverlay = posed.div({
+  close: {
+    background: 'rgba(0,0,0,0.1)',
+  },
+  open: {
+    background: 'rgba(0,0,0,0.15)',
+  }
+})
+
+const QuickViewOverlay = Styled(PosedQuickViewOverlay)`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+`
 
 export {
   NewsStandWrapper,
@@ -239,5 +289,6 @@ export {
   PreviewArticle,
   Controls,
   ErrorMessage,
-  QuickviewWrapper
+  QuickviewWrapper,
+  QuickViewOverlay,
 };
