@@ -1,4 +1,4 @@
-import Posed from 'react-pose';
+import posed from 'react-pose';
 import Styled from 'styled-components';
 
 const Wrapper = Styled.div`
@@ -52,7 +52,7 @@ const Icon = Styled.i`
   width: 20%
 `;
 
-const PosedList = Posed.ul({
+const PosedList = posed.ul({
   close: {
     opacity: 0,
     scale: 0,
