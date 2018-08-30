@@ -2,14 +2,14 @@
 
 exports[`Renders Tabs correctly 1`] = `
 <div
-  class="tabs is-medium sc-bwzfXH dPyiMn"
+  class="tabs is-medium sc-bwzfXH cxdjHF"
   data-testid="main-tabs"
 >
   <ul
-    class="sc-bdVaJa hKDnAQ"
+    class="sc-bdVaJa jtwmQU"
   >
     <li
-      class="sc-htpNat cKGrFT"
+      class="sc-htpNat liJpkY"
     >
       <a
         href="javascript:void(0);"
@@ -19,7 +19,7 @@ exports[`Renders Tabs correctly 1`] = `
       </a>
     </li>
     <li
-      class="sc-htpNat cKGrFT"
+      class="sc-htpNat liJpkY"
     >
       <a
         href="javascript:void(0);"
@@ -29,7 +29,7 @@ exports[`Renders Tabs correctly 1`] = `
       </a>
     </li>
     <li
-      class="selected is-active sc-htpNat jbRVTH"
+      class="selected is-active sc-htpNat eAdLHf"
     >
       <a
         href="javascript:void(0);"

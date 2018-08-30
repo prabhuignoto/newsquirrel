@@ -2,7 +2,7 @@
 
 exports[`Render Toggle Select correctly 1`] = `
 <div
-  class="sc-bdVaJa dizUZD"
+  class="sc-bdVaJa klqPZc"
   data-testid="rt-toggle-select"
   size="1"
 >
@@ -13,18 +13,21 @@ exports[`Render Toggle Select correctly 1`] = `
   >
     Toggle Select Test Label
   </div>
+  <div
+    class="sc-ifAKCX kdApVN"
+  />
   <ul
-    class="sc-htpNat igRjOs"
+    class="sc-htpNat hojiQY"
   >
     <li
-      class="sc-bxivhb jBjYy"
+      class="sc-bxivhb hAVIEP"
       size="1"
       tabindex="0"
     >
       item1
     </li>
     <li
-      class="sc-bxivhb bqBebq"
+      class="sc-bxivhb ejaHBv"
       size="1"
       tabindex="0"
     >

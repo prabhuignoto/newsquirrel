@@ -2,11 +2,11 @@
 
 exports[`Footer renders correctly 1`] = `
 <footer
-  class="sc-bdVaJa laLYzR"
+  class="sc-bdVaJa jqquVI"
   data-testid="rt-footer"
 >
   <div
-    class="sc-bwzfXH dOhgIm"
+    class="sc-bwzfXH hmXunB"
   >
     <a
       href="https://twitter.com/prabhumurthy2"
@@ -14,9 +14,9 @@ exports[`Footer renders correctly 1`] = `
     >
       <img
         class="sc-htpNat ewHMNg"
-        height="22"
+        height="20"
         src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/twitter.svg"
-        width="22"
+        width="20"
       />
     </a>
     <a
@@ -25,14 +25,14 @@ exports[`Footer renders correctly 1`] = `
     >
       <img
         class="sc-htpNat ewHMNg"
-        height="22"
+        height="20"
         src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg"
-        width="22"
+        width="20"
       />
     </a>
   </div>
   <div
-    class="sc-ifAKCX kvfALf"
+    class="sc-ifAKCX WOpjk"
   >
     <span>
       2018 © Prabhu Murthy
@@ -44,7 +44,7 @@ exports[`Footer renders correctly 1`] = `
     Designed & developed with 🖤 by me
   </div>
   <div
-    class="sc-bxivhb gDDAQr"
+    class="sc-bxivhb cDFCAd"
   >
     <a
       href="https://newsapi.org"
