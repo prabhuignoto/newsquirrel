@@ -14,6 +14,8 @@
 * Read news in three different Modes (Comfortable, Compact, Image free).
 
 * Responsive Webapp that can run seamlessly on mobile/tablet/desktop.
+* Quick preview news articles.
+* Read news is day or night mode.
 <div class="img-container" style="display: flex;
     align-items: flex-start;
     justify-content:center;
@@ -53,6 +55,9 @@ npm run build
 * [Redux](https://github.com/reduxjs/redux) - State Management.
 * [Redux-Saga](https://github.com/redux-saga/redux-saga) - Side effects management.
 
+##  What is coming next
+* GraphQL/Apollo integration.
+* Improve Test coverage.
 ## Authors
 
 * **Prabhu Murthy** - *Initial work* - [prabhuignoto](https://github.com/prabhuignoto)
