@@ -18,8 +18,8 @@
     align-items: flex-start;
     justify-content:center;
     width: 100%;">
-  <img src="./readme-assets/smartmockups-desk.png" width="50%"/>
-  <img src="./readme-assets/smartmockups-mobile.png" width="50%" />
+  <img src="./readme-assets/smartmockups-desk.png" width="45%"/>
+  <img src="./readme-assets/smartmockups-mobile.png" width="45%" />
 </div>
 
 ## Getting Started
