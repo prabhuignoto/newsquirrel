@@ -16,16 +16,16 @@ interface IData {
 class NewstandQuery extends Query<IData, {}> {}
 
 const GetHeadlines = gql`
-query getHeadlines($country: String!, $category: String!) {
-  getHeadlinesByCountryAndCategory(country: $country, category: $category) {
-    title
-    author
-    description
-    url
-    urlToImage
-    publishedAt
+  query getHeadlines($country: String!, $category: String!) {
+    getHeadlinesByCountryAndCategory(country: $country, category: $category) {
+      title
+      author
+      description
+      url
+      urlToImage
+      publishedAt
+    }
   }
-}
 `;
 
 const NewsStand: React.SFC<INewsStand> = ({

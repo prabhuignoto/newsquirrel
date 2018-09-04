@@ -21,13 +21,13 @@ const TopHeadlines: React.SFC<ITopHeadlines> = ({ appMode }) => {
         <Filters />
       </FilterWrapper>
       <Toolbar appMode={appMode} className="columns is-multiline">
-        <div className="column is-2-desktop is-hidden-touch" />
-        <div className="column is-12-mobile is-4-tablet is-3-desktop">
+        <div className="column is-5-desktop is-hidden-touch" />
+        <div className="column is-12-mobile is-6-tablet is-3-desktop">
           <AppModeWrapper>
             <DarkMode />
           </AppModeWrapper>
         </div>
-        <div className="column is-12-mobile is-4-tablet is-4-desktop">
+        <div className="column is-12-mobile is-6-tablet is-4-desktop">
           <NewsStandSizer />
         </div>
       </Toolbar>
