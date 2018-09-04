@@ -6,13 +6,6 @@ exports[`Dropdown renders correctly 1`] = `
   data-testid="rt-dropdown-wrapper"
 >
   <div
-    class="sc-bxivhb dvYwzO"
-  >
-    <img
-      src="https://www.countryflags.io//flat/64.png"
-    />
-  </div>
-  <div
     class="sc-bwzfXH jscYZz"
   >
     <div
@@ -23,6 +16,13 @@ exports[`Dropdown renders correctly 1`] = `
     </div>
     <i
       class="sc-ifAKCX IsfAg"
+    />
+  </div>
+  <div
+    class="sc-bxivhb jBgoMe"
+  >
+    <img
+      src="https://www.countryflags.io//flat/64.png"
     />
   </div>
   <ul

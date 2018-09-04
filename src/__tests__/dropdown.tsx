@@ -1,7 +1,7 @@
 import 'jest-dom/extend-expect';
 import * as React from 'react';
 import {fireEvent, render} from 'react-testing-library';
-import Dropdown from '../components/drodpdown/dropdown';
+import Dropdown from '../components/dropdown/dropdown';
 import { IDropdown } from '../models/view/IDropdown';
 
 test('Dropdown renders correctly', () => {
