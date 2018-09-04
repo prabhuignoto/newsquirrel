@@ -8,8 +8,8 @@ const Wrapper = Styled.div<{ size: Size }>`
   left: 0;
   top: 0;
   z-index: 2;
-  height: ${p => p.size === Size.SMALL ? '1px' : '4px'};
-  background: #2B2D42;
+  height: ${p => p.size === Size.SMALL ? '1px' : '2px'};
+  background: #fff;
 `;
 
 const CircleLoader = keyframes`
@@ -37,7 +37,7 @@ const LoaderIndicator = Styled.div<{ start: number, size?: Size }>`
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   background: ${p => p.size === Size.LARGE ? 
-    'linear-gradient(to right, rgba(43,45,66,1) 0%, rgba(217,4,41,1) 54%, rgba(43,45,66,1) 100%)':
+    'linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(217,4,41,1) 54%, rgba(255,255,255,1) 100%)':
     'linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(217,4,41,1) 54%, rgba(255,255,255,1) 100%)'};
   z-index: 0;
 `;

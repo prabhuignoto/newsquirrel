@@ -1,7 +1,6 @@
 import * as _ from 'lodash';
 import { connect } from 'react-redux';
 import { compose, lifecycle, StateHandler, StateHandlerMap, withStateHandlers } from 'recompose';
-import { Dispatch } from 'redux';
 
 import Pager from '../components/pager/pager';
 import { IDateFilter } from '../models/data/IDateFilter';
@@ -46,10 +45,6 @@ interface IStateHandlers<T> extends StateHandlerMap<T> {
   onPrevious : StateHandler<T>;
 }
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  searchNews: (page: number, searchTerm: string, sortBy: ISortBy, dateFilter: IDateFilter) => dispatch(searchNewsAPI(searchTerm,sortBy,page,dateFilter)),
-})
-
 const initialState = ({ disableNext= false, disablePrevious= true }: ILocalState) => ({
   disableNext,
   disablePrevious
@@ -89,7 +84,7 @@ const stateHandlers = {
 }
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(mapStateToProps, null),
   withStateHandlers<ILocalState, IStateHandlers<ILocalState>>(initialState, stateHandlers),
   lifecycle({
     componentWillReceiveProps(props: IProps) {

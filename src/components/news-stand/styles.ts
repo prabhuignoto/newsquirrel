@@ -13,6 +13,7 @@ const NewsStandWrapper = Styled.div<{appMode: IAppMode}>`
   width: 100%;
   transition: background-color 0.5s;
   position: relative;
+  min-height: 60vh;
 `;
 
 const SortByWrapper = Styled.div`

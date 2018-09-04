@@ -3,8 +3,10 @@ import * as React from "react";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import ArticleCard from "../../containers/article-card";
+import LoaderSize from "../../enums/loaderSize";
 import { IArticleCard } from "../../models/view/IArticleCard";
 import { INewsStand } from "../../models/view/INewsStand";
+import Loader from "../loader/loader";
 import { ArticlesWrapper, LoadingText, NewsStandWrapper } from "./styles";
 
 interface IData {
@@ -37,11 +39,15 @@ const NewsStand: React.SFC<INewsStand> = ({
       <NewstandQuery query={GetHeadlines} variables={{country, category}}>
         {({ loading, error, data }) => {
           if (loading) {
-            return <LoadingText
+            return (
+            <React.Fragment>
+              <Loader start={true} stop={false} size={LoaderSize.LARGE} />
+            <LoadingText
               initialPose={"open"}
             >
               Loading News ...
             </LoadingText>;
+            </React.Fragment>
           }
           return (
           <ArticlesWrapper>
