@@ -4,15 +4,12 @@ import DarkMode from "../../containers/dark-mode";
 import Filters from "../../containers/filters";
 import NewsStandSizer from "../../containers/newsstand-sizer";
 import NewsStand from '../../containers/newstand-headlines';
-import Sortby from "../../containers/sortby";
 import { AppMode } from "../../enums/appMode";
 import ITopHeadlines from "../../models/view/ITopHeadlines";
-// import NewsStand from "../news-stand/news-stand";
 import {
   AppModeWrapper,
   DarkModeBackdrop,
   FilterWrapper,
-  SortbyWrapper,
   Toolbar,
   Wrapper
 } from "./styles";
@@ -30,17 +27,11 @@ const TopHeadlines: React.SFC<ITopHeadlines> = ({ appMode }) => {
             <DarkMode />
           </AppModeWrapper>
         </div>
-        <div className="column is-12-mobile is-4-tablet is-3-desktop">
-          <SortbyWrapper>
-            <Sortby />
-          </SortbyWrapper>
-        </div>
         <div className="column is-12-mobile is-4-tablet is-4-desktop">
           <NewsStandSizer />
         </div>
       </Toolbar>
       <NewsStand />
-      {/* <NewsStand /> */}
       <DarkModeBackdrop show={appMode.value === AppMode.DARK ? 1 : 0} />
     </Wrapper>
   );
