@@ -2,8 +2,6 @@ import * as DateFNS from 'date-fns';
 import { connect } from 'react-redux';
 import { compose, defaultProps, StateHandler, StateHandlerMap, withStateHandlers } from 'recompose';
 
-import { Dispatch } from '../../node_modules/redux';
-import { searchNewsAPI } from '../actions/creators';
 import ToggleSelect from '../components/toggle-select/toggle-select';
 import toggleSelectSize from '../enums/toggleSelectSize';
 import { IDateFilter } from '../models/data/IDateFilter';
@@ -14,11 +12,6 @@ const mapStateToProps = ({options}: IAppState) => ({
   searchTerm: options.searchingFor,
   sortBy: options.currentlySortingBy,
 });
-
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  filterByTime: (page: number, searchTerm: string, sortBy: ISortBy, dateFilter: IDateFilter) =>
-    dispatch(searchNewsAPI(searchTerm,sortBy,page,dateFilter))
-})
 
 interface ILocalState {
   items: Array<{
@@ -94,7 +87,7 @@ const stateHandlers = {
 
 
 export default compose(
-  connect(mapStateToProps,mapDispatchToProps),
+  connect(mapStateToProps,null),
   withStateHandlers<ILocalState, IStateHanlders<ILocalState>>(initialState, stateHandlers),
   defaultProps({
     // label: 'Time',

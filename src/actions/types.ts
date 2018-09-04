@@ -1,77 +1,20 @@
-import { AxiosResponse } from '../../node_modules/axios';
 import NewsStandSize from '../enums/newsStandSize';
 import ReadingMode from '../enums/readingMode';
 import { IDateFilter } from '../models/data/IDateFilter';
 import { IFilter } from '../models/data/IFilter';
-import { IFrameData, ISortBy } from '../models/view/IAppState';
-import { IArticleCard } from '../models/view/IArticleCard';
-import { IQuickView } from '../models/view/IQuickView';
 
 export interface IBase {
   type: string;
 }
 
-export interface IGetNewsAction extends IBase {
-  category: string;
-  country: string;
-  page: number;
-  dateFilter?: IDateFilter
-}
-
 export interface IUpdateNewsCategory extends IBase {
   filter: IFilter;
 }
-
-export interface ILoadingNews extends IBase {
-  message: string;
-}
-
-export interface ILoadingNewsFailed extends IBase {
-  response?: AxiosResponse;
-}
-
-export interface INewsLoaded extends IBase {
-  articleCards: IArticleCard[];
-  totalResults: number;
-}
-
-export interface INavToNextPage extends IBase {
-  page: number;
-  searchTerm: string;
-  category: string;
-  sortField: ISortBy;
-}
-
-export interface INavToPrevPage extends IBase {
-  page: number;
-  searchTerm: string;
-  category: string;
-  sortField: ISortBy;
-}
-
 export interface ISwitchCountry extends IBase {
   category: string;
   country: string;
-  page: number;
 }
 
-export interface ISearchNewsAPI extends IBase {
-  searchTerm: string;
-  sortField: {
-    name: string;
-    value: string
-  },
-  page: number;
-  dateFilter: IDateFilter
-}
-
-export interface ISendFramelyRequest extends IBase {
-  url: string;
-}
-
-export interface IRecvdFramelyRequestAction extends IBase {
-  data: IQuickView;
-}
 
 export interface ISortByAction extends IBase {
   sortField: {
@@ -108,7 +51,11 @@ export interface IShowArticle extends IBase {
   url: string;
 }
 
-export interface ICheckUrlComplete extends IBase {
-  canEmbedInFrame: boolean;
-  id: string;
+
+export interface IGetPocketReqToken extends IBase {
+  message?: string;
+}
+
+export interface IPocketReqTokenRecvd extends IBase {
+  token: string;
 }

@@ -43,7 +43,8 @@ const SelectedItem = Styled.div`
   align-items: center;
   white-space: nowrap;
   text-align: center;
-  width: 30%;
+  width: 3rem;
+  height: 3rem;
   margin-right: 0.5rem;
 `;
 

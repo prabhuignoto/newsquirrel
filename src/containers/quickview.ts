@@ -10,6 +10,7 @@ const mapStateToProps = (state:IAppState) => ({
   open: state.news.quickViewEnabled,
   quickViewData: state.news.quickViewData,
   quickViewLoading: state.news.quickViewLoading,
+  quickViewUrl: state.news.quickViewUrl,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
@@ -35,12 +36,4 @@ const stateHandlers = {
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   withStateHandlers<{}, IStateHandler<{}>>({}, stateHandlers),
-  withProps(({quickViewData: data}: IProps) => ({
-    date: data.date,
-    description: data.description,
-    logoURL: data.logoURL,
-    site: data.site,
-    thumbnailURL: data.thumbnailURL,
-    title: data.title,
-  }))
 )(QuickView)

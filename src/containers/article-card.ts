@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { compose, mapProps, StateHandler, StateHandlerMap, withStateHandlers } from 'recompose';
 
 import { Dispatch } from 'redux';
-import { canLoadUrlInIframe, closeArticle, getIFramelyData } from '../actions/creators';
+import { closeArticle, getIFramelyData } from '../actions/creators';
 import ArticleCard from '../components/news-stand/article-card';
 import NewsStandSize from '../enums/newsStandSize';
 import { IAppState } from '../models/view/IAppState';
@@ -18,7 +18,6 @@ const mapStateToProps = (state: IAppState) => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  checkArticleUrl: (id: string, url: string) => dispatch(canLoadUrlInIframe(id, url)),
   closeDetailedArticle: () => dispatch(closeArticle()),
   showDetailedArticle: (url: string) => dispatch(getIFramelyData(url)),
 });

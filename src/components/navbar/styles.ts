@@ -38,7 +38,7 @@ const CountryDropdownWrapper = Styled.div<{mode: ReadingMode, vwPort: ViewPort}>
   align-items: center;
   justify-content: center;
   margin-right: 10px;
-  margin-left: ${p => p.vwPort === ViewPort.DESK ? 'auto' : ''};
+  // margin-left: ${p => p.vwPort === ViewPort.DESK ? 'auto' : ''};
   font-size: ${p => p.vwPort === ViewPort.MOB ? '1.5rem' : ''};
 `;
 

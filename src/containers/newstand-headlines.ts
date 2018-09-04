@@ -1,31 +1,29 @@
 import { connect } from "react-redux";
 import {
   compose,
-  lifecycle,
   StateHandler,
   StateHandlerMap,
   withStateHandlers
 } from "recompose";
 
 import { Dispatch } from "../../node_modules/redux";
-import { closeArticle, getNews } from "../actions/creators";
+import { closeArticle} from "../actions/creators";
 import NewsStand from "../components/news-stand/news-stand";
 import { IAppState } from "../models/view/IAppState";
 
 const mapsStateToProps = (state: IAppState) => ({
   appMode: state.options.defaultAppMode,
   articleCards: state.news.topHeadlines,
-  quickViewOpen: state.news.quickViewEnabled
+  category: state.options.filter.categories[0],
+  country: state.news.selectedCountry,
+  quickViewOpen: state.news.quickViewEnabled,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   closeArticlePane: () => dispatch(closeArticle()),
-  getNewsFeed: (value: string, page: number, country: string) =>
-    dispatch(getNews(value, page, country))
 });
 
 interface IProps {
-  getNewsFeed: (value: string, page: number, country: string) => void;
   closeArticlePane: () => void;
   country: string;
   detailedArticleUrl: string;
@@ -74,18 +72,5 @@ export default compose(
   withStateHandlers<ILocalState, IStateHandlers<ILocalState>>(
     initialState,
     stateHandlers
-  ),
-  lifecycle<IProps, {}>({
-    componentDidMount() {
-      this.props.getNewsFeed("general", 1, this.props.country);
-    },
-    componentWillReceiveProps(props) {
-      if(props.detailedPaneOpen) {
-        const ft = fetch(props.detailedArticleUrl);
-        ft.catch(error => this.setState({
-          quickViewError: error
-        }))
-      }
-    },
-  })
+  )
 )(NewsStand);

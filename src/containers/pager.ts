@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { compose, lifecycle, StateHandler, StateHandlerMap, withStateHandlers } from 'recompose';
 import { Dispatch } from 'redux';
 
-import { searchNewsAPI } from '../actions/creators';
 import Pager from '../components/pager/pager';
 import { IDateFilter } from '../models/data/IDateFilter';
 import { IAppState } from '../models/view/IAppState';

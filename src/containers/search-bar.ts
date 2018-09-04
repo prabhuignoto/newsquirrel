@@ -1,22 +1,9 @@
 import { connect } from 'react-redux';
 import { compose, defaultProps, StateHandler, StateHandlerMap, withStateHandlers } from 'recompose';
-import { Dispatch } from 'redux';
-
-import { clearSearchResults, searchNewsAPI } from '../actions/creators';
 import SearchBar from '../components/search-bar/search-bar';
 import { IDateFilter } from '../models/data/IDateFilter';
 import { IAppState } from '../models/view/IAppState';
 
-interface ISortField {
-  name: string;
-  value: string;
-}
-
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  clearSearch: () => dispatch(clearSearchResults()),
-  initiateSearch: (term: string, sortField: ISortField, page: number, dateFilter: IDateFilter) => 
-    dispatch(searchNewsAPI(term, sortField, page, dateFilter))
-});
 
 const mapStateToProps = ({options}: IAppState) => ({
   dateFilter: options.dateFilter,
@@ -68,7 +55,7 @@ const stateHandlers = {
 }
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(mapStateToProps, null),
   withStateHandlers<ILocalState, IStateHandlers<ILocalState>>(initialState, stateHandlers),
   defaultProps({
     placeHolder: 'Search News'

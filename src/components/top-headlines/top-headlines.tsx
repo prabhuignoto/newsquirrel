@@ -1,22 +1,30 @@
-import * as React from 'react';
+import * as React from "react";
 
-import DarkMode from '../../containers/dark-mode';
-import Filters from '../../containers/filters';
-import NewsStandSizer from '../../containers/newsstand-sizer';
+import DarkMode from "../../containers/dark-mode";
+import Filters from "../../containers/filters";
+import NewsStandSizer from "../../containers/newsstand-sizer";
 import NewsStand from '../../containers/newstand-headlines';
-import Sortby from '../../containers/sortby';
-import { AppMode } from '../../enums/appMode';
-import ITopHeadlines from '../../models/view/ITopHeadlines';
-import { AppModeWrapper, DarkModeBackdrop, FilterWrapper, SortbyWrapper, Toolbar, Wrapper } from './styles';
+import Sortby from "../../containers/sortby";
+import { AppMode } from "../../enums/appMode";
+import ITopHeadlines from "../../models/view/ITopHeadlines";
+// import NewsStand from "../news-stand/news-stand";
+import {
+  AppModeWrapper,
+  DarkModeBackdrop,
+  FilterWrapper,
+  SortbyWrapper,
+  Toolbar,
+  Wrapper
+} from "./styles";
 
-const TopHeadlines: React.SFC<ITopHeadlines> = ({appMode}) => {
+const TopHeadlines: React.SFC<ITopHeadlines> = ({ appMode }) => {
   return (
     <Wrapper data-testid="rt-top-headlines">
       <FilterWrapper>
         <Filters />
       </FilterWrapper>
       <Toolbar appMode={appMode} className="columns is-multiline">
-        <div className="column is-2-desktop is-hidden-touch"/>
+        <div className="column is-2-desktop is-hidden-touch" />
         <div className="column is-12-mobile is-4-tablet is-3-desktop">
           <AppModeWrapper>
             <DarkMode />
@@ -32,9 +40,10 @@ const TopHeadlines: React.SFC<ITopHeadlines> = ({appMode}) => {
         </div>
       </Toolbar>
       <NewsStand />
+      {/* <NewsStand /> */}
       <DarkModeBackdrop show={appMode.value === AppMode.DARK ? 1 : 0} />
     </Wrapper>
-  )
-}
+  );
+};
 
 export default TopHeadlines;

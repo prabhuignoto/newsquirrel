@@ -2,25 +2,19 @@ import * as React from 'react';
 import { Fragment } from "react";
 import CountryDropdown from '../../containers/country-dropdown';
 import Loader from '../../containers/loader';
-// import ReadingMode from '../../containers/reading-mode';
+import PocketLogin from '../../containers/pocketLogin';
 import SearchBar from '../../containers/search-bar';
 import ReadingModeEnum from '../../enums/readingMode';
 import ViewPort from '../../enums/viewPort';
 import { INavBar } from '../../models/view/INavBar';
 import { CountryDropdownWrapper, NavBrand, NavBrandText, ReadmodeWrapper, SearchbarWrapper, Wrapper } from './styles';
 
-
 const Navbar: React.SFC<INavBar> = ({ mode }) => {
   return (
     <Wrapper className="navbar" role="navigation" data-testid="rt-navbar">
       <NavBrand className="nav-brand">
         <NavBrandText vwPort={ViewPort.MOB}>Newsquirrel</NavBrandText>
-        {/* <Logo /> */}
       </NavBrand>
-      <ReadmodeWrapper className="navbar-item">
-        {/* <ReadingMode /> */}
-      </ReadmodeWrapper>
-
       {mode === ReadingModeEnum.SEARCH_EVERYTHING ?
         <Fragment>
           <SearchbarWrapper
@@ -41,11 +35,12 @@ const Navbar: React.SFC<INavBar> = ({ mode }) => {
 
       {mode === ReadingModeEnum.TOP_HEADLINES ?
         <Fragment>
+          <PocketLogin />
           <CountryDropdownWrapper
             vwPort={ViewPort.DESK}
             mode={mode}
             className="navbar-item is-hidden-touch">
-            <CountryDropdown />
+              <CountryDropdown />
           </CountryDropdownWrapper>
           <CountryDropdownWrapper
             vwPort={ViewPort.MOB}
@@ -54,12 +49,6 @@ const Navbar: React.SFC<INavBar> = ({ mode }) => {
             <CountryDropdown />
           </CountryDropdownWrapper>
         </Fragment> : null}
-
-      {/* <NavBrand className="nav-brand is-hidden-touch" vwPort={ViewPort.DESK}>
-        <NavBrandText vwPort={ViewPort.DESK}>News Squirrel</NavBrandText> */}
-        {/* <Logo /> */}
-      {/* </NavBrand> */}
-
       <Loader />
     </Wrapper>
   )

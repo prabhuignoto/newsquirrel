@@ -42,7 +42,7 @@ const PosedLoadingText = posed.span(fadeInConfig());
 
 const LoadingText = Styled(PosedLoadingText)`
   font-size: 4rem;
-  position: fixed;
+  position: absolute;
   left: 0;
   right: 0;
   margin-left: auto;
@@ -237,7 +237,7 @@ const PosedWrapper = posed.div({
 
 const QuickviewWrapper = Styled(PosedWrapper)`
   position: absolute;
-  top: 50%;
+  top: -50%;
   left: -50%;
   right: 0;
   margin-left: auto;
@@ -247,7 +247,7 @@ const QuickviewWrapper = Styled(PosedWrapper)`
   padding: 1.5rem 1rem 2rem 1rem;
   width: 650px;
   min-height: 650px;
-  z-index: 10;
+  z-index: 100;
   box-shadow: 0 0 10px 1px rgba(0,0,0,0.5);
 `;
 

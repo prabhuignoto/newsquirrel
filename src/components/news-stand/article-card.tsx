@@ -4,7 +4,7 @@ import * as React from "react";
 import QuickView from "../../containers/quickview";
 import LoaderSize from "../../enums/loaderSize";
 import Size from "../../enums/newsStandSize";
-import { IArticleCard } from "../../models/view/IArticleCard";
+import { IArticleCardView } from "../../models/view/IArticleCard";
 import Loader from "../loader/loader";
 import BlankImage from "./assets/blank.svg";
 import EyeSolid from "./assets/eye-solid.svg";
@@ -37,13 +37,13 @@ handleCheckArticle = (url, id, fn) => {
   };
 };
 
-const ArticleCard: React.SFC<IArticleCard> = ({
+const ArticleCard: React.SFC<IArticleCardView> = ({
   title,
   description,
-  thumbnailUrl: imgUrl,
+  urlToImage: imgUrl,
   publishedAt,
   source,
-  articleUrl,
+  url: articleUrl,
   size,
   id,
   onImageLoaded,
@@ -54,7 +54,7 @@ const ArticleCard: React.SFC<IArticleCard> = ({
   appMode,
   quickViewUrl,
   openQuickView,
-  quickViewOpen
+  quickViewOpen,
 }) => {
   return (
     <ArticleCardWrapper

@@ -87,7 +87,8 @@ export const Date = Styled.time`
 `;
 
 export const SpinnerWrapper = Styled.div`
-  width: 50%;
+  width: 8rem;
+  height: 8rem;
   position: absolute;
   left: 0;
   right: 0;

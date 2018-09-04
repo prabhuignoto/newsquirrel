@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { compose, lifecycle, StateHandler, StateHandlerMap, withStateHandlers } from 'recompose';
 import { Dispatch } from 'redux';
 
-import { getNews, updateNewsCategory } from '../actions/creators';
+import {  updateNewsCategory } from '../actions/creators';
 import Filters from '../components/filters/filters';
 import { IDateFilter } from '../models/data/IDateFilter';
 import { IFilter } from '../models/data/IFilter';
@@ -25,7 +25,6 @@ const mapStateToProps = ({news, options}: IAppState) => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  getNewsFeed: (value: string, page: number, country: string, dateFilter: IDateFilter) => dispatch(getNews(value, page, country, dateFilter)),
   updateCategory: (filter: IFilter) => dispatch(updateNewsCategory(filter))
 });
 
@@ -40,7 +39,6 @@ interface ILocalState {
 
 interface IProps {
   updateCategory: (filter: IFilter) => void;
-  getNewsFeed: (value: string, page: number, country: string, dateFilter: IDateFilter) => void;
   country: string;
   dateFilter: IDateFilter
 }
@@ -57,9 +55,8 @@ const initialState = ({
 });
 
 const stateHandlers = {
-  selectFilter: ({items}: ILocalState, {updateCategory, getNewsFeed, country, dateFilter}: IProps) => (filter: IFilter) => {
+  selectFilter: ({items}: ILocalState, {updateCategory, country, dateFilter}: IProps) => (filter: IFilter) => {
     updateCategory(filter);
-    getNewsFeed(filter.value, 1, country, dateFilter);
     return {
       items: items.map(x => {
         let selected = false;

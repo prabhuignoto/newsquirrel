@@ -1,17 +1,11 @@
 import NewsStandSize from "../enums/newsStandSize";
 import ReadingMode from "../enums/readingMode";
 import { IFilter } from "../models/data/IFilter";
-import { ISortBy } from "../models/view/IAppState";
-import { IDateFilter } from "./../models/data/IDateFilter";
 import { IAppMode } from "./../models/view/IAppState";
 import { Constants } from "./constants";
 import {
   IChangeNewsStandSize,
   IClearSearchResults,
-  IGetNewsAction,
-  INavToNextPage,
-  INavToPrevPage,
-  ISearchNewsAPI,
   IShowArticle,
   ISortByAction,
   ISwitchCountry,
@@ -26,79 +20,17 @@ export function updateNewsCategory(filter: IFilter): IUpdateNewsCategory {
   };
 }
 
-export function getNews(
-  category: string,
-  page: number,
-  country: string,
-  dateFilter?: IDateFilter
-): IGetNewsAction {
-  return {
-    category,
-    country,
-    dateFilter,
-    page,
-    type: Constants.GET_NEWS
-  };
-}
-
-export function navToNextPage(
-  page: number,
-  category: string,
-  searchTerm: string,
-  sortBy: ISortBy
-): INavToNextPage {
-  return {
-    category,
-    page,
-    searchTerm,
-    sortField: sortBy,
-    type: Constants.NAV_TO_NEXT_PAGE
-  };
-}
-
-export function navToPrevPage(
-  page: number,
-  category: string,
-  searchTerm: string,
-  sortBy: ISortBy
-): INavToPrevPage {
-  return {
-    category,
-    page,
-    searchTerm,
-    sortField: sortBy,
-    type: Constants.NAV_TO_PREV_PAGE
-  };
-}
 
 export function switchCountry(
   country: string,
   category: string,
-  page: number
 ): ISwitchCountry {
   return {
     category,
     country,
-    page,
     type: Constants.SWITCH_COUNTRY
   };
 }
-
-export function searchNewsAPI(
-  searchTerm: string,
-  sortField: { name: string; value: string },
-  page: number,
-  dateFilter: IDateFilter
-): ISearchNewsAPI {
-  return {
-    dateFilter,
-    page,
-    searchTerm,
-    sortField,
-    type: Constants.SEARCH_NEWS_API
-  };
-}
-
 export function sortByField(
   sortField: { name: string; value: string },
   searchTerm: string
@@ -145,14 +77,6 @@ export function closeArticle(): { type: string } {
   };
 }
 
-export function canLoadUrlInIframe(id: string, url: string) {
-  return {
-    id,
-    type: Constants.CAN_LOAD_URL_IN_IFRAME,
-    url
-  };
-}
-
 export function sortArticlesByTime(dir: string) {
   return {
     dir,
@@ -177,5 +101,11 @@ export function getIFramelyData(url: string) {
 export function closeQuickView() {
   return {
     type: Constants.CLOSE_QUICKVIEW
+  }
+}
+
+export function getPocketRequestToken() {
+  return {
+    type: Constants.GET_POCKET_REQUEST_TOKEN
   }
 }

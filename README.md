@@ -6,7 +6,7 @@
 
 ## A Refreshingly simple News reader.
 
-![sitefront1](./readme-assets/webfront-1.png)![sitefront2](./readme-assets/webfront-2.png)
+![sitefront1](./readme-assets/webfront-1.png)
 ## Features
 
 * Read Top Headlines from 7 different countries( US, UK, IN, FR, DE, AU, CA).

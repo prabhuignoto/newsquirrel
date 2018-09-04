@@ -1,8 +1,10 @@
 import * as React from 'react';
+import {ApolloProvider} from 'react-apollo';
 import * as ReactDOM from 'react-dom';
 import { Provider } from "react-redux";
 import { applyMiddleware, compose, createStore } from "redux";
 import createSagaMiddleware from "redux-saga";
+import ApolloClient from './apollo/client';
 import App from './App';
 import './index.css';
 import RootReducer from './reducers';
@@ -16,14 +18,15 @@ const composeEnhancers = windowIfDefined.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ||
 /* tslint-enable */
 
 
-
 const sagaMiddleware = createSagaMiddleware()
 const store = createStore(RootReducer, composeEnhancers(applyMiddleware(sagaMiddleware)));
 sagaMiddleware.run(RootSaga);
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ApolloProvider client={ApolloClient}>
+      <App />
+    </ApolloProvider>
   </Provider>,
   document.getElementById('root') as HTMLElement
 );

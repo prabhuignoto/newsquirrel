@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { compose, defaultProps, StateHandler, StateHandlerMap, withStateHandlers } from "recompose";
 import { Dispatch } from "redux";
 import { switchCountry } from "../actions/creators";
-import Dropdown from "../components/drodpdown/dropdown";
+import Dropdown from "../components/dropdown/dropdown";
 import { IAppState } from '../models/view/IAppState';
 
 const mapStateToProps = ({options, news}: IAppState) => ({
@@ -19,7 +19,7 @@ interface IProps {
 }
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  updateCountry: (country: string, category: string, page: number) => dispatch(switchCountry(country, category, page))
+  updateCountry: (country: string, category: string, page: number) => dispatch(switchCountry(country, category))
 });
 
 interface ILocalState {

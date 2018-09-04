@@ -56,6 +56,7 @@ export interface INewsState {
   quickViewData: IFrameData | {};
   quickViewUrl: string;
   quickViewLoading: boolean;
+  pocketConfig: IPocketState;
 }
 
 export interface ICountry {
@@ -90,6 +91,11 @@ export interface IOptionsState {
   detailedArticleUrl: string;
   defaultAppMode: IAppMode;
   availableAppModes: IAppMode[];
+}
+
+export interface IPocketState {
+  requestToken: string;
+  accessToken: string;
 }
 
 export interface IAppState {

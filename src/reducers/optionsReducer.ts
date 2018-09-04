@@ -87,13 +87,6 @@ export default function optionsReducer(
         activePage: 1,
         currentlySortingBy: action.field
       });
-    case Constants.SEARCH_NEWS_API:
-      return Object.assign({}, state, {
-        activePage: action.page,
-        currentlySortingBy: action.sortField,
-        dateFilter: action.dateFilter,
-        searchingFor: action.searchTerm
-      });
     case Constants.CHANGE_NEWSSTAND_SIZE:
       return Object.assign({}, state, {
         newsStandSize: action.size
@@ -101,15 +94,6 @@ export default function optionsReducer(
     case Constants.CLEAR_SEARCH_RESULTS:
       return Object.assign({}, state, {
         activePage: 1
-      });
-    case Constants.SHOW_ARTICLE:
-      return Object.assign({}, state, {
-        detailedArticleUrl: action.url,
-        detailedPaneOpen: true
-      });
-    case Constants.CLOSE_ARTICLE:
-      return Object.assign({}, state, {
-        detailedPaneOpen: false
       });
     case Constants.UPDATE_APP_MODE:
       return Object.assign({}, state, {
