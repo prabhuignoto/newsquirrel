@@ -2,7 +2,6 @@ import { AxiosResponse } from 'axios';
 import { AppMode } from './../../enums/appMode';
 
 import NewsStandSize from '../../enums/newsStandSize';
-import ReadingMode from '../../enums/readingMode';
 import { IDateFilter } from './../data/IDateFilter';
 import { IArticleCard } from './IArticleCard';
 
@@ -48,7 +47,6 @@ export interface INewsState {
   searchResultsCount: number;
   headlinesCount: number;
   isAppBusy: boolean;
-  readingMode: ReadingMode;
   failureResponse: AxiosResponse | null;
   sortByTime: ISortBy[];
   activeSortByTime: ISortBy;

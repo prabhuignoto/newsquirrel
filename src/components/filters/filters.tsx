@@ -23,4 +23,3 @@ const filters: React.SFC<IFilters> = ({items,selectFilter}) => {
 }
 
 export default filters;
-

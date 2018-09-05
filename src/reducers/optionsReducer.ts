@@ -1,7 +1,6 @@
 import * as DateFNS from "date-fns";
 
 import { Constants } from "../actions/constants";
-import { ISearchNewsAPI } from "../actions/types";
 import { AppMode } from "../enums/appMode";
 import NewsStandSize from "../enums/newsStandSize";
 import { IFilter } from "../models/data/IFilter";
@@ -61,7 +60,7 @@ const defaultState: IOptionsState = {
 
 export default function optionsReducer(
   state: IOptionsState = defaultState,
-  action: any & ISearchNewsAPI
+  action: any
 ) {
   switch (action.type) {
     case Constants.UPDATE_CATEGORY:
@@ -70,16 +69,6 @@ export default function optionsReducer(
         filter: Object.assign({}, state.filter, {
           categories: [(action.filter as IFilter).value]
         })
-      });
-      break;
-    case Constants.NAV_TO_NEXT_PAGE:
-      return Object.assign({}, state, {
-        activePage: state.activePage + 1
-      });
-      break;
-    case Constants.NAV_TO_PREV_PAGE:
-      return Object.assign({}, state, {
-        activePage: state.activePage - 1
       });
       break;
     case Constants.SORT_BY:

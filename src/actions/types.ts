@@ -1,5 +1,4 @@
 import NewsStandSize from '../enums/newsStandSize';
-import ReadingMode from '../enums/readingMode';
 import { IDateFilter } from '../models/data/IDateFilter';
 import { IFilter } from '../models/data/IFilter';
 
@@ -22,10 +21,6 @@ export interface ISortByAction extends IBase {
     value: string;
   },
   searchTerm: string;
-}
-
-export interface ISwitchNewsReadingMode extends IBase {
-  mode: ReadingMode;
 }
 
 export interface IClearSearchResults extends IBase {

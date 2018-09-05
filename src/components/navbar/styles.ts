@@ -1,6 +1,5 @@
 import Styled from 'styled-components';
 
-import ReadingMode from '../../enums/readingMode';
 import ViewPort from '../../enums/viewPort';
 
 const Wrapper = Styled.nav `
@@ -33,21 +32,20 @@ const NavBrandText = Styled.span<{vwPort: ViewPort}>`
   text-transform: uppercase;
 `;
 
-const CountryDropdownWrapper = Styled.div<{mode: ReadingMode, vwPort: ViewPort}>`
+const CountryDropdownWrapper = Styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 10px;
-  // margin-left: ${p => p.vwPort === ViewPort.DESK ? 'auto' : ''};
-  font-size: ${p => p.vwPort === ViewPort.MOB ? '1.5rem' : ''};
+  font-size: 1.5rem;
 `;
 
-const SearchbarWrapper = Styled.div<{mode: ReadingMode, vwPort: ViewPort}>`
+const SearchbarWrapper = Styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   min-width: 250px;
-  margin-right: ${p => p.vwPort === ViewPort.DESK ? 'auto' : ''};
+  margin-right: 'auto';
 `;
 
 const ReadmodeWrapper = Styled.div`

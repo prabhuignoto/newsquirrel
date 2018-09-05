@@ -1,5 +1,4 @@
 import NewsStandSize from "../enums/newsStandSize";
-import ReadingMode from "../enums/readingMode";
 import { IFilter } from "../models/data/IFilter";
 import { IAppMode } from "./../models/view/IAppState";
 import { Constants } from "./constants";
@@ -9,7 +8,6 @@ import {
   IShowArticle,
   ISortByAction,
   ISwitchCountry,
-  ISwitchNewsReadingMode,
   IUpdateNewsCategory
 } from "./types";
 
@@ -39,15 +37,6 @@ export function sortByField(
     searchTerm,
     sortField,
     type: Constants.SORT_BY
-  };
-}
-
-export function switchNewsReadingMode(
-  mode: ReadingMode
-): ISwitchNewsReadingMode {
-  return {
-    mode,
-    type: Constants.SWITCH_NEWS_READING_MODE
   };
 }
 

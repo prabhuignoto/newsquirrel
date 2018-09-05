@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { compose, StateHandler, StateHandlerMap, withProps, withStateHandlers } from 'recompose';
+import { compose, StateHandler, StateHandlerMap, withStateHandlers } from 'recompose';
 import { Dispatch } from 'redux';
 import { closeQuickView } from '../actions/creators';
 import QuickView from '../components/quickview/quickview';

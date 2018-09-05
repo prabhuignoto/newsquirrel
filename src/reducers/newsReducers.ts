@@ -1,5 +1,4 @@
 import * as _ from "lodash";
-import ReadingMode from "../enums/readingMode";
 import { INewsState } from "../models/view/IAppState";
 import { Constants } from "./../actions/constants";
 
@@ -20,7 +19,6 @@ const defaultState: INewsState = {
   quickViewEnabled: false,
   quickViewLoading: false,
   quickViewUrl: "",
-  readingMode: ReadingMode.TOP_HEADLINES,
   searchResultsCount: 0,
   selectedCountry: "us",
   sortByTime: [
@@ -42,54 +40,10 @@ export default function newsReducer(
   action: any
 ) {
   switch (action.type) {
-    case Constants.HEADLINES_LOADED:
-      return Object.assign({}, state, {
-        headlinesCount: action.totalResults,
-        isAppBusy: false,
-        topHeadlines: _.orderBy(
-          action.articleCards,
-          ["publishedAt"],
-          [state.activeSortByTime.value === "newest" ? "desc" : "asc"]
-        )
-      });
     case Constants.SWITCH_COUNTRY:
       return Object.assign({}, state, {
         selectedCountry: action.country
       });
-    case Constants.CLEAR_SEARCH_RESULTS:
-      return Object.assign({}, state, {
-        failureResponse: null,
-        newsArticles: [],
-        searchResultsCount: 0
-      });
-    case Constants.CAN_LOAD_URL_IN_IFRAME_RESULTS:
-      const updatedHeadlines = state.topHeadlines.map(item => {
-        if (item.id === action.id) {
-          return Object.assign({}, item, {
-            canEmbedInFrame: action.canEmbedInFrame
-          });
-        }
-        return item;
-      });
-      return Object.assign({}, state, {
-        topHeadlines: updatedHeadlines
-      });
-    case Constants.SWITCH_NEWS_READING_MODE:
-      const uAction = action as ISwitchNewsReadingMode;
-      if (action.mode === ReadingMode.TOP_HEADLINES) {
-        return Object.assign({}, state, {
-          failureResponse: null,
-          newsArticles: [],
-          readingMode: uAction.mode,
-          searchResultsCount: 0
-        });
-      } else {
-        return Object.assign({}, state, {
-          failureResponse: null,
-          readingMode: uAction.mode,
-          topHeadlines: []
-        });
-      }
     case Constants.SORT_ARTICLES_BY_TIME:
       return Object.assign({}, state, {
         activeSortByTime: {
