@@ -42,7 +42,7 @@ const fadeInConfig = () => ({
 const PosedLoadingText = posed.span(fadeInConfig());
 
 const LoadingText = Styled(PosedLoadingText)`
-  font-size: 4rem;
+  font-size: 2.5rem;
   position: absolute;
   left: 0;
   right: 0;

@@ -3,13 +3,12 @@ import Size from '../../enums/loaderSize';
 
 const Wrapper = Styled.div<{ size: Size }>`
   width: 100%;
-  background: white;
+  background: transparent;
   position: absolute;
   left: 0;
   top: 0;
   z-index: 2;
   height: ${p => p.size === Size.SMALL ? '1px' : '2px'};
-  background: #fff;
 `;
 
 const CircleLoader = keyframes`
