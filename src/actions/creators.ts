@@ -98,3 +98,10 @@ export function getPocketRequestToken() {
     type: Constants.GET_POCKET_REQUEST_TOKEN
   }
 }
+
+export function searchNewsAPI(term: string) {
+  return {
+    term,
+    type: Constants.SEARCH_NEWS_API,
+  }
+}

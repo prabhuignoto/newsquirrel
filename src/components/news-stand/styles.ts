@@ -28,6 +28,7 @@ const ArticlesWrapper = Styled.div`
   align-items: flex-start;
   flex-wrap: wrap;
   justify-content: center;
+  position: relative;
 `;
 
 const fadeInConfig = () => ({
@@ -267,6 +268,38 @@ const QuickViewOverlay = Styled(PosedQuickViewOverlay)`
   height: 100%;
   top: 0;
   left: 0;
+`;
+
+export const LoadMoreWrapper = Styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const LoadMore = Styled.a`
+  padding: 1rem;
+  font-size: 2rem;
+  font-weight: 500;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4rem;
+  color:#2b2d42;
+  &:hover {
+    text-decoration: underline;
+  };
+  width: 10rem;
+  height: 4rem;
+`;
+
+export const SpinnerWrapper = Styled.div`
+  width: 6rem;
+  height: 6rem;
+  position: relative;
+  margin-top: 4rem;
+  padding: 1rem;
 `
 
 export {

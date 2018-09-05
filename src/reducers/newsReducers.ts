@@ -20,6 +20,7 @@ const defaultState: INewsState = {
   quickViewLoading: false,
   quickViewUrl: "",
   searchResultsCount: 0,
+  searchTerm: '',
   selectedCountry: "us",
   sortByTime: [
     {
@@ -32,7 +33,7 @@ const defaultState: INewsState = {
     }
   ],
   topHeadlines: [],
-  totalResults: 0
+  totalResults: 0,
 };
 
 export default function newsReducer(
@@ -73,6 +74,10 @@ export default function newsReducer(
           requestToken: action.token
         })
       });
+    case Constants.SEARCH_NEWS_API:
+      return Object.assign({}, state, {
+        searchTerm: action.term,
+      })
     default:
       return state;
       break;

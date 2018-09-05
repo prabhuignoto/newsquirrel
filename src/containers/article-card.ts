@@ -71,8 +71,5 @@ interface IProps {
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  mapProps((props: IProps & IArticleCard) => {
-    return props
-  }),
   withStateHandlers<ILocalState, IStateHandlers<ILocalState>>(initialState, stateHandlers),
 )(ArticleCard)

@@ -55,6 +55,7 @@ export interface INewsState {
   quickViewUrl: string;
   quickViewLoading: boolean;
   pocketConfig: IPocketState;
+  searchTerm: string;
 }
 
 export interface ICountry {

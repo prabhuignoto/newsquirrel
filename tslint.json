@@ -1,7 +1,8 @@
 {
   "extends": ["tslint-eslint-rules", "tslint:recommended", "tslint-react", "tslint-config-prettier"],
   "rules": {
-    "no-constant-condition": true
+    "no-constant-condition": true,
+    "jsx-no-lambda": false
   },
   "linterOptions": {
     "exclude": [

@@ -62,6 +62,7 @@ const ArticleCard: React.SFC<IArticleCardView> = ({
       pose={"open"}
       initialPose={"close"}
       deactivate={!!quickViewOpen && quickViewUrl !== articleUrl}
+      key={articleUrl}
     >
       <Publisher size={size} appMode={appMode}>
         <PublishDate dateTime={publishedAt}>

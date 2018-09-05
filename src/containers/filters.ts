@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { compose, lifecycle, StateHandler, StateHandlerMap, withStateHandlers } from 'recompose';
+import { branch, compose, renderComponent, renderNothing, StateHandler, StateHandlerMap, withStateHandlers } from 'recompose';
 import { Dispatch } from 'redux';
 
 import {  updateNewsCategory } from '../actions/creators';
@@ -22,6 +22,7 @@ const mapStateToProps = ({news, options}: IAppState) => ({
       value: x,
     }
   }),
+  searchTerm: news.searchTerm,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
@@ -40,7 +41,8 @@ interface ILocalState {
 interface IProps {
   updateCategory: (filter: IFilter) => void;
   country: string;
-  dateFilter: IDateFilter
+  dateFilter: IDateFilter,
+  searchTerm: string,
 }
 
 const initialState = ({
@@ -77,10 +79,10 @@ const stateHandlers = {
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  lifecycle<IProps,  ILocalState>({
-    componentDidMount() {
-      // this.props.getNewsFeed('general',1, this.props.country);
-    }
-  }),
   withStateHandlers<ILocalState, IStateHandlers<ILocalState>>(initialState, stateHandlers),
+  branch(
+    (props: IProps) => !props.searchTerm,
+    renderComponent(Filters),
+    renderNothing
+  )
 )(Filters)

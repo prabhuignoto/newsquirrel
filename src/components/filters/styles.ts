@@ -1,3 +1,4 @@
+import Posed from 'react-pose';
 import Styled from "styled-components";
 
 const Filters = Styled.ul`
@@ -5,7 +6,16 @@ const Filters = Styled.ul`
   border-bottom: transparent !important;
 `;
 
-const FiltersWrapper = Styled.div`
+const PosedWrapper = Posed.div({
+  close: {
+    opacity: 0,
+  },
+  open: {
+    opacity: 1,
+  }
+})
+
+const FiltersWrapper = Styled(PosedWrapper)`
   width: 100%;
   background: #2B2D42;
   padding: 0.75rem;
