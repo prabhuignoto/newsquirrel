@@ -687,8 +687,8 @@
     to-fast-properties "^2.0.0"
 
 "@emotion/is-prop-valid@^0.6.5":
-  version "0.6.6"
-  resolved "https://registry.yarnpkg.com/@emotion/is-prop-valid/-/is-prop-valid-0.6.6.tgz#9e1943d2db92e5350282551cb2eafdc9960582cb"
+  version "0.6.7"
+  resolved "https://registry.yarnpkg.com/@emotion/is-prop-valid/-/is-prop-valid-0.6.7.tgz#1767d39c29ba786b7afc3d8d727a2896995f01eb"
   dependencies:
     "@emotion/memoize" "^0.6.5"
 
@@ -836,13 +836,13 @@
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@types/luxon/-/luxon-1.2.2.tgz#3b402da20bd8ca357123851e062d2142cdbdd9bc"
 
-"@types/node@*", "@types/node@^10.9.2":
+"@types/node@*":
   version "10.9.2"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.9.2.tgz#f0ab8dced5cd6c56b26765e1c0d9e4fdcc9f2a00"
 
-"@types/node@^10.0.5":
-  version "10.9.3"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.9.3.tgz#85f288502503ade0b3bfc049fe1777b05d0327d5"
+"@types/node@^10.0.5", "@types/node@^10.9.2":
+  version "10.9.4"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.9.4.tgz#0f4cb2dc7c1de6096055357f70179043c33e9897"
 
 "@types/prop-types@*":
   version "15.5.5"
@@ -890,8 +890,8 @@
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^16.4.11":
-  version "16.4.12"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.4.12.tgz#c554005770b06c7cbcd6b0b19721e180deab7a02"
+  version "16.4.13"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.4.13.tgz#1385f5dc3486aa493849a32ccce626a817543e28"
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -3279,8 +3279,8 @@ dom-serializer@0:
     entities "~1.1.1"
 
 dom-testing-library@^3.1.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/dom-testing-library/-/dom-testing-library-3.4.0.tgz#6a0dbd714cf3c432a87846bf3b28d5f5a81bc845"
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/dom-testing-library/-/dom-testing-library-3.5.0.tgz#f49be2f5293b96b2b65a3885e2fb1647b6c6d32b"
   dependencies:
     mutationobserver-shim "^0.3.2"
     pretty-format "^22.4.3"
@@ -6726,25 +6726,26 @@ pn@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
 
-popmotion-pose@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/popmotion-pose/-/popmotion-pose-3.1.0.tgz#55cc9b2b2bb61cc07053c8b4551e64efbce734a0"
+popmotion-pose@^3.2.6:
+  version "3.2.7"
+  resolved "https://registry.yarnpkg.com/popmotion-pose/-/popmotion-pose-3.2.7.tgz#8cf739fb25d1149faf2ba56dce83f2216d499c0f"
   dependencies:
+    "@popmotion/easing" "^1.0.1"
     hey-listen "^1.0.5"
-    popmotion "^8.3.3"
+    popmotion "^8.3.7"
     pose-core "^1.0.0"
-    style-value-types "^3.0.3"
+    style-value-types "^3.0.6"
     tslib "^1.9.1"
 
-popmotion@^8.3.3:
-  version "8.3.6"
-  resolved "https://registry.yarnpkg.com/popmotion/-/popmotion-8.3.6.tgz#33b214ca8e2b27029183d69fb6538368bba40e77"
+popmotion@^8.3.7:
+  version "8.3.8"
+  resolved "https://registry.yarnpkg.com/popmotion/-/popmotion-8.3.8.tgz#af2b9ba00d4be089461043b60ea82c1709352a27"
   dependencies:
     "@popmotion/easing" "^1.0.1"
     framesync "^3.1.9"
     hey-listen "^1.0.5"
-    style-value-types "^3.0.4"
-    stylefire "^2.0.6"
+    style-value-types "^3.0.6"
+    stylefire "^2.0.7"
     tslib "^1.9.1"
 
 portfinder@^1.0.9:
@@ -6756,8 +6757,8 @@ portfinder@^1.0.9:
     mkdirp "0.5.x"
 
 pose-core@^1.0.0:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/pose-core/-/pose-core-1.0.3.tgz#5b12ad84261bda84fa391b2feb5d26cab44d441c"
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/pose-core/-/pose-core-1.0.4.tgz#424039c31940109e933f49d74cf4404bad6465ad"
   dependencies:
     "@types/invariant" "^2.2.29"
     "@types/node" "^10.0.5"
@@ -7353,12 +7354,12 @@ react-lifecycles-compat@^3.0.2:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
 react-pose@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/react-pose/-/react-pose-3.1.0.tgz#bc2463847099621864f03db5ba2bdb450fd2383a"
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/react-pose/-/react-pose-3.2.2.tgz#baae0edb69a0464892fe3aa39820e4264c17559d"
   dependencies:
     "@emotion/is-prop-valid" "^0.6.5"
     hey-listen "^1.0.5"
-    popmotion-pose "^3.1.0"
+    popmotion-pose "^3.2.6"
     tslib "^1.9.1"
 
 react-redux@^5.0.7:
@@ -7385,8 +7386,8 @@ react-router@^4.3.1:
     warning "^4.0.1"
 
 react-testing-library@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/react-testing-library/-/react-testing-library-5.0.0.tgz#a6d63dfb0efb69b4b0f7035cff11310b1a78a702"
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/react-testing-library/-/react-testing-library-5.0.1.tgz#b7bb205da19333477b6f92631286df98cad398b3"
   dependencies:
     dom-testing-library "^3.1.0"
     wait-for-expect "^1.0.0"
@@ -8404,9 +8405,9 @@ style-loader@^0.23.0:
     loader-utils "^1.1.0"
     schema-utils "^0.4.5"
 
-style-value-types@^3.0.3, style-value-types@^3.0.4:
-  version "3.0.6"
-  resolved "https://registry.yarnpkg.com/style-value-types/-/style-value-types-3.0.6.tgz#144f634ba0c8f053ee615c7308adc97fe83917dd"
+style-value-types@^3.0.6:
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/style-value-types/-/style-value-types-3.0.7.tgz#6e7a22cc8b1a4465193268ed66ad5f2a82579054"
 
 styled-components@^3.3.3:
   version "3.4.5"
@@ -8422,13 +8423,13 @@ styled-components@^3.3.3:
     stylis-rule-sheet "^0.0.10"
     supports-color "^3.2.3"
 
-stylefire@^2.0.6:
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/stylefire/-/stylefire-2.0.6.tgz#aa35093b782e1d2ea746d9aac483f38366954e19"
+stylefire@^2.0.7:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/stylefire/-/stylefire-2.0.7.tgz#ccb121dbd7e96fb92c311413639830cc2d4c7eab"
   dependencies:
     framesync "^3.1.8"
     hey-listen "^1.0.4"
-    style-value-types "^3.0.3"
+    style-value-types "^3.0.6"
     tslib "^1.9.1"
 
 stylehacks@^4.0.0:
@@ -8835,8 +8836,8 @@ typescript@^2.4.1:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.9.2.tgz#1cbf61d05d6b96269244eb6a3bce4bd914e0f00c"
 
 typescript@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.0.1.tgz#43738f29585d3a87575520a4b93ab6026ef11fdb"
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.0.3.tgz#4853b3e275ecdaa27f78fda46dc273a7eb7fc1c8"
 
 ua-parser-js@^0.7.18:
   version "0.7.18"

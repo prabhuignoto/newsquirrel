@@ -1,7 +1,6 @@
 import { DateTime } from "luxon";
 import { Fragment } from "react";
 import * as React from "react";
-import QuickView from "../../containers/quickview";
 import LoaderSize from "../../enums/loaderSize";
 import Size from "../../enums/newsStandSize";
 import { IArticleCardView } from "../../models/view/IArticleCard";
@@ -19,7 +18,6 @@ import {
   ImageWrapper,
   PublishDate,
   Publisher,
-  QuickviewWrapper,
   StubImage,
   TitleAnchor
 } from "./styles";
@@ -52,16 +50,12 @@ const ArticleCard: React.SFC<IArticleCardView> = ({
   checkArticle,
   canEmbedInFrame,
   appMode,
-  quickViewUrl,
-  openQuickView,
-  quickViewOpen,
 }) => {
   return (
     <ArticleCardWrapper
       size={size}
       pose={"open"}
       initialPose={"close"}
-      deactivate={!!quickViewOpen && quickViewUrl !== articleUrl}
       key={articleUrl}
     >
       <Publisher size={size} appMode={appMode}>
@@ -117,14 +111,6 @@ const ArticleCard: React.SFC<IArticleCardView> = ({
       <CardDescription size={size}>
         {description ? <span>{description}</span> : null}
       </CardDescription>
-      {openQuickView && quickViewUrl === articleUrl ? (
-        <QuickviewWrapper
-          pose={openQuickView ? "open" : "close"}
-          initialPose="close"
-        >
-          <QuickView />
-        </QuickviewWrapper>
-      ) : null}
     </ArticleCardWrapper>
   );
 };
