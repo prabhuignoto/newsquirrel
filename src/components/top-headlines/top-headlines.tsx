@@ -5,9 +5,9 @@ import Filters from "../../containers/filters";
 import NewsStandSizer from "../../containers/newsstand-sizer";
 import NewsStand from '../../containers/newstand-headlines';
 import SearchBox from "../../containers/search-box";
+import SearchNews from "../../containers/search-news";
 import { AppMode } from "../../enums/appMode";
 import ITopHeadlines from "../../models/view/ITopHeadlines";
-import SearchNews from "../news-stand/search-news";
 import {
   AppModeWrapper,
   DarkModeBackdrop,
@@ -35,7 +35,7 @@ const TopHeadlines: React.SFC<ITopHeadlines> = ({ appMode, searchTerm }) => {
           <NewsStandSizer />
         </div>
       </Toolbar>
-      { searchTerm ? <SearchNews appMode={appMode} term={searchTerm}/> : <NewsStand />}
+      { searchTerm ? <SearchNews /> : <NewsStand />}
       
       <DarkModeBackdrop show={appMode.value === AppMode.DARK ? 1 : 0} />
     </Wrapper>

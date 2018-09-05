@@ -73,8 +73,8 @@ export const CloseBtn = Styled.button`
   position: absolute;
   top: 0.25rem;
   right: 0.25rem;
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 2rem;
+  height: 2rem;
   background: none;
   z-index: 2;
 `;

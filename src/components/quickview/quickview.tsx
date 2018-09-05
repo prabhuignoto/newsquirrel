@@ -5,7 +5,7 @@ import { Fragment } from "react";
 import { Query } from "react-apollo";
 import { IQuickView } from "../../models/view/IQuickView";
 import SpinnerSVG from "./assets/spinner.svg";
-import CloseSvg from "./assets/times-circle-solid.svg";
+import CloseSvg from "./assets/close.svg";
 import {
   CloseBtn,
   Date,

@@ -7,12 +7,14 @@ export interface INewsStand{
   standSize?: NewsStandSize;
   detailedPaneOpen?: boolean;
   detailedArticleUrl?: string;
-  // closeQuickView: () => void;
-  // onQuickViewLoadComplete: () => void;
-  // onError: () => void;
-  // quickViewLoading: boolean;
   appMode: IAppMode;
-  quickViewOpen?: boolean;
   country: string;
   category: string;
+  quickViewUrl: string;
+  openQuickView: boolean;
+  quickViewOpen: boolean;
+  quickViewPosition: {
+    x: number,
+    y: number
+  }
 }

@@ -64,7 +64,7 @@ const PosedArticleWrapper = posed.div({
   },
 });
 
-const ArticleCardWrapper = Styled(PosedArticleWrapper)<{ size?: Size, deactivate: boolean }>`
+const ArticleCardWrapper = Styled(PosedArticleWrapper)<{ size?: Size }>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -85,8 +85,8 @@ const ArticleCardWrapper = Styled(PosedArticleWrapper)<{ size?: Size, deactivate
   position: relative;
   flex-grow: 1;
   position: relative;
-  filter: ${p => p.deactivate ? 'blur(3px) opacity(0.8) grayscale(50%)' : ''};
-  pointer-events: ${p => p.deactivate ? 'none' : ''};
+  // filter: ${p => p.deactivate ? 'blur(3px) opacity(0.8) grayscale(50%)' : ''};
+  // pointer-events: ${p => p.deactivate ? 'none' : ''};
 `;
 
 const CardTitle = Styled.div<{ size?: Size; appMode?: IAppMode}>`
@@ -237,38 +237,7 @@ const PosedWrapper = posed.div({
   }
 });
 
-const QuickviewWrapper = Styled(PosedWrapper)`
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  background: rgba(255, 255, 255, 1);
-  border-radius: 4px;
-  padding: 1.5rem 1rem 2rem 1rem;
-  width: 650px;
-  min-height: 650px;
-  z-index: 100;
-  box-shadow: 0 0 10px 1px rgba(0,0,0,0.5);
-`;
 
-const PosedQuickViewOverlay = posed.div({
-  close: {
-    background: 'rgba(0,0,0,0.1)',
-  },
-  open: {
-    background: 'rgba(0,0,0,0.15)',
-  }
-})
-
-const QuickViewOverlay = Styled(PosedQuickViewOverlay)`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-`;
 
 export const LoadMoreWrapper = Styled.div`
   width: 100%;
@@ -300,7 +269,37 @@ export const SpinnerWrapper = Styled.div`
   position: relative;
   margin-top: 4rem;
   padding: 1rem;
-`
+`;
+
+const QuickviewWrapper = Styled(PosedWrapper)`
+  background: rgba(255, 255, 255, 1);
+  border-radius: 4px;
+  padding: 1.5rem 1rem 2rem 1rem;
+  width: 80%;
+  min-height: 700px;
+  z-index: 100;
+  top: 2%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 10px 1px rgba(0,0,0,0.5);
+  margin: 0 auto;
+`;
+
+const PosedQuickViewOverlay = posed.div({
+  close: {
+    background: 'rgba(0,0,0,0.1)',
+  },
+  open: {
+    background: 'rgba(0,0,0,0.15)',
+  }
+})
+
+const QuickViewOverlay = Styled(PosedQuickViewOverlay)`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+`;
 
 export {
   NewsStandWrapper,

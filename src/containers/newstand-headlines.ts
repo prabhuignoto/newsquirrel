@@ -16,7 +16,10 @@ const mapsStateToProps = (state: IAppState) => ({
   articleCards: state.news.topHeadlines,
   category: state.options.filter.categories[0],
   country: state.news.selectedCountry,
+  openQuickView: state.news.quickViewEnabled,
   quickViewOpen: state.news.quickViewEnabled,
+  quickViewPosition: state.news.quickViewPosition,
+  quickViewUrl: state.news.quickViewUrl,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({

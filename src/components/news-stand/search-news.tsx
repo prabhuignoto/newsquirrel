@@ -3,8 +3,10 @@ import gql from "graphql-tag";
 import * as React from "react";
 import { Query } from "react-apollo";
 import ArticleCard from "../../containers/article-card";
+import Quickview from '../../containers/quickview';
 import { IArticleCard } from "../../models/view/IArticleCard";
 import ISearchNews from "../../models/view/ISearchNews";
+import ErrorUI from '../error-ui/ui';
 import SpinnerSVG from './assets/spinner.svg';
 import {
   ArticlesWrapper,
@@ -12,9 +14,9 @@ import {
   LoadMore,
   LoadMoreWrapper,
   NewsStandWrapper,
+  QuickviewWrapper,
   SpinnerWrapper
 } from "./styles";
-import ErrorUI from '../error-ui/ui';
 interface IData {
   search: IArticleCard[];
 }
@@ -46,7 +48,7 @@ const query = gql`
   }
 `;
 
-const SearchNews: React.SFC<ISearchNews> = ({ term, appMode }) => {
+const SearchNews: React.SFC<ISearchNews> = ({ term, appMode, openQuickView, quickViewOpen, quickViewUrl }) => {
   let page: number = 1;
 
   const variables = {
@@ -58,6 +60,14 @@ const SearchNews: React.SFC<ISearchNews> = ({ term, appMode }) => {
   };
   return (
     <NewsStandWrapper appMode={appMode}>
+      {openQuickView ? (
+        <QuickviewWrapper
+          pose={openQuickView ? "open" : "close"}
+          initialPose="close"
+        >
+          <Quickview />
+        </QuickviewWrapper>
+      ) : (
       <SearchNewsQuery
         query={query}
         variables={variables}
@@ -120,7 +130,8 @@ const SearchNews: React.SFC<ISearchNews> = ({ term, appMode }) => {
             </div>
           );
         }}
-      </SearchNewsQuery>
+      </SearchNewsQuery>)
+      }
     </NewsStandWrapper>
   );
 };

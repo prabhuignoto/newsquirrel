@@ -54,6 +54,10 @@ export interface INewsState {
   quickViewData: IFrameData | {};
   quickViewUrl: string;
   quickViewLoading: boolean;
+  quickViewPosition: {
+    x: number;
+    y: number;
+  }
   pocketConfig: IPocketState;
   searchTerm: string;
 }

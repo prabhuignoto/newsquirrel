@@ -7,15 +7,10 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   aria-hidden="true"
-   data-prefix="fas"
-   data-icon="times-circle"
-   class="svg-inline--fa fa-times-circle fa-w-16"
-   role="img"
    viewBox="0 0 512 512"
    version="1.1"
    id="svg4"
-   sodipodi:docname="times-circle-solid.svg"
+   sodipodi:docname="_ionicons_svg_md-close.svg"
    inkscape:version="0.92.3 (2405546, 2018-03-11)">
   <metadata
      id="metadata10">
@@ -39,20 +34,19 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="672"
+     inkscape:window-width="697"
      inkscape:window-height="480"
      id="namedview6"
      showgrid="false"
      inkscape:zoom="0.4609375"
-     inkscape:cx="256"
+     inkscape:cx="186.99617"
      inkscape:cy="256"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-x="595"
+     inkscape:window-y="301"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg4" />
   <path
-     fill="currentColor"
-     d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"
+     d="M405 136.798L375.202 107 256 226.202 136.798 107 107 136.798 226.202 256 107 375.202 136.798 405 256 285.798 375.202 405 405 375.202 285.798 256z"
      id="path2"
-     style="fill:#2B2D42" />
+     style="fill:#EF233C" />
 </svg>
