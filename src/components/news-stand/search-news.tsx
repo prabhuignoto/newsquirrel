@@ -14,7 +14,7 @@ import {
   NewsStandWrapper,
   SpinnerWrapper
 } from "./styles";
-
+import ErrorUI from '../error-ui/ui';
 interface IData {
   search: IArticleCard[];
 }
@@ -65,7 +65,7 @@ const SearchNews: React.SFC<ISearchNews> = ({ term, appMode }) => {
       >
         {({ loading, error, data, fetchMore }) => {
           return (
-            <div>
+            <div style={{width: '100%'}}>
               {loading ? (
                 <LoadingText initialPose={"open"}>Searching ...</LoadingText>
               ) : null}
@@ -105,6 +105,8 @@ const SearchNews: React.SFC<ISearchNews> = ({ term, appMode }) => {
                   </LoadMoreWrapper>
                 </React.Fragment>
               ) : null}
+
+              {error ? <ErrorUI message="Search service is currently down. Please check back after some time."/> : null}
             </div>
           );
         }}
