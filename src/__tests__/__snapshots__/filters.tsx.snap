@@ -4,6 +4,7 @@ exports[`Renders Tabs correctly 1`] = `
 <div
   class="tabs is-medium sc-bwzfXH cxdjHF"
   data-testid="main-tabs"
+  style=""
 >
   <ul
     class="sc-bdVaJa jtwmQU"

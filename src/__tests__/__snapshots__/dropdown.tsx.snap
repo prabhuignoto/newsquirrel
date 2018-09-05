@@ -27,6 +27,7 @@ exports[`Dropdown renders correctly 1`] = `
   </div>
   <ul
     class="sc-EHOje leItEV"
+    style="transform: scale(0) translateZ(0);"
   >
     <li
       class="sc-bZQynM TDRJO"
