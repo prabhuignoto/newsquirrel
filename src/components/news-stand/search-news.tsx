@@ -78,6 +78,16 @@ const SearchNews: React.SFC<ISearchNews> = ({ term, appMode }) => {
                         <ArticleCard {...article} key={article.url} />
                       )
                     )}
+                    {Array.from(Array(5).keys()).map((x, idx) => (
+                    <div
+                      key={idx}
+                      style={{
+                        flexBasis: "300px",
+                        flexGrow: 1,
+                        visibility: "hidden"
+                      }}
+                    />
+                  ))}
                   </ArticlesWrapper>
                   <LoadMoreWrapper>
                     {!loading ? <LoadMore
