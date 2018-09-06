@@ -20,6 +20,7 @@ import {
 interface IData {
   search: IArticleCard[];
 }
+import Info from '../info-ui/info-ui';
 
 class SearchNewsQuery extends Query<IData, {}> {}
 
@@ -80,6 +81,8 @@ const SearchNews: React.SFC<ISearchNews> = ({ term, appMode, openQuickView, quic
                 <LoadingText initialPose={"open"}>Searching ...</LoadingText>
               ) : null}
 
+              {!loading && !error && data!.search.length < 1 ? <Info message="Your search did not match any documents" /> : null}
+
               {(!error && !loading) || (loading && data!.search) ? (
                 <React.Fragment>
                   <ArticlesWrapper>
@@ -100,7 +103,7 @@ const SearchNews: React.SFC<ISearchNews> = ({ term, appMode, openQuickView, quic
                   ))}
                   </ArticlesWrapper>
                   <LoadMoreWrapper>
-                    {!loading ? <LoadMore
+                    {!loading && data!.search.length > 0 ? <LoadMore
                       onClick={() => {
                         return fetchMore({
                           updateQuery: (prev, { fetchMoreResult }) => {
@@ -121,7 +124,8 @@ const SearchNews: React.SFC<ISearchNews> = ({ term, appMode, openQuickView, quic
                       }}
                     >
                       Load More
-                    </LoadMore> : <SpinnerWrapper><SpinnerSVG /></SpinnerWrapper>}
+                    </LoadMore> : null}
+                    {loading ? <SpinnerWrapper><SpinnerSVG /></SpinnerWrapper> : null}
                   </LoadMoreWrapper>
                 </React.Fragment>
               ) : null}

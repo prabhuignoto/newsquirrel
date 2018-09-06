@@ -229,11 +229,9 @@ const ErrorMessage = Styled.span`
 const PosedWrapper = posed.div({
   close: {
     opacity: 0,
-    scale: 0,
   },
   open: {
     opacity: 1,
-    scale: 1,
   }
 });
 
@@ -279,8 +277,7 @@ const QuickviewWrapper = Styled(PosedWrapper)`
   min-height: 700px;
   z-index: 100;
   top: 2%;
-  transform: translateY(-50%);
-  box-shadow: 0 0 10px 1px rgba(0,0,0,0.5);
+  box-shadow: 0 0 10px 1px rgba(0,0,0,0.2);
   margin: 0 auto;
 `;
 

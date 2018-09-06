@@ -4,8 +4,8 @@ import * as React from "react";
 import { Fragment } from "react";
 import { Query } from "react-apollo";
 import { IQuickView } from "../../models/view/IQuickView";
-import SpinnerSVG from "./assets/spinner.svg";
 import CloseSvg from "./assets/close.svg";
+import SpinnerSVG from "./assets/spinner.svg";
 import {
   CloseBtn,
   Date,

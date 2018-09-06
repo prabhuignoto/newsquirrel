@@ -23,7 +23,7 @@ const TopHeadlines: React.SFC<ITopHeadlines> = ({ appMode, searchTerm }) => {
         <Filters />
       </FilterWrapper>
       <Toolbar appMode={appMode} className="columns is-multiline">
-        <div className="column is-5-desktop is-12-tablet">
+        <div className="column is-5-desktop is-12-tablet is-paddingless">
           <SearchBox />
         </div>
         <div className="column is-12-mobile is-6-tablet is-3-desktop">
