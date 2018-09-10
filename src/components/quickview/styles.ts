@@ -1,7 +1,7 @@
 import Styled from "styled-components";
 
 export const Wrapper = Styled.section`
-  width: 100%;
+  width: 90%;
   height: 100%;
   border-radius: 8px;
   display: flex;
@@ -37,14 +37,16 @@ export const Logo = Styled.img`
 
 export const ThumbnailWrapper = Styled.div`
   width: 100%;
+  height: 30rem;
   margin: 0.5rem 0;
-  border: none;
+  display: flex;
+  align-items: center;
 `
 
 export const Thumbnail = Styled.img`
   object-fit: cover;
-  height: 100%;
-  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
   border: none;
 `;
 

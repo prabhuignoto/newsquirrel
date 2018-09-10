@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Fragment } from "react";
 import CountryDropdown from '../../containers/country-dropdown';
-import Loader from '../../containers/loader';
-import PocketLogin from '../../containers/pocketLogin';
+// import Loader from '../../containers/loader';
 import ViewPort from '../../enums/viewPort';
 import { CountryDropdownWrapper, NavBrand, NavBrandText, Wrapper } from './styles';
 
@@ -13,13 +12,12 @@ const Navbar = () => {
         <NavBrandText vwPort={ViewPort.MOB}>Newsquirrel</NavBrandText>
       </NavBrand>
         <Fragment>
-          <PocketLogin />
           <CountryDropdownWrapper
             className="navbar-item is-hidden-touch">
               <CountryDropdown />
           </CountryDropdownWrapper>
         </Fragment>
-      <Loader />
+      {/* <Loader /> */}
     </Wrapper>
   )
 }

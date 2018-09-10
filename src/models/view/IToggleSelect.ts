@@ -3,7 +3,7 @@ import ToggleSelectSize from "../../enums/toggleSelectSize";
 export interface IToggleItem {
   name: string;
   value: string;
-  onToggle: (name: string) => void;
+  onClick: (name: string, value: number) => void;
   selected: boolean;
   size: ToggleSelectSize;
   theme: string;
@@ -16,6 +16,7 @@ export interface IToggleSelect {
   onToggle: (name: string) => void;
   theme: string;
   type?: ToggleType;
+  update: (variables: any) => void;
 }
 
 export enum ToggleType {

@@ -16,7 +16,7 @@ import {
   Wrapper
 } from "./styles";
 
-const TopHeadlines: React.SFC<ITopHeadlines> = ({ appMode, searchTerm }) => {
+const TopHeadlines: React.SFC<ITopHeadlines> = ({ appMode, searchTerm, country, category }) => {
   return (
     <Wrapper data-testid="rt-top-headlines">
       <FilterWrapper>
@@ -35,7 +35,7 @@ const TopHeadlines: React.SFC<ITopHeadlines> = ({ appMode, searchTerm }) => {
           <NewsStandSizer />
         </div>
       </Toolbar>
-      { searchTerm ? <SearchNews /> : <NewsStand />}
+      { searchTerm ? <SearchNews term={searchTerm}/> : <NewsStand country={country} category={category} />}
       
       <DarkModeBackdrop show={appMode.value === AppMode.DARK ? 1 : 0} />
     </Wrapper>

@@ -1,53 +1,45 @@
-import { connect } from "react-redux";
-import { compose, defaultProps, StateHandler, StateHandlerMap, withStateHandlers } from "recompose";
-import { Dispatch } from "redux";
-import { switchCountry } from "../actions/creators";
+import gql from "graphql-tag";
+import { graphql } from "react-apollo";
+import { compose, defaultProps } from "recompose";
 import Dropdown from "../components/dropdown/dropdown";
-import { IAppState } from '../models/view/IAppState';
 
-const mapStateToProps = ({options, news}: IAppState) => ({
-  category: options.filter.categories[0],
-  items: options.defaultCountries,
-  page: options.activePage,
-  selectedItem: news.selectedCountry,
-});
-
-interface IProps {
-  category: string;
-  page: number;
-  updateCountry: (country: string, category: string, page: number) => void;
-}
-
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  updateCountry: (country: string, category: string, page: number) => dispatch(switchCountry(country, category))
-});
-
-interface ILocalState {
-  show: boolean;
-  selectedItem: string;
-}
-
-interface IStateHandlers<T> extends StateHandlerMap<T> {
-  onClick: StateHandler<T>
-  onSelect: StateHandler<T>
-}
-
-const initialState = ({ show = false, selectedItem = '' }) => ({show, selectedItem});
-
-const stateHandlers = {
-  onClick: ({show}: ILocalState, p: IProps) => () => ({
-    show: !show
-  }),
-  onSelect: (state: ILocalState, {updateCountry, category, page}: IProps) => (country: string) => {
-    updateCountry(country, category, page);
-    return {selectedItem: country}
+const query = gql`
+  query {
+    defaultCountry @client {
+      country
+    }
+    countries @client {
+      items {
+        code
+        icon
+        name
+      }
+    }
   }
-}
+`;
+
+const mutation = gql`
+  mutation($code: String!) {
+    updateCountry(value: $code) @client
+  }
+`;
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  withStateHandlers<ILocalState, IStateHandlers<ILocalState>>(initialState, stateHandlers),
+  graphql(query, {
+    props: ({ data: { countries, defaultCountry } }: any) => {
+      return {
+        items: countries.items,
+        selectedItem: defaultCountry.country
+      };
+    }
+  }),
+  graphql(mutation, {
+    name: "updateCountry",
+    props: ({updateCountry}) => ({
+      update: updateCountry,
+    })
+  }),
   defaultProps({
-    label: 'Change country'
+    label: "Change country"
   })
 )(Dropdown);

@@ -1,43 +1,93 @@
-import * as React from 'react';
+import * as React from "react";
 
-import { IToggleItem, IToggleSelect, ToggleType } from '../../models/view/IToggleSelect';
-import { Label, List, ListItem, Wrapper } from './styles';
+import { State } from "react-powerplug";
+import { IToggleItem, IToggleSelect } from "../../models/view/IToggleSelect";
+import { Label, List, ListItem, Wrapper } from "./styles";
 
-const handler = function _handler(fn: (name: string, value: string) => void, name: string, value: string) {
+const handler = function _handler(
+  fn: (name: string, value: number) => void,
+  name: string,
+  value: number
+) {
   return function oHandler(ev: React.MouseEvent<HTMLLIElement>) {
     fn(name, value);
-  }
-}
+  };
+};
 
-const ToggleItem: React.SFC<IToggleItem> = ({ name, value, onToggle, selected, size, theme }) => (
-  <ListItem 
-    onClick={handler(onToggle, name, value)}
+const ToggleItem: React.SFC<IToggleItem> = ({
+  name,
+  value,
+  onClick,
+  selected,
+  size,
+  theme
+}) => (
+  <ListItem
+    onClick={handler(onClick, name, value)}
     selected={selected}
     size={size}
     theme={theme}
     key={name}
     tabIndex={0}
-  >{name}</ListItem>
+  >
+    {name}
+  </ListItem>
 );
 
-const ToggleSelect: React.SFC<IToggleSelect> = ({ label, items, onToggle, size, theme, type }) => {
+const ToggleSelect: React.SFC<IToggleSelect> = ({
+  label,
+  items,
+  size,
+  theme,
+  type,
+  update
+}) => {
   return (
     <Wrapper size={size} data-testid="rt-toggle-select">
-      <Label size={size} label={label}>{label}</Label>
-      {/* <IconWrapper>
-        {type === ToggleType.APP_MODE ? <Moon /> : null}
-        {type === ToggleType.RESIZER ? <Smile /> : null}
-        {type === ToggleType.SORT_ARTICLES ? <Clock /> : null}
-      </IconWrapper> */}
-      <List>
-        {
-          items.map<React.ReactElement<IToggleItem>>(
-            x => <ToggleItem {...x} key={x.name} onToggle={onToggle} size={size} theme={theme}/>
-          )
-        }
-      </List>
+      <Label size={size} label={label}>
+        {label}
+      </Label>
+      <State initial={{ uitems: items }}>
+        {({ state, setState }) => {
+          const onClick: (name: string, value: number) => void = (
+            name,
+            value
+          ) => {
+            setState({
+              uitems: state.uitems.map(x => {
+                let selected = false;
+                if (x.name === name) {
+                  selected = true;
+                }
+                return Object.assign({}, x, {
+                  selected
+                });
+              })
+            });
+            update({
+              variables: {
+                name,
+                value
+              }
+            });
+          };
+          return (
+            <List>
+              {state.uitems.map<React.ReactElement<IToggleItem>>(x => (
+                <ToggleItem
+                  {...x}
+                  key={x.name}
+                  onClick={onClick}
+                  size={size}
+                  theme={theme}
+                />
+              ))}
+            </List>
+          );
+        }}
+      </State>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default ToggleSelect
+export default ToggleSelect;

@@ -1,0 +1,24 @@
+{
+    query Search(
+      $query: String!
+      $from: String!
+      $to: String!
+      $page: Int!
+      $pageSize: Int!
+    ) {
+    search(
+      query: $query
+      from: $from
+      to: $to
+      page: $page
+      pageSize: $pageSize
+    ) {
+      author
+      title
+      description
+      url
+      urlToImage
+      publishedAt
+    }
+  }
+}

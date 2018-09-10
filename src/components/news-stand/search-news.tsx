@@ -1,64 +1,24 @@
-import * as DateFNS from "date-fns";
-import gql from "graphql-tag";
 import * as React from "react";
-import { Query } from "react-apollo";
 import ArticleCard from "../../containers/article-card";
 import Quickview from '../../containers/quickview';
 import { IArticleCard } from "../../models/view/IArticleCard";
 import ISearchNews from "../../models/view/ISearchNews";
 import ErrorUI from '../error-ui/ui';
-import SpinnerSVG from './assets/spinner.svg';
+import Info from '../info-ui/info-ui';
+// import SpinnerSVG from './assets/spinner.svg';
 import {
   ArticlesWrapper,
   LoadingText,
-  LoadMore,
-  LoadMoreWrapper,
+  // LoadMore,
+  // LoadMoreWrapper,
   NewsStandWrapper,
   QuickviewWrapper,
-  SpinnerWrapper
+  // SpinnerWrapper
 } from "./styles";
-interface IData {
-  search: IArticleCard[];
-}
-import Info from '../info-ui/info-ui';
 
-class SearchNewsQuery extends Query<IData, {}> {}
 
-const query = gql`
-  query Search(
-    $query: String!
-    $from: String!
-    $to: String!
-    $page: Int!
-    $pageSize: Int!
-  ) {
-    search(
-      query: $query
-      from: $from
-      to: $to
-      page: $page
-      pageSize: $pageSize
-    ) {
-      author
-      title
-      description
-      url
-      urlToImage
-      publishedAt
-    }
-  }
-`;
-
-const SearchNews: React.SFC<ISearchNews> = ({ term, appMode, openQuickView, quickViewOpen, quickViewUrl }) => {
-  let page: number = 1;
-
-  const variables = {
-    from: DateFNS.format(DateFNS.startOfToday(), "YYYY-MM-DD"),
-    page: 1,
-    pageSize: 20,
-    query: term,
-    to: DateFNS.format(DateFNS.endOfToday(), "YYYY-MM-DD")
-  };
+const SearchNews: React.SFC<ISearchNews> = ({ term, appMode, openQuickView, quickViewOpen, quickViewUrl, data, loading, error }) => {
+  // const page: number = 1;
   return (
     <NewsStandWrapper appMode={appMode}>
       {openQuickView ? (
@@ -69,13 +29,6 @@ const SearchNews: React.SFC<ISearchNews> = ({ term, appMode, openQuickView, quic
           <Quickview />
         </QuickviewWrapper>
       ) : (
-      <SearchNewsQuery
-        query={query}
-        variables={variables}
-        fetchPolicy="cache-and-network"
-      >
-        {({ loading, error, data, fetchMore }) => {
-          return (
             <div style={{width: '100%'}}>
               {loading ? (
                 <LoadingText initialPose={"open"}>Searching ...</LoadingText>
@@ -86,8 +39,8 @@ const SearchNews: React.SFC<ISearchNews> = ({ term, appMode, openQuickView, quic
               {(!error && !loading) || (loading && data!.search) ? (
                 <React.Fragment>
                   <ArticlesWrapper>
-                    {data!.search.map<React.ReactElement<IArticleCard>>(
-                      article => (
+                    {data!.search.map(
+                      (article: IArticleCard) => (
                         <ArticleCard {...article} key={article.url} />
                       )
                     )}
@@ -102,7 +55,7 @@ const SearchNews: React.SFC<ISearchNews> = ({ term, appMode, openQuickView, quic
                     />
                   ))}
                   </ArticlesWrapper>
-                  <LoadMoreWrapper>
+                  {/* <LoadMoreWrapper>
                     {!loading && data!.search.length > 0 ? <LoadMore
                       onClick={() => {
                         return fetchMore({
@@ -126,16 +79,13 @@ const SearchNews: React.SFC<ISearchNews> = ({ term, appMode, openQuickView, quic
                       Load More
                     </LoadMore> : null}
                     {loading ? <SpinnerWrapper><SpinnerSVG /></SpinnerWrapper> : null}
-                  </LoadMoreWrapper>
+                  </LoadMoreWrapper> */}
                 </React.Fragment>
               ) : null}
 
               {error ? <ErrorUI message="Search service is currently down. Please check back after some time."/> : null}
             </div>
-          );
-        }}
-      </SearchNewsQuery>)
-      }
+          )}
     </NewsStandWrapper>
   );
 };

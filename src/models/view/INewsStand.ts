@@ -4,17 +4,16 @@ import { IAppMode } from './IAppState';
 
 export interface INewsStand{
   // articleCards: IArticleCardView[];
-  standSize?: NewsStandSize;
+  newstandSize?: NewsStandSize;
   detailedPaneOpen?: boolean;
   detailedArticleUrl?: string;
   appMode: IAppMode;
-  country: string;
-  category: string;
   quickViewUrl: string;
   openQuickView: boolean;
   quickViewOpen: boolean;
-  quickViewPosition: {
-    x: number,
-    y: number
-  }
+  loading: boolean;
+  error: any;
+  data: any;
+  category: string;
+  country: string;
 }

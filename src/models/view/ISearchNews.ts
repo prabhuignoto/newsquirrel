@@ -6,4 +6,7 @@ export default interface ISearchNews {
   quickViewUrl: string;
   openQuickView: boolean;
   quickViewOpen: boolean;
+  loading: boolean;
+  error: any;
+  data: any;
 }

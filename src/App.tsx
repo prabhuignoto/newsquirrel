@@ -1,11 +1,13 @@
 import 'bulma/css/bulma.css';
+import {hot,setConfig} from 'react-hot-loader';
 import './App.css';
-
+setConfig({logLevel: 'no-errors-please'});
 import * as React from 'react';
 
+// import { hot } from 'react-hot-loader';
+import Home from './components/home/home';
+import Navbar from './components/navbar/navbar';
 import Footer from './containers/footer';
-import Home from './containers/home';
-import Navbar from './containers/navbar';
 
 class App extends React.Component {
   public render() {
@@ -21,4 +23,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default hot(module)(App);

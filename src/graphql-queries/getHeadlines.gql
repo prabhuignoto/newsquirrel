@@ -1,0 +1,12 @@
+{
+  query getHeadlines($country: String!, $category: String!) {
+    getHeadlines(country: $country, category: $category) {
+      title
+      author
+      description
+      url
+      urlToImage
+      publishedAt
+    }
+  }
+}

@@ -1,7 +1,8 @@
+import { FormEvent } from "react";
+
 export interface ISearchBox {
-  onSearch: (ev: any) => void;
-  onInput: (ev: any) => void;
-  clearField: (ev: any) => void;
-  onRef: (ref: any) => void;
+  onSearch: () => void;
+  onInput: () => void;
+  clearField: (ev: KeyboardEvent & FormEvent<HTMLInputElement) => void;
   value: string;
 }

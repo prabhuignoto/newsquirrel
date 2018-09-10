@@ -143,7 +143,7 @@ const CardImage = Styled.img<{ thumbnailUrl?: string; size?: Size; appMode?: IAp
   width: 100%;
   object-fit: cover;
   object-position: 50% 0%;
-  filter: ${p => p.appMode!.value === AppMode.DARK ? 'grayscale(90%)' : ''};
+  filter: ${p => p.appMode && p.appMode!.value === AppMode.DARK ? 'grayscale(90%)' : ''};
   &:hover {
     filter: brightness(1.1) sepia(0.15) grayscale(30%);
   }
@@ -174,7 +174,6 @@ const Publisher = Styled.div<{ size?: Size; appMode?: IAppMode}>`
   width: 100%;
   font-size: 0.75rem;
   height: 40px;
-  background-color: ${p => p.appMode!.value === AppMode.DARK ? '#000' : '#EDF2F4'};
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 `;

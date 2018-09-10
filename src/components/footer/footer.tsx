@@ -40,7 +40,7 @@ const DesignedBy = Styled.div`
   display: flex;
 `
 
-const Footer: React.SFC<IFooter> = ({appMode}) => {
+const Footer: React.SFC<IFooter> = ({appMode, mutate}) => {
   return (
     <Wrapper data-testid="rt-footer" appMode={appMode}>
       <Social>

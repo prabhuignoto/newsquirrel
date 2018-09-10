@@ -1,9 +1,13 @@
-import { connect } from 'react-redux';
+import gql from 'graphql-tag';
+import {graphql} from 'react-apollo';
 import Footer from '../components/footer/footer';
-import { IAppState } from './../models/view/IAppState';
+import { AppMode } from './../enums/appMode';
 
-const mapStateToProps = (state: IAppState) => ({
-  appMode: state.options.defaultAppMode,
-});
+export default graphql(gql`{
+  appMode @client
+}`, {
+  props: ({data: {appMode}, mutate}: any) => ({
+    appMode: {name: 'ard', value: AppMode.LIGHT},
+  })
+})(Footer)
 
-export default connect(mapStateToProps, null)(Footer);
