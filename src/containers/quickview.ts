@@ -1,38 +1,28 @@
-import { connect } from 'react-redux';
-import { compose, StateHandler, StateHandlerMap, withStateHandlers } from 'recompose';
-import { Dispatch } from 'redux';
-import QuickView from '../components/quickview/quickview';
-import { IAppState } from '../models/view/IAppState';
-import { IQuickView } from '../models/view/IQuickView';
+import gql from "graphql-tag";
+import { graphql } from "react-apollo";
+import QuickView from "../components/quickview/quickview";
 
-const mapStateToProps = (state:IAppState) => ({
-  open: state.news.quickViewEnabled,
-  quickViewData: state.news.quickViewData,
-  quickViewLoading: state.news.quickViewLoading,
-  quickViewUrl: state.news.quickViewUrl,
-});
-
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  close: () => dispatch(closeQuickView())
-});
-
-interface IProps {
-  close: () => void;
-  quickViewData: IQuickView
-}
-
-interface IStateHandler<T> extends StateHandlerMap<T> {
-  closeQuickView: StateHandler<T>;
-}
-
-const stateHandlers = {
-  closeQuickView: (state: any, {close}: IProps) => () => {
-    close();
-    return{};
+const query = gql`
+  query data($url: string) {
+    getIFramelyData(url: $url) {
+      site
+      description
+      date
+      logoUrl
+      thumbnailUrl
+      url
+      title
+    }
   }
-}
+`;
 
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  withStateHandlers<{}, IStateHandler<{}>>({}, stateHandlers),
-)(QuickView)
+export default graphql(query, {
+  options: ({ url }) => ({
+    variables: {
+      url
+    }
+  }),
+  props: ({ data }) => ({
+    ...data
+  })
+})(QuickView);

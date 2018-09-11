@@ -1,6 +1,6 @@
 import * as React from "react";
+import Quickview from "../../components/quickview/quickview";
 import ArticleCard from "../../containers/article-card";
-import Quickview from "../../containers/quickview";
 import { IArticleCard } from "../../models/view/IArticleCard";
 import { INewsStand } from "../../models/view/INewsStand";
 import ErrorUI from "../error-ui/ui";
@@ -17,20 +17,19 @@ const NewsStand: React.SFC<INewsStand> = ({
   loading,
   error,
   data,
+  quickViewUrl,
+  closeQuickView
 }) => {
   return (
     <NewsStandWrapper appMode={appMode}>
-      {openQuickView ? (
-        <QuickviewWrapper
-          pose={openQuickView ? "open" : "close"}
-          initialPose="close"
-        >
-          <Quickview />
+      {quickViewUrl.isOpen ? (
+        <QuickviewWrapper>
+          <Quickview quickViewUrl={quickViewUrl.url} open={true} closeQuickView={closeQuickView}/>
         </QuickviewWrapper>
       ) : (
         <div style={{ width: "100%" }}>
           {loading ? (
-            <LoadingText initialPose={"open"}>Loading News ...</LoadingText>
+            <LoadingText>Loading News ...</LoadingText>
           ) : null}
           {!loading && !error ? (
             <ArticlesWrapper>

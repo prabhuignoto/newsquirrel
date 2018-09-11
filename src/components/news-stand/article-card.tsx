@@ -50,6 +50,7 @@ const ArticleCard: React.SFC<IArticleCardView> = ({
   checkArticle,
   canEmbedInFrame,
   appMode,
+  updateQuickviewUrl
 }) => {
   return (
     <ArticleCardWrapper
@@ -67,7 +68,13 @@ const ArticleCard: React.SFC<IArticleCardView> = ({
         <Controls className="is-hidden-touch">
           {typeof canEmbedInFrame === "undefined" ? (
             <CheckPreview
-              onClick={handleCheckArticle(articleUrl, id, checkArticle)}
+              onClick={() => {
+                updateQuickviewUrl({
+                  variables: {
+                    url:articleUrl,
+                  }
+                })
+              }}
             >
               <EyeSolid title="Quick View" />
             </CheckPreview>

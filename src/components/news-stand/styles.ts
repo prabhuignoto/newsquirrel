@@ -249,7 +249,7 @@ const QuickviewWrapper = Styled2('div')`
   background: rgba(255, 255, 255, 1);
   border-radius: 4px;
   padding: 1.5rem 1rem 2rem 1rem;
-  width: 80%;
+  width: 90%;
   min-height: 700px;
   z-index: 100;
   top: 2%;

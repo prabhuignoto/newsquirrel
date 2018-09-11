@@ -6,5 +6,9 @@ export default interface ITopHeadlines {
   searchTerm: string;
   category: string;
   country: string;
-  newstandSize: NewsStandSize
+  newstandSize: NewsStandSize;
+  quickView: {
+    url: string;
+    isOpen: boolean;
+  }
 }

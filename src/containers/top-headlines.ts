@@ -17,14 +17,19 @@ const query = gql`
     searchTerm @client {
       value
     }
+    quickViewUrl @client {
+      isOpen,
+      url
+    }
   }
 `;
 
 export default graphql(query, {
-  props: ({ data: { defaultCountry, defaultCategory, appMode, searchTerm } }) => ({
+  props: ({ data: { defaultCountry, defaultCategory, appMode, searchTerm, quickViewUrl } }) => ({
     appMode,
     category: defaultCategory.value,
     country: defaultCountry.country,
-    searchTerm: searchTerm.value
+    quickView: quickViewUrl,
+    searchTerm: searchTerm.value,
   })
 })(TopHeadlines);

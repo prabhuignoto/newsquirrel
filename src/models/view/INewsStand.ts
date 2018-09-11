@@ -8,7 +8,10 @@ export interface INewsStand{
   detailedPaneOpen?: boolean;
   detailedArticleUrl?: string;
   appMode: IAppMode;
-  quickViewUrl: string;
+  quickViewUrl: {
+    isOpen: boolean;
+    url: string;
+  };
   openQuickView: boolean;
   quickViewOpen: boolean;
   loading: boolean;
@@ -16,4 +19,5 @@ export interface INewsStand{
   data: any;
   category: string;
   country: string;
+  closeQuickView: () => void;
 }

@@ -73,6 +73,32 @@ const Client = new ApolloClient({
             }
           });
           return null;
+        },
+        updateQuickviewUrl(_, {url}: {url: string}, {cache}) {
+          cache.writeData({
+            data: {
+              quickViewUrl: {
+                __typename: "QuickviewUrl",
+                id: "quickviewurl",
+                isOpen: true,
+                url,
+              },
+            }
+          });
+          return null;
+        },
+        closeQuickView(_, data, {cache}) {
+          cache.writeData({
+            data: {
+              quickViewUrl: {
+                __typename: "QuickviewUrl",
+                id: "quickviewurl",
+                isOpen: false,
+                url: '',
+              },
+            }
+          });
+          return null;
         }
       }
     }

@@ -53,6 +53,7 @@ const List = Styled('ul')`
   width: 100%;
   display: flex;
   flex-direction: row;
+  height: 100%;
 `;
 
 const ListItem = Styled('li')<{selected: boolean,size: Size, theme?: string}>`

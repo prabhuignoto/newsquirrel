@@ -1,7 +1,7 @@
 import Styled from "react-emotion";
 
 export const Wrapper = Styled('section')`
-  width: 90%;
+  width: 100%;
   height: 100%;
   border-radius: 8px;
   display: flex;
@@ -37,17 +37,23 @@ export const Logo = Styled('img')`
 
 export const ThumbnailWrapper = Styled('div')`
   width: 100%;
-  height: 30rem;
+  height: 40rem;
   margin: 0.5rem 0;
   display: flex;
   align-items: center;
+  padding: 1rem;
 `
 
 export const Thumbnail = Styled('img')`
   object-fit: cover;
-  max-height: 100%;
-  max-width: 100%;
+  /* max-height: 100%; */
+  /* max-width: 100%; */
+  height: 100%;
+  width: 100%;
   border: none;
+  margin: 0 auto;
+  object-fit: contain;
+  object-position: 0 0;
 `;
 
 export const Title = Styled('div')`

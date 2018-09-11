@@ -74,8 +74,14 @@ export default {
       }
     ]
   },
+  quickViewUrl: {
+    __typename: "QuickviewUrl",
+    id: "quickviewurl",
+    isOpen: false,
+    url: "",
+  },
   searchTerm: {
     __typename: "SearchTerm",
     value: ""
-  }
+  },
 };

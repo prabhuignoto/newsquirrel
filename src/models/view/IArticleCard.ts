@@ -21,4 +21,5 @@ export interface IArticleCardView extends IArticleCard{
   checkArticle: (url: string) => void;
   canEmbedInFrame: boolean;
   appMode: IAppMode;
+  updateQuickviewUrl: (data: any) => void;
 }
