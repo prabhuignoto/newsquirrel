@@ -14,7 +14,7 @@ export const Input = Styled('input')`
   border-radius: 4px;
   width: 100%;
   height: 100%;
-  border: 1px solid #cccccc;
+  border: none;
   border-bottom: none;
   background: #EDF2F4;
   color: #2b2d42;
@@ -30,7 +30,7 @@ export const ClearButton = Styled('button')`
   border: none;
   padding: 1rem;
   position: absolute;
-  right: 1rem;
+  right: 4.5rem;
   top: 50%;
   transform: translateY(-50%);
   width: 2rem;
@@ -38,4 +38,21 @@ export const ClearButton = Styled('button')`
   cursor: pointer;
   background: none;
   outline: none;
-`
+`;
+
+export const GoButton = Styled('button')`
+  background: #EDF2F4;
+  border-radius: 3px;
+  box-shadow: 0px 3px 1px rgba(0,0,0,0.2);
+  width: 3rem;
+  height: 3rem;
+  padding: 1rem;
+  border: none;
+  margin-left: 0.5rem;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative
+`;

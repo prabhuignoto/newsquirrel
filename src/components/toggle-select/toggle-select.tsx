@@ -43,35 +43,35 @@ const ToggleSelect: React.SFC<IToggleSelect> = ({
   update
 }) => {
   return (
-    <Wrapper size={size} data-testid="rt-toggle-select">
-      <Label size={size} label={label}>
-        {label}
-      </Label>
-      <State initial={{ uitems: items }}>
-        {({ state, setState }) => {
-          const onClick: (name: string, value: number) => void = (
-            name,
-            value
-          ) => {
-            update({
-              variables: {
-                name,
-                value
+    <State initial={{ uitems: items.slice(0) }}>
+      {({ state, setState }) => {
+        const onClick: (name: string, value: number) => void = (
+          name,
+          value
+        ) => {
+          update({
+            variables: {
+              name,
+              value
+            }
+          });
+          setState({
+            uitems: state.uitems.map(x => {
+              let selected = false;
+              if (x.name === name) {
+                selected = true;
               }
-            });
-            setState({
-              uitems: state.uitems.map(x => {
-                let selected = false;
-                if (x.name === name) {
-                  selected = true;
-                }
-                return Object.assign({}, x, {
-                  selected
-                });
-              })
-            });
-          };
-          return (
+              return Object.assign({}, x, {
+                selected
+              });
+            })
+          });
+        };
+        return (
+          <Wrapper size={size} data-testid="rt-toggle-select">
+            <Label size={size} label={label}>
+              {label}
+            </Label>
             <List>
               {state.uitems.map<React.ReactElement<IToggleItem>>(x => (
                 <ToggleItem
@@ -83,10 +83,10 @@ const ToggleSelect: React.SFC<IToggleSelect> = ({
                 />
               ))}
             </List>
-          );
-        }}
-      </State>
-    </Wrapper>
+          </Wrapper>
+        );
+      }}
+    </State>
   );
 };
 

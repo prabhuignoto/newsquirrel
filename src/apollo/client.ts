@@ -1,3 +1,4 @@
+import { Posed } from "react-pose";
 import ApolloClient from "apollo-boost";
 import { ApolloCache } from "apollo-cache";
 import defaults from "./defaults";
@@ -46,7 +47,8 @@ const Client = new ApolloClient({
                 id: "defaultNewstandSize",
                 value
               }
-            }
+            },
+            id: "defaultNewstandSize",
           });
           return null;
         },
@@ -74,31 +76,42 @@ const Client = new ApolloClient({
           });
           return null;
         },
-        updateQuickviewUrl(_, {url}: {url: string}, {cache}) {
+        updateQuickviewUrl(_, { url }: { url: string }, { cache }) {
           cache.writeData({
             data: {
               quickViewUrl: {
                 __typename: "QuickviewUrl",
                 id: "quickviewurl",
                 isOpen: true,
-                url,
-              },
+                url
+              }
             }
           });
           return null;
         },
-        closeQuickView(_, data, {cache}) {
+        closeQuickView(_, data, { cache }) {
           cache.writeData({
             data: {
               quickViewUrl: {
                 __typename: "QuickviewUrl",
                 id: "quickviewurl",
                 isOpen: false,
-                url: '',
-              },
+                url: ""
+              }
             }
           });
           return null;
+        },
+        updateSearchPage(_, { page }: { page: number }, { cache }) {
+          cache.writeData({
+            data: {
+              searchPage: {
+                __typename: "SearchPage",
+                id: "searchpage",
+                number: page
+              }
+            }
+          });
         }
       }
     }

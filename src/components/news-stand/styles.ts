@@ -4,7 +4,7 @@ import Size from "../../enums/newsStandSize";
 import { AppMode } from './../../enums/appMode';
 import { IAppMode } from './../../models/view/IAppState';
 
-const NewsStandWrapper = Styled2('div')<{appMode: IAppMode}>`
+export const NewsStandWrapper = Styled2('div')<{appMode: IAppMode}>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -16,13 +16,13 @@ const NewsStandWrapper = Styled2('div')<{appMode: IAppMode}>`
   min-height: 60vh;
 `;
 
-const SortByWrapper = Styled2('div')`
+export const SortByWrapper = Styled2('div')`
   width: 100%;
   display: flex;
   justify-content: flex-end;
 `;
 
-const ArticlesWrapper = Styled2('div')`
+export const ArticlesWrapper = Styled2('div')`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -31,7 +31,7 @@ const ArticlesWrapper = Styled2('div')`
   position: relative;
 `;
 
-const LoadingText = Styled2('span')`
+export const LoadingText = Styled2('span')`
   font-size: 2.5rem;
   position: absolute;
   left: 0;
@@ -43,43 +43,24 @@ const LoadingText = Styled2('span')`
   color: #A1ABBC;
 `;
 
-const ArticleCardWrapper = Styled2('div')<{ size?: Size }>`
+export const ArticleCardWrapper = Styled2('div')<{ size?: Size }>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  margin: ${p => (p.size !== Size.IMAGE_FREE ? "1rem" : "0.75rem")};
+  margin: 0.75rem;
   padding: 0.25rem;
-  flex-basis: ${p => {
-    if (p.size === Size.COZY) {
-      return "270px";
-    } else if (p.size === Size.COMPACT) {
-      return "220px";
-    } else {
-      return "300px";
-    }
-  }};
-  min-height: ${p => (p.size === Size.COZY ? "300px" : "250px")};
+  flex-basis: 270px;
+  min-height: "300px";
   border-radius: 3px;
   position: relative;
   flex-grow: 1;
   position: relative;
 `;
 
-const CardTitle = Styled2('div')<{ size?: Size; appMode?: IAppMode}>`
+export const CardTitle = Styled2('div')<{ size?: Size; appMode?: IAppMode}>`
   display: flex;
-  font-size: ${p => {
-    switch (p.size) {
-      case Size.COZY:
-        return "1.25rem";
-      case Size.COMPACT:
-        return "1rem";
-      case Size.IMAGE_FREE:
-        return "1.5rem";
-      default:
-        return "1rem";
-    }
-  }};
+  font-size: 1.25rem;
   text-align: left;
   padding: 0.1rem;
   margin-top: 0.1rem;
@@ -93,43 +74,42 @@ const CardTitle = Styled2('div')<{ size?: Size; appMode?: IAppMode}>`
   width: 100%;
 `;
 
-const TitleAnchor = Styled2('a')<{appMode?: IAppMode}>`
+export const TitleAnchor = Styled2('a')<{appMode?: IAppMode}>`
   color: ${p => p.appMode!.value === AppMode.DARK ? '#747E8F' : '#2B2D42'};
 `;
 
-const StubImage = Styled2('img')`
+export const StubImage = Styled2('img')`
   display: none;
 `;
 
 
-const ImageWrapper = Styled2('figure')<{ size?: Size }>`
+export const ImageWrapper = Styled2('figure')<{ size?: Size }>`
 width: 100%;
-height: ${p => (p.size === Size.COMPACT ? "120px" : "160px")};
 position: relative;
 display: block;
+height: 10rem;
 `;
 
 
-const CardImage = Styled2('img')<{ thumbnailUrl?: string; size?: Size; appMode?: IAppMode }>`
-  height: ${p => (p.size === Size.COMPACT ? "120px" : "100%")};
+export const CardImage = Styled2('img')<{ thumbnailUrl?: string; size?: Size; appMode?: IAppMode }>`
   display: block;
-  padding: 0.1rem;
-  border-radius: 2px;
+  // padding: 0.1rem;
   position: relative;
   cursor: pointer;
   width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: 50% 0%;
   filter: ${p => p.appMode && p.appMode!.value === AppMode.DARK ? 'grayscale(90%)' : ''};
   &:hover {
     filter: brightness(1.1) sepia(0.15) grayscale(30%);
   }
-  border-radius: ${p => p.size === Size.COMPACT ? '4px' :''};
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
 `;
 
-const CardDescription = Styled2('div')<{ size?: Size }>`
-  display: ${p =>
-    p.size === Size.COZY || p.size === Size.IMAGE_FREE ? "flex" : "none"};
+export const CardDescription = Styled2('div')<{ size?: Size }>`
+  display: flex;
   align-items: center;
   justify-content: flex-start;
   text-align: left;
@@ -144,8 +124,8 @@ const CardDescription = Styled2('div')<{ size?: Size }>`
   color: #747E8F;
 `;
 
-const Publisher = Styled2('div')<{ size?: Size; appMode?: IAppMode}>`
-  display: ${p => (p.size === Size.COZY || p.size === Size.COMPACT ? "flex" : "none")};
+export const Publisher = Styled2('div')<{ size?: Size; appMode?: IAppMode}>`
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -153,9 +133,12 @@ const Publisher = Styled2('div')<{ size?: Size; appMode?: IAppMode}>`
   height: 40px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
+  border: 1px solid rgba(161, 171, 188, 0.35);
+  box-shadow: inset 0 0 15px 5px rgba(161, 171, 188, 0.2);
+  border-bottom: none;
 `;
 
-const PublishedBy = Styled2('div')`
+export const PublishedBy = Styled2('div')`
   margin-left: auto;
   margin-right: 5px;
   color: #D90429;
@@ -163,7 +146,7 @@ const PublishedBy = Styled2('div')`
   font-size: 0.9rem;
 `;
 
-const PublishDate = Styled2('time')`
+export const PublishDate = Styled2('time')`
   margin-right: auto;
   margin-left: 10px;
   color: #515364;
@@ -171,7 +154,7 @@ const PublishDate = Styled2('time')`
   font-weight: 500;
 `;
 
-const CheckPreview = Styled2('a')`
+export const CheckPreview = Styled2('a')`
   margin-right: 0.75rem;
   /* padding-left: 1.5rem; */
   width: 1.65rem;
@@ -179,7 +162,7 @@ const CheckPreview = Styled2('a')`
   position: relative;
 `;
 
-const PreviewArticle = Styled2('a')`
+export const PreviewArticle = Styled2('a')`
   font-size: 0.9rem;
   margin-right: 0.5rem;
   padding: 0.1rem;
@@ -187,14 +170,14 @@ const PreviewArticle = Styled2('a')`
   font-family: "Oswald", sans-serif;
 `;
 
-const Controls = Styled2('div')`
+export const Controls = Styled2('div')`
   display:flex;
   align-items: center;
   justify-content: flex-start;
   margin: 0.25rem 0;
 `;
 
-const ErrorMessage = Styled2('span')`
+export const ErrorMessage = Styled2('span')`
   display: block;
   margin-right: 0.5rem;
   padding: 0.1rem;
@@ -202,7 +185,7 @@ const ErrorMessage = Styled2('span')`
   font-size: 0.8rem;
 `;
 
-const PosedWrapper = posed.div({
+export const PosedWrapper = posed.div({
   close: {
     opacity: 0,
   },
@@ -245,7 +228,7 @@ export const SpinnerWrapper = Styled2('div')`
   padding: 1rem;
 `;
 
-const QuickviewWrapper = Styled2('div')`
+export const QuickviewWrapper = Styled2('div')`
   background: rgba(255, 255, 255, 1);
   border-radius: 4px;
   padding: 1.5rem 1rem 2rem 1rem;
@@ -257,7 +240,7 @@ const QuickviewWrapper = Styled2('div')`
   margin: 0 auto;
 `;
 
-const PosedQuickViewOverlay = posed.div({
+export const PosedQuickViewOverlay = posed.div({
   close: {
     background: 'rgba(0,0,0,0.1)',
   },
@@ -266,33 +249,10 @@ const PosedQuickViewOverlay = posed.div({
   }
 })
 
-const QuickViewOverlay = Styled2('div')`
+export const QuickViewOverlay = Styled2('div')`
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
 `;
-
-export {
-  NewsStandWrapper,
-  ArticleCardWrapper,
-  CardTitle,
-  CardImage,
-  CardDescription,
-  PublishDate,
-  PublishedBy,
-  Publisher,
-  TitleAnchor,
-  ArticlesWrapper,
-  SortByWrapper,
-  ImageWrapper,
-  StubImage,
-  LoadingText,
-  CheckPreview,
-  PreviewArticle,
-  Controls,
-  ErrorMessage,
-  QuickviewWrapper,
-  QuickViewOverlay,
-};

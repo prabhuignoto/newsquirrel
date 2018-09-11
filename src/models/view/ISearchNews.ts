@@ -9,5 +9,6 @@ export default interface ISearchNews {
   loading: boolean;
   error: any;
   search: any;
-  fetchMore: any
+  fetchMore: any;
+  page: number;
 }

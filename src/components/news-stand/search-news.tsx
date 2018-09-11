@@ -15,6 +15,8 @@ import {
   QuickviewWrapper,
   SpinnerWrapper
 } from "./styles";
+let page = 1;
+
 
 const SearchNews: React.SFC<ISearchNews> = ({
   term,
@@ -25,22 +27,18 @@ const SearchNews: React.SFC<ISearchNews> = ({
   search,
   loading,
   error,
-  fetchMore
+  fetchMore,
 }) => {
-  let page = 1;
   return (
     <NewsStandWrapper appMode={appMode}>
       {openQuickView ? (
-        <QuickviewWrapper
-          pose={openQuickView ? "open" : "close"}
-          initialPose="close"
-        >
+        <QuickviewWrapper>
           <Quickview />
         </QuickviewWrapper>
       ) : (
         <div style={{ width: "100%" }}>
           {loading ? (
-            <LoadingText initialPose={"open"}>Searching ...</LoadingText>
+            <LoadingText>Searching ...</LoadingText>
           ) : null}
 
           {!loading && !error && search.length < 1 ? (

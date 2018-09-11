@@ -54,7 +54,6 @@ const ArticleCard: React.SFC<IArticleCardView> = ({
 }) => {
   return (
     <ArticleCardWrapper
-      size={size}
       // pose={"open"}
       // initialPose={"close"}
       key={articleUrl}
@@ -91,9 +90,9 @@ const ArticleCard: React.SFC<IArticleCardView> = ({
             />
           ) : null} */}
 
-          <ImageWrapper size={size}>
+          <ImageWrapper>
             {!!imgUrl ? (
-              <CardImage size={size} src={imgUrl} />
+              <CardImage src={imgUrl} />
             ) : (
               <BlankImage />
             )}
@@ -104,7 +103,7 @@ const ArticleCard: React.SFC<IArticleCardView> = ({
         </Fragment>
       ) : null}
 
-      <CardTitle size={size}>
+      <CardTitle>
         <TitleAnchor
           appMode={appMode}
           href={articleUrl}
@@ -115,7 +114,7 @@ const ArticleCard: React.SFC<IArticleCardView> = ({
         </TitleAnchor>
       </CardTitle>
 
-      <CardDescription size={size}>
+      <CardDescription>
         {description ? <span>{description}</span> : null}
       </CardDescription>
     </ArticleCardWrapper>

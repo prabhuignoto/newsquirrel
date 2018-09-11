@@ -26,7 +26,6 @@ const Wrapper = Styled('div')<{size: Size}>`
   flex-direction: row;
   justify-content: flex-start;
   padding: 0.25rem 0.25rem;
-  border-radius: ${p => p.size === Size.SMALL ? '3px': ''};
   background: #EDF2F4;
   border-radius: 3px;
   box-shadow: 0px 3px 1px rgba(0,0,0,0.2);
@@ -54,29 +53,29 @@ const List = Styled('ul')`
   display: flex;
   flex-direction: row;
   height: 100%;
+  align-items: center;
+  justify-content: center;
 `;
 
 const ListItem = Styled('li')<{selected: boolean,size: Size, theme?: string}>`
   width: 100%;
-  border-radius: 2px;
-  background-color: ${p => p.selected ? '#2B2D42' : ''};
-  color: ${p => p.selected ? getForeColor(p.theme) : '#A1ABBC'};
+  border-radius: 3px;
+  background-color: ${p => p.selected ? '#EF233C' : ''};
+  color: ${p => p.selected ? '#fff' : '#A1ABBC'};
   font-weight: ${p => p.selected ? '500' : ''};
-  padding: 0.25rem 0.75rem;
+  padding: 0.25rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   white-space: nowrap;
   cursor: pointer;
-  font-size: ${p => p.selected ? '1.1rem' : '1rem'};
   font-family: 'Oswald', sans-serif;
-  height: 100%;
+  height: 90%;
   user-select: none;
   outline: none;
   flex: 1;
   &:hover {
-    background: rgba(43, 45, 66, 0.25);
-    color: #2B2D42;
+    // color: #2B2D42;
   }
   &::after {
     content: ${p => p.selected ? '': null}
