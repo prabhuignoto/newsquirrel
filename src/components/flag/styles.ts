@@ -1,6 +1,6 @@
-import Styled from "styled-components";
+import Styled from "react-emotion";
 
-const Wrapper = Styled.div`
+const Wrapper = Styled('div')`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,7 +10,7 @@ const Wrapper = Styled.div`
 `;
 
 
-const Icon = Styled.i<{url?: string}>`
+const Icon = Styled('i')<{url?: string}>`
   width: 100%;
   height: 100%;
   display: block;

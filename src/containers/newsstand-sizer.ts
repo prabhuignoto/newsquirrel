@@ -13,9 +13,7 @@ const query = gql`
         value
       }
     }
-    defaultNewstandSize @client {
-      value
-    }
+    defaultNewstandSize @client
   }
 `;
 

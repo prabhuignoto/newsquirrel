@@ -1,8 +1,8 @@
-import Styled from 'styled-components';
+import Styled from 'react-emotion';
 import { AppMode } from './../../enums/appMode';
 import { IAppMode } from './../../models/view/IAppState';
 
-const Wrapper = Styled.div`
+const Wrapper = Styled('div')`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,18 +11,18 @@ const Wrapper = Styled.div`
   min-height: 90vh;
 `;
 
-const FilterWrapper = Styled.div`
+const FilterWrapper = Styled('div')`
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
 `;
 
-const AppModeWrapper = Styled.div`
+const AppModeWrapper = Styled('div')`
   /* margin-right: 2.5rem; */
 `;
 
-const Toolbar = Styled.div<{appMode: IAppMode}>`
+const Toolbar = Styled('div')<{appMode: IAppMode}>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,12 +32,12 @@ const Toolbar = Styled.div<{appMode: IAppMode}>`
   transition: background-color 0.5s;
   margin-top: 1rem;
 `
-const SortbyWrapper = Styled.div`
+const SortbyWrapper = Styled('div')`
   /* margin-right: 2.5rem; */
 `;
 
 
-const DarkModeBackdrop = Styled.div<{show: number}>`
+const DarkModeBackdrop = Styled('div')<{show: number}>`
   position: fixed;
   width: 100%;
   height: 100%;

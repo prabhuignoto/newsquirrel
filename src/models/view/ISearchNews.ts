@@ -8,5 +8,6 @@ export default interface ISearchNews {
   quickViewOpen: boolean;
   loading: boolean;
   error: any;
-  data: any;
+  search: any;
+  fetchMore: any
 }

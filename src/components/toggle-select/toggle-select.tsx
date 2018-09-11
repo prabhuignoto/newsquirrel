@@ -53,6 +53,12 @@ const ToggleSelect: React.SFC<IToggleSelect> = ({
             name,
             value
           ) => {
+            update({
+              variables: {
+                name,
+                value
+              }
+            });
             setState({
               uitems: state.uitems.map(x => {
                 let selected = false;
@@ -63,12 +69,6 @@ const ToggleSelect: React.SFC<IToggleSelect> = ({
                   selected
                 });
               })
-            });
-            update({
-              variables: {
-                name,
-                value
-              }
             });
           };
           return (

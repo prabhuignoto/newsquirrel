@@ -1,6 +1,6 @@
-import Styled from "styled-components";
+import Styled from "react-emotion";
 
-const Wrapper = Styled.div`
+const Wrapper = Styled('div')`
   display: flex;
 `;
 

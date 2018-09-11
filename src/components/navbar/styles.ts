@@ -1,8 +1,8 @@
-import Styled from 'styled-components';
+import Styled from 'react-emotion';
 
 import ViewPort from '../../enums/viewPort';
 
-const Wrapper = Styled.nav `
+const Wrapper = Styled('nav') `
   min-height: 80px;
   background: #EEF3F5;
   position: relative;
@@ -13,7 +13,7 @@ const Wrapper = Styled.nav `
   background: #2B2D42;
 `;
 
-const NavBrand = Styled.div`
+const NavBrand = Styled('div')`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,7 +23,7 @@ const NavBrand = Styled.div`
   color:  linear-gradient(to right, rgba(217,4,40,1) 0%, rgba(43,45,66,1) 70%, rgba(43,45,66,1) 100%);
 `;
 
-const NavBrandText = Styled.span<{vwPort: ViewPort}>`
+const NavBrandText = Styled('span')<{vwPort: ViewPort}>`
   font-size: ${p => p.vwPort === ViewPort.DESK ? '2rem' : '1.75rem'};
   font-weight: 500;
   color: #EF233C;
@@ -32,7 +32,7 @@ const NavBrandText = Styled.span<{vwPort: ViewPort}>`
   text-transform: uppercase;
 `;
 
-const CountryDropdownWrapper = Styled.div`
+const CountryDropdownWrapper = Styled('div')`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,7 +40,7 @@ const CountryDropdownWrapper = Styled.div`
   font-size: 1.5rem;
 `;
 
-const SearchbarWrapper = Styled.div`
+const SearchbarWrapper = Styled('div')`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,13 +48,13 @@ const SearchbarWrapper = Styled.div`
   margin-right: 'auto';
 `;
 
-const ReadmodeWrapper = Styled.div`
+const ReadmodeWrapper = Styled('div')`
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
-const FlagWrapper = Styled.div`
+const FlagWrapper = Styled('div')`
   position: absolute;
   top: -13px;
   right: -1px;

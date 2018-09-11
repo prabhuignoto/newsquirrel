@@ -1,10 +1,10 @@
+import Styled2 from "react-emotion";
 import posed from 'react-pose';
-import Styled from "styled-components";
 import Size from "../../enums/newsStandSize";
 import { AppMode } from './../../enums/appMode';
 import { IAppMode } from './../../models/view/IAppState';
 
-const NewsStandWrapper = Styled.div<{appMode: IAppMode}>`
+const NewsStandWrapper = Styled2('div')<{appMode: IAppMode}>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -16,13 +16,13 @@ const NewsStandWrapper = Styled.div<{appMode: IAppMode}>`
   min-height: 60vh;
 `;
 
-const SortByWrapper = Styled.div`
+const SortByWrapper = Styled2('div')`
   width: 100%;
   display: flex;
   justify-content: flex-end;
 `;
 
-const ArticlesWrapper = Styled.div`
+const ArticlesWrapper = Styled2('div')`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -31,18 +31,7 @@ const ArticlesWrapper = Styled.div`
   position: relative;
 `;
 
-const fadeInConfig = () => ({
-  close: {
-    opacity: 0,
-  },
-  open: {
-    opacity: 1,
-  },
-})
-
-const PosedLoadingText = posed.span(fadeInConfig());
-
-const LoadingText = Styled(PosedLoadingText)`
+const LoadingText = Styled2('span')`
   font-size: 2.5rem;
   position: absolute;
   left: 0;
@@ -54,17 +43,7 @@ const LoadingText = Styled(PosedLoadingText)`
   color: #A1ABBC;
 `;
 
-const PosedArticleWrapper = posed.div({
-  close: {
-    opacity: 0,
-  },
-  open: {
-    delay: 100,
-    opacity: 1,
-  },
-});
-
-const ArticleCardWrapper = Styled(PosedArticleWrapper)<{ size?: Size }>`
+const ArticleCardWrapper = Styled2('div')<{ size?: Size }>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -85,11 +64,9 @@ const ArticleCardWrapper = Styled(PosedArticleWrapper)<{ size?: Size }>`
   position: relative;
   flex-grow: 1;
   position: relative;
-  // filter: ${p => p.deactivate ? 'blur(3px) opacity(0.8) grayscale(50%)' : ''};
-  // pointer-events: ${p => p.deactivate ? 'none' : ''};
 `;
 
-const CardTitle = Styled.div<{ size?: Size; appMode?: IAppMode}>`
+const CardTitle = Styled2('div')<{ size?: Size; appMode?: IAppMode}>`
   display: flex;
   font-size: ${p => {
     switch (p.size) {
@@ -116,16 +93,16 @@ const CardTitle = Styled.div<{ size?: Size; appMode?: IAppMode}>`
   width: 100%;
 `;
 
-const TitleAnchor = Styled.a<{appMode?: IAppMode}>`
+const TitleAnchor = Styled2('a')<{appMode?: IAppMode}>`
   color: ${p => p.appMode!.value === AppMode.DARK ? '#747E8F' : '#2B2D42'};
 `;
 
-const StubImage = Styled.img`
+const StubImage = Styled2('img')`
   display: none;
 `;
 
 
-const ImageWrapper = Styled.figure<{ size?: Size }>`
+const ImageWrapper = Styled2('figure')<{ size?: Size }>`
 width: 100%;
 height: ${p => (p.size === Size.COMPACT ? "120px" : "160px")};
 position: relative;
@@ -133,7 +110,7 @@ display: block;
 `;
 
 
-const CardImage = Styled.img<{ thumbnailUrl?: string; size?: Size; appMode?: IAppMode }>`
+const CardImage = Styled2('img')<{ thumbnailUrl?: string; size?: Size; appMode?: IAppMode }>`
   height: ${p => (p.size === Size.COMPACT ? "120px" : "100%")};
   display: block;
   padding: 0.1rem;
@@ -150,7 +127,7 @@ const CardImage = Styled.img<{ thumbnailUrl?: string; size?: Size; appMode?: IAp
   border-radius: ${p => p.size === Size.COMPACT ? '4px' :''};
 `;
 
-const CardDescription = Styled.div<{ size?: Size }>`
+const CardDescription = Styled2('div')<{ size?: Size }>`
   display: ${p =>
     p.size === Size.COZY || p.size === Size.IMAGE_FREE ? "flex" : "none"};
   align-items: center;
@@ -167,7 +144,7 @@ const CardDescription = Styled.div<{ size?: Size }>`
   color: #747E8F;
 `;
 
-const Publisher = Styled.div<{ size?: Size; appMode?: IAppMode}>`
+const Publisher = Styled2('div')<{ size?: Size; appMode?: IAppMode}>`
   display: ${p => (p.size === Size.COZY || p.size === Size.COMPACT ? "flex" : "none")};
   align-items: center;
   justify-content: center;
@@ -178,7 +155,7 @@ const Publisher = Styled.div<{ size?: Size; appMode?: IAppMode}>`
   border-top-right-radius: 3px;
 `;
 
-const PublishedBy = Styled.div`
+const PublishedBy = Styled2('div')`
   margin-left: auto;
   margin-right: 5px;
   color: #D90429;
@@ -186,7 +163,7 @@ const PublishedBy = Styled.div`
   font-size: 0.9rem;
 `;
 
-const PublishDate = Styled.time`
+const PublishDate = Styled2('time')`
   margin-right: auto;
   margin-left: 10px;
   color: #515364;
@@ -194,7 +171,7 @@ const PublishDate = Styled.time`
   font-weight: 500;
 `;
 
-const CheckPreview = Styled.a`
+const CheckPreview = Styled2('a')`
   margin-right: 0.75rem;
   /* padding-left: 1.5rem; */
   width: 1.65rem;
@@ -202,7 +179,7 @@ const CheckPreview = Styled.a`
   position: relative;
 `;
 
-const PreviewArticle = Styled.a`
+const PreviewArticle = Styled2('a')`
   font-size: 0.9rem;
   margin-right: 0.5rem;
   padding: 0.1rem;
@@ -210,14 +187,14 @@ const PreviewArticle = Styled.a`
   font-family: "Oswald", sans-serif;
 `;
 
-const Controls = Styled.div`
+const Controls = Styled2('div')`
   display:flex;
   align-items: center;
   justify-content: flex-start;
   margin: 0.25rem 0;
 `;
 
-const ErrorMessage = Styled.span`
+const ErrorMessage = Styled2('span')`
   display: block;
   margin-right: 0.5rem;
   padding: 0.1rem;
@@ -236,14 +213,14 @@ const PosedWrapper = posed.div({
 
 
 
-export const LoadMoreWrapper = Styled.div`
+export const LoadMoreWrapper = Styled2('div')`
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
-export const LoadMore = Styled.a`
+export const LoadMore = Styled2('a')`
   padding: 1rem;
   font-size: 2rem;
   font-weight: 500;
@@ -260,7 +237,7 @@ export const LoadMore = Styled.a`
   height: 4rem;
 `;
 
-export const SpinnerWrapper = Styled.div`
+export const SpinnerWrapper = Styled2('div')`
   width: 6rem;
   height: 6rem;
   position: relative;
@@ -268,7 +245,7 @@ export const SpinnerWrapper = Styled.div`
   padding: 1rem;
 `;
 
-const QuickviewWrapper = Styled(PosedWrapper)`
+const QuickviewWrapper = Styled2('div')`
   background: rgba(255, 255, 255, 1);
   border-radius: 4px;
   padding: 1.5rem 1rem 2rem 1rem;
@@ -289,7 +266,7 @@ const PosedQuickViewOverlay = posed.div({
   }
 })
 
-const QuickViewOverlay = Styled(PosedQuickViewOverlay)`
+const QuickViewOverlay = Styled2('div')`
   position: absolute;
   width: 100%;
   height: 100%;

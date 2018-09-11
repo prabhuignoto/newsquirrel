@@ -1,6 +1,6 @@
-import Styled from "styled-components";
+import Styled from "react-emotion";
 
-export const Wrapper = Styled.section`
+export const Wrapper = Styled('section')`
   width: 90%;
   height: 100%;
   border-radius: 8px;
@@ -14,7 +14,7 @@ export const Wrapper = Styled.section`
   position: relative;
 `;
 
-export const Site = Styled.span`
+export const Site = Styled('span')`
   align-self: flex-start;
   padding: 0.25rem;
   font-size: 2rem;
@@ -22,20 +22,20 @@ export const Site = Styled.span`
   margin: 0.5rem 0;
 `;
 
-export const LogoWrapper = Styled.div`
+export const LogoWrapper = Styled('div')`
   align-self: flex-start;
   margin: 0.25rem 0;
   padding: 0.25rem;
   height: 5rem;
 `;
 
-export const Logo = Styled.img`
+export const Logo = Styled('img')`
   object-fit: contain;
   height: 100%;
   width: 100%;
 `;
 
-export const ThumbnailWrapper = Styled.div`
+export const ThumbnailWrapper = Styled('div')`
   width: 100%;
   height: 30rem;
   margin: 0.5rem 0;
@@ -43,14 +43,14 @@ export const ThumbnailWrapper = Styled.div`
   align-items: center;
 `
 
-export const Thumbnail = Styled.img`
+export const Thumbnail = Styled('img')`
   object-fit: cover;
   max-height: 100%;
   max-width: 100%;
   border: none;
 `;
 
-export const Title = Styled.div`
+export const Title = Styled('div')`
   font-size: 1.5rem;
   margin: 0.5rem;
   padding: 0.25rem;
@@ -60,7 +60,7 @@ export const Title = Styled.div`
   text-align: left;
 `;
 
-export const Description = Styled.div`
+export const Description = Styled('div')`
   font-size: 1rem;
   text-align: left;
   margin-top: 1rem;
@@ -69,7 +69,7 @@ export const Description = Styled.div`
 `;
 
 
-export const CloseBtn = Styled.button`
+export const CloseBtn = Styled('button')`
   border: none;
   cursor: pointer;
   position: absolute;
@@ -81,14 +81,14 @@ export const CloseBtn = Styled.button`
   z-index: 2;
 `;
 
-export const Date = Styled.time`
+export const Date = Styled('time')`
   color: red;
   align-self: flex-start;
   font-IChangeNewsStandSize: 0.75rem;
   padding-left: 0.5rem;
 `;
 
-export const SpinnerWrapper = Styled.div`
+export const SpinnerWrapper = Styled('div')`
   width: 8rem;
   height: 8rem;
   position: absolute;

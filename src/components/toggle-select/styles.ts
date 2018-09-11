@@ -1,4 +1,4 @@
-import Styled from "styled-components";
+import Styled from "react-emotion";
 import Size from "../../enums/toggleSelectSize";
 
 const $blue = '#A1ABBC';
@@ -16,31 +16,29 @@ function getForeColor(theme: string) {
   if(theme === 'blue') {
     return $red;
   } else {
-    return '#fff';
+    return $red;
   }
 }
 
-const Wrapper = Styled.div<{size: Size}>`
+const Wrapper = Styled('div')<{size: Size}>`
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: flex-start;
-  // margin: 0.2rem 0.75rem;
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 0.25rem;
   border-radius: ${p => p.size === Size.SMALL ? '3px': ''};
   background: #EDF2F4;
-  padding: 0.25rem 0.5rem;
-  border-radius: 2px;
+  border-radius: 3px;
   box-shadow: 0px 3px 1px rgba(0,0,0,0.2);
   width: 100%;
+  height: 3rem;
 `;
 
-const Label = Styled.div<{size?: Size, label: string}>`
+const Label = Styled('div')<{size?: Size, label: string}>`
   font-size: 1rem;
   font-weight: 500;
   white-space: nowrap;
   margin: ${p => !!p.label ? '0.5em 0.5em' : ''};
-  // height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,7 +47,7 @@ const Label = Styled.div<{size?: Size, label: string}>`
   font-weight: 500;
 `;
 
-const List = Styled.ul`
+const List = Styled('ul')`
   list-style: none;
   margin: 0;
   width: 100%;
@@ -57,34 +55,39 @@ const List = Styled.ul`
   flex-direction: row;
 `;
 
-const ListItem = Styled.li<{selected: boolean,size: Size, theme?: string}>`
+const ListItem = Styled('li')<{selected: boolean,size: Size, theme?: string}>`
   width: 100%;
-  margin: 0.2em 0em;
-  border-radius: 3px;
-  background: ${p => p.size === Size.SMALL && p.selected ? getColor(p.theme) : ''};
+  border-radius: 2px;
+  background-color: ${p => p.selected ? '#2B2D42' : ''};
   color: ${p => p.selected ? getForeColor(p.theme) : '#A1ABBC'};
+  font-weight: ${p => p.selected ? '500' : ''};
   padding: 0.25rem 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
   white-space: nowrap;
   cursor: pointer;
-  text-shadow: ${p => p.selected ? '0 0 1px rgba(0,0,0,0.25)' : ''};
-  font-size: ${p => p.size === Size.SMALL ? '1rem' : '1.75rem'};
+  font-size: ${p => p.selected ? '1.1rem' : '1rem'};
   font-family: 'Oswald', sans-serif;
-  text-transform: ${p => p.size === Size.LARGE ? 'uppercase': ''};
-  letter-spacing: ${p => p.size === Size.LARGE ? '1px': ''};
   height: 100%;
   user-select: none;
-  &:hover {
-    border: ${p => p.size === Size.SMALL ? '1px dotted A1ABBC' : ''};
-    color: ${p => p.size === Size.SMALL && !p.selected ? '#EF233C' : ''};
-  }
   outline: none;
   flex: 1;
+  &:hover {
+    background: rgba(43, 45, 66, 0.25);
+    color: #2B2D42;
+  }
+  &::after {
+    content: ${p => p.selected ? '': null}
+    display: block;
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    background: '#EF233C';
+  }
 `;
 
-const IconWrapper = Styled.div`
+const IconWrapper = Styled('div')`
   position: relative;
   width: 1.25rem;
   height: 1.25rem;

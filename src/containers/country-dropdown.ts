@@ -13,7 +13,7 @@ const query = gql`
         code
         icon
         name
-      }
+      } 
     }
   }
 `;

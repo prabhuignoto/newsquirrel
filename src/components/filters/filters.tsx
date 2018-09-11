@@ -30,8 +30,6 @@ const filters: React.SFC<IFilters> = ({ items, update }) => {
           <FiltersWrapper
             className="tabs is-medium"
             data-testid="main-tabs"
-            pose="open"
-            initialPose="close"
           >
             <Filters>
               {state.uiItems.map(filter => (

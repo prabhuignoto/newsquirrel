@@ -1,7 +1,7 @@
-import Styled from 'styled-components';
+import Styled from 'react-emotion';
 
 
-export const Wrapper = Styled.div`
+export const Wrapper = Styled('div')`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,13 +9,13 @@ export const Wrapper = Styled.div`
   margin: 0 auto;
 `;
 
-export const Message = Styled.span`
+export const Message = Styled('span')`
   display: block;
   font-size: 1.5rem;
   color: #EF233C;
 `;
 
-export const IconWrapper = Styled.i`
+export const IconWrapper = Styled('i')`
   width: 2rem;
   height: 2rem;
   position: relative;

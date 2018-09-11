@@ -1,6 +1,6 @@
-import Styled from 'styled-components';
+import Styled from 'react-emotion';
 
-export const Wrapper = Styled.div`
+export const Wrapper = Styled('div')`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -10,7 +10,7 @@ export const Wrapper = Styled.div`
   position: relative;
 `
 
-export const Input = Styled.input`
+export const Input = Styled('input')`
   border-radius: 4px;
   width: 100%;
   height: 100%;
@@ -26,7 +26,7 @@ export const Input = Styled.input`
   }
 `;
 
-export const ClearButton = Styled.button`
+export const ClearButton = Styled('button')`
   border: none;
   padding: 1rem;
   position: absolute;
