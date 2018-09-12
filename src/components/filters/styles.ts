@@ -10,14 +10,19 @@ const FiltersWrapper = Styled('div')`
   width: 100%;
   background: #2B2D42;
   padding: 0.75rem;
+  border-bottom: 0.01rem solid #A1ABBC;
 `;
 
 const Filter = Styled('li')<{selected: boolean}>`
   display: flex;
   text-transform: capitalize;
+  // transform: ${p => p.selected ? 'skew(-30deg)' : ''};
+  border-radius: 2px;
+  background: ${p => p.selected ? '#EF233C' : ''};
   > a {
-    color: ${p => p.selected ? '#EF233C !important' : '#EDF2F4'};
+    color: ${p => p.selected ? '#fff !important' : '#EDF2F4'};
     border-bottom: transparent !important;
+    // transform: ${p => p.selected ? 'skew(30deg)' : ''};
     &:hover {
       color: #EF233C;
     }

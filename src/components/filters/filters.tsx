@@ -28,7 +28,7 @@ const filters: React.SFC<IFilters> = ({ items, update }) => {
         };
         return (
           <FiltersWrapper
-            className="tabs is-medium"
+            className="tabs is-medium is-centered"
             data-testid="main-tabs"
           >
             <Filters>

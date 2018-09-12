@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Fragment } from "react";
 import CountryDropdown from '../../containers/country-dropdown';
-// import Loader from '../../containers/loader';
 import ViewPort from '../../enums/viewPort';
 import { CountryDropdownWrapper, NavBrand, NavBrandText, Wrapper } from './styles';
 

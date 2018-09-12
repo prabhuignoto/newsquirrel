@@ -48,8 +48,8 @@ const Label = Styled('div')<{size?: Size, label: string}>`
 
 const List = Styled('ul')`
   list-style: none;
-  margin: 0;
-  width: 100%;
+  margin: 0 auto;
+  width: 96%;
   display: flex;
   flex-direction: row;
   height: 100%;
@@ -60,10 +60,10 @@ const List = Styled('ul')`
 const ListItem = Styled('li')<{selected: boolean,size: Size, theme?: string}>`
   width: 100%;
   border-radius: 3px;
-  background-color: ${p => p.selected ? '#EF233C' : ''};
+  background-color: ${p => p.selected ? '#A1ABBC' : ''};
   color: ${p => p.selected ? '#fff' : '#A1ABBC'};
   font-weight: ${p => p.selected ? '500' : ''};
-  padding: 0.25rem 1.5rem;
+  padding: 0.25rem;
   display: flex;
   align-items: center;
   justify-content: center;

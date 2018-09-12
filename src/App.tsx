@@ -16,15 +16,7 @@ class App extends React.Component {
         <section className="">
           <Navbar />
           <Home />
-          <div
-            className="column is-10-tablet is-12-mobile is-8-desktop"
-            style={{
-              backgroundColor: "#edf2f4",
-              width: '100%'
-            }}
-          >
-            <Footer />
-          </div>
+          <Footer />
         </section>
       </div>
     );

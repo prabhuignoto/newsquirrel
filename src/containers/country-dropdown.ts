@@ -40,6 +40,6 @@ export default compose(
     })
   }),
   defaultProps({
-    label: "Change country"
+    label: "country"
   })
 )(Dropdown);

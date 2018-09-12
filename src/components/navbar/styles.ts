@@ -3,7 +3,7 @@ import Styled from 'react-emotion';
 import ViewPort from '../../enums/viewPort';
 
 const Wrapper = Styled('nav') `
-  min-height: 80px;
+  min-height: 5rem;
   background: #EEF3F5;
   position: relative;
   display: flex;
@@ -26,10 +26,20 @@ const NavBrand = Styled('div')`
 const NavBrandText = Styled('span')<{vwPort: ViewPort}>`
   font-size: ${p => p.vwPort === ViewPort.DESK ? '2rem' : '1.75rem'};
   font-weight: 500;
-  color: #EF233C;
+  color: #EDF2F4;
   padding-bottom:3px;
   white-space: nowrap;
   text-transform: uppercase;
+  position: relative;
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 0.2rem;
+    position: absolute;
+    bottom: -0.1rem;
+    background: #EF233C;
+  }
 `;
 
 const CountryDropdownWrapper = Styled('div')`

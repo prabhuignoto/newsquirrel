@@ -1,10 +1,11 @@
 import Styled2 from "react-emotion";
-import posed from 'react-pose';
+import posed from "react-pose";
 import Size from "../../enums/newsStandSize";
-import { AppMode } from './../../enums/appMode';
-import { IAppMode } from './../../models/view/IAppState';
+import NewsStandSize from "../../enums/newsStandSize";
+import { AppMode } from "./../../enums/appMode";
+import { IAppMode } from "./../../models/view/IAppState";
 
-export const NewsStandWrapper = Styled2('div')<{appMode: IAppMode}>`
+export const NewsStandWrapper = Styled2("div")<{ appMode: IAppMode }>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -16,13 +17,13 @@ export const NewsStandWrapper = Styled2('div')<{appMode: IAppMode}>`
   min-height: 60vh;
 `;
 
-export const SortByWrapper = Styled2('div')`
+export const SortByWrapper = Styled2("div")`
   width: 100%;
   display: flex;
   justify-content: flex-end;
 `;
 
-export const ArticlesWrapper = Styled2('div')`
+export const ArticlesWrapper = Styled2("div")`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -31,7 +32,7 @@ export const ArticlesWrapper = Styled2('div')`
   position: relative;
 `;
 
-export const LoadingText = Styled2('span')`
+export const LoadingText = Styled2("span")`
   font-size: 2.5rem;
   position: absolute;
   left: 0;
@@ -43,14 +44,14 @@ export const LoadingText = Styled2('span')`
   color: #A1ABBC;
 `;
 
-export const ArticleCardWrapper = Styled2('div')<{ size?: Size }>`
+export const ArticleCardWrapper = Styled2("div")<{ size?: Size }>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   margin: 0.75rem;
   padding: 0.25rem;
-  flex-basis: 270px;
+  flex-basis: ${p => (p.size === Size.COZY ? "270px" : "220px")};
   min-height: "300px";
   border-radius: 3px;
   position: relative;
@@ -58,7 +59,7 @@ export const ArticleCardWrapper = Styled2('div')<{ size?: Size }>`
   position: relative;
 `;
 
-export const CardTitle = Styled2('div')<{ size?: Size; appMode?: IAppMode}>`
+export const CardTitle = Styled2("div")<{ size?: Size; appMode: IAppMode }>`
   display: flex;
   font-size: 1.25rem;
   text-align: left;
@@ -74,33 +75,35 @@ export const CardTitle = Styled2('div')<{ size?: Size; appMode?: IAppMode}>`
   width: 100%;
 `;
 
-export const TitleAnchor = Styled2('a')<{appMode?: IAppMode}>`
-  color: ${p => p.appMode!.value === AppMode.DARK ? '#747E8F' : '#2B2D42'};
+export const TitleAnchor = Styled2("a")<{ appMode?: IAppMode }>`
+  color: ${p => (p.appMode!.value === AppMode.DARK ? "#EDF2F4" : "#2B2D42")};
 `;
 
-export const StubImage = Styled2('img')`
+export const StubImage = Styled2("img")`
   display: none;
 `;
 
-
-export const ImageWrapper = Styled2('figure')<{ size?: Size }>`
+export const ImageWrapper = Styled2("figure")<{ size?: Size }>`
 width: 100%;
 position: relative;
 display: block;
 height: 10rem;
 `;
 
-
-export const CardImage = Styled2('img')<{ thumbnailUrl?: string; size?: Size; appMode?: IAppMode }>`
+export const CardImage = Styled2("img")<{
+  thumbnailUrl?: string;
+  size?: Size;
+  appMode?: IAppMode;
+}>`
   display: block;
-  // padding: 0.1rem;
   position: relative;
   cursor: pointer;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: 50% 0%;
-  filter: ${p => p.appMode && p.appMode!.value === AppMode.DARK ? 'grayscale(90%)' : ''};
+  filter: ${p =>
+    p.appMode && p.appMode!.value === AppMode.DARK ? "grayscale(90%)" : ""};
   &:hover {
     filter: brightness(1.1) sepia(0.15) grayscale(30%);
   }
@@ -108,13 +111,12 @@ export const CardImage = Styled2('img')<{ thumbnailUrl?: string; size?: Size; ap
   border-bottom-right-radius: 2px;
 `;
 
-export const CardDescription = Styled2('div')<{ size?: Size }>`
-  display: flex;
+export const CardDescription = Styled2("div")<{ size?: Size }>`
+  display: ${p => (p.size !== Size.COMPACT ? "flex" : "none")};
   align-items: center;
   justify-content: flex-start;
   text-align: left;
   width: 100%;
-  /* max-height: 150px; */
   text-overflow: ellipsis;
   padding: 0.1rem;
   margin-top: 0.5rem;
@@ -124,8 +126,8 @@ export const CardDescription = Styled2('div')<{ size?: Size }>`
   color: #747E8F;
 `;
 
-export const Publisher = Styled2('div')<{ size?: Size; appMode?: IAppMode}>`
-  display: flex;
+export const Publisher = Styled2("div")<{ size?: Size; appMode: IAppMode }>`
+  display: ${p => (p.size !== NewsStandSize.IMAGE_FREE ? "flex" : "none")};
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -133,12 +135,18 @@ export const Publisher = Styled2('div')<{ size?: Size; appMode?: IAppMode}>`
   height: 40px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  border: 1px solid rgba(161, 171, 188, 0.35);
-  box-shadow: inset 0 0 15px 5px rgba(161, 171, 188, 0.2);
+  border: ${p =>
+    p.appMode.value === AppMode.LIGHT
+      ? "1px solid rgba(161, 171, 188, 0.35)"
+      : ""};
+  box-shadow: ${p =>
+    p.appMode.value === AppMode.LIGHT
+      ? "inset 0 0 15px 5px rgba(161, 171, 188, 0.2)"
+      : ""};
   border-bottom: none;
 `;
 
-export const PublishedBy = Styled2('div')`
+export const PublishedBy = Styled2("div")`
   margin-left: auto;
   margin-right: 5px;
   color: #D90429;
@@ -146,7 +154,7 @@ export const PublishedBy = Styled2('div')`
   font-size: 0.9rem;
 `;
 
-export const PublishDate = Styled2('time')`
+export const PublishDate = Styled2("time")`
   margin-right: auto;
   margin-left: 10px;
   color: #515364;
@@ -154,7 +162,7 @@ export const PublishDate = Styled2('time')`
   font-weight: 500;
 `;
 
-export const CheckPreview = Styled2('a')`
+export const CheckPreview = Styled2("a")`
   margin-right: 0.75rem;
   /* padding-left: 1.5rem; */
   width: 1.65rem;
@@ -162,7 +170,7 @@ export const CheckPreview = Styled2('a')`
   position: relative;
 `;
 
-export const PreviewArticle = Styled2('a')`
+export const PreviewArticle = Styled2("a")`
   font-size: 0.9rem;
   margin-right: 0.5rem;
   padding: 0.1rem;
@@ -170,14 +178,14 @@ export const PreviewArticle = Styled2('a')`
   font-family: "Oswald", sans-serif;
 `;
 
-export const Controls = Styled2('div')`
+export const Controls = Styled2("div")`
   display:flex;
   align-items: center;
   justify-content: flex-start;
   margin: 0.25rem 0;
 `;
 
-export const ErrorMessage = Styled2('span')`
+export const ErrorMessage = Styled2("span")`
   display: block;
   margin-right: 0.5rem;
   padding: 0.1rem;
@@ -187,23 +195,21 @@ export const ErrorMessage = Styled2('span')`
 
 export const PosedWrapper = posed.div({
   close: {
-    opacity: 0,
+    opacity: 0
   },
   open: {
-    opacity: 1,
+    opacity: 1
   }
 });
 
-
-
-export const LoadMoreWrapper = Styled2('div')`
+export const LoadMoreWrapper = Styled2("div")`
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
-export const LoadMore = Styled2('a')`
+export const LoadMore = Styled2("a")`
   padding: 1rem;
   font-size: 2rem;
   font-weight: 500;
@@ -220,7 +226,7 @@ export const LoadMore = Styled2('a')`
   height: 4rem;
 `;
 
-export const SpinnerWrapper = Styled2('div')`
+export const SpinnerWrapper = Styled2("div")`
   width: 6rem;
   height: 6rem;
   position: relative;
@@ -228,7 +234,7 @@ export const SpinnerWrapper = Styled2('div')`
   padding: 1rem;
 `;
 
-export const QuickviewWrapper = Styled2('div')`
+export const QuickviewWrapper = Styled2("div")`
   background: rgba(255, 255, 255, 1);
   border-radius: 4px;
   padding: 1.5rem 1rem 2rem 1rem;
@@ -242,14 +248,14 @@ export const QuickviewWrapper = Styled2('div')`
 
 export const PosedQuickViewOverlay = posed.div({
   close: {
-    background: 'rgba(0,0,0,0.1)',
+    background: "rgba(0,0,0,0.1)"
   },
   open: {
-    background: 'rgba(0,0,0,0.15)',
+    background: "rgba(0,0,0,0.15)"
   }
-})
+});
 
-export const QuickViewOverlay = Styled2('div')`
+export const QuickViewOverlay = Styled2("div")`
   position: absolute;
   width: 100%;
   height: 100%;
