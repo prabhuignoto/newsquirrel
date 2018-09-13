@@ -51,15 +51,17 @@ export const ArticleCardWrapper = Styled2("div")<{ size?: Size }>`
   justify-content: flex-start;
   margin: 0.75rem;
   padding: 0.25rem;
-  flex-basis: ${p => (p.size === Size.COZY ? "270px" : "220px")};
+  // flex-basis: ${p => (p.size === Size.COZY ? "300px" : "220px")};
   min-height: "300px";
   border-radius: 3px;
   position: relative;
-  flex-grow: 1;
+  // flex-grow: 1;
   position: relative;
+  flex: 1;
+  min-width: ${p => (p.size === Size.COZY ? "300px" : "220px")}
 `;
 
-export const CardTitle = Styled2("div")<{ size?: Size; appMode: IAppMode }>`
+export const CardTitle = Styled2("div")`
   display: flex;
   font-size: 1.25rem;
   text-align: left;
@@ -112,7 +114,9 @@ export const CardImage = Styled2("img")<{
 `;
 
 export const CardDescription = Styled2("div")<{ size?: Size }>`
-  display: ${p => (p.size !== Size.COMPACT ? "flex" : "none")};
+  display: 'flex';
+  visibility: ${p => (p.size !== Size.COMPACT ? "visible" : "hidden")};
+  height: ${p => p.size === Size.COMPACT ? 0 : ''};
   align-items: center;
   justify-content: flex-start;
   text-align: left;
@@ -127,7 +131,9 @@ export const CardDescription = Styled2("div")<{ size?: Size }>`
 `;
 
 export const Publisher = Styled2("div")<{ size?: Size; appMode: IAppMode }>`
-  display: ${p => (p.size !== NewsStandSize.IMAGE_FREE ? "flex" : "none")};
+  display: flex;
+  visibility: ${p => (p.size !== NewsStandSize.IMAGE_FREE ? "visible" : "hidden")};
+  height: ${p => (p.size == NewsStandSize.IMAGE_FREE ? "0" : "")};
   align-items: center;
   justify-content: center;
   width: 100%;

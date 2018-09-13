@@ -23,16 +23,16 @@ const TopHeadlines: React.SFC<ITopHeadlines> = ({ appMode, searchTerm, country, 
         <Filters />
       </FilterWrapper>
       <Toolbar appMode={appMode} className="columns is-multiline">
-        <div className="column is-5-desktop is-6-fullhd is-12-tablet is-paddingless">
+        <div className="column is-5-desktop is-6-fullhd is-12-tablet is-paddingless" style={{marginRight: 'auto'}}>
           <SearchBox />
         </div>
-        <div className="column is-2-desktop is-1-tablet is-1-fullhd is-hidden-touch" />
+        <div className="is-2-fullhd" />
         <div className="column is-12-mobile is-5-tablet is-3-desktop is-2-fullhd">
           <AppModeWrapper>
             <DarkMode />
           </AppModeWrapper>
         </div>
-        <div className="column is-12-mobile is-6-tablet is-4-desktop is-3-fullhd is-4-desktop">
+        <div className="column is-12-mobile is-6-tablet is-4-desktop is-3-fullhd">
           <NewsStandSizer />
         </div>
       </Toolbar>

@@ -1,11 +1,9 @@
 import Styled from 'react-emotion';
-import posed from 'react-pose';
 
 const Wrapper = Styled('div')`
   display: flex;
   align-items: center;
   justify-content: center;
-  /* width: 150px; */
   height: 40px;
   border-radius: 2px;
   cursor: pointer;
@@ -52,17 +50,6 @@ const Icon = Styled('i')`
   display: block;
   width: 20%
 `;
-
-const PosedList = posed.ul({
-  close: {
-    opacity: 0,
-    scale: 0,
-  },
-  open: {
-    opacity: 1,
-    scale: 1,
-  }
-})
 
 const List = Styled('ul')`
   list-style: none;

@@ -1,121 +1,40 @@
-import { DateTime } from "luxon";
-import { Fragment } from "react";
 import * as React from "react";
-import LoaderSize from "../../enums/loaderSize";
+import { Spring } from "react-spring";
 import Size from "../../enums/newsStandSize";
 import { IArticleCardView } from "../../models/view/IArticleCard";
-import Loader from "../loader/loader";
-import BlankImage from "./assets/blank.svg";
-import EyeSolid from "./assets/eye-solid.svg";
+import CardDescription from "./card-description";
+import CardTitle from "./card-title";
+import Publisher from "./publisher";
+import Thumbnail from "./thumbnail";
 
-import {
-  ArticleCardWrapper,
-  CardDescription,
-  CardImage,
-  CardTitle,
-  CheckPreview,
-  Controls,
-  ImageWrapper,
-  PublishDate,
-  Publisher,
-  StubImage,
-  TitleAnchor
-} from "./styles";
-
-let handleCheckArticle: (
-  url: string,
-  id: string,
-  fn?: (url: string, id: string) => void
-) => React.MouseEventHandler;
-handleCheckArticle = (url, id, fn) => {
-  return () => {
-    if (fn) {
-      fn(url, id);
-    }
-  };
-};
+import { ArticleCardWrapper } from "./styles";
 
 const ArticleCard: React.SFC<IArticleCardView> = ({
   title,
   description,
   urlToImage: imgUrl,
   publishedAt,
-  source,
   url: articleUrl,
   size,
   id,
   onImageLoaded,
   imageLoaded,
-  showArticle,
-  checkArticle,
-  canEmbedInFrame,
   appMode,
   updateQuickviewUrl
 }) => {
   return (
-    <ArticleCardWrapper
-      key={articleUrl}
-      size={size}
-    >
-      <Publisher size={size} appMode={appMode}>
-        <PublishDate dateTime={publishedAt}>
-          {DateTime.fromISO(publishedAt).toLocaleString(
-            DateTime.DATETIME_SHORT
-          )}
-        </PublishDate>
-        <Controls className="is-hidden-touch">
-          {typeof canEmbedInFrame === "undefined" ? (
-            <CheckPreview
-              onClick={() => {
-                updateQuickviewUrl({
-                  variables: {
-                    url:articleUrl,
-                  }
-                })
-              }}
-            >
-              <EyeSolid title="Quick View" />
-            </CheckPreview>
-          ) : null}
-        </Controls>
-      </Publisher>
-      {size !== Size.IMAGE_FREE ? (
-        <Fragment>
-          {/* {!imageLoaded ? (
-            <StubImage
-              src={imgUrl ? imgUrl : BlankImage}
-              onLoad={onImageLoaded}
-              onError={onImageLoaded}
-            />
-          ) : null} */}
+    <ArticleCardWrapper key={articleUrl} size={size}>
+      <Publisher
+        appMode={appMode}
+        articleUrl={articleUrl}
+        publishedAt={publishedAt}
+        size={size}
+        updateQuickviewUrl={updateQuickviewUrl}
+      />
+      {size !== Size.IMAGE_FREE ? <Thumbnail imgUrl={imgUrl} /> : null}
 
-          <ImageWrapper>
-            {!!imgUrl ? (
-              <CardImage src={imgUrl} />
-            ) : (
-              <BlankImage />
-            )}
-            {/* {!imageLoaded ? (
-              <Loader start={true} size={LoaderSize.SMALL} stop={false} />
-            ) : null} */}
-          </ImageWrapper>
-        </Fragment>
-      ) : null}
-
-      <CardTitle appMode={appMode}>
-        <TitleAnchor
-          appMode={appMode}
-          href={articleUrl}
-          target="_new"
-          title={title}
-        >
-          {title ? <span>{title}</span> : null}
-        </TitleAnchor>
-      </CardTitle>
-
-      <CardDescription size={size}>
-        {description ? <span>{description}</span> : null}
-      </CardDescription>
+      <CardTitle appMode={appMode} title={title} articleUrl={articleUrl} />
+      <CardDescription size={size} description={description} />
     </ArticleCardWrapper>
   );
 };
