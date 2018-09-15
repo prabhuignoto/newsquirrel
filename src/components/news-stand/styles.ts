@@ -51,14 +51,14 @@ export const ArticleCardWrapper = Styled2("div")<{ size?: Size }>`
   justify-content: flex-start;
   margin: 0.75rem;
   padding: 0.25rem;
-  // flex-basis: ${p => (p.size === Size.COZY ? "300px" : "220px")};
+  flex-basis: ${p => (p.size === Size.COZY ? "300px" : "220px")};
   min-height: "300px";
   border-radius: 3px;
   position: relative;
-  // flex-grow: 1;
+  flex-grow: 1;
   position: relative;
-  flex: 1;
-  min-width: ${p => (p.size === Size.COZY ? "300px" : "220px")}
+  // flex: 1;
+  // min-width: ${p => (p.size === Size.COZY ? "250px" : "220px")}
 `;
 
 export const CardTitle = Styled2("div")`
@@ -103,7 +103,7 @@ export const CardImage = Styled2("img")<{
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 0%;
+  object-position: 50% 50%;
   filter: ${p =>
     p.appMode && p.appMode!.value === AppMode.DARK ? "grayscale(90%)" : ""};
   &:hover {
