@@ -51,12 +51,16 @@ The Newsquirrel is powered by some of the best in class tools and frameworks
 * [Docker](https://www.docker.com/) - Build, Manage and Secure Your Apps Anywhere. Your Way
 * [Kubernetes](https://kubernetes.io/) - Production-Grade Container Orchestration
 
-##  What is coming next
+### Architecture Diagram
+![sitefront1](./readme-assets/Architecture-Diagram.svg)
+
+###  What is coming next
 * Improved Test coverage.
-## Authors
+
+### Authors
 
 * **Prabhu Murthy** - *Initial work* - [prabhuignoto](https://github.com/prabhuignoto)
 
-## License
+### License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
