@@ -55,7 +55,8 @@ The Newsquirrel is powered by some of the best in class tools and frameworks
 ![sitefront1](./readme-assets/Architecture-Diagram.svg)
 
 ###  What is coming next
-* Improved Test coverage.
+* Ability to share news articles on Social Media.
+* Integration with Pocket API to save news for later reading.
 
 ### Authors
 
