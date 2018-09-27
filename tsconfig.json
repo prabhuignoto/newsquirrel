@@ -16,7 +16,11 @@
     "noImplicitAny": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "typeRoots": [
+      "./types",
+      "./node_modules/@types"
+    ]
   },
   "exclude": [
     "node_modules",
@@ -29,6 +33,7 @@
     "src/__tests__",
     "coverage",
     "server",
-    "public/packages"
+    "public/packages",
+    "types"
   ]
 }
