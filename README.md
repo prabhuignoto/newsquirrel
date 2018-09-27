@@ -1,64 +1,58 @@
-# Newsquirrel
+## Newsquirrel
 ![TravisCI](https://travis-ci.org/prabhuignoto/newsquirrel.svg?branch=master)
 <a href="https://codeclimate.com/github/prabhuignoto/newsquirrel/maintainability"><img src="https://api.codeclimate.com/v1/badges/a284f371ceba2a75c3cc/maintainability" />
 [![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
 [![Redux](https://img.shields.io/badge/builtwith-Redux-orange.svg)](https://github.com/reduxjs/redux)
 [![Typescript](https://img.shields.io/badge/poweredby-typescript-blue.svg)](https://www.typescriptlang.org/)
 
-## A Refreshingly simple News reader.
+### A Refreshingly simple News reader.
 
-![sitefront1](./readme-assets/webfront-1.png)
-## Features
+![sitefront1](./readme-assets/web-front.png)
+### Features
 
 * Read Top Headlines from 7 different countries( US, UK, IN, FR, DE, AU, CA).
-* Filter and read Headlines by category (General, Business, Entertainment, Health, Science, Sports, Technology).
+* Switch between news categories easily(General, Business, Entertainment, Health, Science, Sports, Technology).
 * Read news in three different Modes (Comfortable, Compact, Image free).
+* Night mode for a pleasant news reading experience.
+* Responsive and built from the ground up to run seamlessly on mobile/tablet/desktop.
+* Quick preview the news articles.
 
-* Responsive Webapp that can run seamlessly on mobile/tablet/desktop.
-* Quick preview news articles.
-* Read news is day or night mode.
-<div class="img-container" style="display: flex;
-    align-items: flex-start;
-    justify-content:center;
-    width: 100%;">
-  <img src="./readme-assets/smartmockups-desk.png" width="45%"/>
-  <img src="./readme-assets/smartmockups-mobile.png" width="45%" />
-</div>
-
-## Getting Started
+### Getting Started
 
 Clone the project locally and the follow the steps below for dev/build.
 
 ### Installing
 
-Get started by installing the project dependencies. You can alternatively use yarn for dev & build.
+Get started by installing the project dependencies. You can alternatively use npm for dev & build.
 
 ```javascript
-npm install
+yarn install
 ```
 
 ### Running in dev mode
 
 ```javascript
-npm run start
+yarn run start
 ```
 
 ### To generate a production build
 
 ```javascript
-npm run build
+yarn run build
 ```
 
-## Built With
-
+### Built With
+The Newsquirrel is powered by some of the best in class tools and frameworks
 * [React](https://github.com/facebook/react) -  JavaScript library for building user interfaces.
 * [Typescript](https://github.com/Microsoft/TypeScript) - Typings System.
-* [Redux](https://github.com/reduxjs/redux) - State Management.
-* [Redux-Saga](https://github.com/redux-saga/redux-saga) - Side effects management.
+* [Emotion](https://github.com/emotion-js/emotion) - The Next Generation of CSS-in-JS
+* [Apollo](https://www.apollographql.com/) - Build a universal GraphQL API on top of your existing REST APIs
+* [Graphql](https://graphql.org/) - A query language for your API
+* [Docker](https://www.docker.com/) - Build, Manage and Secure Your Apps Anywhere. Your Way
+* [Kubernetes](https://kubernetes.io/) - Production-Grade Container Orchestration
 
 ##  What is coming next
-* GraphQL/Apollo integration.
-* Improve Test coverage.
+* Improved Test coverage.
 ## Authors
 
 * **Prabhu Murthy** - *Initial work* - [prabhuignoto](https://github.com/prabhuignoto)
