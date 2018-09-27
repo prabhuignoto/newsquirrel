@@ -8,3 +8,10 @@ docker-compose*
 README.md
 LICENSE
 .vscode
+build
+travis.yml
+coveralls.yml
+jest*
+readme-assets
+yarn.lock
+yarn-error.log
