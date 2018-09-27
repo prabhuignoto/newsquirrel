@@ -56,7 +56,7 @@ const Footer: React.SFC<IFooter> = ({ appMode, mutate }) => {
       <Wrapper
         data-testid="rt-footer"
         appMode={appMode}
-        className="column is-8-desktop is-12-mobile is-10-tablet"
+        className="column is-10-desktop is-12-mobile is-10-tablet"
       >
         <Social>
           <a href="https://twitter.com/prabhumurthy2" target="new">
@@ -89,7 +89,6 @@ const Footer: React.SFC<IFooter> = ({ appMode, mutate }) => {
           >
             <HeartSVG />
           </span>{" "}
-          <span>by me</span>
         </DesignedBy>
         <PoweredBy>
           <a href="https://newsapi.org">Powered by News API</a>

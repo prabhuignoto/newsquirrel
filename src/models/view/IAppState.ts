@@ -1,4 +1,3 @@
-import { AxiosResponse } from 'axios';
 import { AppMode } from './../../enums/appMode';
 
 import NewsStandSize from '../../enums/newsStandSize';
@@ -47,7 +46,6 @@ export interface INewsState {
   searchResultsCount: number;
   headlinesCount: number;
   isAppBusy: boolean;
-  failureResponse: AxiosResponse | null;
   sortByTime: ISortBy[];
   activeSortByTime: ISortBy;
   quickViewEnabled: boolean;

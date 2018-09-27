@@ -1,8 +1,8 @@
 import "bulma/css/bulma.css";
-import { hot, setConfig } from "react-hot-loader";
-import "./App.css";
-setConfig({ logLevel: "no-errors-please" });
+// setConfig({ logLevel: "no-errors-please" });
 import * as React from "react";
+// import { hot, setConfig } from "react-hot-loader";
+import "./App.css";
 
 // import { hot } from 'react-hot-loader';
 import Home from "./components/home/home";
@@ -23,4 +23,4 @@ class App extends React.Component {
   }
 }
 
-export default hot(module)(App);
+export default App;

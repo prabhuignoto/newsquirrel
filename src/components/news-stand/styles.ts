@@ -9,7 +9,7 @@ export const NewsStandWrapper = Styled2("div")<{ appMode: IAppMode }>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 0  0 2rem 0;
   width: 100%;
   transition: background-color 0.5s;
@@ -57,8 +57,6 @@ export const ArticleCardWrapper = Styled2("div")<{ size?: Size }>`
   position: relative;
   flex-grow: 1;
   position: relative;
-  // flex: 1;
-  // min-width: ${p => (p.size === Size.COZY ? "250px" : "220px")}
 `;
 
 export const CardTitle = Styled2("div")`
@@ -160,10 +158,10 @@ export const PublishedBy = Styled2("div")`
   font-size: 0.9rem;
 `;
 
-export const PublishDate = Styled2("time")`
+export const PublishDate = Styled2("time")<{appMode: AppMode}>`
   margin-right: auto;
   margin-left: 10px;
-  color: #515364;
+  color: ${p => p.appMode === AppMode.LIGHT ? '#515364' : '#EDF2F4'};
   font-size: 0.8rem;
   font-weight: 500;
 `;
@@ -267,4 +265,53 @@ export const QuickViewOverlay = Styled2("div")`
   height: 100%;
   top: 0;
   left: 0;
+`;
+
+export const BlankImage = Styled2('div')`
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ddd;
+`;
+
+export const BackWrapper = Styled2('div')`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  margin-bottom: 0.25rem;
+`
+
+export const Back = Styled2('a')`
+  font-size: 1.25rem;
+  margin-right: auto;
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const BackIconWrapper = Styled2('div')`
+  position: relative;
+  padding: 0.25rem;
+  margin-right: 0.25rem;
+  width: 1rem;
+  height: 1rem;
+`;
+
+export const MessageWrapper = Styled2('div')`
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  top: 50%;
+  transform: translateY(-50%);
 `;

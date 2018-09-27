@@ -5,15 +5,20 @@ import { IArticleCard } from "../../models/view/IArticleCard";
 import ISearchNews from "../../models/view/ISearchNews";
 import ErrorUI from "../error-ui/ui";
 import Info from "../info-ui/info-ui";
+import BackSVG from "./assets/chevron-left.svg";
 import SpinnerSVG from "./assets/spinner.svg";
 import {
   ArticlesWrapper,
+  Back,
+  BackIconWrapper,
+  BackWrapper,
   LoadingText,
   LoadMore,
   LoadMoreWrapper,
+  MessageWrapper,
   NewsStandWrapper,
   QuickviewWrapper,
-  SpinnerWrapper
+  SpinnerWrapper,
 } from "./styles";
 let page = 1;
 
@@ -28,6 +33,7 @@ const SearchNews: React.SFC<ISearchNews> = ({
   loading,
   error,
   fetchMore,
+  clearSearch,
 }) => {
   return (
     <NewsStandWrapper appMode={appMode}>
@@ -37,16 +43,15 @@ const SearchNews: React.SFC<ISearchNews> = ({
         </QuickviewWrapper>
       ) : (
         <div style={{ width: "100%" }}>
-          {loading ? (
-            <LoadingText>Searching ...</LoadingText>
-          ) : null}
-
-          {!loading && !error && search.length < 1 ? (
-            <Info message="Your search did not match any documents" />
-          ) : null}
-
           {(!error && !loading) || (loading && search) ? (
             <React.Fragment>
+              <BackWrapper>
+                <Back onClick={clearSearch}>
+                  <BackIconWrapper>
+                    <BackSVG />
+                  </BackIconWrapper> Back to Headlines
+                </Back>
+              </BackWrapper>
               <ArticlesWrapper>
                 {search.map((article: IArticleCard) => (
                   <ArticleCard {...article} key={article.url} />
@@ -93,8 +98,20 @@ const SearchNews: React.SFC<ISearchNews> = ({
             </React.Fragment>
           ) : null}
 
+          {loading ? (
+            <LoadingText>Searching ...</LoadingText>
+          ) : null}
+
+          {!loading && !error && search.length < 1 ? (
+            <MessageWrapper>
+              <Info message="Your search did not match any documents" />
+            </MessageWrapper>
+          ) : null}
+
           {error ? (
-            <ErrorUI message="Search service is currently down. Please check back after some time." />
+            <MessageWrapper>
+              <ErrorUI message="Search service is currently down. Please check back after some time." />
+            </MessageWrapper>
           ) : null}
         </div>
       )}

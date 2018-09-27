@@ -1,13 +1,12 @@
 import * as React from "react";
-import { Spring } from "react-spring";
 import Thumbnail from "../../containers/thumbnail";
-import Size from "../../enums/newsStandSize";
 import { IArticleCardView } from "../../models/view/IArticleCard";
 import CardDescription from "./card-description";
 import CardTitle from "./card-title";
 import Publisher from "./publisher";
 
-import { ArticleCardWrapper } from "./styles";
+import NewsStandSize from "../../enums/newsStandSize";
+import { ArticleCardWrapper, BlankImage } from "./styles";
 
 const ArticleCard: React.SFC<IArticleCardView> = ({
   title,
@@ -31,8 +30,12 @@ const ArticleCard: React.SFC<IArticleCardView> = ({
         size={size}
         updateQuickviewUrl={updateQuickviewUrl}
       />
-      {/* {size !== Size.IMAGE_FREE ? <Thumbnail imgUrl={imgUrl} /> : null} */}
-      <Thumbnail url={imgUrl} />
+      {size !== NewsStandSize.IMAGE_FREE && imgUrl ? (
+        <Thumbnail url={imgUrl} appMode={appMode} />
+      ) : null}
+      {!imgUrl && size !== NewsStandSize.IMAGE_FREE ? (
+        <BlankImage style={{ height: "10rem" }}>Newsquirrel</BlankImage>
+      ) : null}
       <CardTitle appMode={appMode} title={title} articleUrl={articleUrl} />
       <CardDescription size={size} description={description} />
     </ArticleCardWrapper>

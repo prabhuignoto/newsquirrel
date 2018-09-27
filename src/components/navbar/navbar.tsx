@@ -12,7 +12,7 @@ const Navbar = () => {
       </NavBrand>
         <Fragment>
           <CountryDropdownWrapper
-            className="navbar-item is-hidden-touch">
+            className="navbar-item">
               <CountryDropdown />
           </CountryDropdownWrapper>
         </Fragment>

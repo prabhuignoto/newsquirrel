@@ -16,13 +16,13 @@ const FiltersWrapper = Styled('div')`
 const Filter = Styled('li')<{selected: boolean}>`
   display: flex;
   text-transform: capitalize;
-  // transform: ${p => p.selected ? 'skew(-30deg)' : ''};
   border-radius: 2px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
   background: ${p => p.selected ? '#EF233C' : ''};
   > a {
     color: ${p => p.selected ? '#fff !important' : '#EDF2F4'};
     border-bottom: transparent !important;
-    // transform: ${p => p.selected ? 'skew(30deg)' : ''};
     &:hover {
       color: #EF233C;
     }

@@ -1,6 +1,5 @@
 import * as React from "react";
-import BlankImage from "./assets/blank.svg";
-import { CardImage, ImageWrapper } from "./styles";
+import { BlankImage, CardImage, ImageWrapper } from "./styles";
 
 const Thumbnail = ({ data, loading, error }) => {
   return (
@@ -8,7 +7,9 @@ const Thumbnail = ({ data, loading, error }) => {
       {!loading && !error && data ? (
         <CardImage src={`data:image/jpg;base64,${data}`} />
       ) : (
-        <BlankImage />
+        <BlankImage>
+          Newsquirrel
+        </BlankImage>
       )}
     </ImageWrapper>
   );

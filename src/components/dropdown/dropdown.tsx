@@ -1,6 +1,5 @@
 import * as React from "react";
 import { State } from "react-powerplug";
-import { config, Spring } from "react-spring";
 import { IDropdown, IDropdownItem } from "../../models/view/IDropdown";
 import {
   Icon,
@@ -65,21 +64,11 @@ const Dropdown: React.SFC<IDropdown> = ({
             <Icon />
           </LabelWrapper>
           {state.show ? (
-            <Spring
-              from={{ opacity: 0}}
-              to={{ opacity: 1}}
-              config={config.wobbly}
-            >
-              {styles => {
-                return (
-                  <List style={styles}>
-                    {items.map<React.ReactElement<IDropdownItem>>(x => (
-                      <DropdownItem {...x} key={x.name} onSelect={onSelect} />
-                    ))}
-                  </List>
-                );
-              }}
-            </Spring>
+            <List>
+              {items.map<React.ReactElement<IDropdownItem>>(x => (
+                <DropdownItem {...x} key={x.name} onSelect={onSelect} />
+              ))}
+            </List>
           ) : null}
         </Wrapper>
       );

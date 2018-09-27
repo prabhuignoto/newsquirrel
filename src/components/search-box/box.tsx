@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Input } from "react-powerplug";
+import { State } from "react-powerplug";
 import { ISearchBox } from "../../models/view/ISearchBox";
 import CloseSVG from "./close.svg";
 import GoSVG from './right.svg';
@@ -9,27 +9,31 @@ const SearchBox: React.SFC<ISearchBox> = ({ onSearch, clearField, onGo }) => {
   let textValue = '';
   return (
     <Wrapper>
-      <Input>
-        {({ value, set }) => (
+      <State intial={{value: ""}}>
+        {({ state, setState }) => (
           <React.Fragment>
             <NativeInput
               placeholder="Search News"
               onKeyUp={onSearch}
               onChange={(e: React.FormEvent<HTMLInputElement>) => {
-                set(e.currentTarget.value);
+                setState({
+                  value: e.currentTarget.value,
+                });
                 textValue = e.currentTarget.value;
               }}
-              value={value}
+              value={state.value}
             />
-            <ClearButton onClick={(ev: KeyboardEvent & React.FormEvent<HTMLInputElement>) => {
-              set('');
+            {(!!state.value) ? <ClearButton onClick={(ev: KeyboardEvent & React.FormEvent<HTMLInputElement>) => {
+              setState({
+                value: '',
+              });
               clearField(ev);
             }}>
             <CloseSVG />
-            </ClearButton>
+            </ClearButton> : null }
           </React.Fragment>
         )}
-      </Input>
+      </State>
       <GoButton onClick={() => {
         onGo(textValue)
       }}>

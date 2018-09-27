@@ -26,7 +26,7 @@ const publisher = ({
 }: IPublisher) => {
   return (
     <Publisher size={size} appMode={appMode}>
-      <PublishDate dateTime={publishedAt}>
+      <PublishDate dateTime={publishedAt} appMode={appMode.value}>
         {DateTime.fromISO(publishedAt).toLocaleString(DateTime.DATETIME_SHORT)}
       </PublishDate>
       <Controls className="is-hidden-touch">

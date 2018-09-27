@@ -10,5 +10,6 @@ export default interface ISearchNews {
   error: any;
   search: any;
   fetchMore: any;
+  clearSearch: any;
   page: number;
 }
