@@ -46,6 +46,7 @@ yarn run build
 ### Built With
 
 The Newsquirrel is built using some of the best in class tools and frameworks
+
 * [React](https://github.com/facebook/react) -  JavaScript library for building user interfaces.
 * [Typescript](https://github.com/Microsoft/TypeScript) - Typings System.
 * [Emotion](https://github.com/emotion-js/emotion) - The Next Generation of CSS-in-JS
