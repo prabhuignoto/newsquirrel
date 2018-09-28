@@ -7,15 +7,17 @@
 
 ### A Refreshingly simple News reader.
 
-![sitefront1](./readme-assets/web-front.png)
+![Website Front](./readme-assets/web-front.png)
+
 ### Features
 
-* Read Top Headlines from 7 different countries( US, UK, IN, FR, DE, AU, CA).
-* Switch between news categories easily(General, Business, Entertainment, Health, Science, Sports, Technology).
-* Read news in three different Modes (Comfortable, Compact, Image free).
+* Read News Headlines from 7 different countries( US, UK, IN, FR, DE, AU, CA).
+* Switch between news categories easily.
+* Three different reading Modes (Comfortable, Compact and Image free).
 * Night mode for a pleasant news reading experience.
-* Responsive and built from the ground up to run seamlessly on mobile/tablet/desktop.
-* Quick preview the news articles.
+* Responsive and built from the ground up to run seamlessly on mobiles, tablets and desktop.
+* QuickPreview for instantly viewing News articles.
+* Powered by News API, Search for articles from over 30,000 news sources and blogs.
 
 ### Getting Started
 
@@ -42,8 +44,10 @@ yarn run build
 ```
 
 ### Built With
-The Newsquirrel is powered by some of the best in class tools and frameworks
-* [React](https://github.com/facebook/react) -  JavaScript library for building user interfaces.
+
+Newsquirrel is powered by some of the best in class tools and frameworks
+
+* [React](https://github.com/facebook/react) - JavaScript library for building user interfaces.
 * [Typescript](https://github.com/Microsoft/TypeScript) - Typings System.
 * [Emotion](https://github.com/emotion-js/emotion) - The Next Generation of CSS-in-JS
 * [Apollo](https://www.apollographql.com/) - Build a universal GraphQL API on top of your existing REST APIs
@@ -51,10 +55,23 @@ The Newsquirrel is powered by some of the best in class tools and frameworks
 * [Docker](https://www.docker.com/) - Build, Manage and Secure Your Apps Anywhere. Your Way
 * [Kubernetes](https://kubernetes.io/) - Production-Grade Container Orchestration
 
-### Architecture Diagram
-![sitefront1](./readme-assets/Architecture-Diagram.svg)
+### Architecture
 
-###  What is coming next
+* **Web** - This is the front end app hosted on NGINX and is where all the action starts.
+* **Newsapi** - Apollo-Server is responsible for handling all the requests coming from the web app. The server talks to the news API and caches the data on a MYSQL db for a faster data retrieval.
+* **Prisma Service** - A GraphQL endpoint which the newsapi uses for storing the data on MYSQL db. It acts a ORM layer for the MYSQL db.
+* **Database** - A MYSQL database used for caching purpose.
+
+### Architecture Diagram
+
+![Site](./readme-assets/Architecture-Diagram.svg)
+
+### Docker Ready
+
+Both the front-end app as well as the application server are **Dockerized** and can easily be deployed to any Orchestration engine of choice. The App (http://squirrel.prabhumurthy.com) is currently deployed to a Kubernetes Cluster on Google's Cloud platform.
+
+### What is coming next
+
 * Ability to share news articles on Social Media.
 * Integration with Pocket API to save news for later reading.
 
