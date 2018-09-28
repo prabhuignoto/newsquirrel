@@ -42,11 +42,12 @@ yarn run build
 ```
 
 ### Built With
-The Newsquirrel is powered by some of the best in class tools and frameworks
+The Newsquirrel is built using some of the best in class tools and frameworks
 * [React](https://github.com/facebook/react) -  JavaScript library for building user interfaces.
 * [Typescript](https://github.com/Microsoft/TypeScript) - Typings System.
 * [Emotion](https://github.com/emotion-js/emotion) - The Next Generation of CSS-in-JS
 * [Apollo](https://www.apollographql.com/) - Build a universal GraphQL API on top of your existing REST APIs
+* [Prisma](http://prisma.io) - Build a GraphQL server with any database
 * [Graphql](https://graphql.org/) - A query language for your API
 * [Docker](https://www.docker.com/) - Build, Manage and Secure Your Apps Anywhere. Your Way
 * [Kubernetes](https://kubernetes.io/) - Production-Grade Container Orchestration
