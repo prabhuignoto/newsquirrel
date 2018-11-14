@@ -41,7 +41,7 @@ export const ClearButton = Styled('button')`
   outline: none;
 `;
 
-export const Button = Styled('button')`
+export const GoButton = Styled('button')`
   background: #EDF2F4;
   border-radius: 3px;
   box-shadow: 0px 3px 1px rgba(0,0,0,0.2);
@@ -58,8 +58,8 @@ export const Button = Styled('button')`
   position: relative
 `;
 
-export const GoButton = Pose(Button)({
+/* export const GoButton = Pose(Button)({
   init: { scale: 1 },
   press: { scale: 0.8 },
   pressable: true,
-})
+}) */
