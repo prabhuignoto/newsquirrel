@@ -1,4 +1,4 @@
-import Styled from "react-emotion";
+import Styled from "@emotion/styled";
 
 export const Wrapper = Styled('section')`
   width: 100%;
@@ -31,6 +31,7 @@ export const LogoWrapper = Styled('div')`
 
 export const Logo = Styled('img')`
   object-fit: contain;
+  object-position: 0;
   height: 100%;
   width: 100%;
 `;
@@ -46,14 +47,12 @@ export const ThumbnailWrapper = Styled('div')`
 
 export const Thumbnail = Styled('img')`
   object-fit: cover;
-  /* max-height: 100%; */
-  /* max-width: 100%; */
   height: 100%;
   width: 100%;
   border: none;
   margin: 0 auto;
-  object-fit: contain;
-  object-position: 0 0;
+  object-fit: cover;
+  object-position: 0;
 `;
 
 export const Title = Styled('div')`

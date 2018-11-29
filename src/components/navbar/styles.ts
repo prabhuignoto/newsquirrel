@@ -1,4 +1,4 @@
-import Styled from 'react-emotion';
+import Styled from '@emotion/styled';
 
 import ViewPort from '../../enums/viewPort';
 

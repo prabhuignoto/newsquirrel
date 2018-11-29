@@ -1,4 +1,4 @@
-import Styled from "react-emotion";
+import Styled from "@emotion/styled";
 import Size from "../../enums/toggleSelectSize";
 
 const $blue = '#A1ABBC';

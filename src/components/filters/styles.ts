@@ -1,4 +1,4 @@
-import Styled from 'react-emotion';
+import Styled from '@emotion/styled';
 
 const Filters = Styled('ul')`
   display: flex;

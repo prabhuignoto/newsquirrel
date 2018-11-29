@@ -1,4 +1,4 @@
-import Styled from 'react-emotion';
+import Styled from '@emotion/styled';
 import Pose from 'react-pose';
 
 export const Wrapper = Styled('div')`

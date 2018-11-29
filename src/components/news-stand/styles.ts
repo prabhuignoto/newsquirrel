@@ -1,4 +1,4 @@
-import Styled2 from "react-emotion";
+import Styled2 from "@emotion/styled";
 import posed from "react-pose";
 import Size from "../../enums/newsStandSize";
 import NewsStandSize from "../../enums/newsStandSize";
@@ -167,10 +167,9 @@ export const PublishDate = Styled2("time")<{appMode: AppMode}>`
 `;
 
 export const CheckPreview = Styled2("a")`
-  margin-right: 0.75rem;
-  /* padding-left: 1.5rem; */
-  width: 1.65rem;
-  height: 1.65rem;
+  margin-right: 0.5rem;
+  width: 1rem;
+  height: 1rem;
   position: relative;
 `;
 

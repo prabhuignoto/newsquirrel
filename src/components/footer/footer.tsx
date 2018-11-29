@@ -1,5 +1,5 @@
 import * as React from "react";
-import Styled from "react-emotion";
+import Styled from "@emotion/styled";
 import { AppMode } from "../../enums/appMode";
 import { IAppMode } from "../../models/view/IAppState";
 import IFooter from "../../models/view/IFooter";

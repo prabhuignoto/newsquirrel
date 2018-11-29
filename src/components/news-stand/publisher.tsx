@@ -3,7 +3,8 @@ import * as React from "react";
 
 import { AppMode } from "../../enums/appMode";
 import NewsStandSize from "../../enums/newsStandSize";
-import EyeSolid from "./assets/eye-solid.svg";
+import Plus from "./assets/plus.svg";
+import PlusWhite from "./assets/plus-white.svg";
 import { CheckPreview, Controls, PublishDate, Publisher } from "./styles";
 
 interface IPublisher {
@@ -39,7 +40,8 @@ const publisher = ({
             });
           }}
         >
-          <EyeSolid title="Quick View" />
+          <Plus title="Quick View" />
+          {appMode.value === AppMode.DARK && <PlusWhite title="Quick View" />}
         </CheckPreview>
       </Controls>
     </Publisher>
