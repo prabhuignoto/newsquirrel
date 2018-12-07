@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/core": "^10.0.0",
-    "@emotion/styled": "^10.0.0",
-    "@jpavon/react-scripts-ts": "^0.10.0",
+    "@emotion/core": "^10.0.4",
+    "@emotion/styled": "^10.0.4",
+    "@jpavon/react-scripts-ts": "^0.10.1",
     "@types/graphql": "^14.0.3",
     "apollo-boost": "^0.1.22",
     "babel-plugin-react-remove-properties": "^0.2.5",
@@ -13,11 +13,11 @@
     "date-fns": "^1.29.0",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",
-    "luxon": "^1.8.1",
+    "luxon": "^1.8.2",
     "react": "^16.6.3",
     "react-apollo": "^2.3.2",
     "react-dom": "^16.6.3",
-    "react-pose": "^4.0.2",
+    "react-pose": "^4.0.4",
     "react-powerplug": "^1.0.0",
     "recompose": "^0.30.0",
     "typescript-babel-jest": "^1.0.5"
@@ -41,7 +41,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "jest": "^23.5.0",
-    "jest-dom": "^2.1.1",
+    "jest-dom": "^3.0.0",
     "jest-svg-transformer": "^1.0.0",
     "react-app-rewire-hot-loader": "^1.0.3",
     "react-app-rewire-inline-import-graphql-ast": "^1.1.1",
@@ -50,7 +50,7 @@
     "react-hot-loader": "^4.3.12",
     "react-testing-library": "^5.3.1",
     "tslint-eslint-rules": "^5.3.1",
-    "typescript": "^3.1.6"
+    "typescript": "^3.2.2"
   },
   "browserslist": {
     "development": [

@@ -1,6 +1,6 @@
 import Styled from '@emotion/styled';
 
-const Wrapper = Styled.div`
+export const Wrapper = Styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,14 +15,14 @@ const Wrapper = Styled.div`
   padding: 0.5rem;
 `;
 
-const LabelWrapper = Styled.div`
+export const LabelWrapper = Styled.div`
   display: flex;
   align-items: center;
   width: 100%;
   height: 100%;
 `;
 
-const Label = Styled.div`
+export const Label = Styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,7 +36,7 @@ const Label = Styled.div`
   color: #D8DCDE;
 `;
 
-const SelectedItem = Styled.div`
+export const SelectedItem = Styled.div`
   display: flex;
   align-items: center;
   white-space: nowrap;
@@ -46,12 +46,12 @@ const SelectedItem = Styled.div`
   margin-right: 0.5rem;
 `;
 
-const Icon = Styled.i`
+export const Icon = Styled.i`
   display: block;
   width: 20%
 `;
 
-const List = Styled.ul`
+export const List = Styled.ul`
   list-style: none;
   width: 100%;
   position: absolute;
@@ -66,7 +66,7 @@ const List = Styled.ul`
   box-shadow: 0 0 10px 1px rgba(0,0,0,0.5);
 `;
 
-const ListItem = Styled.li`
+export const ListItem = Styled.li`
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -83,20 +83,7 @@ const ListItem = Styled.li`
   font-size: 0.9rem;
 `;
 
-const Img = Styled.img`
+export const Img = Styled.img`
   margin-right: 0.5em;
 `;
-
-
-export {
-  Wrapper,
-  Label,
-  Icon,
-  List,
-  ListItem,
-  LabelWrapper,
-  SelectedItem,
-  Img
-}
-
 
