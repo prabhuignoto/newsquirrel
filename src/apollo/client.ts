@@ -3,7 +3,6 @@ import { ApolloCache } from "apollo-cache";
 import defaults from "./defaults";
 
 // tslint:disable-next-line:no-console
-console.log("hey hurray" +process.env.REACT_APP_NEWSAPI_GRAPHQL_SERVER as string);
 
 const Client = new ApolloClient({
   clientState: {
