@@ -10,7 +10,7 @@ const Client = new ApolloClient({
     resolvers: {
       Mutation: {
         updateSearchTerm(
-          _,
+          _: any,
           { term }: { term: string },
           { cache }: { cache: ApolloCache<{}> }
         ) {
@@ -24,9 +24,9 @@ const Client = new ApolloClient({
           return null;
         },
         updateAppMode(
-          _,
+          _: any,
           { name, value }: { name: string; value: number },
-          { cache, getCacheKey }: { cache: ApolloCache<{}> }
+          { cache }: { cache: ApolloCache<{}> }
         ) {
           cache.writeData({
             data: {
@@ -40,7 +40,11 @@ const Client = new ApolloClient({
           });
           return null;
         },
-        updateNewstandSize(_, { value }: { value: number }, { cache }) {
+        updateNewstandSize(
+          _: any,
+          { value }: { value: number },
+          { cache }: { cache: any }
+        ) {
           cache.writeData({
             data: {
               defaultNewstandSize: {
@@ -49,11 +53,15 @@ const Client = new ApolloClient({
                 value
               }
             },
-            id: "defaultNewstandSize",
+            id: "defaultNewstandSize"
           });
           return null;
         },
-        updateCategory(_, { value }: { value: string }, { cache }) {
+        updateCategory(
+          _: any,
+          { value }: { value: string },
+          { cache }: { cache: any }
+        ) {
           cache.writeData({
             data: {
               defaultCategory: {
@@ -65,7 +73,11 @@ const Client = new ApolloClient({
           });
           return null;
         },
-        updateCountry(_, { value }: { value: string }, { cache }) {
+        updateCountry(
+          _: any,
+          { value }: { value: string },
+          { cache }: { cache: any }
+        ) {
           cache.writeData({
             data: {
               defaultCountry: {
@@ -77,7 +89,11 @@ const Client = new ApolloClient({
           });
           return null;
         },
-        updateQuickviewUrl(_, { url }: { url: string }, { cache }) {
+        updateQuickviewUrl(
+          _: any,
+          { url }: { url: string },
+          { cache }: { cache: any }
+        ) {
           cache.writeData({
             data: {
               quickViewUrl: {
@@ -90,7 +106,7 @@ const Client = new ApolloClient({
           });
           return null;
         },
-        closeQuickView(_, data, { cache }) {
+        closeQuickView(_: any, data: any, { cache }: { cache: any }) {
           cache.writeData({
             data: {
               quickViewUrl: {
@@ -103,7 +119,11 @@ const Client = new ApolloClient({
           });
           return null;
         },
-        updateSearchPage(_, { page }: { page: number }, { cache }) {
+        updateSearchPage(
+          _: any,
+          { page }: { page: number },
+          { cache }: { cache: any }
+        ) {
           cache.writeData({
             data: {
               searchPage: {

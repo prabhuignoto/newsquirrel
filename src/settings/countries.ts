@@ -15,6 +15,13 @@ export default [
   },
   {
     __typename: "Country",
+    code: "cn",
+    icon: "https://www.countryflags.io/cn/flat/64.png",
+    id: "cn",
+    name: "China",
+  },
+  {
+    __typename: "Country",
     code: "fr",
     icon: "https://www.countryflags.io/fr/flat/64.png",
     id: "fr",
@@ -33,6 +40,13 @@ export default [
     icon: "https://www.countryflags.io/in/flat/64.png",
     id: "in",
     name: "India",
+  },
+  {
+    __typename: "Country",
+    code: "jp",
+    icon: "https://www.countryflags.io/jp/flat/64.png",
+    id: "jp",
+    name: "Japan",
   },
   {
     __typename: "Country",
